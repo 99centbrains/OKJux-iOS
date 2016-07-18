@@ -1,0 +1,85 @@
+/*
+ Localized.strings
+ okjux
+ 
+ Created by Fonky on 3/6/15.
+ 
+ RUSSIAN
+ */
+
+//TUTORIAL
+"TUT_SNAP_TITLE" = "Загружайте изображение";
+"TUT_SNAP_BODY" = "Примите selfie или начните с пустым холстом.";
+"TUT_STYLE_TITLE" = "Украсьте ваше фото";
+"TUT_STYLE_BODY" = "Притяжка, коллаж, добавляет стикеры и текст.";
+"TUT_DROP_TITLE" = "Положите ваше фото на карту";
+"TUT_DROP_BODY" = "Опубликуйте ваше изображение для других того чтобы открыть.";
+"TUT_KARMA_TITLE" = "Заработайте кармы";
+"TUT_KARMA_BODY" = "Поделиться ваши работу и голосование на самом лучшем искусстве.";
+"TUT_START_TITLE" = "Получите готовый";
+"TUT_START_BODY" = "Ваш поворот!";
+
+//EXPLORE MAP
+"EXP_MAPBODY" = "Передвигаться по карте, открывать искусство по всему миру.";
+"EXP_KARMA" = "Заработайте кармы путем вывешивать и голосования.";
+
+//TABBAR
+"TABBAR_MAP" = "карта";
+"TABBAR_HOT" = "Популярный";
+"TABBAR_NEW" = "новый";
+"TABBAR_MORE" = "больше";
+"TABBAR_SNAP" = "JUX";
+
+"TABBAR_MAP_TITLE" = "исследовать";
+"TABBAR_HOT_TITLE" = "Самый горячий";
+"TABBAR_NEW_TITLE" = "новейший";
+"TABBAR_MORE_TITLE" = "Мое вещество";
+"TABBAR_SNAP_TITLE" = "JUX";
+
+//STICKERPACKS
+"PACK_RESTORE" = "восстановление";
+"PACK_TITLE" = "Пакеты стикера";
+"PACK_DONE" = "Сделано";
+
+//PROMPT TITLES
+"PROMPT_FLAG_TITLE" = "Сообщить фото";
+"PROMPT_FLAG_BODY" = "Пожалуйста сообщить спаме, оскорблениях и неприемлемом контенте";
+"PROMPT_FLAG_ACTION" = "Да , Доклад фото";
+"PROMPT_FLAG_CANCEL" = "не важно";
+
+//REMIX PROMPT
+"PROMPT_REMIX_TITLE" = "Ремикс";
+"PROMPT_REMIX_BODY" = "Поделиться или ремикс эту фотографию.";
+"PROMPT_REMIX_ACTION_01" = "делиться";
+"PROMPT_REMIX_ACTION_02" = "Ремикс";
+"PROMPT_REMIX_CANCEL" = "не важно";
+
+//PUBLISH
+"PUBLISH_PUBLIC" = "Дать свою фотографию для публичного показа на карте?";
+"PUBLISH_SHARE" = "Поделиться";
+"PUBLISH_DONE" = "Сделано";
+
+//NEW PHOTO SCREEN
+"PHOTO_STARTOVER" = "начать?";
+"PHOTO_NEW" = "готовы принять новую фотографию?";
+"PHOTO_NOTHANKS" = "не важно";
+"PHOTO_YES" = "да";
+
+//PERMISSION PROMPTS
+"PERMISSION_LOCATION_MAP" = "Расположение доступ необходим";
+"PERMISSION_LOCATION_PUBLISH" = "Расположение доступ необходим для Опубликуйте открытых фотографий";
+"PERMISSION_NO_PHOTOS" = "Нет фотографий в этом месте :( Переместить карту в новый район, или пригласить друзей!";
+"PERMISSION_NO_PUBLISHED" = "Вы не разместил ни публичной фотографии :(";
+
+//PROMPT LOCATION
+"PROMPT_LOCAL_TITLE" = "службы определения местоположения";
+"PROMPT_LOCAL_BODY" = "Некоторых функций требуется доступ к местоположению. Пожалуйста, включите службы определения местоположения (настройки > конфиденциальность > расположение > службы определения местоположения)";
+"PROMPT_LOCAL_ACTION" = "настройки";
+"PROMPT_LOCAL_CANCEL" = "отменить";
+
+//TOGGLES
+"TOGGLE_NEW" = "новый";
+"TOGGLE_NEAR" = "рядом";
+"TOGGLE_RISING" = "повышение";
+"TOGGLE_TOP" = "лучший";
+

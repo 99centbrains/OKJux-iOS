@@ -1,0 +1,87 @@
+/*
+ Localized.strings
+ okjux
+ 
+ Created by Fonky on 3/6/15.
+ 
+ */
+
+//TUTORIAL
+"TUT_SNAP_TITLE" = "Snap a Pic";
+"TUT_SNAP_BODY" = "Take a selfie, or start with a blank canvas.";
+"TUT_STYLE_TITLE" = "Style it Up";
+"TUT_STYLE_BODY" = "Doodle, collage, add stickers and text.";
+"TUT_DROP_TITLE" = "Drop it";
+"TUT_DROP_BODY" = "Publish your pic for people around you to discover.";
+"TUT_KARMA_TITLE" = "Earn Karma";
+"TUT_KARMA_BODY" = "Share your creations and vote on the best juxart.";
+"TUT_START_TITLE" = "Get Ready";
+"TUT_START_BODY" = "It’s your turn!";
+
+//EXPLORE MAP
+"EXP_MAPBODY" = "Drag the map to explore art from around the world.";
+"EXP_KARMA" = "Earn Karma by posting, voting, sharing, and being awesome!";
+
+//TABBAR
+"TABBAR_MAP" = "Map";
+"TABBAR_HOT" = "Hot";
+"TABBAR_NEW" = "New";
+"TABBAR_MORE" = "More";
+"TABBAR_SNAP" = "JUX";
+
+"TABBAR_MAP_TITLE" = "EXPLORE";
+"TABBAR_HOT_TITLE" = "HOTTEST";
+"TABBAR_NEW_TITLE" = "NEWEST";
+"TABBAR_MORE_TITLE" = "MY STUFF";
+"TABBAR_SNAP_TITLE" = "JUX";
+
+//STICKERPACKS
+"PACK_RESTORE" = "Restore";
+"PACK_TITLE" = "Packs";
+"PACK_DONE" = "Done";
+
+//PROMPT TITLES
+"PROMPT_FLAG_TITLE" = "Report Photo";
+"PROMPT_FLAG_BODY" = "Please report any spam or suspicious photos.";
+"PROMPT_FLAG_ACTION" = "Report";
+"PROMPT_FLAG_CANCEL" = "Never Mind";
+
+//REMIX PROMPT
+"PROMPT_REMIX_TITLE" = "Remix Pic";
+"PROMPT_REMIX_BODY" = "Share or Remix this pic by adding your own art.";
+"PROMPT_REMIX_ACTION_01" = "Share";
+"PROMPT_REMIX_ACTION_02" = "Remix";
+"PROMPT_REMIX_CANCEL" = "Never Mind";
+
+//PUBLISH
+"PUBLISH_PUBLIC" = "📍 Publish your pic to public?";
+"PUBLISH_SHARE" = "Share";
+"PUBLISH_DONE" = "Done";
+
+//NEW PHOTO SCREEN
+"PHOTO_STARTOVER" = "Start Over";
+"PHOTO_NEW" = "Want to start a new photo?";
+"PHOTO_NOTHANKS" = "No Thanks";
+"PHOTO_YES" = "Yes!";
+
+
+//PERMISSION PROMPTS
+"PERMISSION_LOCATION_MAP" = "Location access is needed to view snaps around you.";
+"PERMISSION_LOCATION_PUBLISH" = "App location is needed to publish public photos.";
+"PERMISSION_NO_PHOTOS" = "There are no photos in this location :( Move map to a new area, or invite some friends!";
+"PERMISSION_NO_PUBLISHED" = "You haven’t published any public photos :(";
+
+//PROMPT LOCATION
+"PROMPT_LOCAL_TITLE" = "Location Services";
+"PROMPT_LOCAL_BODY" = "Application requires Location access for some features. Please enable in Settings > Privacy > Location > Location Services";
+"PROMPT_LOCAL_ACTION" = "Settings";
+"PROMPT_LOCAL_CANCEL" = "Cancel";
+
+
+//TOGGLES
+"TOGGLE_NEW" = "New";
+"TOGGLE_NEAR" = "Nearby";
+"TOGGLE_RISING" = "Rising";
+"TOGGLE_TOP" = "Top";
+
+

@@ -1,0 +1,85 @@
+/*
+ Localized.strings
+ okjux
+ 
+ Created by Fonky on 3/6/15.
+ 
+ CHINESE (SIMPLIFIED)
+ */
+
+//TUTORIAL
+"TUT_SNAP_TITLE" = "上传一张照片";
+"TUT_SNAP_BODY" = "拍一自拍 或者从一个空白的画布开始";
+"TUT_STYLE_TITLE" = "风格你的照片";
+"TUT_STYLE_BODY" = "添加涂鸦，贴纸和文字到您的照片";
+"TUT_DROP_TITLE" = "放下你的照片在地图上";
+"TUT_DROP_BODY" = "发布您的图片为你周围的人发现";
+"TUT_KARMA_TITLE" = "赢得好人缘";
+"TUT_KARMA_BODY" = "分享你的作品，和表决为其他艺术";
+"TUT_START_TITLE" = "准备";
+"TUT_START_BODY" = "这是轮到你了!";
+
+//EXPLORE MAP
+"EXP_MAPBODY" = "拖动地图发现世界各地的艺术";
+"EXP_KARMA" = "通过张贴，投票和分享获得积分";
+
+//TABBAR
+"TABBAR_MAP" = "地图";
+"TABBAR_HOT" = "流行";
+"TABBAR_NEW" = "新";
+"TABBAR_MORE" = "更多";
+"TABBAR_SNAP" = "JUX";
+
+"TABBAR_MAP_TITLE" = "探索";
+"TABBAR_HOT_TITLE" = "最热";
+"TABBAR_NEW_TITLE" = "最新";
+"TABBAR_MORE_TITLE" = "我的东西";
+"TABBAR_SNAP_TITLE" = "JUX";
+
+//STICKERPACKS
+"PACK_RESTORE" = "恢复";
+"PACK_TITLE" = "贴纸包";
+"PACK_DONE" = "完";
+
+//PROMPT TITLES
+"PROMPT_FLAG_TITLE" = "报告照片";
+"PROMPT_FLAG_BODY" = "请报告所有垃圾短信或不适当的照片";
+"PROMPT_FLAG_ACTION" = "报告";
+"PROMPT_FLAG_CANCEL" = "没关系";
+
+//REMIX PROMPT
+"PROMPT_REMIX_TITLE" = "再混合";
+"PROMPT_REMIX_BODY" = "分享这张图片或再混合它与您自己的艺术";
+"PROMPT_REMIX_ACTION_01" = "分享";
+"PROMPT_REMIX_ACTION_02" = "再混合";
+"PROMPT_REMIX_CANCEL" = "没关系";
+
+//PUBLISH
+"PUBLISH_PUBLIC" = "📍 分享此图片公共地图";
+"PUBLISH_SHARE" = "分享";
+"PUBLISH_DONE" = "完";
+
+//NEW PHOTO SCREEN
+"PHOTO_STARTOVER" = "重新开始";
+"PHOTO_NEW" = "准备开始一个新的照片";
+"PHOTO_NOTHANKS" = "不，谢谢";
+"PHOTO_YES" = "是的";
+
+//PERMISSION PROMPTS
+"PERMISSION_LOCATION_MAP" = "位置访问是必需的";
+"PERMISSION_LOCATION_PUBLISH" = "您所在的位置是是必需的以发布公开照片";
+"PERMISSION_NO_PHOTOS" = "没有照片在这个位置 :( 移动地图到新的位置, 或者邀请一些朋友!";
+"PERMISSION_NO_PUBLISHED" = "您还没有发布任何公开的图片 :(";
+
+//PROMPT LOCATION
+"PROMPT_LOCAL_TITLE" = "位置服务";
+"PROMPT_LOCAL_BODY" = "一些功能需要位置访问. 请启用位置服务 (设置 > 隐私 > 地点 > 位置服务)";
+"PROMPT_LOCAL_ACTION" = "设置";
+"PROMPT_LOCAL_CANCEL" = "取消";
+
+//TOGGLES
+"TOGGLE_NEW" = "新";
+"TOGGLE_NEAR" = "近";
+"TOGGLE_RISING" = "升起";
+"TOGGLE_TOP" = "最好的";
+

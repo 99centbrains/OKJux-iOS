@@ -1,0 +1,85 @@
+/*
+ Localized.strings
+ okjux
+ 
+ Created by Fonky on 3/6/15.
+ 
+ JAPANESE
+ */
+
+//TUTORIAL
+"TUT_SNAP_TITLE" = "スナップ写真を撮る";
+"TUT_SNAP_BODY" = "写真を撮るまたは空のキャンバスで始まる.";
+"TUT_STYLE_TITLE" = "あなたの写真を飾る";
+"TUT_STYLE_BODY" = "ステッカーやテキストをあなたの写真に追加.";
+"TUT_DROP_TITLE" = "地図上であなたの写真を入れて";
+"TUT_DROP_BODY" = "発見するあなたの周りの人々のためにあなたの画像を投稿.";
+"TUT_KARMA_TITLE" = "カルマを稼ぐ";
+"TUT_KARMA_BODY" = "あなたの仕事を共有し、最高の芸術に投票.";
+"TUT_START_TITLE" = "準備をする";
+"TUT_START_BODY" = "それはあなたの番です!";
+
+//EXPLORE MAP
+"EXP_MAPBODY" = "世界中からアートを見つけるためにマップを移動する.";
+"EXP_KARMA" = "カルマを得るために画像を投稿. ";
+
+//TABBAR
+"TABBAR_MAP" = "マップ";
+"TABBAR_HOT" = "人気のある";
+"TABBAR_NEW" = "新しい";
+"TABBAR_MORE" = "もっと";
+"TABBAR_SNAP" = "JUX";
+
+"TABBAR_MAP_TITLE" = "探る";
+"TABBAR_HOT_TITLE" = "一番ホットな";
+"TABBAR_NEW_TITLE" = "最新";
+"TABBAR_MORE_TITLE" = "私のもの";
+"TABBAR_SNAP_TITLE" = "JUX";
+
+//STICKERPACKS
+"PACK_RESTORE" = "復元する";
+"PACK_TITLE" = "ステッカーパック";
+"PACK_DONE" = "終わった";
+
+//PROMPT TITLES
+"PROMPT_FLAG_TITLE" = " 画像を報告";
+"PROMPT_FLAG_BODY" = " スパムや不適切な画像を報告してください";
+"PROMPT_FLAG_ACTION" = "画像を報告";
+"PROMPT_FLAG_CANCEL" = "気にしないで";
+
+//REMIX PROMPT
+"PROMPT_REMIX_TITLE" = "リミックス";
+"PROMPT_REMIX_BODY" = "この写真を共有するか、またはリミックスしなさい";
+"PROMPT_REMIX_ACTION_01" = "シェア";
+"PROMPT_REMIX_ACTION_02" = "リミックス";
+"PROMPT_REMIX_CANCEL" = "気にしないで";
+
+//PUBLISH
+"PUBLISH_PUBLIC" = "公共のマップに画像を追加";
+"PUBLISH_SHARE" = "シェア";
+"PUBLISH_DONE" = "終わった";
+
+//NEW PHOTO SCREEN
+"PHOTO_STARTOVER" = "最初からやり直す";
+"PHOTO_NEW" = "あなたが新しい写真を開始しますか?";
+"PHOTO_NOTHANKS" = "結構です";
+"PHOTO_YES" = "はい";
+
+//PERMISSION PROMPTS
+"PERMISSION_LOCATION_MAP" = "位置情報アクセスが必要です.";
+"PERMISSION_LOCATION_PUBLISH" = "公共の写真を公開する, 位置情報アクセスが必要です";
+"PERMISSION_NO_PHOTOS" = "この場所には写真がありません :( 新しい場所にマップを移動, または何人かの友人を招待!";
+"PERMISSION_NO_PUBLISHED" = "あなたは任意のパブリック写真を掲載していません";
+
+//PROMPT LOCATION
+"PROMPT_LOCAL_TITLE" = "位置情報サービス";
+"PROMPT_LOCAL_BODY" = "一部の機能が必要です位置情報アクセス. 有効にしてください (設定 > プライバシー > 場所 > 位置情報サービス)";
+"PROMPT_LOCAL_ACTION" = "設定";
+"PROMPT_LOCAL_CANCEL" = "キャンセル";
+
+//TOGGLES
+"TOGGLE_NEW" = "新しい";
+"TOGGLE_NEAR" = "近く";
+"TOGGLE_RISING" = "上昇";
+"TOGGLE_TOP" = "最高";
+

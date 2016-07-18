@@ -1,0 +1,85 @@
+/*
+ Localized.strings
+ okjux
+ 
+ Created by Fonky on 3/6/15.
+ 
+ SPANISH
+ */
+
+//TUTORIAL
+"TUT_SNAP_TITLE" = "Cargue una Imagen";
+"TUT_SNAP_BODY" = "Tome un selfie o comience con una lona en blanco.";
+"TUT_STYLE_TITLE" = "Adorne su Foto";
+"TUT_STYLE_BODY" = "Garabato, collage, añade etiquetas engomadas y el texto.";
+"TUT_DROP_TITLE" = "Ponga su foto en el mapa";
+"TUT_DROP_BODY" = "Publique su imagen para la gente alrededor de usted para descubrir.";
+"TUT_KARMA_TITLE" = "Gane las Karmas";
+"TUT_KARMA_BODY" = "Comparta sus creaciones y voto en el mejor arte.";
+"TUT_START_TITLE" = "Consiga listo";
+"TUT_START_BODY" = "¡Es su vuelta!";
+
+//EXPLORE MAP
+"EXP_MAPBODY" = "Mueva el mapa para descubrir arte por todo el mundo.";
+"EXP_KARMA" = "¡Gane las karmas haciendo arte, votando, compartiéndolo y siendo impresionante!";
+
+//TABBAR
+"TABBAR_MAP" = "Mapa";
+"TABBAR_HOT" = "Popular";
+"TABBAR_NEW" = "Nuevo";
+"TABBAR_MORE" = "Más";
+"TABBAR_SNAP" = "JUX";
+
+"TABBAR_MAP_TITLE" = "EXPLORAR";
+"TABBAR_HOT_TITLE" = "MÁS CALIENTE";
+"TABBAR_NEW_TITLE" = "EL MÁS NUEVO";
+"TABBAR_MORE_TITLE" = "MIS COSAS";
+"TABBAR_SNAP_TITLE" = "JUX";
+
+//STICKERPACKS
+"PACK_RESTORE" = "Restaurar";
+"PACK_TITLE" = "Paquetes de Pegatina";
+"PACK_DONE" = "Hecho";
+
+//PROMPT TITLES
+"PROMPT_FLAG_TITLE" = "Reportaje Fotográfico";
+"PROMPT_FLAG_BODY" = "Señale cualquier Spam o foto inadecuada por medio de una bandera.";
+"PROMPT_FLAG_ACTION" = "Divulgue";
+"PROMPT_FLAG_CANCEL" = "No Importa";
+
+//REMIX PROMPT
+"PROMPT_REMIX_TITLE" = "Remezcla";
+"PROMPT_REMIX_BODY" = "Comparta o remezcle esta imagen.";
+"PROMPT_REMIX_ACTION_01" = "Comparta";
+"PROMPT_REMIX_ACTION_02" = "Remezcle";
+"PROMPT_REMIX_CANCEL" = "No";
+
+//PUBLISH
+"PUBLISH_PUBLIC" = "¿Publicar para ver mapa público?";
+"PUBLISH_SHARE" = "Publicar";
+"PUBLISH_DONE" = "Hecho";
+
+//NEW PHOTO SCREEN
+"PHOTO_STARTOVER" = "Empezar de nuevo?";
+"PHOTO_NEW" = "Listo para empezar una nueva foto?";
+"PHOTO_NOTHANKS" = "No";
+"PHOTO_YES" = "Sí";
+
+//PERMISSION PROMPTS
+"PERMISSION_LOCATION_MAP" = "Es necesario el acceso de la ubicación.";
+"PERMISSION_LOCATION_PUBLISH" = "Su ubicación es necesario para publicar fotos públicas.";
+"PERMISSION_NO_PHOTOS" = "No hay fotos en este lugar :( Mover el mapa a una nueva área o invitar a algunos amigos!";
+"PERMISSION_NO_PUBLISHED" = "No ha publicado una foto pública.";
+
+//PROMPT LOCATION
+"PROMPT_LOCAL_TITLE" = "Servicios de Localización";
+"PROMPT_LOCAL_BODY" = "Algunas funciones requieren acceso a la localización. Por favor, activa Servicios de Localización (Ajustes > Privacidad > Localización > Location Services)";
+"PROMPT_LOCAL_ACTION" = "Ajustes";
+"PROMPT_LOCAL_CANCEL" = "No";
+
+//TOGGLES
+"TOGGLE_NEW" = "Nuevo";
+"TOGGLE_NEAR" = "Cercano";
+"TOGGLE_RISING" = "Próximas";
+"TOGGLE_TOP" = "Superior";
+

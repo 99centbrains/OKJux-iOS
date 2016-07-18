@@ -1,0 +1,84 @@
+/* 
+  Localized.strings
+  okjux
+
+  Created by Fonky on 3/6/15.
+
+*/
+//GERMAN
+
+//TUTORIAL
+"TUT_SNAP_TITLE" = "reißen Sie ein Bild";
+"TUT_SNAP_BODY" = "Nehmen Sie ein selfie oder beginnen Sie mit einem leeren Segeltuch.";
+"TUT_STYLE_TITLE" = "Verzieren Sie Ihr Bild";
+"TUT_STYLE_BODY" = "Gekritzel, Collage, addieren Sie Aufkleber und Text.";
+"TUT_DROP_TITLE" = "Drop Ihre Fotos auf der Karte";
+"TUT_DROP_BODY" = "Publish your pic for people around you to discover.";
+"TUT_KARMA_TITLE" = "Verdienen Karma";
+"TUT_KARMA_BODY" = "Teilen Sie Ihre Arbeit und Abstimmung auf derbesten Kunst.";
+"TUT_START_TITLE" = "Werden Sie fertig";
+"TUT_START_BODY" = "Es ist Ihre Drehung!";
+
+//EXPLORE MAP
+"EXP_MAPBODY" = "Bewegen Sie die Karte, um Kunst aus der ganzen Welt zu erforschen.";
+"EXP_KARMA" = "Machen Sie und stimmen auf die Fotos zu Karma verdienen!";
+
+//TABBAR
+"TABBAR_MAP" = "Karte";
+"TABBAR_HOT" = "Populär";
+"TABBAR_NEW" = "Neu";
+"TABBAR_MORE" = "Mehr";
+"TABBAR_SNAP" = "JUX";
+
+"TABBAR_MAP_TITLE" = "Erforschen Sie";
+"TABBAR_HOT_TITLE" = "Am heißesten";
+"TABBAR_NEW_TITLE" = "Neueste";
+"TABBAR_MORE_TITLE" = "Mein Material";
+"TABBAR_SNAP_TITLE" = "JUX";
+
+//STICKERPACKS
+"PACK_RESTORE" = "Wiederherstellen";
+"PACK_TITLE" = "Aufkleber-Sätze";
+"PACK_DONE" = "Fix und fertig";
+
+//PROMPT TITLES
+"PROMPT_FLAG_TITLE" = "Melde dieses Foto";
+"PROMPT_FLAG_BODY" = "Bitte melden Sie Spam oder unangemessene Fotos.";
+"PROMPT_FLAG_ACTION" = "Melde dieses ungeeignetes Foto";
+"PROMPT_FLAG_CANCEL" = "Das macht nichts";
+
+//REMIX PROMPT
+"PROMPT_REMIX_TITLE" = "Remix";
+"PROMPT_REMIX_BODY" = "Teile dieses Foto oder remixen Sie es mit Ihren eigenen Kunst.";
+"PROMPT_REMIX_ACTION_01" = "Teilen";
+"PROMPT_REMIX_ACTION_02" = "Remix";
+"PROMPT_REMIX_CANCEL" = "Das macht nichts";
+
+//PUBLISH
+"PUBLISH_PUBLIC" = "📍 Veröffentlichen Sie zur allgemeinen Kartenansicht?";
+"PUBLISH_SHARE" = "Teilen";
+"PUBLISH_DONE" = "Fix und fertig";
+
+//NEW PHOTO SCREEN
+"PHOTO_STARTOVER" = "Von vorn beginnen ?";
+"PHOTO_NEW" = "Bereit, ein neues Foto zu beginnen?";
+"PHOTO_NOTHANKS" = "Nein danke";
+"PHOTO_YES" = "Ja";
+
+//PERMISSION PROMPTS
+"PERMISSION_LOCATION_MAP" = "Lage Zugriff ist erforderlich.";
+"PERMISSION_LOCATION_PUBLISH" = "Ihre Position wird benötigt, um öffentliche Fotos veröffentlichen.";
+"PERMISSION_NO_PHOTOS" = "Keine Fotos in diesem Ort :( Verschieben Sie die Karte in ein neues Gebiet oder laden einige Freunde ein!";
+"PERMISSION_NO_PUBLISHED" = "Sie haben keine öffentliche Fotos.";
+
+//PROMPT LOCATION
+"PROMPT_LOCAL_TITLE" = "Ortungsdienste";
+"PROMPT_LOCAL_BODY" = "Einige Features erfordern Lage Zugang. Bitte aktivieren Sie (Einstellungen > Datenschutz > Ortungsdienste)";
+"PROMPT_LOCAL_ACTION" = "Einstellungen";
+"PROMPT_LOCAL_CANCEL" = "Stornieren";
+
+//TOGGLES
+"TOGGLE_NEW" = "Neu";
+"TOGGLE_NEAR" = "Der Nähe";
+"TOGGLE_RISING" = "Beste";
+"TOGGLE_TOP" = "Sonder";
