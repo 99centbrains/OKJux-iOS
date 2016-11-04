@@ -115,6 +115,8 @@
 		74B6E07F1A1996C9001D6F80 /* iWebAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6E0201A1996C8001D6F80 /* iWebAd.m */; };
 		74B6E0801A1996C9001D6F80 /* iWebAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74B6E0211A1996C8001D6F80 /* iWebAdView.xib */; };
 		74B6E0851A1996C9001D6F80 /* UIActivityInstagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6E0281A1996C8001D6F80 /* UIActivityInstagram.m */; };
+		74B6E0881A1996C9001D6F80 /* iVersion.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 74B6E02E1A1996C8001D6F80 /* iVersion.bundle */; };
+		74B6E0891A1996C9001D6F80 /* iVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6E0301A1996C8001D6F80 /* iVersion.m */; };
 		74B6E08A1A1996C9001D6F80 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B6E0311A1996C8001D6F80 /* Parse.framework */; };
 		74B6E08B1A1996C9001D6F80 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6E0341A1996C8001D6F80 /* Reachability.m */; };
 		74B6E08E1A1996C9001D6F80 /* SVWebViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74B6E03A1A1996C8001D6F80 /* SVWebViewController.strings */; };
@@ -258,6 +260,27 @@
 		37EDE5471675228700F89D90 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		37F6B9D91725CA9100B87F4F /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		6E15DA48834C64B6C387E3AB /* Pods_Catwang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catwang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74098B901AA7E689009D63B5 /* TMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMCache.h; sourceTree = "<group>"; };
+		74098B911AA7E689009D63B5 /* TMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMCache.m; sourceTree = "<group>"; };
+		74098B921AA7E689009D63B5 /* TMDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDiskCache.h; sourceTree = "<group>"; };
+		74098B931AA7E689009D63B5 /* TMDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDiskCache.m; sourceTree = "<group>"; };
+		74098B941AA7E689009D63B5 /* TMMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMMemoryCache.h; sourceTree = "<group>"; };
+		74098B951AA7E689009D63B5 /* TMMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMMemoryCache.m; sourceTree = "<group>"; };
+		74098B9A1AA95285009D63B5 /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DateTools.bundle; sourceTree = "<group>"; };
+		74098B9B1AA95285009D63B5 /* DateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTools.h; sourceTree = "<group>"; };
+		74098B9C1AA95285009D63B5 /* DTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTConstants.h; sourceTree = "<group>"; };
+		74098B9D1AA95285009D63B5 /* DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTError.h; sourceTree = "<group>"; };
+		74098B9E1AA95285009D63B5 /* DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTError.m; sourceTree = "<group>"; };
+		74098B9F1AA95285009D63B5 /* DTTimePeriod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriod.h; sourceTree = "<group>"; };
+		74098BA01AA95285009D63B5 /* DTTimePeriod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriod.m; sourceTree = "<group>"; };
+		74098BA11AA95285009D63B5 /* DTTimePeriodChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriodChain.h; sourceTree = "<group>"; };
+		74098BA21AA95285009D63B5 /* DTTimePeriodChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodChain.m; sourceTree = "<group>"; };
+		74098BA31AA95285009D63B5 /* DTTimePeriodCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriodCollection.h; sourceTree = "<group>"; };
+		74098BA41AA95285009D63B5 /* DTTimePeriodCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodCollection.m; sourceTree = "<group>"; };
+		74098BA51AA95285009D63B5 /* DTTimePeriodGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriodGroup.h; sourceTree = "<group>"; };
+		74098BA61AA95285009D63B5 /* DTTimePeriodGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodGroup.m; sourceTree = "<group>"; };
+		74098BA71AA95285009D63B5 /* NSDate+DateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateTools.h"; sourceTree = "<group>"; };
+		74098BA81AA95285009D63B5 /* NSDate+DateTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateTools.m"; sourceTree = "<group>"; };
 		74098BB31AAA1DCF009D63B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		74098BB51AAA1DDC009D63B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		74098BB71AAA9AAC009D63B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -374,6 +397,9 @@
 		74B6E0211A1996C8001D6F80 /* iWebAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iWebAdView.xib; sourceTree = "<group>"; };
 		74B6E0271A1996C8001D6F80 /* UIActivityInstagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIActivityInstagram.h; sourceTree = "<group>"; };
 		74B6E0281A1996C8001D6F80 /* UIActivityInstagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIActivityInstagram.m; sourceTree = "<group>"; };
+		74B6E02E1A1996C8001D6F80 /* iVersion.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iVersion.bundle; sourceTree = "<group>"; };
+		74B6E02F1A1996C8001D6F80 /* iVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iVersion.h; sourceTree = "<group>"; };
+		74B6E0301A1996C8001D6F80 /* iVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iVersion.m; sourceTree = "<group>"; };
 		74B6E0311A1996C8001D6F80 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		74B6E0331A1996C8001D6F80 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		74B6E0341A1996C8001D6F80 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -443,7 +469,6 @@
 		80D528791AC4736700D5702B /* SwitchHeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchHeaderCollectionReusableView.h; sourceTree = "<group>"; };
 		80D5287A1AC4736700D5702B /* SwitchHeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchHeaderCollectionReusableView.m; sourceTree = "<group>"; };
 		C8B47C9500291BF740CC2A52 /* Pods-Catwang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catwang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Catwang/Pods-Catwang.debug.xcconfig"; sourceTree = "<group>"; };
-		CC319CE00EEA358AFAAC9522 /* libPods-Catwang.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Catwang.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5126E0B1850DFA100024D0A /* TextComposerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextComposerViewController.h; sourceTree = "<group>"; };
 		D5126E0C1850DFA100024D0A /* TextComposerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextComposerViewController.m; sourceTree = "<group>"; };
 		D54EC112184D5D3E00538194 /* PlayBorderSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayBorderSelectViewController.h; sourceTree = "<group>"; };
@@ -814,6 +839,24 @@
 				743D0CFE1A2E313D00E41DAA /* Chartboost.framework */,
 				74B6DFEE1A1996C8001D6F80 /* Bolts.framework */,
 				74B6E0311A1996C8001D6F80 /* Parse.framework */,
+				74B6E09F1A199754001D6F80 /* ALAssetsLibrary+CustomPhotoAlbum.h */,
+				74B6E0A01A199754001D6F80 /* ALAssetsLibrary+CustomPhotoAlbum.m */,
+				744CEEC21A914B56005DDF48 /* SlideFilter */,
+				74B6E09B1A19970E001D6F80 /* KSLabel */,
+				74B6DFE71A1996C8001D6F80 /* ActivityTumblr */,
+				74B6E0221A1996C8001D6F80 /* InstagramActivity */,
+				74B6E0141A1996C8001D6F80 /* Flurry */,
+				74B6E01B1A1996C8001D6F80 /* iNotify */,
+				74B6E02D1A1996C8001D6F80 /* iVersion */,
+				74B6E0321A1996C8001D6F80 /* Reachability */,
+				74B6E0391A1996C8001D6F80 /* SVWebViewController */,
+				74B6DFEF1A1996C8001D6F80 /* CBMoreAppsView */,
+				74B6E00A1A1996C8001D6F80 /* CropViewController */,
+				74508F361A8497F7005E124F /* TAOverlay */,
+				745D081B1A6741920073B7BA /* CBJSONDictionary.h */,
+				745D081C1A6741920073B7BA /* CBJSONDictionary.m */,
+				74B54BA81A7B129600E10354 /* CWInAppHelper.h */,
+				74B54BA91A7B129600E10354 /* CWInAppHelper.m */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -865,6 +908,16 @@
 				74B6E0281A1996C8001D6F80 /* UIActivityInstagram.m */,
 			);
 			path = InstagramActivity;
+			sourceTree = "<group>";
+		};
+		74B6E02D1A1996C8001D6F80 /* iVersion */ = {
+			isa = PBXGroup;
+			children = (
+				74B6E02E1A1996C8001D6F80 /* iVersion.bundle */,
+				74B6E02F1A1996C8001D6F80 /* iVersion.h */,
+				74B6E0301A1996C8001D6F80 /* iVersion.m */,
+			);
+			path = iVersion;
 			sourceTree = "<group>";
 		};
 		74B6E0321A1996C8001D6F80 /* Reachability */ = {
@@ -1186,7 +1239,6 @@
 				74EDDB001A881EB200B48ABA /* Frijole-Regular.ttf in Resources */,
 				D54EC1B0184E8E5100538194 /* CBColorPickerViewController.xib in Resources */,
 				748761B31A510EE30014FF61 /* ROCKYAOE.ttf in Resources */,
-				74B6E0861A1996C9001D6F80 /* iRate.bundle in Resources */,
 				74B6E0761A1996C8001D6F80 /* CBCropViewController~ipad.xib in Resources */,
 				74EDDB051A881EB200B48ABA /* KellySlab-Regular.ttf in Resources */,
 				74EDDB0C1A881EB200B48ABA /* PressStart2P-Regular.ttf in Resources */,
@@ -1347,6 +1399,7 @@
 				74FA3D721A89229800B8AFC6 /* NewUserViewController.m in Sources */,
 				3753C7AD15C3677C00B8AEDE /* PlayEditModeViewController.m in Sources */,
 				744CEECC1A914B56005DDF48 /* FeSlideFilterView.m in Sources */,
+				745D07F91A6711B80073B7BA /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				D54EC195184DB29700538194 /* PlayPaintViewController.m in Sources */,
 				3735A2EB15C77DDB00AA5A56 /* ShareViewController.m in Sources */,
 				74EDDAD41A866DBE00B48ABA /* OMGLightBoxViewController.m in Sources */,

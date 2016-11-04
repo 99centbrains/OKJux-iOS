@@ -28,32 +28,28 @@ PODS:
   - TWRDownloadManager (1.1.1)
   - UIImageEffects (0.0.1)
   - UIImageTrim (1.02)
-
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
-  - DateTools
-  - FCFileManager
-  - Flurry-iOS-SDK/FlurryAds
-  - Flurry-iOS-SDK/FlurrySDK
+  - DateTools (~> 1.7.0)
+  - FCFileManager (~> 1.0.18)
+  - Flurry-iOS-SDK/FlurryAds (~> 7.8.1)
+  - Flurry-iOS-SDK/FlurrySDK (~> 7.8.1)
   - Haneke (~> 1.0)
   - iRate (from `https://github.com/nicklockwood/iRate.git`)
-  - iVersion
-  - JPSThumbnailAnnotation
-  - TAOverlay
-  - TMCache
-  - TWRDownloadManager
-  - UIImageEffects
-  - UIImageTrim (= 1.02)
-
+  - iVersion (~> 1.11.4)
+  - JPSThumbnailAnnotation (~> 1.0.0)
+  - TAOverlay (~> 2.0.1)
+  - TMCache (~> 2.1.0)
+  - TWRDownloadManager (~> 1.1.1)
+  - UIImageEffects (~> 0.0.1)
+  - UIImageTrim (~> 1.02)
 EXTERNAL SOURCES:
   iRate:
     :git: https://github.com/nicklockwood/iRate.git
-
 CHECKOUT OPTIONS:
   iRate:
     :commit: 710bb0805164885bc715485cc3ba94a4b8651eb1
     :git: https://github.com/nicklockwood/iRate.git
-
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
@@ -68,7 +64,5 @@ SPEC CHECKSUMS:
   TWRDownloadManager: 34193d7d1ab6e6b4243d74fa4f686cc2ed5ef40f
   UIImageEffects: 37b99fa461e4965f332ca82e92f2c22a1075ee84
   UIImageTrim: 6291b9cfb05bbc9ca0bb3e510aae4421de4ca5e4
-
-PODFILE CHECKSUM: fd5adc9d9d67d86617be6a7d74a8b8b0fa430c4c
-
+PODFILE CHECKSUM: 4bb2d8dffb4ed6c9737b28ca7b78551a36c607ef
 COCOAPODS: 1.0.1

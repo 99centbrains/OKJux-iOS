@@ -1,3 +1,21 @@
-PODFILE CHECKSUM: 793475e5fc303dd52adaec14c858567898cd0b12
+PODS:
+  - iRate (1.11.6)
+
+DEPENDENCIES:
+  - iRate (from `https://github.com/nicklockwood/iRate.git`)
+
+EXTERNAL SOURCES:
+  iRate:
+    :git: https://github.com/nicklockwood/iRate.git
+
+CHECKOUT OPTIONS:
+  iRate:
+    :commit: 710bb0805164885bc715485cc3ba94a4b8651eb1
+    :git: https://github.com/nicklockwood/iRate.git
+
+SPEC CHECKSUMS:
+  iRate: 61e558919c4a7fde63b3c22ebbd6c114a1eee658
+
+PODFILE CHECKSUM: f22ea71ee100b9b762d33e5ca5156312fe6a3e0a
 
 COCOAPODS: 1.0.1
