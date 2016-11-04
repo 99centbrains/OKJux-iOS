@@ -1,8 +1,12 @@
 PODS:
+  - DateTools (1.7.0)
   - iRate (1.11.6)
+  - TMCache (2.1.0)
 
 DEPENDENCIES:
+  - DateTools
   - iRate (from `https://github.com/nicklockwood/iRate.git`)
+  - TMCache
 
 EXTERNAL SOURCES:
   iRate:
@@ -14,8 +18,10 @@ CHECKOUT OPTIONS:
     :git: https://github.com/nicklockwood/iRate.git
 
 SPEC CHECKSUMS:
+  DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   iRate: 61e558919c4a7fde63b3c22ebbd6c114a1eee658
+  TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
 
-PODFILE CHECKSUM: f22ea71ee100b9b762d33e5ca5156312fe6a3e0a
+PODFILE CHECKSUM: 7d9399700cd54f2939ab0eb16e204c6c1039d31d
 
 COCOAPODS: 1.0.1

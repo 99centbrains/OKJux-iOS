@@ -3,6 +3,7 @@ use_frameworks!
 
 target 'Catwang' do
     pod 'iRate', :git => 'https://github.com/nicklockwood/iRate.git'
+<<<<<<< HEAD
     pod 'DateTools', '~> 1.7.0'
     pod 'TMCache', '~> 2.1.0'
     pod 'UIImageTrim', '~> 1.02'
@@ -16,4 +17,8 @@ target 'Catwang' do
     pod 'Flurry-iOS-SDK/FlurryAds', '~> 7.8.1'
     pod 'iVersion', '~> 1.11.4'
     pod 'TAOverlay', '~> 2.0.1'
+=======
+    pod 'DateTools'
+    pod 'TMCache'
+>>>>>>> f26c961... More pods
 end

@@ -260,27 +260,6 @@
 		37EDE5471675228700F89D90 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		37F6B9D91725CA9100B87F4F /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		6E15DA48834C64B6C387E3AB /* Pods_Catwang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catwang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		74098B901AA7E689009D63B5 /* TMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMCache.h; sourceTree = "<group>"; };
-		74098B911AA7E689009D63B5 /* TMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMCache.m; sourceTree = "<group>"; };
-		74098B921AA7E689009D63B5 /* TMDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDiskCache.h; sourceTree = "<group>"; };
-		74098B931AA7E689009D63B5 /* TMDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDiskCache.m; sourceTree = "<group>"; };
-		74098B941AA7E689009D63B5 /* TMMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMMemoryCache.h; sourceTree = "<group>"; };
-		74098B951AA7E689009D63B5 /* TMMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMMemoryCache.m; sourceTree = "<group>"; };
-		74098B9A1AA95285009D63B5 /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DateTools.bundle; sourceTree = "<group>"; };
-		74098B9B1AA95285009D63B5 /* DateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTools.h; sourceTree = "<group>"; };
-		74098B9C1AA95285009D63B5 /* DTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTConstants.h; sourceTree = "<group>"; };
-		74098B9D1AA95285009D63B5 /* DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTError.h; sourceTree = "<group>"; };
-		74098B9E1AA95285009D63B5 /* DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTError.m; sourceTree = "<group>"; };
-		74098B9F1AA95285009D63B5 /* DTTimePeriod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriod.h; sourceTree = "<group>"; };
-		74098BA01AA95285009D63B5 /* DTTimePeriod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriod.m; sourceTree = "<group>"; };
-		74098BA11AA95285009D63B5 /* DTTimePeriodChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriodChain.h; sourceTree = "<group>"; };
-		74098BA21AA95285009D63B5 /* DTTimePeriodChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodChain.m; sourceTree = "<group>"; };
-		74098BA31AA95285009D63B5 /* DTTimePeriodCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriodCollection.h; sourceTree = "<group>"; };
-		74098BA41AA95285009D63B5 /* DTTimePeriodCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodCollection.m; sourceTree = "<group>"; };
-		74098BA51AA95285009D63B5 /* DTTimePeriodGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriodGroup.h; sourceTree = "<group>"; };
-		74098BA61AA95285009D63B5 /* DTTimePeriodGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodGroup.m; sourceTree = "<group>"; };
-		74098BA71AA95285009D63B5 /* NSDate+DateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateTools.h"; sourceTree = "<group>"; };
-		74098BA81AA95285009D63B5 /* NSDate+DateTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateTools.m"; sourceTree = "<group>"; };
 		74098BB31AAA1DCF009D63B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		74098BB51AAA1DDC009D63B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		74098BB71AAA9AAC009D63B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -711,41 +690,6 @@
 				746332D41A2D52D400CD24E5 /* Launch Screen.xib */,
 			);
 			name = Classes;
-			sourceTree = "<group>";
-		};
-		74098B8F1AA7E689009D63B5 /* TMCache */ = {
-			isa = PBXGroup;
-			children = (
-				74098B901AA7E689009D63B5 /* TMCache.h */,
-				74098B911AA7E689009D63B5 /* TMCache.m */,
-				74098B921AA7E689009D63B5 /* TMDiskCache.h */,
-				74098B931AA7E689009D63B5 /* TMDiskCache.m */,
-				74098B941AA7E689009D63B5 /* TMMemoryCache.h */,
-				74098B951AA7E689009D63B5 /* TMMemoryCache.m */,
-			);
-			path = TMCache;
-			sourceTree = "<group>";
-		};
-		74098B991AA95285009D63B5 /* DateTools */ = {
-			isa = PBXGroup;
-			children = (
-				74098B9A1AA95285009D63B5 /* DateTools.bundle */,
-				74098B9B1AA95285009D63B5 /* DateTools.h */,
-				74098B9C1AA95285009D63B5 /* DTConstants.h */,
-				74098B9D1AA95285009D63B5 /* DTError.h */,
-				74098B9E1AA95285009D63B5 /* DTError.m */,
-				74098B9F1AA95285009D63B5 /* DTTimePeriod.h */,
-				74098BA01AA95285009D63B5 /* DTTimePeriod.m */,
-				74098BA11AA95285009D63B5 /* DTTimePeriodChain.h */,
-				74098BA21AA95285009D63B5 /* DTTimePeriodChain.m */,
-				74098BA31AA95285009D63B5 /* DTTimePeriodCollection.h */,
-				74098BA41AA95285009D63B5 /* DTTimePeriodCollection.m */,
-				74098BA51AA95285009D63B5 /* DTTimePeriodGroup.h */,
-				74098BA61AA95285009D63B5 /* DTTimePeriodGroup.m */,
-				74098BA71AA95285009D63B5 /* NSDate+DateTools.h */,
-				74098BA81AA95285009D63B5 /* NSDate+DateTools.m */,
-			);
-			path = DateTools;
 			sourceTree = "<group>";
 		};
 		742356C11A9BE0E000F89E66 /* TWRDownloadsManager */ = {
@@ -1234,7 +1178,6 @@
 				0F8AD13019326B8D00D331D3 /* Main.storyboard in Resources */,
 				748761B11A510EE30014FF61 /* ProximaNova-Black.ttf in Resources */,
 				FA67DB581DCBC2AB006D6950 /* Assets.xcassets in Resources */,
-				74098BA91AA95285009D63B5 /* DateTools.bundle in Resources */,
 				D56C1E9C1852435900BC69C3 /* Minecrafter_3.ttf in Resources */,
 				74EDDB001A881EB200B48ABA /* Frijole-Regular.ttf in Resources */,
 				D54EC1B0184E8E5100538194 /* CBColorPickerViewController.xib in Resources */,
@@ -1357,14 +1300,17 @@
 			files = (
 				D5126E0E1850DFA100024D0A /* TextComposerViewController.m in Sources */,
 				74B54BAA1A7B129600E10354 /* CWInAppHelper.m in Sources */,
+				745D07F01A6711B80073B7BA /* AFHTTPRequestOperationManager.m in Sources */,
 				74760E0C1A82AD5800AD3FE5 /* OMGTopSnapCollectionViewCell.m in Sources */,
 				745D081D1A6741920073B7BA /* CBJSONDictionary.m in Sources */,
 				7434410F1A7EB18F007171AB /* StickerPackCollectionViewCell.m in Sources */,
 				3753C74A15C3132900B8AEDE /* main.m in Sources */,
 				74B6E09E1A19970E001D6F80 /* KSLabel.m in Sources */,
+				748FA46A1A9ACC160063D0BC /* JPSThumnail.m in Sources */,
 				D54EC1A5184E84F900538194 /* PaintView.m in Sources */,
 				D54EC115184D5D3E00538194 /* PlayBorderSelectViewController.m in Sources */,
 				748761B81A5111E80014FF61 /* StickerCellCollectionViewCell.m in Sources */,
+				748761811A50DF9C0014FF61 /* FCFileManager.m in Sources */,
 				74C420ED1A3D097500C6745C /* CBFontCollectionViewCell.m in Sources */,
 				74760E1F1A83C10C00AD3FE5 /* OMGPublishViewController.m in Sources */,
 				74C420EA1A3CFA0200C6745C /* CBFontToolViewController.m in Sources */,
@@ -1385,6 +1331,7 @@
 				745D08061A6714370073B7BA /* StickerHeaderCollectionCell.m in Sources */,
 				80D5287B1AC4736700D5702B /* SwitchHeaderCollectionReusableView.m in Sources */,
 				74ACBC941A9423A40097D607 /* OMGSnapVoteViewController.m in Sources */,
+				7FBCACCB1AA1366F0093953A /* HNKSimpleFetcher.m in Sources */,
 				748FA4591A9695810063D0BC /* OMGTabBarViewController.m in Sources */,
 				FA8DCF3D1DCD303F00BA22CC /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				74B6E0741A1996C8001D6F80 /* CBCropViewController.m in Sources */,
@@ -1409,6 +1356,8 @@
 				74A2C9AD1A92E2F800303AEE /* OMGSnapViewController.m in Sources */,
 				D54EC1B7184E90C600538194 /* CBColorPickerCollectionCell.m in Sources */,
 				74B6E05C1A1996C8001D6F80 /* UIActivityTumblr.m in Sources */,
+				742356C71A9BE0E000F89E66 /* TWRDownloadObject.m in Sources */,
+				745D07FF1A6711B80073B7BA /* UIWebView+AFNetworking.m in Sources */,
 				746A73AD1A818BEB0052E7ED /* OMGSnapCollectionViewCell.m in Sources */,
 				74B6E07E1A1996C9001D6F80 /* iNotify.m in Sources */,
 				74A2C9AA1A92A29400303AEE /* OMGMapViewController.m in Sources */,
