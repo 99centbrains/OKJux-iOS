@@ -7,66 +7,66 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19D228ED87FF16C882731F1ED7992B4E /* DateTools-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 16754B814F8714DFD7938F83D6EF8705 /* DateTools-dummy.m */; };
-		1CBCC11AFEC39AE34CF22778C05A0C30 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C29C83358FDC7E431332999033C479D5 /* iRate.bundle */; };
-		2BF45D117E4F2E2F75C2924BDEB3D75F /* TMDiskCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 47504CFD01D3CA116F19C55ADCEEFD43 /* TMDiskCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2DAF4E8CD18ED10B30CCFB8FF1984A46 /* DateTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 20C1826F5B176378965D1C8CF869B37A /* DateTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		390A8863AE159A26A5744AFD4D272C1B /* iRate-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B51D593F27BA3780D75B2286E0A379 /* iRate-dummy.m */; };
-		3B0BC087FEF77A4ACC7ABA82BE33FD1A /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CE8C95FB95AD01B644A1AB1CF89C6C /* iRate.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		4159C0A759E6090F2C58FCB2492DFB05 /* DTTimePeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ED6E8A08597367EEEE4A6979D4FC9E3 /* DTTimePeriod.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		42D52FD11C172750DA2A7183DAB3762E /* iRate-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DEC8A61D621FA7D3D288EBB32D357C1 /* iRate-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5113351403A0C89BA90151E00C2F5B04 /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F42FD56FC8F6A4114AA9D1B92A11EC17 /* TMMemoryCache.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		5DED9802249291ADC0FBC1E4D4EBAD37 /* Pods-Catwang-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A76EE1BC0AE686E73A542EBCA1EE02 /* Pods-Catwang-dummy.m */; };
-		66D6CA16EF2371E39FAB73473A89D8C1 /* NSDate+DateTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CADA42A370BD59A7DB7B51C9D15D69C /* NSDate+DateTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		672C82C5DFFA07DDBC5C9E528D26E3D8 /* TMCache.h in Headers */ = {isa = PBXBuildFile; fileRef = FFC6F63DEEF929DA01BF88D818FDCC25 /* TMCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6F00A3D837A718CBC5D7C7157CCF71A2 /* DTTimePeriodGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCE98BDCD5BDEC97C38CBBE320CAD96 /* DTTimePeriodGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		729719BE516B8080199215BB6A52117A /* DateTools-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E94B322415A42D1D6ACB1975D023607F /* DateTools-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		72A22D38F860C75A3A1F95A39B6A8CF2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		7902018FD0635F9A5E4C13BFD67E3750 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1522A5AA425A3D26F0CBB060F04433C0 /* DateTools.bundle */; };
-		7A3C7A5DAEB1C695F060F0248053A1A6 /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F863203BB005533D3CD9AFAF0899EF8 /* NSDate+DateTools.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		801E845E678344633F3972FA4FC16B7C /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 872DFDD9BCEA1F45C682D7B3315098B9 /* DTTimePeriodChain.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		9A6782D71DE4FF96770C3954448842DE /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C38FAAFD683D56F4035A15AD88DAC7F /* TMDiskCache.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		9BC7910A61F45206D435065CD0F23BA0 /* DTTimePeriod.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A5B5D4C95D39A3F0EF579DD519F7ED /* DTTimePeriod.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A4A5DE1784D58F0D9AC336BE0A4936C4 /* DTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A1FE08D24072960F92BDE02F8BDFF3 /* DTConstants.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		AA7F7DFA8C82BD326B36D74F992C6C2B /* TMCacheBackgroundTaskManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CBD58792AFF1566EFF05A2F292F66FA /* TMCacheBackgroundTaskManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC9292B813002C49F706D4C52A8F9E51 /* TMCache-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC349673E006FCB468768C245E86849 /* TMCache-dummy.m */; };
-		ADE6E1166455042F89DEB16A8ABD3A71 /* TMMemoryCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AB0F9D0EE9DC01000EF319850080D2A /* TMMemoryCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AFF4480B4B63FA58209AEC8052207A92 /* DTTimePeriodCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 830BAC0F35AB2C3BA4921C8CCA1389A0 /* DTTimePeriodCollection.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		B4137B6F5B1EF819B8DF88A194F598ED /* DTError.h in Headers */ = {isa = PBXBuildFile; fileRef = 78DE9DC8BCC4C5E51591520BAC5284BA /* DTError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BDFAB222CE5AEC9EB69D0F6EFF62D212 /* iRate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A183B3E5D668DA2BF8B8B4190BAA7FD /* iRate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C16E0F1A698E02F1D49D4593A71BE38F /* DTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EA31C54F9DE39833752A5F97805082A /* DTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2AACB7B07473DB9DC706984CF73F36F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		CB3E094B57CC17A4D8F1948C3D893F7E /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CB47238BC045E4A52E19048EDFC2745E /* TMCache.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		CC1CD7BAF05F362DECAA5698D1100896 /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD12D926866C2675EA451BE597EE1C8 /* DTError.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		DD710EA2C8E2D3E0917519775D1F571C /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A38A3AD86B771D6FB05B1182E00BEED /* DTTimePeriodGroup.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		E1EBCED81B647B2F2BD3E733186CDF97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		E3C1314B3E825850525C07406FC2F45D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		E4960E115527F02FCB41D8D190A9FA6D /* TMCache-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 879D720F772D0589BEB72ECC4E644EBD /* TMCache-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EE13D588E52431089F7406353C90A144 /* DTTimePeriodChain.h in Headers */ = {isa = PBXBuildFile; fileRef = 412EA5A1A11657AFE2577C3062EBC220 /* DTTimePeriodChain.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EF97DF6D33472686735D40BF0B7DA017 /* Pods-Catwang-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DA8BAD6F2730387D492528C5C98FEF6 /* Pods-Catwang-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F423AB12C14DA731C42897A3D929D2B8 /* DTTimePeriodCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = B929EC502F8F59B62BF701C3CC2BF685 /* DTTimePeriodCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		09D44A9080EBAE8FCBC76E6704FB494F /* TMCache.h in Headers */ = {isa = PBXBuildFile; fileRef = FFC6F63DEEF929DA01BF88D818FDCC25 /* TMCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		09E51B9934DEE30A7177AD06E41869B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		0A00E9FC53548E4D2437CF0DCCE92BFA /* DTTimePeriod.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A5B5D4C95D39A3F0EF579DD519F7ED /* DTTimePeriod.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11B5179FE0E52B7563120F98AD340864 /* iRate-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DEC8A61D621FA7D3D288EBB32D357C1 /* iRate-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1434E11D2B4A3815176BD819395FCB3C /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C38FAAFD683D56F4035A15AD88DAC7F /* TMDiskCache.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		1FAC049B6BD9577DEDFBF91EA2C1621E /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C29C83358FDC7E431332999033C479D5 /* iRate.bundle */; };
+		2088DD404465540A0A50F21CAD03F487 /* DTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A1FE08D24072960F92BDE02F8BDFF3 /* DTConstants.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2495E1C3C12843BEE4A37189983B5738 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		3ADB07429B282CEF0961F4227C0D358B /* Pods-Catwang-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A76EE1BC0AE686E73A542EBCA1EE02 /* Pods-Catwang-dummy.m */; };
+		45B108B9473FA58BDD7922830E8AB2C8 /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F863203BB005533D3CD9AFAF0899EF8 /* NSDate+DateTools.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		4971113E8DCEBEABA0A973706854AF76 /* DTError.h in Headers */ = {isa = PBXBuildFile; fileRef = 78DE9DC8BCC4C5E51591520BAC5284BA /* DTError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5EED56A7A2216BA2F390078D8BABA479 /* TMDiskCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 47504CFD01D3CA116F19C55ADCEEFD43 /* TMDiskCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		633E744399EDC9D0D2D8CD4E3AC8307A /* DTTimePeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ED6E8A08597367EEEE4A6979D4FC9E3 /* DTTimePeriod.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		642E25E5389F15EE6DE4860590EC8EDB /* DateTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 20C1826F5B176378965D1C8CF869B37A /* DateTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		700099819696ACBE90ED7DE55E04C13E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		7E9C4E98F38BFDCCD5DA1FEFCAAA92DC /* TMMemoryCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AB0F9D0EE9DC01000EF319850080D2A /* TMMemoryCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		818F73C2311D50852F512BE84D819E58 /* DTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EA31C54F9DE39833752A5F97805082A /* DTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		88AAB46B8FAF59FE6563C9D5BC9C153A /* DTTimePeriodGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCE98BDCD5BDEC97C38CBBE320CAD96 /* DTTimePeriodGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8D0D3C30A988F41E82E998FC3916AF02 /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A38A3AD86B771D6FB05B1182E00BEED /* DTTimePeriodGroup.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		9208DBF067B538110A80CA54B215C8E4 /* TMCache-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 879D720F772D0589BEB72ECC4E644EBD /* TMCache-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		930252A219A5479A5DD86783D6BD2510 /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD12D926866C2675EA451BE597EE1C8 /* DTError.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		9AE32F1FF30C96E4EEE4A539CC622CF6 /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CB47238BC045E4A52E19048EDFC2745E /* TMCache.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		9C7BD8AC4338BAF653D6987F1D79C131 /* DateTools-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E94B322415A42D1D6ACB1975D023607F /* DateTools-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2DD4CECE6AEB0CB872035ECBB92BBBE /* DTTimePeriodChain.h in Headers */ = {isa = PBXBuildFile; fileRef = 412EA5A1A11657AFE2577C3062EBC220 /* DTTimePeriodChain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7E22E6D0216FDA96AC864C1AAA67A91 /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 872DFDD9BCEA1F45C682D7B3315098B9 /* DTTimePeriodChain.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		A88936953DD90B35B65120BB6B330ABE /* iRate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A183B3E5D668DA2BF8B8B4190BAA7FD /* iRate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B16BE60FD6A272A5E3366265D961D7EB /* NSDate+DateTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CADA42A370BD59A7DB7B51C9D15D69C /* NSDate+DateTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B70C61754B4DB6A88812A46C9B040B47 /* Pods-Catwang-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DA8BAD6F2730387D492528C5C98FEF6 /* Pods-Catwang-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BBCA582B1BE5C974DCEF0F78FBF56BCB /* TMCacheBackgroundTaskManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CBD58792AFF1566EFF05A2F292F66FA /* TMCacheBackgroundTaskManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C7ACB59A0D5D98E015650803ED8F0A36 /* DTTimePeriodCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = B929EC502F8F59B62BF701C3CC2BF685 /* DTTimePeriodCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CC6B1ADDF35401C19FD908801492E8FF /* iRate-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B51D593F27BA3780D75B2286E0A379 /* iRate-dummy.m */; };
+		D5289C915F2A42849B90918E3EBF4785 /* TMCache-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC349673E006FCB468768C245E86849 /* TMCache-dummy.m */; };
+		DFABBFE5F2547B85E7BCF351A547D146 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		E89B971FF8892BED85EC3852B682252E /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F42FD56FC8F6A4114AA9D1B92A11EC17 /* TMMemoryCache.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		E961A069BB617491A67B44B81F6E7AEB /* DTTimePeriodCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 830BAC0F35AB2C3BA4921C8CCA1389A0 /* DTTimePeriodCollection.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		FB05ED67E94AA7FC495C6C521BF8D5A7 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1522A5AA425A3D26F0CBB060F04433C0 /* DateTools.bundle */; };
+		FB2BD78173B353632D98298738D906C6 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CE8C95FB95AD01B644A1AB1CF89C6C /* iRate.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		FDA75F21FF7FA9404A66FBDBE33703E0 /* DateTools-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 16754B814F8714DFD7938F83D6EF8705 /* DateTools-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1C53BFED6FE353BE5AC49913228A3661 /* PBXContainerItemProxy */ = {
+		399F40C3B6EB7709379302B150C2AADD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = AFEDA8059B169E4068B6DCC4D2F0B0E9;
-			remoteInfo = DateTools;
-		};
-		35C5311C3C200AA7D3FFBD6F39E0B9CD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B8BF3B1B238E5372AEBB1ABF4336B867;
+			remoteGlobalIDString = 662D243030B9ADBE1E5FBFDBE032318A;
 			remoteInfo = TMCache;
 		};
-		BAE8C31002B8BB875C54436A1AEF62E4 /* PBXContainerItemProxy */ = {
+		874E75D2E5439529E3A27101BBFD3AC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 00E74CED770597EF76DEE6FE824D1B7A;
+			remoteGlobalIDString = 019B8DD7F9406148F9C695DB96EBC4A3;
+			remoteInfo = DateTools;
+		};
+		A2FB9ED47C1FD94E775174AEBF4C7548 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60597499BD50B775B4083962053582BD;
 			remoteInfo = iRate;
 		};
 /* End PBXContainerItemProxy section */
@@ -121,7 +121,7 @@
 		C9FF6A74999199C41B01A3047C381EA7 /* iRate-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iRate-prefix.pch"; sourceTree = "<group>"; };
 		CA84D3CEF3F40BAB66B618E2CA0A1471 /* TMCache.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TMCache.xcconfig; sourceTree = "<group>"; };
 		CB47238BC045E4A52E19048EDFC2745E /* TMCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TMCache.m; path = TMCache/TMCache.m; sourceTree = "<group>"; };
-		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		DBCC3B3432B430E6D7F23E63AE188105 /* Pods-Catwang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Catwang.debug.xcconfig"; sourceTree = "<group>"; };
 		DCDD81EFF35C07B0E56BF2DE66A43617 /* DateTools-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DateTools-prefix.pch"; sourceTree = "<group>"; };
 		DEC349673E006FCB468768C245E86849 /* TMCache-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TMCache-dummy.m"; sourceTree = "<group>"; };
@@ -135,35 +135,35 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		24B18CD89D44FF998B14FD4D5A83E3E1 /* Frameworks */ = {
+		29CA2D2772A1A77D312DDB85704B68BE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72A22D38F860C75A3A1F95A39B6A8CF2 /* Foundation.framework in Frameworks */,
+				09E51B9934DEE30A7177AD06E41869B7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A74A478D64639838BDCE54CC87B138D0 /* Frameworks */ = {
+		3E78A1347A5222B19AA44BA67E96EDCB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2AACB7B07473DB9DC706984CF73F36F /* Foundation.framework in Frameworks */,
+				700099819696ACBE90ED7DE55E04C13E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E536086B06D5186C814CE2FBB07E6FC4 /* Frameworks */ = {
+		442F7562B0CFF65B283D9A2D04DDB5C7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1EBCED81B647B2F2BD3E733186CDF97 /* Foundation.framework in Frameworks */,
+				2495E1C3C12843BEE4A37189983B5738 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F54566F834ABDEE4FC7403B70EC14AC7 /* Frameworks */ = {
+		A47883F837EDBC7CAE3EB940C572C143 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3C1314B3E825850525C07406FC2F45D /* Foundation.framework in Frameworks */,
+				DFABBFE5F2547B85E7BCF351A547D146 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,14 +234,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
 		585BA1070572A407CD2817C63692B116 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +272,14 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
@@ -304,7 +304,7 @@
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
+				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -355,100 +355,62 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		8B22C323D309E83880F4A1C767A05AC4 /* Headers */ = {
+		06D4F3F9755113B2314E78DAA3F94C09 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4960E115527F02FCB41D8D190A9FA6D /* TMCache-umbrella.h in Headers */,
-				672C82C5DFFA07DDBC5C9E528D26E3D8 /* TMCache.h in Headers */,
-				AA7F7DFA8C82BD326B36D74F992C6C2B /* TMCacheBackgroundTaskManager.h in Headers */,
-				2BF45D117E4F2E2F75C2924BDEB3D75F /* TMDiskCache.h in Headers */,
-				ADE6E1166455042F89DEB16A8ABD3A71 /* TMMemoryCache.h in Headers */,
+				9208DBF067B538110A80CA54B215C8E4 /* TMCache-umbrella.h in Headers */,
+				09D44A9080EBAE8FCBC76E6704FB494F /* TMCache.h in Headers */,
+				BBCA582B1BE5C974DCEF0F78FBF56BCB /* TMCacheBackgroundTaskManager.h in Headers */,
+				5EED56A7A2216BA2F390078D8BABA479 /* TMDiskCache.h in Headers */,
+				7E9C4E98F38BFDCCD5DA1FEFCAAA92DC /* TMMemoryCache.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B901B089EC086B025BEE4BC074FBD6E9 /* Headers */ = {
+		36C053E7F1882D484B08383D191CC568 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				729719BE516B8080199215BB6A52117A /* DateTools-umbrella.h in Headers */,
-				2DAF4E8CD18ED10B30CCFB8FF1984A46 /* DateTools.h in Headers */,
-				C16E0F1A698E02F1D49D4593A71BE38F /* DTConstants.h in Headers */,
-				B4137B6F5B1EF819B8DF88A194F598ED /* DTError.h in Headers */,
-				9BC7910A61F45206D435065CD0F23BA0 /* DTTimePeriod.h in Headers */,
-				EE13D588E52431089F7406353C90A144 /* DTTimePeriodChain.h in Headers */,
-				F423AB12C14DA731C42897A3D929D2B8 /* DTTimePeriodCollection.h in Headers */,
-				6F00A3D837A718CBC5D7C7157CCF71A2 /* DTTimePeriodGroup.h in Headers */,
-				66D6CA16EF2371E39FAB73473A89D8C1 /* NSDate+DateTools.h in Headers */,
+				B70C61754B4DB6A88812A46C9B040B47 /* Pods-Catwang-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C56A6615834362DB87888AB72EBCCBC5 /* Headers */ = {
+		8DFDC733D7F2064AC8B88B97B417EE9B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF97DF6D33472686735D40BF0B7DA017 /* Pods-Catwang-umbrella.h in Headers */,
+				11B5179FE0E52B7563120F98AD340864 /* iRate-umbrella.h in Headers */,
+				A88936953DD90B35B65120BB6B330ABE /* iRate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D5E7FA1F90E1881DF086A7EA65960708 /* Headers */ = {
+		F1F66C2D86396FE9C78E5EC84A70A24E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42D52FD11C172750DA2A7183DAB3762E /* iRate-umbrella.h in Headers */,
-				BDFAB222CE5AEC9EB69D0F6EFF62D212 /* iRate.h in Headers */,
+				9C7BD8AC4338BAF653D6987F1D79C131 /* DateTools-umbrella.h in Headers */,
+				642E25E5389F15EE6DE4860590EC8EDB /* DateTools.h in Headers */,
+				818F73C2311D50852F512BE84D819E58 /* DTConstants.h in Headers */,
+				4971113E8DCEBEABA0A973706854AF76 /* DTError.h in Headers */,
+				0A00E9FC53548E4D2437CF0DCCE92BFA /* DTTimePeriod.h in Headers */,
+				A2DD4CECE6AEB0CB872035ECBB92BBBE /* DTTimePeriodChain.h in Headers */,
+				C7ACB59A0D5D98E015650803ED8F0A36 /* DTTimePeriodCollection.h in Headers */,
+				88AAB46B8FAF59FE6563C9D5BC9C153A /* DTTimePeriodGroup.h in Headers */,
+				B16BE60FD6A272A5E3366265D961D7EB /* NSDate+DateTools.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		00E74CED770597EF76DEE6FE824D1B7A /* iRate */ = {
+		019B8DD7F9406148F9C695DB96EBC4A3 /* DateTools */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CE1D76D8FDEF2F3B0A024152D1829A0F /* Build configuration list for PBXNativeTarget "iRate" */;
+			buildConfigurationList = 64833E7B5C578A85728857BF0DDB53F8 /* Build configuration list for PBXNativeTarget "DateTools" */;
 			buildPhases = (
-				3E004260E1C87BD14AA67E957083957B /* Sources */,
-				E536086B06D5186C814CE2FBB07E6FC4 /* Frameworks */,
-				D5E7FA1F90E1881DF086A7EA65960708 /* Headers */,
-				7C0FBB16A59F9F9A1B8AAEA878573753 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = iRate;
-			productName = iRate;
-			productReference = B4C00AC667723E99C1323A372787E9F7 /* iRate.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		54873B751F356C0BB14D8A597199F1FE /* Pods-Catwang */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C614C0D06E43DB4E9DA26C5504947072 /* Build configuration list for PBXNativeTarget "Pods-Catwang" */;
-			buildPhases = (
-				3CCB45E24477D3FCB8D13233EE5940F4 /* Sources */,
-				24B18CD89D44FF998B14FD4D5A83E3E1 /* Frameworks */,
-				C56A6615834362DB87888AB72EBCCBC5 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DE59268D2B9063F20995A4DF89864248 /* PBXTargetDependency */,
-				D16A1759DF263611010DB86286740A07 /* PBXTargetDependency */,
-				01C3D00E7ABD7B6BD2468AABC7D3C3F8 /* PBXTargetDependency */,
-			);
-			name = "Pods-Catwang";
-			productName = "Pods-Catwang";
-			productReference = B4843F9168FBE0E45B75E4FF742E0497 /* Pods_Catwang.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		AFEDA8059B169E4068B6DCC4D2F0B0E9 /* DateTools */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B43E01F5BF2588222B5923C17216C970 /* Build configuration list for PBXNativeTarget "DateTools" */;
-			buildPhases = (
-				2D273862F0C04804E86D4B60CB956F0C /* Sources */,
-				F54566F834ABDEE4FC7403B70EC14AC7 /* Frameworks */,
-				B901B089EC086B025BEE4BC074FBD6E9 /* Headers */,
-				374638B4AFD8EA70DD2EA7401A5ADDEB /* Resources */,
+				5A2DC93977618D7B61955EB5BD9B23C6 /* Sources */,
+				A47883F837EDBC7CAE3EB940C572C143 /* Frameworks */,
+				F1F66C2D86396FE9C78E5EC84A70A24E /* Headers */,
+				CDFD89AE1A372746548CDBF2EF9BF988 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -459,13 +421,51 @@
 			productReference = 2E8FEDA12A0F683D6CEBF36BD70A4F36 /* DateTools.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B8BF3B1B238E5372AEBB1ABF4336B867 /* TMCache */ = {
+		1F33DC9EE15F21174E9B5CB4124A95CC /* Pods-Catwang */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8629F8F190D297A6D1475930CC4BEA98 /* Build configuration list for PBXNativeTarget "TMCache" */;
+			buildConfigurationList = 2834745AF34A326447BE0A05BDF1D76B /* Build configuration list for PBXNativeTarget "Pods-Catwang" */;
 			buildPhases = (
-				C9906B831E5DCDFC5754B9F696AFB48F /* Sources */,
-				A74A478D64639838BDCE54CC87B138D0 /* Frameworks */,
-				8B22C323D309E83880F4A1C767A05AC4 /* Headers */,
+				72A40DE0CED154EF373B470D4316897A /* Sources */,
+				29CA2D2772A1A77D312DDB85704B68BE /* Frameworks */,
+				36C053E7F1882D484B08383D191CC568 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				61A85E8EB3428D9C5EA998C781F34964 /* PBXTargetDependency */,
+				855E23B4C5C1F530B9AC0895F70C1830 /* PBXTargetDependency */,
+				9B88A9242F430D72E5E38CEB5726D836 /* PBXTargetDependency */,
+			);
+			name = "Pods-Catwang";
+			productName = "Pods-Catwang";
+			productReference = B4843F9168FBE0E45B75E4FF742E0497 /* Pods_Catwang.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		60597499BD50B775B4083962053582BD /* iRate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9480E8D20CFDF1AC9304F962D0846285 /* Build configuration list for PBXNativeTarget "iRate" */;
+			buildPhases = (
+				2C79AF3AB018E03F014F0B4E20FF0675 /* Sources */,
+				3E78A1347A5222B19AA44BA67E96EDCB /* Frameworks */,
+				8DFDC733D7F2064AC8B88B97B417EE9B /* Headers */,
+				4A44307F56B805F4730E6C45A8F3E510 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iRate;
+			productName = iRate;
+			productReference = B4C00AC667723E99C1323A372787E9F7 /* iRate.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		662D243030B9ADBE1E5FBFDBE032318A /* TMCache */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC87B37C8FDF766801F7D9AD8C6B07A0 /* Build configuration list for PBXNativeTarget "TMCache" */;
+			buildPhases = (
+				C363ED9835882B450E04CF9E15CA0503 /* Sources */,
+				442F7562B0CFF65B283D9A2D04DDB5C7 /* Frameworks */,
+				06D4F3F9755113B2314E78DAA3F94C09 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -497,102 +497,199 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AFEDA8059B169E4068B6DCC4D2F0B0E9 /* DateTools */,
-				00E74CED770597EF76DEE6FE824D1B7A /* iRate */,
-				54873B751F356C0BB14D8A597199F1FE /* Pods-Catwang */,
-				B8BF3B1B238E5372AEBB1ABF4336B867 /* TMCache */,
+				019B8DD7F9406148F9C695DB96EBC4A3 /* DateTools */,
+				60597499BD50B775B4083962053582BD /* iRate */,
+				1F33DC9EE15F21174E9B5CB4124A95CC /* Pods-Catwang */,
+				662D243030B9ADBE1E5FBFDBE032318A /* TMCache */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		374638B4AFD8EA70DD2EA7401A5ADDEB /* Resources */ = {
+		4A44307F56B805F4730E6C45A8F3E510 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7902018FD0635F9A5E4C13BFD67E3750 /* DateTools.bundle in Resources */,
+				1FAC049B6BD9577DEDFBF91EA2C1621E /* iRate.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7C0FBB16A59F9F9A1B8AAEA878573753 /* Resources */ = {
+		CDFD89AE1A372746548CDBF2EF9BF988 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CBCC11AFEC39AE34CF22778C05A0C30 /* iRate.bundle in Resources */,
+				FB05ED67E94AA7FC495C6C521BF8D5A7 /* DateTools.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2D273862F0C04804E86D4B60CB956F0C /* Sources */ = {
+		2C79AF3AB018E03F014F0B4E20FF0675 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19D228ED87FF16C882731F1ED7992B4E /* DateTools-dummy.m in Sources */,
-				A4A5DE1784D58F0D9AC336BE0A4936C4 /* DTConstants.m in Sources */,
-				CC1CD7BAF05F362DECAA5698D1100896 /* DTError.m in Sources */,
-				4159C0A759E6090F2C58FCB2492DFB05 /* DTTimePeriod.m in Sources */,
-				801E845E678344633F3972FA4FC16B7C /* DTTimePeriodChain.m in Sources */,
-				AFF4480B4B63FA58209AEC8052207A92 /* DTTimePeriodCollection.m in Sources */,
-				DD710EA2C8E2D3E0917519775D1F571C /* DTTimePeriodGroup.m in Sources */,
-				7A3C7A5DAEB1C695F060F0248053A1A6 /* NSDate+DateTools.m in Sources */,
+				CC6B1ADDF35401C19FD908801492E8FF /* iRate-dummy.m in Sources */,
+				FB2BD78173B353632D98298738D906C6 /* iRate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3CCB45E24477D3FCB8D13233EE5940F4 /* Sources */ = {
+		5A2DC93977618D7B61955EB5BD9B23C6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DED9802249291ADC0FBC1E4D4EBAD37 /* Pods-Catwang-dummy.m in Sources */,
+				FDA75F21FF7FA9404A66FBDBE33703E0 /* DateTools-dummy.m in Sources */,
+				2088DD404465540A0A50F21CAD03F487 /* DTConstants.m in Sources */,
+				930252A219A5479A5DD86783D6BD2510 /* DTError.m in Sources */,
+				633E744399EDC9D0D2D8CD4E3AC8307A /* DTTimePeriod.m in Sources */,
+				A7E22E6D0216FDA96AC864C1AAA67A91 /* DTTimePeriodChain.m in Sources */,
+				E961A069BB617491A67B44B81F6E7AEB /* DTTimePeriodCollection.m in Sources */,
+				8D0D3C30A988F41E82E998FC3916AF02 /* DTTimePeriodGroup.m in Sources */,
+				45B108B9473FA58BDD7922830E8AB2C8 /* NSDate+DateTools.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3E004260E1C87BD14AA67E957083957B /* Sources */ = {
+		72A40DE0CED154EF373B470D4316897A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				390A8863AE159A26A5744AFD4D272C1B /* iRate-dummy.m in Sources */,
-				3B0BC087FEF77A4ACC7ABA82BE33FD1A /* iRate.m in Sources */,
+				3ADB07429B282CEF0961F4227C0D358B /* Pods-Catwang-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C9906B831E5DCDFC5754B9F696AFB48F /* Sources */ = {
+		C363ED9835882B450E04CF9E15CA0503 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC9292B813002C49F706D4C52A8F9E51 /* TMCache-dummy.m in Sources */,
-				CB3E094B57CC17A4D8F1948C3D893F7E /* TMCache.m in Sources */,
-				9A6782D71DE4FF96770C3954448842DE /* TMDiskCache.m in Sources */,
-				5113351403A0C89BA90151E00C2F5B04 /* TMMemoryCache.m in Sources */,
+				D5289C915F2A42849B90918E3EBF4785 /* TMCache-dummy.m in Sources */,
+				9AE32F1FF30C96E4EEE4A539CC622CF6 /* TMCache.m in Sources */,
+				1434E11D2B4A3815176BD819395FCB3C /* TMDiskCache.m in Sources */,
+				E89B971FF8892BED85EC3852B682252E /* TMMemoryCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		01C3D00E7ABD7B6BD2468AABC7D3C3F8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = iRate;
-			target = 00E74CED770597EF76DEE6FE824D1B7A /* iRate */;
-			targetProxy = BAE8C31002B8BB875C54436A1AEF62E4 /* PBXContainerItemProxy */;
-		};
-		D16A1759DF263611010DB86286740A07 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TMCache;
-			target = B8BF3B1B238E5372AEBB1ABF4336B867 /* TMCache */;
-			targetProxy = 35C5311C3C200AA7D3FFBD6F39E0B9CD /* PBXContainerItemProxy */;
-		};
-		DE59268D2B9063F20995A4DF89864248 /* PBXTargetDependency */ = {
+		61A85E8EB3428D9C5EA998C781F34964 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = DateTools;
-			target = AFEDA8059B169E4068B6DCC4D2F0B0E9 /* DateTools */;
-			targetProxy = 1C53BFED6FE353BE5AC49913228A3661 /* PBXContainerItemProxy */;
+			target = 019B8DD7F9406148F9C695DB96EBC4A3 /* DateTools */;
+			targetProxy = 874E75D2E5439529E3A27101BBFD3AC9 /* PBXContainerItemProxy */;
+		};
+		855E23B4C5C1F530B9AC0895F70C1830 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TMCache;
+			target = 662D243030B9ADBE1E5FBFDBE032318A /* TMCache */;
+			targetProxy = 399F40C3B6EB7709379302B150C2AADD /* PBXContainerItemProxy */;
+		};
+		9B88A9242F430D72E5E38CEB5726D836 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = iRate;
+			target = 60597499BD50B775B4083962053582BD /* iRate */;
+			targetProxy = A2FB9ED47C1FD94E775174AEBF4C7548 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		034014829C1E4434983CF3A690C12017 /* Debug */ = {
+		1419C44CF902CA3603EC5D3A2D300843 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8A44D7EB097DC0D42936E362C4A7A94 /* Pods-Catwang.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Catwang/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Catwang/Pods-Catwang.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Catwang;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		43630600EE3E7FA2389E9A9CFA733CE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F2835BB29724F23651514D3E273E20F /* DateTools.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/DateTools/DateTools-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DateTools/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/DateTools/DateTools.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = DateTools;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		479C5111DA540A213DAF50A022643464 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F2835BB29724F23651514D3E273E20F /* DateTools.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/DateTools/DateTools-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DateTools/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/DateTools/DateTools.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = DateTools;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		59B042A655B7C20CBAB90E385BF4E4C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -610,6 +707,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -629,45 +727,19 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = NO;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		060203C167A6C479DF2C2D091B6405F9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F2835BB29724F23651514D3E273E20F /* DateTools.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/DateTools/DateTools-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DateTools/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/DateTools/DateTools.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = DateTools;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		239912B1FBA7645BAE7F24E2B4832702 /* Debug */ = {
+		822DB9A151B0B079593C1BE4B0B71041 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CA84D3CEF3F40BAB66B618E2CA0A1471 /* TMCache.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -692,69 +764,13 @@
 			};
 			name = Debug;
 		};
-		3B25D01B7EC48A87CCB5EB99147EFDD4 /* Release */ = {
+		AB7A609E79EBFEBD604C4F3D11142DDD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AF0FFF93ADE050C6F81B72A52F61605 /* iRate.xcconfig */;
+			baseConfigurationReference = DBCC3B3432B430E6D7F23E63AE188105 /* Pods-Catwang.debug.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/iRate/iRate-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/iRate/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/iRate/iRate.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = iRate;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		6275F515B3DC89EB0ED7EA566ADE2053 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA84D3CEF3F40BAB66B618E2CA0A1471 /* TMCache.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/TMCache/TMCache-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TMCache/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/TMCache/TMCache.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = TMCache;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		A6799B6594C8C37BB99EFCFF7BD15EB8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F2835BB29724F23651514D3E273E20F /* DateTools.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -763,14 +779,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/DateTools/DateTools-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DateTools/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Catwang/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/DateTools/DateTools.modulemap";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Catwang/Pods-Catwang.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = DateTools;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Catwang;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -779,36 +799,7 @@
 			};
 			name = Debug;
 		};
-		B71516F4791B3646897C651C99BC48E9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AF0FFF93ADE050C6F81B72A52F61605 /* iRate.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/iRate/iRate-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/iRate/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/iRate/iRate.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = iRate;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		C7E474A03CAE21F1CB6046E7344C59BD /* Release */ = {
+		B7324857C38B065FEB1EEE3105C2367A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -826,6 +817,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -840,50 +832,20 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		ED2D92ED7884216E0B63447CC29D9CC2 /* Debug */ = {
+		D50A0CBD92BB76AB3B6E9221CF1A98AC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DBCC3B3432B430E6D7F23E63AE188105 /* Pods-Catwang.debug.xcconfig */;
+			baseConfigurationReference = 1AF0FFF93ADE050C6F81B72A52F61605 /* iRate.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Catwang/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Catwang/Pods-Catwang.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Catwang;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		FEA264109D07083A93F1D0747ED41BB5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B8A44D7EB097DC0D42936E362C4A7A94 /* Pods-Catwang.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
@@ -892,18 +854,76 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Catwang/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/iRate/iRate-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/iRate/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Catwang/Pods-Catwang.modulemap";
+				MODULEMAP_FILE = "Target Support Files/iRate/iRate.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Catwang;
+				PRODUCT_NAME = iRate;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E292B0A47D817CE8EC78D722F747D011 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AF0FFF93ADE050C6F81B72A52F61605 /* iRate.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/iRate/iRate-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/iRate/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/iRate/iRate.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = iRate;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F3E0175BEFBA3C67D916BC829B1EFB26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA84D3CEF3F40BAB66B618E2CA0A1471 /* TMCache.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TMCache/TMCache-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TMCache/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TMCache/TMCache.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = TMCache;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -915,47 +935,47 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2834745AF34A326447BE0A05BDF1D76B /* Build configuration list for PBXNativeTarget "Pods-Catwang" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB7A609E79EBFEBD604C4F3D11142DDD /* Debug */,
+				1419C44CF902CA3603EC5D3A2D300843 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				034014829C1E4434983CF3A690C12017 /* Debug */,
-				C7E474A03CAE21F1CB6046E7344C59BD /* Release */,
+				59B042A655B7C20CBAB90E385BF4E4C7 /* Debug */,
+				B7324857C38B065FEB1EEE3105C2367A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8629F8F190D297A6D1475930CC4BEA98 /* Build configuration list for PBXNativeTarget "TMCache" */ = {
+		64833E7B5C578A85728857BF0DDB53F8 /* Build configuration list for PBXNativeTarget "DateTools" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				239912B1FBA7645BAE7F24E2B4832702 /* Debug */,
-				6275F515B3DC89EB0ED7EA566ADE2053 /* Release */,
+				479C5111DA540A213DAF50A022643464 /* Debug */,
+				43630600EE3E7FA2389E9A9CFA733CE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B43E01F5BF2588222B5923C17216C970 /* Build configuration list for PBXNativeTarget "DateTools" */ = {
+		9480E8D20CFDF1AC9304F962D0846285 /* Build configuration list for PBXNativeTarget "iRate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A6799B6594C8C37BB99EFCFF7BD15EB8 /* Debug */,
-				060203C167A6C479DF2C2D091B6405F9 /* Release */,
+				E292B0A47D817CE8EC78D722F747D011 /* Debug */,
+				D50A0CBD92BB76AB3B6E9221CF1A98AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C614C0D06E43DB4E9DA26C5504947072 /* Build configuration list for PBXNativeTarget "Pods-Catwang" */ = {
+		AC87B37C8FDF766801F7D9AD8C6B07A0 /* Build configuration list for PBXNativeTarget "TMCache" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ED2D92ED7884216E0B63447CC29D9CC2 /* Debug */,
-				FEA264109D07083A93F1D0747ED41BB5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CE1D76D8FDEF2F3B0A024152D1829A0F /* Build configuration list for PBXNativeTarget "iRate" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B71516F4791B3646897C651C99BC48E9 /* Debug */,
-				3B25D01B7EC48A87CCB5EB99147EFDD4 /* Release */,
+				822DB9A151B0B079593C1BE4B0B71041 /* Debug */,
+				F3E0175BEFBA3C67D916BC829B1EFB26 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

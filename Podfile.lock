@@ -1,5 +1,4 @@
 PODS:
-<<<<<<< HEAD
   - AFNetworking (3.1.0):
     - AFNetworking/NSURLSession (= 3.1.0)
     - AFNetworking/Reachability (= 3.1.0)
@@ -44,17 +43,6 @@ DEPENDENCIES:
   - TWRDownloadManager (~> 1.1.1)
   - UIImageEffects (~> 0.0.1)
   - UIImageTrim (~> 1.02)
-=======
-  - DateTools (1.7.0)
-  - iRate (1.11.6)
-  - TMCache (2.1.0)
-
-DEPENDENCIES:
-  - DateTools
-  - iRate (from `https://github.com/nicklockwood/iRate.git`)
-  - TMCache
-
->>>>>>> f26c961... More pods
 EXTERNAL SOURCES:
   iRate:
     :git: https://github.com/nicklockwood/iRate.git
@@ -63,7 +51,6 @@ CHECKOUT OPTIONS:
     :commit: 710bb0805164885bc715485cc3ba94a4b8651eb1
     :git: https://github.com/nicklockwood/iRate.git
 SPEC CHECKSUMS:
-<<<<<<< HEAD
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   FCFileManager: 3d13576da1f709d37460bd7669cdf07b9d6d8bc3
@@ -78,12 +65,4 @@ SPEC CHECKSUMS:
   UIImageEffects: 37b99fa461e4965f332ca82e92f2c22a1075ee84
   UIImageTrim: 6291b9cfb05bbc9ca0bb3e510aae4421de4ca5e4
 PODFILE CHECKSUM: 4bb2d8dffb4ed6c9737b28ca7b78551a36c607ef
-=======
-  DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
-  iRate: 61e558919c4a7fde63b3c22ebbd6c114a1eee658
-  TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
-
-PODFILE CHECKSUM: 7d9399700cd54f2939ab0eb16e204c6c1039d31d
-
->>>>>>> f26c961... More pods
 COCOAPODS: 1.0.1

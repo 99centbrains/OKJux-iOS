@@ -617,8 +617,19 @@
 				7FF6A9F21A7EE8C300E671A9 /* Catwang-Prefix.pch */,
 				377F64B61607895700A75CCB /* Classes */,
 				3735A29315C5EB3B00AA5A56 /* ThirdPartyLibraries */,
+				9BDF09031DCD0B27002D112F /* Helpers */,
+				377F64B61607895700A75CCB /* Controllers */,
+				9BDF09021DCD0B11002D112F /* Views */,
 				3753C74415C3132900B8AEDE /* Supporting Files */,
+				3753C74515C3132900B8AEDE /* Catwang-Info.plist */,
+				3753C74C15C3132900B8AEDE /* AppDelegate.h */,
+				3753C74D15C3132900B8AEDE /* AppDelegate.m */,
+				0F8AD12F19326B8D00D331D3 /* Main.storyboard */,
+				74FA3D751A8922ED00B8AFC6 /* FTUEStoryboard.storyboard */,
+				74A2C9A61A92A08A00303AEE /* OMGStoryboard.storyboard */,
+				746332D41A2D52D400CD24E5 /* Launch Screen.xib */,
 				FA67DB561DCBB636006D6950 /* Assets.xcassets */,
+				7FF6A9F21A7EE8C300E671A9 /* Catwang-Prefix.pch */,
 			);
 			path = stickerApp;
 			sourceTree = "<group>";
@@ -627,7 +638,6 @@
 			isa = PBXGroup;
 			children = (
 				D56C1E971852435900BC69C3 /* fonts */,
-				3753C74515C3132900B8AEDE /* Catwang-Info.plist */,
 				3753C74615C3132900B8AEDE /* InfoPlist.strings */,
 				3753C74915C3132900B8AEDE /* main.m */,
 				3753C74B15C3132900B8AEDE /* Catwang-Prefix.pch */,
@@ -655,41 +665,31 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		377F64B61607895700A75CCB /* Classes */ = {
+		377F64B61607895700A75CCB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				37F6B9D91725CA9100B87F4F /* Constants.h */,
-				3753C74C15C3132900B8AEDE /* AppDelegate.h */,
-				3753C74D15C3132900B8AEDE /* AppDelegate.m */,
 				3753C74F15C3132900B8AEDE /* ViewController.h */,
 				3753C75015C3132900B8AEDE /* ViewController.m */,
 				3753C77515C3136400B8AEDE /* PlayViewController.h */,
 				3753C77615C3136400B8AEDE /* PlayViewController.m */,
-				74760E1D1A83C10C00AD3FE5 /* OMGPublishViewController.h */,
-				74760E1E1A83C10C00AD3FE5 /* OMGPublishViewController.m */,
 				74312C011A9578220053900D /* ChannelSelectViewController.h */,
 				74312C021A9578220053900D /* ChannelSelectViewController.m */,
-				748FA4541A957ACB0063D0BC /* ChannelSelectViewCell.h */,
-				748FA4551A957ACB0063D0BC /* ChannelSelectViewCell.m */,
 				3735A2E815C77DDA00AA5A56 /* ShareViewController.h */,
 				3735A2E915C77DDA00AA5A56 /* ShareViewController.m */,
 				748761631A4E04B00014FF61 /* CBImagePickerViewController.h */,
 				748761641A4E04B00014FF61 /* CBImagePickerViewController.m */,
-				745D08001A6712FC0073B7BA /* StickerCategoryViewController.h */,
 				745D08031A6713080073B7BA /* StickerSelectView */,
 				D54EC1B4184E908D00538194 /* Tools */,
-				746A73AA1A818BCA0052E7ED /* OMG */,
-				74FA3D741A8922A200B8AFC6 /* FTUE */,
+				746A73AA1A818BCA0052E7ED /* Discover */,
+				74FA3D741A8922A200B8AFC6 /* FirstTimeUser */,
 				3753C79615C328A800B8AEDE /* StickyImageView.h */,
 				3753C79715C328A800B8AEDE /* StickyImageView.m */,
 				D54EC1A3184E84F900538194 /* PaintView.h */,
 				D54EC1A4184E84F900538194 /* PaintView.m */,
 				748761761A50ADF90014FF61 /* CBPainterUIView.h */,
 				748761771A50ADF90014FF61 /* CBPainterUIView.m */,
-				0F8AD12F19326B8D00D331D3 /* Main.storyboard */,
-				746332D41A2D52D400CD24E5 /* Launch Screen.xib */,
 			);
-			name = Classes;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		742356C11A9BE0E000F89E66 /* TWRDownloadsManager */ = {
@@ -716,17 +716,10 @@
 			isa = PBXGroup;
 			children = (
 				7487617C1A50CAA20014FF61 /* StickerSelectStoryboard.storyboard */,
+				745D08001A6712FC0073B7BA /* StickerCategoryViewController.h */,
 				745D08011A6712FC0073B7BA /* StickerCategoryViewController.m */,
-				74AA305B1A6A063F006B208E /* StickerCategoryViewCell.h */,
-				74AA305C1A6A063F006B208E /* StickerCategoryViewCell.m */,
 				3753C77A15C3139100B8AEDE /* SelectStickerQuickViewController.h */,
 				3753C77B15C3139100B8AEDE /* SelectStickerQuickViewController.m */,
-				7434410D1A7EB18F007171AB /* StickerPackCollectionViewCell.h */,
-				7434410E1A7EB18F007171AB /* StickerPackCollectionViewCell.m */,
-				745D08041A6714370073B7BA /* StickerHeaderCollectionCell.h */,
-				745D08051A6714370073B7BA /* StickerHeaderCollectionCell.m */,
-				748761B61A5111E80014FF61 /* StickerCellCollectionViewCell.h */,
-				748761B71A5111E80014FF61 /* StickerCellCollectionViewCell.m */,
 			);
 			name = StickerSelectView;
 			sourceTree = "<group>";
@@ -741,14 +734,14 @@
 			path = Social;
 			sourceTree = "<group>";
 		};
-		746A73AA1A818BCA0052E7ED /* OMG */ = {
+		746A73AA1A818BCA0052E7ED /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				748FA45D1A9A8C3E0063D0BC /* Maps */,
+				74760E1D1A83C10C00AD3FE5 /* OMGPublishViewController.h */,
+				74760E1E1A83C10C00AD3FE5 /* OMGPublishViewController.m */,
 				748FA4571A9695810063D0BC /* OMGTabBarViewController.h */,
 				748FA4581A9695810063D0BC /* OMGTabBarViewController.m */,
-				74A2C9A61A92A08A00303AEE /* OMGStoryboard.storyboard */,
-				74EDDAD51A866DC900B48ABA /* cells */,
-				748FA45D1A9A8C3E0063D0BC /* MapStuff */,
 				74ACBC921A9423A40097D607 /* OMGSnapVoteViewController.h */,
 				74ACBC931A9423A40097D607 /* OMGSnapVoteViewController.m */,
 				74A2C9AB1A92E2F800303AEE /* OMGSnapViewController.h */,
@@ -760,10 +753,19 @@
 				748FA45A1A970F260063D0BC /* OMGHeadSpaceViewController.h */,
 				748FA45B1A970F260063D0BC /* OMGHeadSpaceViewController.m */,
 			);
-			name = OMG;
+			name = Discover;
 			sourceTree = "<group>";
 		};
-		748FA45D1A9A8C3E0063D0BC /* MapStuff */ = {
+		7487617E1A50DF9C0014FF61 /* FCFileManager */ = {
+			isa = PBXGroup;
+			children = (
+				7487617F1A50DF9C0014FF61 /* FCFileManager.h */,
+				748761801A50DF9C0014FF61 /* FCFileManager.m */,
+			);
+			path = FCFileManager;
+			sourceTree = "<group>";
+		};
+		748FA45D1A9A8C3E0063D0BC /* Maps */ = {
 			isa = PBXGroup;
 			children = (
 				74A2C9A81A92A29400303AEE /* OMGMapViewController.h */,
@@ -771,7 +773,7 @@
 				748FA45E1A9A8C640063D0BC /* OMGMapAnnotation.h */,
 				748FA45F1A9A8C640063D0BC /* OMGMapAnnotation.m */,
 			);
-			name = MapStuff;
+			name = Maps;
 			sourceTree = "<group>";
 		};
 		74B6DFE61A1996C8001D6F80 /* Frameworks */ = {
@@ -925,29 +927,13 @@
 			path = KSLabel;
 			sourceTree = "<group>";
 		};
-		74EDDAD51A866DC900B48ABA /* cells */ = {
-			isa = PBXGroup;
-			children = (
-				74760E0A1A82AD5800AD3FE5 /* OMGTopSnapCollectionViewCell.h */,
-				74760E0B1A82AD5800AD3FE5 /* OMGTopSnapCollectionViewCell.m */,
-				746A73AB1A818BEB0052E7ED /* OMGSnapCollectionViewCell.h */,
-				746A73AC1A818BEB0052E7ED /* OMGSnapCollectionViewCell.m */,
-				80D528791AC4736700D5702B /* SwitchHeaderCollectionReusableView.h */,
-				80D5287A1AC4736700D5702B /* SwitchHeaderCollectionReusableView.m */,
-			);
-			name = cells;
-			sourceTree = "<group>";
-		};
-		74FA3D741A8922A200B8AFC6 /* FTUE */ = {
+		74FA3D741A8922A200B8AFC6 /* FirstTimeUser */ = {
 			isa = PBXGroup;
 			children = (
 				74FA3D6F1A89229800B8AFC6 /* NewUserViewController.h */,
 				74FA3D701A89229800B8AFC6 /* NewUserViewController.m */,
-				7487D9DE1A89246D00AEB429 /* NewUserViewCell.h */,
-				7487D9DF1A89246D00AEB429 /* NewUserViewCell.m */,
-				74FA3D751A8922ED00B8AFC6 /* FTUEStoryboard.storyboard */,
 			);
-			name = FTUE;
+			name = FirstTimeUser;
 			sourceTree = "<group>";
 		};
 		7FBCACB51AA1366F0093953A /* Haneke */ = {
@@ -981,6 +967,63 @@
 				E3B1C6898A1CD5BCA8513590 /* Pods-Catwang.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		9BDF09021DCD0B11002D112F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9BDF09061DCD1D33002D112F /* FirstTimeUser */,
+				9BDF09051DCD1C24002D112F /* Discover */,
+				9BDF09041DCD19CA002D112F /* Stickers */,
+				748FA4541A957ACB0063D0BC /* ChannelSelectViewCell.h */,
+				748FA4551A957ACB0063D0BC /* ChannelSelectViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		9BDF09031DCD0B27002D112F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				37F6B9D91725CA9100B87F4F /* Constants.h */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		9BDF09041DCD19CA002D112F /* Stickers */ = {
+			isa = PBXGroup;
+			children = (
+				74AA305B1A6A063F006B208E /* StickerCategoryViewCell.h */,
+				74AA305C1A6A063F006B208E /* StickerCategoryViewCell.m */,
+				7434410D1A7EB18F007171AB /* StickerPackCollectionViewCell.h */,
+				7434410E1A7EB18F007171AB /* StickerPackCollectionViewCell.m */,
+				745D08041A6714370073B7BA /* StickerHeaderCollectionCell.h */,
+				745D08051A6714370073B7BA /* StickerHeaderCollectionCell.m */,
+				748761B61A5111E80014FF61 /* StickerCellCollectionViewCell.h */,
+				748761B71A5111E80014FF61 /* StickerCellCollectionViewCell.m */,
+			);
+			name = Stickers;
+			sourceTree = "<group>";
+		};
+		9BDF09051DCD1C24002D112F /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				74760E0A1A82AD5800AD3FE5 /* OMGTopSnapCollectionViewCell.h */,
+				74760E0B1A82AD5800AD3FE5 /* OMGTopSnapCollectionViewCell.m */,
+				746A73AB1A818BEB0052E7ED /* OMGSnapCollectionViewCell.h */,
+				746A73AC1A818BEB0052E7ED /* OMGSnapCollectionViewCell.m */,
+				80D528791AC4736700D5702B /* SwitchHeaderCollectionReusableView.h */,
+				80D5287A1AC4736700D5702B /* SwitchHeaderCollectionReusableView.m */,
+			);
+			name = Discover;
+			sourceTree = "<group>";
+		};
+		9BDF09061DCD1D33002D112F /* FirstTimeUser */ = {
+			isa = PBXGroup;
+			children = (
+				7487D9DE1A89246D00AEB429 /* NewUserViewCell.h */,
+				7487D9DF1A89246D00AEB429 /* NewUserViewCell.m */,
+			);
+			name = FirstTimeUser;
 			sourceTree = "<group>";
 		};
 		D54EC1B4184E908D00538194 /* Tools */ = {
@@ -1258,7 +1301,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A099907E6F09ADBE12B81467 /* [CP] Copy Pods Resources */ = {
