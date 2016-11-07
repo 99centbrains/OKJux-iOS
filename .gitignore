@@ -22,7 +22,11 @@ xcuserdata
 *.moved-aside
 *.xcuserstate
 *.xcscmblueprint
+<<<<<<< HEAD
 *.DS_Store
+=======
+.DS_Store
+>>>>>>> f26c961... More pods
 
 ## Obj-C/Swift specific
 *.hmap
