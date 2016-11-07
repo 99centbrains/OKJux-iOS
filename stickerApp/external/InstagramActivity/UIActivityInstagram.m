@@ -57,8 +57,7 @@
 }
 
 - (void)performActivity {
-    // no resize, just fire away.
-    //UIImageWriteToSavedPhotosAlbum(item.image, nil, nil, nil);
+    //no resize, just fire away.
     CGFloat cropVal = (self.shareImage.size.height > self.shareImage.size.width ? self.shareImage.size.width : self.shareImage.size.height);
     
     cropVal *= [self.shareImage scale];
@@ -97,13 +96,5 @@
     CGSize imageSize = image.size;
     return (imageSize.height == imageSize.width);
 }
-
-
-//ENABLE TO DISPLAY ACTIVITY ON TOP ROW OF ICONS
-/*
-+ (UIActivityCategory)activityCategory {
-    
-    return UIActivityCategoryShare;
-}*/
 
 @end

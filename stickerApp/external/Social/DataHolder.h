@@ -9,13 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 
-@interface DataHolder : NSObject{
-
+@interface DataHolder : NSObject {
     PFUser *currentUser;
-    
-
-    
 }
+
 @property(nonatomic,strong) PFUser *userObject;
 @property(nonatomic,strong) NSArray *arrayTopSnaps;
 @property(nonatomic,strong) NSArray *arrayMySnaps;
@@ -26,7 +23,5 @@
 + (DataHolder *) DataHolderSharedInstance;
 
 - (NSInteger) checkUserLikeStatus:(PFObject *)selectedSnap;
-
--(void)saveMyPeeks;
 
 @end

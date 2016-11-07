@@ -1,10 +1,3 @@
-//
-//  DMActivityInstagram.m
-//  DMActivityInstagram
-//
-//  Created by Cory Alder on 2012-09-21.
-//  Copyright (c) 2012 Cory Alder. All rights reserved.
-//
 
 #import "UIActivityTumblr.h"
 
@@ -26,7 +19,6 @@
 
 
 - (BOOL)canPerformWithActivityItems:(NSArray *)activityItems {
-    
     NSURL *instagramURL = [NSURL URLWithString:@"tumblr://app"];
     if (![[UIApplication sharedApplication] canOpenURL:instagramURL]) return NO; // no instagram.
     
@@ -40,7 +32,6 @@
 }
 
 - (void)prepareWithActivityItems:(NSArray *)activityItems {
-    
     for (id item in activityItems) {
         if ([item isKindOfClass:[UIImage class]]) self.shareImage = item;
         else if ([item isKindOfClass:[NSString class]]) {
@@ -53,12 +44,10 @@
         }
         else NSLog(@"Unknown item type %@", item);
     }
-    
 }
 
 - (void)performActivity {
-    // no resize, just fire away.
-    //UIImageWriteToSavedPhotosAlbum(item.image, nil, nil, nil);
+    //no resize, just fire away.
     CGFloat cropVal = (self.shareImage.size.height > self.shareImage.size.width ? self.shareImage.size.width : self.shareImage.size.height);
     
     cropVal *= [self.shareImage scale];
@@ -97,13 +86,5 @@
     CGSize imageSize = image.size;
     return (imageSize.height == imageSize.width);
 }
-
-
-//ENABLE TO DISPLAY ACTIVITY ON TOP ROW OF ICONS
-/*
-+ (UIActivityCategory)activityCategory {
-    
-    return UIActivityCategoryShare;
-}*/
 
 @end

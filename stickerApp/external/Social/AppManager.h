@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-@interface AppManager : NSObject 
-{
+
+@interface AppManager : NSObject {
     UIAlertView *WaitingAlert;
 }
 
