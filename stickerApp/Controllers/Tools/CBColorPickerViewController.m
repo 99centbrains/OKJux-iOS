@@ -29,11 +29,9 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    
+- (void)viewDidLoad {
+    [super viewDidLoad];
     borderColorPallette = [[NSMutableArray alloc] init];
-    
     [borderColorPallette addObject:@"i_gradient0.png"];
 
     for (int i = 2; i <= 30; i++){
@@ -48,29 +46,13 @@
     for (int i = 0; i <= 15; i++){
         [borderColorPallette addObject:[NSString stringWithFormat:@"i_pattern_%d.png", i]];
     }
-    
-    
-//    for (int i = 1; i <= 21; i++){
-//        [borderColorPallette addObject:[NSString stringWithFormat:@"tex_%d.png", i]];
-//    }
-//    
-    
   
-    
-    
     ibo_CollectionView.delegate = self;
     ibo_CollectionView.dataSource = self;
     [ibo_CollectionView registerClass:[CBColorPickerCollectionCell class] forCellWithReuseIdentifier:@"cvCell"];
-    
-    
+  
     [ibo_CollectionView reloadData];
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
-
-
-
-
 
 #pragma mark - UICollectionViewDataSource
 
@@ -83,54 +65,34 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     NSLog(@"ADD Number of Items in Section");
     return [borderColorPallette count];
-    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-
-    
     CBColorPickerCollectionCell *cell = (CBColorPickerCollectionCell *)[collectionView
                                                           dequeueReusableCellWithReuseIdentifier:@"cvCell"
                                                           forIndexPath:indexPath];
     
     UIImage *btnImage = [UIImage imageNamed:[borderColorPallette objectAtIndex:indexPath.row]];
     [cell.ibo_btn setImage:btnImage];
-    
-    
+
     return cell;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger CellSize = collectionView.frame.size.width/5;
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        
-        
-    }
     return CGSizeMake(CellSize,CellSize);
-    
 }
 
 
-- (void)collectionView:(UICollectionView *)collectionView
-didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     UIImage *btnImage = [UIImage imageNamed:[borderColorPallette objectAtIndex:indexPath.row]];
     [self.delegate CBColorPickerVCChangeColor:self withImage:btnImage];
     
-    NSLog(@"TAPPED %d", indexPath.section);
-    
-    
+    NSLog(@"TAPPED %ld", (long)indexPath.section);
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "PaintView.h"
 #import <QuartzCore/QuartzCore.h>
+
 @implementation PaintView
 
 @synthesize eraser;
@@ -17,36 +18,35 @@
 @synthesize touchTimer;
 @synthesize imagepainting;
 @synthesize imagePattern;
+
 - (id)initWithFrame:(CGRect)frame {
-    
     self = [super initWithFrame:frame];
+
     if (self) {
-        hue = 0.0;
-        (void)[self initContext:frame.size];
-        point0 = CGPointMake(0, 0);
-		point1 = CGPointMake(50, 200);
-		point2 = CGPointMake(200, 50);
-		point3 = CGPointMake(250, 200);
+      hue = 0.0;
+      (void)[self initContext:frame.size];
+      point0 = CGPointMake(0, 0);
+      point1 = CGPointMake(50, 200);
+      point2 = CGPointMake(200, 50);
+      point3 = CGPointMake(250, 200);
         
-        brushcolor = [UIColor clearColor];
+      brushcolor = [UIColor clearColor];
         
-        eraser = NO;
-        imagepainting = NO;
-        self.layer.contentsScale = [[UIScreen mainScreen] scale];
-        //[self drawToCache];
+      eraser = NO;
+      imagepainting = NO;
+      self.layer.contentsScale = [[UIScreen mainScreen] scale];
     }
+  
     return self;
 }
 
--(void) setup{
+-(void) setup {
 
 }
-- (void) setImageBackground:(UIImage*)image{
-    
+- (void) setImageBackground:(UIImage*)image {
     if (imagepainting){// for image painting
         touchTimer = nil;
     }
-
     
     brushcolor = [UIColor colorWithPatternImage: image];
     imagePattern = image;
@@ -57,8 +57,7 @@
     
     NSLog(@"image h: %f", image.size.height);
     NSLog(@"image w: %f", image.size.width);
-    
-    
+  
     CGRect imageRect = CGRectMake(0, 0, self.frame.size.width, (height / width) * self.frame.size.width);
     //CGSize imageSize = CGSizeMake(320, (height / width) * 320);
     
@@ -69,15 +68,12 @@
     
     CGContextDrawImage(cacheContext, imageRect, sourceImage.CGImage);
     CGContextFillRect(cacheContext, CGRectMake(0, 0, width, height));
-    
-    
+  
     NSLog(@"BGImage Set");
     [self setNeedsDisplay];
-    
 }
 
--(UIImage*) rotate:(UIImage*) src andOrientation:(UIImageOrientation)orientation
-{
+-(UIImage*) rotate:(UIImage*) src andOrientation:(UIImageOrientation)orientation {
     UIGraphicsBeginImageContext(src.size);
     
     CGContextRef context= (UIGraphicsGetCurrentContext());
@@ -99,12 +95,10 @@
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return img;
-    
 }
 
 - (BOOL) initContext:(CGSize)size {
-    
-    float scale = [[UIScreen mainScreen] scale];
+  float scale = [[UIScreen mainScreen] scale];
     
 	int bitmapByteCount;
 	int	bitmapBytesPerRow;
@@ -121,19 +115,15 @@
 	if (cacheBitmap == NULL){
 		return NO;
 	}
-    
-    
+  
 	cacheContext = CGBitmapContextCreate (NULL, size.width * scale, size.height * scale, 8, bitmapBytesPerRow, CGColorSpaceCreateDeviceRGB(), kCGImageAlphaPremultipliedFirst);
     
-    CGContextScaleCTM(cacheContext, scale, scale);// <- DOES NOTHING
-    
-    CGContextSetRGBFillColor(cacheContext, 1.0, 1.0, 1.0, 0.0);
-    //CGContextSetRGBStrokeColor(cacheContext, 1.0, 0.0, 1.0, 1.0);
-    //CGContextSetLineWidth(cacheContext, 10.0f);
-    
-    //CGContextStrokeRect(cacheContext, CGRectMake(0, 0, size.width, size.height));
-    CGContextFillRect(cacheContext, CGRectMake(0, 0, size.width, size.height));
-    strokeSize = 10;
+  CGContextScaleCTM(cacheContext, scale, scale);// <- DOES NOTHING
+  
+  CGContextSetRGBFillColor(cacheContext, 1.0, 1.0, 1.0, 0.0);
+  CGContextFillRect(cacheContext, CGRectMake(0, 0, size.width, size.height));
+  strokeSize = 10;
+  
 	return YES;
 }
 
@@ -145,11 +135,6 @@
     point1 = CGPointMake(-1, -1); // previous previous point
     point2 = CGPointMake(-1, -1); // previous touch point
     point3 = [touch locationInView:self]; // current touch point
- 
-    //[self drawToCache];
-    
-    
-
 }
 
 - (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -160,14 +145,10 @@
     point3 = [touch locationInView:self];
     
     [self drawToCache];
-    
-    //
+  
     if (imagepainting){// for image painting
         [self handleAction:touches];
     }
-    //
-
-    
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -178,22 +159,15 @@
     point1 = point2;
     point2 = point3;
     point3 = [touch locationInView:self];
-    
-    //[self drawToCache];
-    
-    //
-    if (imagepainting){// for image painting
+  
+    if (imagepainting) {// for image painting
         [self.touchTimer invalidate];
         self.touchTimer = nil;
-           }
-    //
-
-    
+    }
 }
 
 - (void) drawToCache {
-    
-    if(point1.x > -1){
+    if (point1.x > -1) {
         
         /*if (colorType == @"rainbow"){
             hue += 0.005;
@@ -210,16 +184,7 @@
         CGContextSetLineWidth(cacheContext, strokeSize);
         //CGContextSetShadow (cacheContext, CGSizeMake(10, 10), 5);
         
-        if (!eraser){
-            
-            CGContextSetBlendMode(cacheContext, kCGBlendModeClear);
-            
-        } else {
-            
-            CGContextSetBlendMode(cacheContext, kCGBlendModeNormal);
-            
-        }
-
+        CGContextSetBlendMode(cacheContext, !eraser ? kCGBlendModeClear : kCGBlendModeNormal);
         
         double x0 = (point0.x > -1) ? point0.x : point1.x; //after 4 touches we should have a back anchor point, if not, use the current anchor point
         double y0 = (point0.y > -1) ? point0.y : point1.y; //after 4 touches we should have a back anchor point, if not, use the current anchor point
@@ -229,6 +194,7 @@
         double y2 = point2.y;
         double x3 = point3.x;
         double y3 = point3.y;
+      
         // Assume we need to calculate the control
         // points between (x1,y1) and (x2,y2).
         // Then x0,y0 - the previous vertex,
@@ -254,8 +220,10 @@
         double xm2 = xc2 + (xc3 - xc2) * k2;
         double ym2 = yc2 + (yc3 - yc2) * k2;
         double smooth_value = 1;
+      
         // Resulting control points. Here smooth_value is mentioned
         // above coefficient K whose value should be in range [0...1].
+      
         float ctrl1_x = xm1 + (xc2 - xm1) * smooth_value + x1 - xm1;
         float ctrl1_y = ym1 + (yc2 - ym1) * smooth_value + y1 - ym1;
         
@@ -281,15 +249,11 @@
 }
 
 - (void) clearAll {
-    
-    NSLog(@"CLEAR ALL");
     //CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextClearRect(cacheContext, self.bounds);
     [self setNeedsDisplay];
     [self drawToCache];
     NSLog(@"Paint View Clear");
 }
-
-
 
 @end

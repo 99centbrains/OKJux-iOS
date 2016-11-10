@@ -10,8 +10,8 @@
 
 @implementation CBColorPickerCollectionCell
 @synthesize ibo_btn;
-- (id)initWithFrame:(CGRect)frame
-{
+
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
@@ -26,32 +26,17 @@
         }
         
         self = [arrayOfViews objectAtIndex:0];
-        
-        
-         // this value vary as per your desire
+
+        // this value vary as per your desire
         ibo_btn.layer.cornerRadius = ibo_btn.frame.size.width/2;
         ibo_btn.clipsToBounds = YES;
         ibo_btn.layer.borderWidth = 4;
         ibo_btn.layer.borderColor = [UIColor whiteColor].CGColor;
         ibo_btn.layer.shouldRasterize = YES;
         ibo_btn.layer.rasterizationScale = 2;
-        
     }
+  
     return self;
 }
-
-- (void)prepareForReuse {
-    
-    
-}
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

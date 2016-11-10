@@ -13,8 +13,7 @@
 
 @implementation StickerCellCollectionViewCell
 
-- (void)setImageURL:(NSURL *)imageURL
-{
+- (void)setImageURL:(NSURL *)imageURL {
     if (_imageURL == imageURL) return;
     
     _ibo_btn.clipsToBounds = NO;
@@ -52,14 +51,11 @@
             NSLog(@"Failed Image");
         }];
     }];
-    
 }
 
-- (void)prepareForReuse
-{
+- (void)prepareForReuse {
     [super prepareForReuse];
     [_ibo_btn setImage:nil];
 }
-
 
 @end

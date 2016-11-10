@@ -25,16 +25,13 @@
 
 @end
 
-
-
 @implementation PlayEditModeViewController
 
 @synthesize delegate;
 @synthesize viewStickerEdit;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -42,80 +39,47 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    
-
-    
-    
+- (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
-
-
-
-
-- (IBAction)borderChosen:(id)sender{
-    
+- (IBAction)borderChosen:(id)sender {
     [self.delegate editModeBorderChose:self withBorder:[sender currentImage]];
-    
 }
 
-- (IBAction)iba_stickerDone:(id)sender{
-
+- (IBAction)iba_stickerDone:(id)sender  {
     [self.delegate editModeStickerDone:self];
-    
 }
 
-- (IBAction)iba_stickerFlip:(id)sender{
-    
+- (IBAction)iba_stickerFlip:(id)sender {
     [self.delegate editModeStickerFlip:self];
-    
 }
 
-- (IBAction)iba_stickerSendToBack:(id)sender{
-    
+- (IBAction)iba_stickerSendToBack:(id)sender {
     [self.delegate editModeStickerSendToBack:self];
-    
 }
 
-- (IBAction)iba_stickerCopy:(id)sender{
-    
-
+- (IBAction)iba_stickerCopy:(id)sender {
     [self.delegate editModeStickerCopy:self];
-    
-    
 }
 
-- (IBAction)iba_stickerTrash:(id)sender{
-    
+- (IBAction)iba_stickerTrash:(id)sender {
     [self.delegate editModeStickerTrash:self];
-    
 }
 
-- (IBAction)iba_stickerlayerUP:(id)sender{
-    
+- (IBAction)iba_stickerlayerUP:(id)sender {
     [self.delegate editModeLayerMoveUp:self];
-    
 }
 
-- (IBAction)iba_stickerLayerDown:(id)sender{
-    
+- (IBAction)iba_stickerLayerDown:(id)sender {
     [self.delegate editModeLayerMoveDown:self];
-    
 }
 
 - (void)viewDidUnload {
-    
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-    
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {    
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
