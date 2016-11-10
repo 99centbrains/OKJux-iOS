@@ -25,81 +25,73 @@
 @synthesize navigationController;
 
 + (void)initialize {
+  [iRate sharedInstance].daysUntilPrompt = 2;
+  [iRate sharedInstance].usesUntilPrompt = 5;
     
-    [iRate sharedInstance].daysUntilPrompt = 2;
-    [iRate sharedInstance].usesUntilPrompt = 5;
+  NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    
-	[iNotify sharedInstance].notificationsPlistURL = kPlistURL;
-    [iNotify sharedInstance].applicationVersion =  [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-    [iNotify sharedInstance].ignoreButtonLabel = @"X";
-	[iNotify sharedInstance].showOnFirstLaunch = YES;
-    
+  [iNotify sharedInstance].notificationsPlistURL = kPlistURL;
+  [iNotify sharedInstance].applicationVersion =  [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+  [iNotify sharedInstance].ignoreButtonLabel = @"X";
+  [iNotify sharedInstance].showOnFirstLaunch = YES;
 }
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    if (kJsonDebug){
-        
-        [[NSUserDefaults standardUserDefaults]
-         setFloat:0.0f
-         forKey:@"JSONVERSIONS"];
-        
-    }
-    
-    
-    NSString *jsonUrl = [NSString stringWithFormat:kJSONScheme];
-    [[CBJSONDictionary shared] getJSON:jsonUrl];
-        
-    ///SET UP VIEW CONTROLLER FOR NOTIFICATIONS
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ViewController *playVC = (ViewController *)[storyboard instantiateViewControllerWithIdentifier:@"seg_ViewController"];
-    self.viewController = playVC;
-    
-    application.applicationSupportsShakeToEdit = YES;
-    
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
-    
-    
-    //MARK: - SDKS
-    
-    [Chartboost startWithAppId:@"54e9f0a004b01637287765c9"
-                  appSignature:@"cdaab4f41b9976c9b3c61085b845b30306254379"
-                      delegate:self];
-    
-    //MARK: - PARSE
+  if (kJsonDebug){
+    [[NSUserDefaults standardUserDefaults]
+    setFloat:0.0f
+    forKey:@"JSONVERSIONS"];
+  }
 
-    [Parse setApplicationId:@"dUW44SWxZv8z1lVd2ghaLSW8cpSSVk5VSGo55aI0"
-                  clientKey:@"f1fUi29cX6hZwZNDMtN87Nnutf9FbPFUcKKTgcFV"];
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    [self setup_parse];
+  NSString *jsonUrl = [NSString stringWithFormat:kJSONScheme];
+  [[CBJSONDictionary shared] getJSON:jsonUrl];
+      
+  ///SET UP VIEW CONTROLLER FOR NOTIFICATIONS
+  UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+  ViewController *playVC = (ViewController *)[storyboard instantiateViewControllerWithIdentifier:@"seg_ViewController"];
+  self.viewController = playVC;
+  
+  application.applicationSupportsShakeToEdit = YES;
+  
+  [[UIApplication sharedApplication] cancelAllLocalNotifications];
+  
+  
+  //MARK: - SDKS
+  
+  [Chartboost startWithAppId:@"54e9f0a004b01637287765c9"
+                appSignature:@"cdaab4f41b9976c9b3c61085b845b30306254379"
+                    delegate:self];
+  
+  //MARK: - PARSE
+  [Parse setApplicationId:@"dUW44SWxZv8z1lVd2ghaLSW8cpSSVk5VSGo55aI0"
+                clientKey:@"f1fUi29cX6hZwZNDMtN87Nnutf9FbPFUcKKTgcFV"];
+  [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+  [self setup_parse];
 
-    [Flurry startSession:kFlurryKey];
-    
-    //MARK:PUSH NOTIFICATIONS
-    
-    if (application.applicationState != UIApplicationStateBackground) {
-        BOOL preBackgroundPush = ![application respondsToSelector:@selector(backgroundRefreshStatus)];
-        BOOL oldPushHandlerOnly = ![self respondsToSelector:@selector(application:didReceiveRemoteNotification:fetchCompletionHandler:)];
-        BOOL noPushPayload = ![launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-        if (preBackgroundPush || oldPushHandlerOnly || noPushPayload) {
-            [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-        }
+  [Flurry startSession:kFlurryKey];
+  
+  //MARK:PUSH NOTIFICATIONS
+  
+  if (application.applicationState != UIApplicationStateBackground) {
+    BOOL preBackgroundPush = ![application respondsToSelector:@selector(backgroundRefreshStatus)];
+    BOOL oldPushHandlerOnly = ![self respondsToSelector:@selector(application:didReceiveRemoteNotification:fetchCompletionHandler:)];
+    BOOL noPushPayload = ![launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if (preBackgroundPush || oldPushHandlerOnly || noPushPayload) {
+      [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     }
-    
-    //register cache format for stickers
-    HNKCacheFormat *format = [HNKCache sharedCache].formats[@"sticker"];
-    if (!format) {
-        format = [[HNKCacheFormat alloc] initWithName:@"sticker"];
-        format.diskCapacity = 500 * 1024 * 1024; // 100MB
-        format.preloadPolicy = HNKPreloadPolicyAll;
-    }
-    [[HNKCache sharedCache] registerFormat:format];
-    
-    return YES;
-    
+  }
+  
+  //register cache format for stickers
+  HNKCacheFormat *format = [HNKCache sharedCache].formats[@"sticker"];
+  if (!format) {
+    format = [[HNKCacheFormat alloc] initWithName:@"sticker"];
+    format.diskCapacity = 500 * 1024 * 1024; // 100MB
+    format.preloadPolicy = HNKPreloadPolicyAll;
+  }
+  [[HNKCache sharedCache] registerFormat:format];
+  
+  return YES;
 }
 
 - (BOOL)application:(UIApplication *)application
@@ -107,13 +99,14 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
     
-    NSLog(@"APPLICATION OPENED %@", sourceApplication);
-    if (url != nil && [url isFileURL]) {
-        [self.viewController.navigationController popToRootViewControllerAnimated:NO];
-        [self.viewController handleDocumentOpenURL:[url absoluteString]];
-        return YES;
-    }
+  NSLog(@"APPLICATION OPENED %@", sourceApplication);
+  if (url != nil && [url isFileURL]) {
+    [self.viewController.navigationController popToRootViewControllerAnimated:NO];
+    [self.viewController handleDocumentOpenURL:[url absoluteString]];
     return YES;
+  }
+  
+  return YES;
 }
 
 #pragma PARSE SETUP
@@ -219,7 +212,8 @@
     [locationMgr startUpdatingLocation];
 
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-        [DataHolder DataHolderSharedInstance].userGeoPoint = geoPoint;}];
+        [DataHolder DataHolderSharedInstance].userGeoPoint = geoPoint;
+    }];
 }
 
 - (void)setParseUser {

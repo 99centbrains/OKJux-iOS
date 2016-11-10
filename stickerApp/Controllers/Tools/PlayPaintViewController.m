@@ -17,52 +17,36 @@
 
 }
 
-
-
 @end
 
 @implementation PlayPaintViewController
 @synthesize delegate;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
-        
+
     }
     return self;
 }
 
-
-
-- (void)viewDidLoad
-{
-    bool_paintMode = YES;
-    
-    brushSize = @[@"20", @"50", @"100", @"200", @"10", @"5"];
-
-    
+- (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    bool_paintMode = YES;
+    brushSize = @[@"20", @"50", @"100", @"200", @"10", @"5"];
 }
 
 
-- (IBAction)iba_done:(id)sender{
-    
+- (IBAction)iba_done:(id)sender {
     [self.delegate playPaintVCDone:self];
     self.view.hidden = YES;
 }
 
-- (IBAction)iba_changecolor:(id)sender{
-    
+- (IBAction)iba_changecolor:(id)sender {
     [self.delegate playPaintVCChangeColor:self];
-    
 }
 
-- (IBAction)iba_switchmode:(UIButton *)sender{
-    
-    
+- (IBAction)iba_switchmode:(UIButton *)sender {
     if (bool_paintMode){
         [sender setImage:[UIImage imageNamed:@"ui_btn_tool_paint_eraser.png"] forState:UIControlStateNormal];
         bool_paintMode = NO;
@@ -74,8 +58,7 @@
     [self.delegate playPaintVCChangeMode:self withMode:bool_paintMode];
 }
 
-- (IBAction)iba_changesize:(id)sender{
-    
+- (IBAction)iba_changesize:(id)sender {
     if (brush < [brushSize count]-1){
         brush++;
     } else {
@@ -83,14 +66,11 @@
     }
     
     NSInteger sizer = [[brushSize objectAtIndex:brush] integerValue];
-    
     [self.delegate playPaintVCChangeSize:self withSize:sizer];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

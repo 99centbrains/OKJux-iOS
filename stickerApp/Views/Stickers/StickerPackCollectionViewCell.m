@@ -36,13 +36,8 @@
 - (void) setUpCell{
     
     [_ibo_collectionView reloadData];
-//    NSLog(@"Cell Set for ID %@", _stickerPackID);
-//    NSLog(@"With Object %@", _stickerPack);
     _array_images = [[NSMutableArray alloc] init];
-    
-    //NSLog(@"SELF SIZE %@", NSStringFromCGSize(self.frame.size));
-    
-    
+  
     [[NSNotificationCenter defaultCenter] addObserverForName:CWIAP_ProductPurchased
                                                       object:nil
                                                        queue:[[NSOperationQueue alloc] init]
@@ -84,38 +79,27 @@
                                                       });
                                                       
                                                   }];
-    
-    
-    
+
     [self loadPack];
 
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    //NSLog(@"SECTION %d", [stickerpack_dir count]);
-    
     return 1;
-    
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
     return [_array_images count];
-    
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    
         StickerHeaderCollectionCell *header = (StickerHeaderCollectionCell *)[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerCell" forIndexPath:indexPath];
-    
-    
+  
     header.ibo_headerLabel.text = @"";
     packInt = indexPath.item;
-    
-    
+  
     //NOT FREE
-    if (![self stickerPackFree:_stickerPackID]){
-
+    if (![self stickerPackFree:_stickerPackID]) {
         NSString *price = [[CWInAppHelper sharedHelper] getProductPrice:_stickerPackID];
      
         [header.ibo_unlockButton setTitle:price forState:UIControlStateNormal];
@@ -123,19 +107,13 @@
         header.ibo_unlockButton.tag = indexPath.row;
         header.ibo_unlockButton.layer.cornerRadius = 2;
         header.ibo_unlockButton.clipsToBounds = YES;
-
     } else {
-
          header.ibo_unlockButton.hidden = YES;
-
     }
     
     
     //CHECK SOCIALS
     if ([[CBJSONDictionary shared] getSocialLinksFromPackID:_stickerBundleID byPackID:_stickerPackID]){
-
-        //NSLog(@"SECOND ROUND");
-
         NSDictionary *socialLinks = [[CBJSONDictionary shared] getSocialLinksFromPackID:_stickerBundleID byPackID:_stickerPackID ];
 
         header.ibo_btn_social_ig.hidden = NO;
@@ -143,30 +121,23 @@
         header.url_Twitter = [NSURL URLWithString:[socialLinks objectForKey:@"social_twitter"]];
         header.url_Instagram = [NSURL URLWithString:[socialLinks objectForKey:@"social_instagram"]];
         header.delegate = self;
-
     } else {
-
         header.ibo_btn_social_ig.hidden = YES;
         header.ibo_btn_social_tw.hidden = YES;
-
     }
 
     header.packID = _stickerPackID;
     header.ibo_headerLabel.text = [_stickerPack objectForKey:@"pack_name"];
 
     return header;
-
 }
 
 - (void) social_openURL:(NSURL *)url{
-    
     [self.delegate stickerHeaderOpenURL:self withURL:url];
-
 }
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-
     StickerCellCollectionViewCell *cell = (StickerCellCollectionViewCell *)[collectionView
                                                                         dequeueReusableCellWithReuseIdentifier:@"stickerCell"
                                                                         forIndexPath:indexPath];
@@ -175,14 +146,10 @@
     cell.ibo_spinner.hidden = NO;
 
     if (![self stickerPackFree:_stickerPackID]){
-
         cell.ibo_lock.hidden = NO;
-
     } else {
-
         cell.ibo_lock.hidden = YES;
     }
-
 
     NSURL *fileName = [_array_images objectAtIndex:indexPath.item];
     NSURL * iconImage = fileName;
@@ -190,8 +157,6 @@
     cell.imageURL = iconImage;
     
     return cell;
-                                                                            
-    
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
@@ -204,11 +169,7 @@
 
 #pragma TOUCH
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSLog(@"TAP");
-    
     if (![self stickerPackFree:_stickerPackID]){
-
         [self iba_buyPack:_stickerPackID];
         return;
     }
@@ -221,18 +182,13 @@
     }
 
     [self.delegate stickerPackChoseImage:self didFinishPickingStickerImage:btnImage withPackID:_stickerPackID];
-
- 
     [[NSUserDefaults standardUserDefaults] setObject:_stickerPackID forKey:@"kLastPage"];
 }
 
 #pragma DATA
 
 - (void) loadPack {
-    
     if ([[TMCache sharedCache] objectForKey:_stickerPackID]){
-    
-        NSLog(@"HAS PACK");
         [[TMCache sharedCache] objectForKey:_stickerPackID
                                       block:^(TMCache *cache, NSString *key, id object) {
                                            NSLog(@"HAS PACK %@", (NSArray *)object);
@@ -240,9 +196,7 @@
                                               [self addStickersInSection:(NSArray *)object];
                                           });
                                       }];
-        
     } else {
-    
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             [TAOverlay showOverlayWithLabel:@"" Options:TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayTypeActivityDefault];
         }else{
@@ -260,8 +214,7 @@
                                              timeoutInterval:30.0f];
         
         NSOperationQueue *jsonQueue = [[NSOperationQueue alloc] init];
-        
-        
+      
         [NSURLConnection sendAsynchronousRequest:request
                                            queue:jsonQueue
                                completionHandler:^(NSURLResponse *response,
@@ -279,37 +232,25 @@
                                        if (jsonObject != nil && error == nil){
                                            
                                            dispatch_async(dispatch_get_main_queue(), ^{
-                                               
                                                NSArray *stickers = [self formatFilePathsWithURL:pathURL stickerList:(NSArray *)jsonObject];
                                                
                                                [self addStickersInSection:stickers];
                                                [[TMCache sharedCache] setObject:stickers forKey:_stickerPackID block:nil];
 
                                                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                                               
-                                               
                                            });
-                                           
                                        }
                                    }
                                }];
-        
-        
-        
     }
-
-
 }
 
 - (void) addStickersInSectionSequence:(NSArray *)stickerList{
-    
     [_array_images addObjectsFromArray:stickerList];
     [_ibo_collectionView reloadData];
-    
 }
 
 - (void) addStickersInSection:(NSArray *)stickerList{
-    
     [_array_images addObjectsFromArray:stickerList];
     [_ibo_collectionView reloadData];
     [TAOverlay hideOverlay];
@@ -328,7 +269,6 @@
     }
     
     return [temp copy];
- 
 }
 
 
@@ -337,28 +277,19 @@
     
     //FREE
     if ([[_stickerPack objectForKey:@"pack_free"] boolValue]){
-        
         return YES;
-        
     }
     
     //DEBUG IN CONSTANTS
     if (kStickerDebug){
-        
         return YES;
-        
     }
     
     return [[CWInAppHelper sharedHelper] product_isPurchased:packID];
-    
 }
 
 - (void)iba_buyPack:(NSString *)packID{
-    
     [[CWInAppHelper sharedHelper] buyProductWithProductIdentifier:packID singleItem:YES];
-    
 }
-
-
 
 @end

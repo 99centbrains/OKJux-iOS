@@ -8,15 +8,12 @@
 
 #import "CBFontToolViewController.h"
 
-@interface CBFontToolViewController (){
-
+@interface CBFontToolViewController() {
     NSMutableArray *fontsPackage;
     NSMutableArray *colorPallet;
-    
+  
     BOOL isStroked;
 }
-
-
 
 @end
 
@@ -24,39 +21,25 @@
 @synthesize delegate;
 
 - (void)viewDidLoad {
-    
-    isStroked = YES;
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    isStroked = YES;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)iba_changeFont:(id)sender {
-    
     [self.delegate cbFontToolChangeFont:self];
-
 }
 
 - (IBAction)iba_changeColor:(id)sender {
-    
     [self.delegate cbFontToolChangeColor:self];
-    
 }
 
 - (IBAction)iba_stroke:(id)sender {
-    
-    if (isStroked){
-        isStroked = NO;
-    } else {
-        isStroked = YES;
-    }
-    
+    isStroked = !isStroked;
     [self.delegate cbFontToolToggleStroke:self withBool:isStroked];
-    
 }
 
 @end

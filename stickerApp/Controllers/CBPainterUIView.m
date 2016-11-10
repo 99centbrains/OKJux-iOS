@@ -9,15 +9,12 @@
 #import "CBPainterUIView.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface CBPainterUIView (){
-    
+@interface CBPainterUIView () {
     NSMutableArray *paths;
     UIBezierPath *currentPath;
 
     CGContextRef cacheContext;
     void *cacheBitmap;
-
-
 }
 
 @end
@@ -27,8 +24,7 @@
 
 @implementation CBPainterUIView
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         (void)[self initContext:frame.size];
@@ -37,13 +33,11 @@
     return self;
 }
 
-- (void)dealloc{
+- (void)dealloc {
     paths = nil;
-    
 }
 
 - (BOOL) initContext:(CGSize)size {
-    
     float scale = [[UIScreen mainScreen] scale];
     
     int bitmapByteCount;
@@ -61,17 +55,12 @@
     if (cacheBitmap == NULL){
         return NO;
     }
-    
-    
+  
     cacheContext = CGBitmapContextCreate (NULL, size.width * scale, size.height * scale, 8, bitmapBytesPerRow, CGColorSpaceCreateDeviceRGB(), kCGImageAlphaPremultipliedFirst);
     
     CGContextScaleCTM(cacheContext, scale, scale);// <- DOES NOTHING
     
     CGContextSetRGBFillColor(cacheContext, 1.0, 1.0, 1.0, 0.0);
-    //CGContextSetRGBStrokeColor(cacheContext, 1.0, 0.0, 1.0, 1.0);
-    //CGContextSetLineWidth(cacheContext, 10.0f);
-    
-    //CGContextStrokeRect(cacheContext, CGRectMake(0, 0, size.width, size.height));
     CGContextFillRect(cacheContext, CGRectMake(0, 0, size.width, size.height));
 
     return YES;
@@ -83,7 +72,6 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-    
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(context, [UIColor clearColor].CGColor);
     CGContextFillRect(context, self.frame);
@@ -97,42 +85,25 @@
     CGContextDrawImage(context, self.bounds, cacheImage);
     CGImageRelease(cacheImage);
     
-
-//    //
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//    
-//    CGContextSetFillColorWithColor(context, [UIColor clearColor].CGColor);
-//    CGContextFillRect(context, self.frame);
-//    
-//    [_brushcolor set];
-//    
-//    UIBezierPath *path = [paths lastObject];
-//    [path stroke];
-//    for (UIBezierPath *path in paths) {
-//        
-//    }
-    
     NSLog(@"Drawing");
-    
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [super touchesBegan:touches withEvent:event];
     
     UITouch *touch = [touches anyObject];
     
     // Get the specific point that was touched
     if (CGRectContainsPoint(self.frame, [touch locationInView:self])) {
-        
         if (!paths) {
             paths = [[NSMutableArray alloc]init];
         }
         
         currentPath = [UIBezierPath bezierPathWithArcCenter:[touch locationInView:self]
-                                                             radius:1
-                                                         startAngle:0
-                                                           endAngle:DEGREES_TO_RADIANS(360)
-                                                          clockwise:YES];
+                                                     radius:1
+                                                 startAngle:0
+                                                   endAngle:DEGREES_TO_RADIANS(360)
+                                                  clockwise:YES];
         
         currentPath.lineWidth = 20;
         currentPath.lineCapStyle =  kCGLineCapRound;
@@ -140,47 +111,37 @@
         [currentPath moveToPoint:[touch locationInView:self]];
         [paths addObject:currentPath];
         
-        NSLog(@"PathCount %d", [paths count]);
+        NSLog(@"PathCount %lu", (unsigned long)[paths count]);
         
         [self setNeedsDisplay];
-
     }
 }
 
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     [super touchesMoved:touches withEvent:event];
-    
     UITouch *touch = [touches anyObject];
     
     // Get the specific point that was touched
     if (CGRectContainsPoint(self.frame, [touch locationInView:self])) {
         [currentPath addLineToPoint:[touch locationInView:self]];
         [self setNeedsDisplay];
-        
-        
     }
 }
 
-
-
-#pragma mark -
-
-- (IBAction)btnClearTapped:(id)sender{
+- (IBAction)btnClearTapped:(id)sender {
     if (paths) {
         [paths removeAllObjects];
         [self setNeedsDisplay];
     }
 }
 
-- (void)setBrushcolor:(UIColor *)brushcolor{
-    
+- (void)setBrushcolor:(UIColor *)brushcolor {
     _brushcolor = brushcolor;
-
 }
 
 - (void) action_undoLastStroke{
-    
+    //TODO
 }
 
 @end
