@@ -26,15 +26,11 @@
 
 
 @interface SelectStickerQuickViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, ADBannerViewDelegate, StickerCategoryViewControllerDelegate, StickerPackCollectionViewCellDelegate>{
-    
     BOOL purchasedPack;
-    
     ADBannerView *iAdBanner;
     BOOL iAdBannerVisible;
     BOOL adColonyReady;
-
     NSCache *imageCache;
-    
 }
 
 @property (nonatomic, weak) IBOutlet UICollectionView * ibo_collectionView;
@@ -55,81 +51,55 @@
 
 @implementation SelectStickerQuickViewController
 
-
 @synthesize delegate = _delegate;
 @synthesize prop_stickerPackItems;
 @synthesize ibo_bgImage;
 @synthesize ibo_closeButton;
 
 - (IBAction)iba_dissmissSelectStickerView:(id)sender {
-    
     [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
 - (void)viewDidLoad {
-
     adColonyReady = NO;
     self.title = _prop_bundleName;
-    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
-
     NSInteger packCount = [[[CBJSONDictionary shared] getPacksFromBundleID:_prop_bundleID] count];
-    
     _array_stickerpack_ids = [[NSMutableArray alloc] init];
     _stickerPackDictionary = [[NSMutableDictionary alloc] init];
     
-    for (int index = 0; index < packCount ; index++){
-        
+    for (int index = 0; index < packCount ; index++) {
         //GETS Pack Dictionary
         NSMutableDictionary *pack = (NSMutableDictionary *)[[[CBJSONDictionary shared] getPacksFromBundleID:_prop_bundleID] objectAtIndex:index];
-        
         [_array_stickerpack_ids addObject:[pack objectForKey:@"pack_id"]];
         [_stickerPackDictionary setObject:pack forKey:[pack objectForKey:@"pack_id"]];
-        
-        //[self getStickerPack:pack byBundleID:_prop_bundleID];
-        
     }
 
     _ibo_pageControl.numberOfPages = [_array_stickerpack_ids count];
-    
-
     imageCache = [[NSCache alloc] init];
 
-    
     [super viewDidLoad];
-    
 }
 
 - (void)viewDidLayoutSubviews {
- 
-    for (NSString *packID in _array_stickerpack_ids){
+    for (NSString *packID in _array_stickerpack_ids) {
         NSString *last = [[NSUserDefaults standardUserDefaults] objectForKey:@"kLastPage"];
-//        NSLog(@"packID %@", packID);
-//        NSLog(@"last %@", last);
-        if ([packID isEqualToString:last]){
-            
+        if ([packID isEqualToString:last]) {
             NSInteger lastnt = [_array_stickerpack_ids indexOfObject:packID];
-            //NSLog(@"Last INT %d", lastnt);
             [self.ibo_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:lastnt] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
-            
         }
     }
-    
 }
 
-- (void) viewWillAppear:(BOOL)animated{
-    
-    if (![self checkNetworkConnection]){
+- (void) viewWillAppear:(BOOL)animated {
+    if (![self checkNetworkConnection]) {
         [TAOverlay hideOverlay];
         UIAlertView *noNet = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Please connect device to a wifi connection to access stickers." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
         [noNet show];
     }
-    
 }
 
-- (BOOL) checkNetworkConnection{
-
+- (BOOL) checkNetworkConnection {
     Reachability *reachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus internetStatus = [reachability currentReachabilityStatus];
     if (internetStatus != NotReachable) {
@@ -138,75 +108,41 @@
     else {
         return NO;
     }
-
-    
 }
 
 -(void) viewWillDisappear:(BOOL)animated {
-
     if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
-        
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
-
-        
     }
-    
     [super viewWillDisappear:animated];
-    
 }
 
 #pragma DATACOLLECTION
-- (void) loadBundleSection{
-    
+- (void) loadBundleSection {
     NSInteger packCount = [[[CBJSONDictionary shared] getPacksFromBundleID:_prop_bundleID] count];
     NSLog(@"PACKS %d", packCount);
-    
-    for (int index = 0; index < packCount ; index++){
-
+    for (int index = 0; index < packCount ; index++) {
         //GETS Pack Dictionary
         NSMutableDictionary *pack = (NSMutableDictionary *)[[[CBJSONDictionary shared] getPacksFromBundleID:_prop_bundleID] objectAtIndex:index];
-        
         [_array_stickerpack_ids addObject:[pack objectForKey:@"pack_id"]];
         [_stickerPackDictionary setObject:pack forKey:[pack objectForKey:@"pack_id"]];
-        
-        
     }
-    
-  
-
 }
-
-
-
-
 
 
 #pragma CollectionView Delegates
-#pragma mark - UICollectionViewDataSource
-
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    //NSLog(@"SECTION %d", [stickerpack_dir count]);
-
     return [_array_stickerpack_ids count];
-    
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    //NSLog(@"Items %d", [[_array_stickerpack_dir objectAtIndex:section] count]);
-    
     return 1;
-    
 }
 
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     StickerPackCollectionViewCell *cell = (StickerPackCollectionViewCell *)[collectionView
                                                                             dequeueReusableCellWithReuseIdentifier:@"stickerPack"
                                                                             forIndexPath:indexPath];
-    
-    
     
     NSString *packID = [_array_stickerpack_ids objectAtIndex:indexPath.section];
     NSDictionary *pack = [_stickerPackDictionary objectForKey:packID];
@@ -218,73 +154,32 @@
     
     NSLog(@"SECTION %d", indexPath.section);
     NSLog(@"PACK ID%@", packID);
-    
     [cell setUpCell];
     
     _ibo_pageControl.currentPage = indexPath.section;
 
-    
     return cell;
-}
-
-
-- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-//    StickerPackCollectionViewCell *packCell = (StickerPackCollectionViewCell *)cell;
-////    packCell.delegate = nil;
-//    [packCell.connection cancel];
-    
-    
-    
-    
-}
-
-
-//
-- (void)collectionView:(UICollectionView *)collectionView
-didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSLog(@"PACK");
-
-    
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     return CGSizeMake(collectionView.frame.size.width, collectionView.frame.size.height);
-    
 }
 
-- (IBAction)temp_unlock:(id)sender{
-    
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hideTryOutBtn"]){
-    
-    } else {
-        
-    }
-    
-    
+- (IBAction)temp_unlock:(id)sender {
+    //TODO delete method
 }
-
-
-
-
-
 
 #pragma StoryBoard
 - (UIViewController *)viewControllerFromMainStoryboardWithName:(NSString *)name {
-    
     UIStoryboard *mainSB = [UIStoryboard storyboardWithName:@"StickerSelectStoryboard" bundle:[NSBundle mainBundle]];
     return [mainSB instantiateViewControllerWithIdentifier:name];
-    
 }
 
 //GET STICKER PACK DIR FROM ID
-- (NSMutableArray *) getStickerPackWithKey:(NSString *)key{
+- (NSMutableArray *) getStickerPackWithKey:(NSString *)key {
     NSError *error = nil;
-    
     NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
     NSFileManager *filemgr = [NSFileManager defaultManager];
     NSString *categoryDirectory = [_stickerPackDictionary objectForKey:key];
@@ -300,8 +195,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     return [filelist mutableCopy];
 }
 
-- (NSMutableArray *) getStickerPackWithDir:(NSString *)key{
-    
+- (NSMutableArray *) getStickerPackWithDir:(NSString *)key {
     NSError *error = nil;
     NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
     NSFileManager *filemgr = [NSFileManager defaultManager];
@@ -315,27 +209,22 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
         NSLog(@"Error in getStickerPack: %@",[error localizedDescription]);
     }
     
-    if ([filelist count] > 0){
+    if ([filelist count] > 0) {
         return [filelist mutableCopy];
     } else {
         return nil;
     }
-    
 }
 
 
 
--(void) stickerPackChoseImage:(StickerPackCollectionViewCell *)controller didFinishPickingStickerImage:(UIImage *)image withPackID:(NSString *)packID{
-    
+-(void) stickerPackChoseImage:(StickerPackCollectionViewCell *)controller didFinishPickingStickerImage:(UIImage *)image withPackID:(NSString *)packID {
     [self.delegate selectStickerPackQuickViewController:self didFinishPickingStickerImage:image withPackID:packID];
-
 }
 
-- (void) stickerHeaderOpenURL:(StickerPackCollectionViewCell *)controller withURL:(NSURL *)url{
-    
+- (void) stickerHeaderOpenURL:(StickerPackCollectionViewCell *)controller withURL:(NSURL *)url {
     SVModalWebViewController *modal = [[SVModalWebViewController alloc] initWithURL:url];
     [self presentViewController:modal animated:YES completion:nil];
-
 }
 
 @end

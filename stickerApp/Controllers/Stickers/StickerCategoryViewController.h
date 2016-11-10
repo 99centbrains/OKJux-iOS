@@ -14,14 +14,12 @@
 
 -(void) stickerCategory:(StickerCategoryViewController *)controller withCategoryName:(NSString *)name andID:(NSString *)categoryID;
 -(void) stickerCategory:(StickerCategoryViewController *)controller didFinishPickingStickerImage:(UIImage *)image withPackID:(NSString *)packID;
-
 -(void) stickerCategory:(StickerCategoryViewController *)controller didFinishedEmoji:(UIImage *)image withPackID:(NSString *)packID;
 -(void) stickerCategoryDismiss:(StickerCategoryViewController *)controller;
 
 @end
 
 @interface StickerCategoryViewController : UIViewController
-
 
 @property (nonatomic, unsafe_unretained) id <StickerCategoryViewControllerDelegate> delegate;
 

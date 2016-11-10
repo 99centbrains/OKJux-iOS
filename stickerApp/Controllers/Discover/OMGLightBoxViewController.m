@@ -9,10 +9,8 @@
 #import "OMGLightBoxViewController.h"
 #import "UIImageView+AFNetworking.h"
 
-@interface OMGLightBoxViewController (){
-    
+@interface OMGLightBoxViewController () {
     BOOL fadeout;
-
 }
 
 @property (nonatomic, strong) NSURL *imageURL;
@@ -42,11 +40,9 @@
 @implementation OMGLightBoxViewController
 
 enum {
-    
     OMGVoteNone = 0,
     OMGVoteYES = 1,
     OMGVoteNO = 2
-    
 };
 
 typedef NSInteger OMGVoteSpecifier;
@@ -61,20 +57,16 @@ typedef NSInteger OMGVoteSpecifier;
     [super viewDidLoad];
     
     _ibo_btn_delete.hidden = YES;
-    if (kAdminDebug){
+    if (kAdminDebug) {
         _ibo_btn_delete.hidden = NO;
     }
-    
-    // Do any additional setup after loading the view.
 }
 
 
 - (void)setSnapObject:(PFObject *)snapObject {
     _snapObject = snapObject;
     [_snapObject fetchInBackground];
-
     _ibo_userSnapImage.image = _preloadImage;
-    
     PFFile *imageFile  = _snapObject[@"image"];
     [self setImageURL:[NSURL URLWithString:imageFile.url]] ;
     
@@ -85,57 +77,39 @@ typedef NSInteger OMGVoteSpecifier;
                             checkUserLikeStatus:_snapObject];
     
     [self setInt_userLikeStatus:userStatus];
-    
 }
 
 
-- (void)setImageURL:(NSURL *)imageURL{
-    
+- (void)setImageURL:(NSURL *)imageURL {
     NSLog(@"SET IAMGE URL %@", imageURL);
-    
     [_ibo_userSnapImage setImageWithURLRequest:[NSURLRequest requestWithURL:imageURL] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
-        
         _ibo_userSnapImage.image = image;
         _ibo_spinnerView.hidden = YES;
-        
         [self setupFadeout];
-
-
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-        
         NSLog(@"Failed Image");
-        
     }];
-    
-
 }
 
-- (void)setInt_userLikeStatus:(NSInteger)int_userLikeStatus{
-    
+- (void)setInt_userLikeStatus:(NSInteger)int_userLikeStatus {
     _ibo_btn_likeDown.userInteractionEnabled = NO;
     _ibo_btn_likeDown.userInteractionEnabled = NO;
-    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .92134 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        
         _ibo_btn_likeDown.userInteractionEnabled = YES;
         _ibo_btn_likeDown.userInteractionEnabled = YES;
-        
     });
     
     switch (int_userLikeStatus) {
-        
         case 0:
             _int_userLikeStatus = OMGVoteNone;
             [_ibo_btn_likeDown setSelected:NO];
             [_ibo_btn_likeUP setSelected:NO];
             break;
-            
         case OMGVoteYES:
             _int_userLikeStatus = OMGVoteYES;
             [_ibo_btn_likeDown setSelected:NO];
             [_ibo_btn_likeUP setSelected:YES];
             break;
-            
         case OMGVoteNO:
             _int_userLikeStatus = OMGVoteNO;
             [_ibo_btn_likeDown setSelected:YES];
@@ -149,20 +123,14 @@ typedef NSInteger OMGVoteSpecifier;
     _ibo_photoKarma.text = [NSString stringWithFormat:@"%@", netLikes];
     
     NSLog(@"USER INT STATUS %ld", (long)int_userLikeStatus);
-    
-    
 }
 
-- (void) setupFadeout{
-    
+- (void) setupFadeout {
     [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        
         _ibo_fade_voter.alpha = 0;
         _ibo_fade_heart.alpha = 0;
         _ibo_fade_share.alpha = 0;
         _ibo_photoKarma.alpha = 0;
-        
-        
     } completion:nil];
     
     fadeout = YES;
@@ -171,8 +139,7 @@ typedef NSInteger OMGVoteSpecifier;
 
 
 #pragma VOTING MECHANICS
-- (IBAction) omgSnapVOTEUP:(NSInteger) snapIndex{
-    
+- (IBAction) omgSnapVOTEUP:(NSInteger) snapIndex {
     int pointsGranted = kParseLikingPoints;
     int imgVote = kParseLikedPoints;
     
@@ -180,16 +147,12 @@ typedef NSInteger OMGVoteSpecifier;
     NSMutableArray *disArray= [[NSMutableArray alloc] initWithArray:_snapObject[@"dislikes"]];
     
     //CHECK IF USER HAS NOT LIKED PIC
-    if ([self checkUserInArray:likeArray]){
-        
+    if ([self checkUserInArray:likeArray]) {
         [likeArray addObject:[DataHolder DataHolderSharedInstance].userObject.objectId];
         _snapObject[@"dislikes"] = [self removeUserInArray:disArray];
-    
     } else {
-        
         pointsGranted = 0;
         imgVote = 0;
-        
     }
     
     NSInteger likesnet = [_snapObject[@"netlikes"] integerValue];
@@ -198,44 +161,30 @@ typedef NSInteger OMGVoteSpecifier;
     _snapObject[@"likes"] = likeArray;
     
     [_snapObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        
         //GRAND POINTS for VOTE
         NSInteger score = [[DataHolder DataHolderSharedInstance].userObject[@"points"] integerValue] + pointsGranted;
         [DataHolder DataHolderSharedInstance].userObject[@"points"] = [NSNumber numberWithInteger:score];
         [[DataHolder DataHolderSharedInstance].userObject saveInBackground];
-      
-        
     }];
-    
-    
+
     [self setInt_userLikeStatus:OMGVoteYES];
     [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Action":@"VoteUp"} forEvent:@"Explore"];
 
-    
-    
 }
 
 - (IBAction) omgSnapVOTEDOWN:(NSInteger) snapIndex{
-    
     int pointsGranted = kParseLikingPoints;
     int imgVote = kParseLikedPoints;
-    
-    
-   
-    
+
     NSMutableArray *disLikeArray= [[NSMutableArray alloc] initWithArray:_snapObject[@"dislikes"]];
     NSMutableArray *likeArray= [[NSMutableArray alloc] initWithArray:_snapObject[@"likes"]];
     
-    if ([self checkUserInArray:disLikeArray]){
-        
+    if ([self checkUserInArray:disLikeArray]) {
         [disLikeArray addObject:[DataHolder DataHolderSharedInstance].userObject.objectId];
         _snapObject[@"likes"] = [self removeUserInArray:likeArray];
-        
     } else {
-        
         pointsGranted = 0;
         imgVote = 0;
-        
     }
     
     NSInteger likesnet= [_snapObject[@"netlikes"] integerValue];
@@ -249,102 +198,69 @@ typedef NSInteger OMGVoteSpecifier;
     _snapObject[@"dislikes"] = disLikeArray;
     
     [_snapObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        
         //GRAND POINTS for VOTE
         NSInteger score = [[DataHolder DataHolderSharedInstance].userObject[@"points"] integerValue] + pointsGranted;
         [DataHolder DataHolderSharedInstance].userObject[@"points"] = [NSNumber numberWithInteger:score];
         [[DataHolder DataHolderSharedInstance].userObject saveInBackground];
-        
     }];
     
     [self setInt_userLikeStatus:OMGVoteNO];
     [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Action":@"VoteDown"} forEvent:@"Explore"];
-
 }
 
 - (BOOL) checkUserInArray:(NSMutableArray *)array {
-    
-    if ([array count] > 0){
-        
+    if ([array count] > 0) {
         for (NSString *userLike in array) {
             NSLog(@"USER LIKE %@", userLike);
-            if ([userLike isEqualToString:[DataHolder DataHolderSharedInstance].userObject.objectId]){
+            if ([userLike isEqualToString:[DataHolder DataHolderSharedInstance].userObject.objectId]) {
                 return NO;
             }
         }
-        
     }
     
     return YES;
-    
 }
 
 - (NSMutableArray *) removeUserInArray:(NSMutableArray *)array {
-    
-    
-    if ([array count] > 0){
-        
+    if ([array count] > 0) {
         for (NSString *userLike in array) {
-            
             if ([userLike isEqualToString:[DataHolder DataHolderSharedInstance].userObject.objectId]){
-                
                 [array removeObject:[DataHolder DataHolderSharedInstance].userObject.objectId];
                 return array;
-                
             }
-            
         }
-        
     }
-    
+
     return array;
-    
 }
 
-- (IBAction)iba_flagImage:(id)sender{
-    
-    
-    
+- (IBAction)iba_flagImage:(id)sender {
     [self.delegate lightBoxItemFlag:_snapObject];
     NSLog(@"Flag Item");
     
     [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Action":@"Flag"} forEvent:@"Explore"];
-
-    
 }
 
-- (IBAction)iba_deleteItem:(id)sender{
-    
-  
+- (IBAction)iba_deleteItem:(id)sender {
     [_snapObject fetchInBackground];
-    [_snapObject deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-    
-    }];
+    [_snapObject deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {}];
     
     [self.delegate omgSnapDismissLightBox:_snapObject];
-
-
-
 }
 
-- (IBAction)iba_shareItem:(id)sender{
-    
+- (IBAction)iba_shareItem:(id)sender {
     [self.delegate lightBoxShareImage:_ibo_userSnapImage.image];
     NSLog(@"Share Item");
-    
 }
 
 
 #pragma DIMISS
-- (IBAction)iba_dismiss:(id)sender{
-    
-    if (fadeout){
-        
+- (IBAction)iba_dismiss:(id)sender {
+    if (fadeout) {
         _ibo_fade_voter.alpha = 1;
         _ibo_fade_heart.alpha = 1;
         _ibo_fade_share.alpha = 1;
         _ibo_photoKarma.alpha = 1;
-        
         fadeout = NO;
         
         return;
@@ -352,13 +268,10 @@ typedef NSInteger OMGVoteSpecifier;
     
     _imageURL = nil;
     [self.delegate omgSnapDismissLightBox:_snapObject];
-    
 }
 
 - (void)didReceiveMemoryWarning {
-    
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

@@ -13,9 +13,8 @@
 
 @protocol OMGSnapViewControllerDelegate <NSObject>
 
-
-
 @end
+
 
 @interface OMGSnapViewController : UIViewController
 

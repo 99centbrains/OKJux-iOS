@@ -862,10 +862,8 @@ static CBJSONDictionary * _shared;
 
 
 #pragma PARSE DATA
-- (void) parse_trackAnalytic:(NSDictionary *)data forEvent:(NSString *)event{
-    
+- (void) parse_trackAnalytic:(NSDictionary *)data forEvent:(NSString *)event {
     [PFAnalytics trackEvent:event dimensions:data];
-
 }
 
 

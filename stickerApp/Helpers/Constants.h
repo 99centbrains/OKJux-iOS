@@ -59,4 +59,7 @@
 #define kMaxDistance 100 /// in Miles
 
 
+//MAP
+#define METERS_PER_MILE 16093.4
+
 #endif

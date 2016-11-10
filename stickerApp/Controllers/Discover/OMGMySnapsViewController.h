@@ -14,14 +14,11 @@
 @protocol OMGMySnapsViewControllerDelegate <NSObject>
 
 
-
-
 @end
 
 @interface OMGMySnapsViewController : UIViewController
 
 - (void) reloadData;
-
 - (void) loadUser:(PFUser *)userBlock;
 
 @property (nonatomic, unsafe_unretained) id <OMGMySnapsViewControllerDelegate> delegate;
