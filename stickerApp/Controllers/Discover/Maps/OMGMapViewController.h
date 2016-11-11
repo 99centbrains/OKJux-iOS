@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 @class OMGMapViewController;
 
-
 @protocol OMGMapViewControllerDelegate <NSObject>
 
 - (void) omgMapViewNewCoordinate:(CLLocationCoordinate2D)CLCoord;
@@ -21,11 +20,7 @@
 
 
 //INIT MAP
-
 @property (nonatomic, assign) BOOL newLocation;
-
-
-
 
 @property (nonatomic, unsafe_unretained) id <OMGMapViewControllerDelegate> delegate;
 

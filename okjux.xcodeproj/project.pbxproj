@@ -264,8 +264,8 @@
 		745D08011A6712FC0073B7BA /* StickerCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerCategoryViewController.m; sourceTree = "<group>"; };
 		745D08041A6714370073B7BA /* StickerHeaderCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickerHeaderCollectionCell.h; sourceTree = "<group>"; };
 		745D08051A6714370073B7BA /* StickerHeaderCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerHeaderCollectionCell.m; sourceTree = "<group>"; };
-		745D081B1A6741920073B7BA /* CBJSONDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBJSONDictionary.h; sourceTree = "<group>"; };
-		745D081C1A6741920073B7BA /* CBJSONDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBJSONDictionary.m; sourceTree = "<group>"; };
+		745D081B1A6741920073B7BA /* CBJSONDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBJSONDictionary.h; path = ../ThirdPartyLibraries/Helpers/CBJSONDictionary.h; sourceTree = "<group>"; };
+		745D081C1A6741920073B7BA /* CBJSONDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBJSONDictionary.m; path = ../ThirdPartyLibraries/Helpers/CBJSONDictionary.m; sourceTree = "<group>"; };
 		746332D41A2D52D400CD24E5 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		746A73A11A813C180052E7ED /* DataHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHolder.h; sourceTree = "<group>"; };
 		746A73A21A813C180052E7ED /* DataHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHolder.m; sourceTree = "<group>"; };
@@ -324,14 +324,14 @@
 		74AA305C1A6A063F006B208E /* StickerCategoryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerCategoryViewCell.m; sourceTree = "<group>"; };
 		74ACBC921A9423A40097D607 /* OMGSnapVoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMGSnapVoteViewController.h; sourceTree = "<group>"; };
 		74ACBC931A9423A40097D607 /* OMGSnapVoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMGSnapVoteViewController.m; sourceTree = "<group>"; };
-		74B54BA81A7B129600E10354 /* CWInAppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWInAppHelper.h; sourceTree = "<group>"; };
-		74B54BA91A7B129600E10354 /* CWInAppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWInAppHelper.m; sourceTree = "<group>"; };
+		74B54BA81A7B129600E10354 /* CWInAppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWInAppHelper.h; path = ../ThirdPartyLibraries/Helpers/CWInAppHelper.h; sourceTree = "<group>"; };
+		74B54BA91A7B129600E10354 /* CWInAppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWInAppHelper.m; path = ../ThirdPartyLibraries/Helpers/CWInAppHelper.m; sourceTree = "<group>"; };
 		74B6DFEC1A1996C8001D6F80 /* UIActivityTumblr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIActivityTumblr.h; sourceTree = "<group>"; };
 		74B6DFED1A1996C8001D6F80 /* UIActivityTumblr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIActivityTumblr.m; sourceTree = "<group>"; };
-		74B6E00B1A1996C8001D6F80 /* CBCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBCropViewController.h; sourceTree = "<group>"; };
-		74B6E00C1A1996C8001D6F80 /* CBCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBCropViewController.m; sourceTree = "<group>"; };
-		74B6E00D1A1996C8001D6F80 /* CBCropViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBCropViewController.xib; sourceTree = "<group>"; };
-		74B6E00E1A1996C8001D6F80 /* CBCropViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CBCropViewController~ipad.xib"; sourceTree = "<group>"; };
+		74B6E00B1A1996C8001D6F80 /* CBCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBCropViewController.h; path = ../../ThirdPartyLibraries/CropViewController/CBCropViewController.h; sourceTree = "<group>"; };
+		74B6E00C1A1996C8001D6F80 /* CBCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBCropViewController.m; path = ../../ThirdPartyLibraries/CropViewController/CBCropViewController.m; sourceTree = "<group>"; };
+		74B6E00D1A1996C8001D6F80 /* CBCropViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CBCropViewController.xib; path = ../../ThirdPartyLibraries/CropViewController/CBCropViewController.xib; sourceTree = "<group>"; };
+		74B6E00E1A1996C8001D6F80 /* CBCropViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "CBCropViewController~ipad.xib"; path = "../../ThirdPartyLibraries/CropViewController/CBCropViewController~ipad.xib"; sourceTree = "<group>"; };
 		74B6E01C1A1996C8001D6F80 /* iNotify.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iNotify.bundle; sourceTree = "<group>"; };
 		74B6E01D1A1996C8001D6F80 /* iNotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iNotify.h; sourceTree = "<group>"; };
 		74B6E01E1A1996C8001D6F80 /* iNotify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iNotify.m; sourceTree = "<group>"; };
@@ -404,10 +404,10 @@
 		74FA3D751A8922ED00B8AFC6 /* FTUEStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FTUEStoryboard.storyboard; sourceTree = "<group>"; };
 		80D528791AC4736700D5702B /* SwitchHeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchHeaderCollectionReusableView.h; sourceTree = "<group>"; };
 		80D5287A1AC4736700D5702B /* SwitchHeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchHeaderCollectionReusableView.m; sourceTree = "<group>"; };
-		9B9A2B511DD10AA70064616D /* AdColony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdColony.framework; path = AdColony.framework; sourceTree = "<group>"; };
-		9B9A2B521DD10AA70064616D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		9B9A2B531DD10AA70064616D /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chartboost.framework; path = Chartboost.framework; sourceTree = "<group>"; };
-		9B9A2B541DD10AA70064616D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Parse.framework; sourceTree = "<group>"; };
+		9B9A2B511DD10AA70064616D /* AdColony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AdColony.framework; sourceTree = "<group>"; };
+		9B9A2B521DD10AA70064616D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		9B9A2B531DD10AA70064616D /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chartboost.framework; sourceTree = "<group>"; };
+		9B9A2B541DD10AA70064616D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		C8B47C9500291BF740CC2A52 /* Pods-Catwang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catwang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Catwang/Pods-Catwang.debug.xcconfig"; sourceTree = "<group>"; };
 		D5126E0B1850DFA100024D0A /* TextComposerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextComposerViewController.h; sourceTree = "<group>"; };
 		D5126E0C1850DFA100024D0A /* TextComposerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextComposerViewController.m; sourceTree = "<group>"; };
@@ -491,12 +491,9 @@
 			children = (
 				FA8DCF3A1DCD2F7400BA22CC /* ALAssetsLibrary+CustomPhotoAlbum */,
 				74B6DFE71A1996C8001D6F80 /* ActivityTumblr */,
-				74B6E00A1A1996C8001D6F80 /* CropViewController */,
 				9B9A2B501DD1090C0064616D /* Frameworks */,
-				FA8DCF391DCD2BF100BA22CC /* Helpers */,
 				74B6E0221A1996C8001D6F80 /* InstagramActivity */,
 				74B6E09B1A19970E001D6F80 /* KSLabel */,
-				FA8DCF381DCD21BE00BA22CC /* ParseUserHelper */,
 				74B6E0321A1996C8001D6F80 /* Reachability */,
 				74B6E0391A1996C8001D6F80 /* SVWebViewController */,
 				744CEEC21A914B56005DDF48 /* SlideFilter */,
@@ -720,17 +717,6 @@
 			path = ActivityTumblr;
 			sourceTree = "<group>";
 		};
-		74B6E00A1A1996C8001D6F80 /* CropViewController */ = {
-			isa = PBXGroup;
-			children = (
-				74B6E00B1A1996C8001D6F80 /* CBCropViewController.h */,
-				74B6E00C1A1996C8001D6F80 /* CBCropViewController.m */,
-				74B6E00D1A1996C8001D6F80 /* CBCropViewController.xib */,
-				74B6E00E1A1996C8001D6F80 /* CBCropViewController~ipad.xib */,
-			);
-			path = CropViewController;
-			sourceTree = "<group>";
-		};
 		74B6E01B1A1996C8001D6F80 /* iNotify */ = {
 			isa = PBXGroup;
 			children = (
@@ -847,7 +833,12 @@
 		9B9A2B451DD0FA0F0064616D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				FA8DCF381DCD21BE00BA22CC /* ParseUserHelper */,
 				37F6B9D91725CA9100B87F4F /* Constants.h */,
+				745D081B1A6741920073B7BA /* CBJSONDictionary.h */,
+				745D081C1A6741920073B7BA /* CBJSONDictionary.m */,
+				74B54BA81A7B129600E10354 /* CWInAppHelper.h */,
+				74B54BA91A7B129600E10354 /* CWInAppHelper.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -897,7 +888,6 @@
 				9B9A2B531DD10AA70064616D /* Chartboost.framework */,
 				9B9A2B541DD10AA70064616D /* Parse.framework */,
 			);
-			name = Frameworks;
 			path = Frameworks;
 			sourceTree = "<group>";
 		};
@@ -920,6 +910,10 @@
 				D54EC113184D5D3E00538194 /* PlayBorderSelectViewController.m */,
 				3753C7AA15C3677C00B8AEDE /* PlayEditModeViewController.h */,
 				3753C7AB15C3677C00B8AEDE /* PlayEditModeViewController.m */,
+				74B6E00B1A1996C8001D6F80 /* CBCropViewController.h */,
+				74B6E00C1A1996C8001D6F80 /* CBCropViewController.m */,
+				74B6E00D1A1996C8001D6F80 /* CBCropViewController.xib */,
+				74B6E00E1A1996C8001D6F80 /* CBCropViewController~ipad.xib */,
 				D54EC192184DB29700538194 /* PlayPaintViewController.h */,
 				D54EC193184DB29700538194 /* PlayPaintViewController.m */,
 				D5126E0B1850DFA100024D0A /* TextComposerViewController.h */,
@@ -990,18 +984,8 @@
 				746A73A11A813C180052E7ED /* DataHolder.h */,
 				746A73A21A813C180052E7ED /* DataHolder.m */,
 			);
-			path = ParseUserHelper;
-			sourceTree = "<group>";
-		};
-		FA8DCF391DCD2BF100BA22CC /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				745D081B1A6741920073B7BA /* CBJSONDictionary.h */,
-				745D081C1A6741920073B7BA /* CBJSONDictionary.m */,
-				74B54BA81A7B129600E10354 /* CWInAppHelper.h */,
-				74B54BA91A7B129600E10354 /* CWInAppHelper.m */,
-			);
-			path = Helpers;
+			name = ParseUserHelper;
+			path = ../ThirdPartyLibraries/ParseUserHelper;
 			sourceTree = "<group>";
 		};
 		FA8DCF3A1DCD2F7400BA22CC /* ALAssetsLibrary+CustomPhotoAlbum */ = {
@@ -1173,7 +1157,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A099907E6F09ADBE12B81467 /* [CP] Copy Pods Resources */ = {

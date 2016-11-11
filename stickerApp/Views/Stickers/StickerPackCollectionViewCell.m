@@ -186,7 +186,7 @@
 }
 
 #pragma DATA
-
+//TODO here pack is loaded
 - (void) loadPack {
     if ([[TMCache sharedCache] objectForKey:_stickerPackID]){
         [[TMCache sharedCache] objectForKey:_stickerPackID

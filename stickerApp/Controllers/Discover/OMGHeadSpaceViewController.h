@@ -18,7 +18,6 @@
 @end
 
 
-
 @interface OMGHeadSpaceViewController : UIViewController
 
 @property (nonatomic, weak) IBOutlet UILabel *ibo_titleLabel;

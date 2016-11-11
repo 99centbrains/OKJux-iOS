@@ -36,27 +36,26 @@
 
 - (NSDictionary *) getSocialLinksFromPackID:(NSString *)bundleID byPackID:(NSString*)packID;
 
+//TODO this method is not implemented
 - (void) getStickersFromBundle:(NSString *)bundleID byPackID:(NSString *)packID complete:(void (^)(NSArray *))callback;
 
 //DIRECTORIES
-- (NSString *)pathForAssetsDirectory;
+- (NSString *) pathForAssetsDirectory;
 
 - (NSArray *) getPackForPackID:(NSDictionary *)pack withID:(NSString *)packID byBundleID:(NSString *)bundleID;
-- (NSArray *)pathForPackDIR:(NSString *)packDIR byBundleID:(NSString *)bundleID;
+- (NSArray *) pathForPackDIR:(NSString *)packDIR byBundleID:(NSString *)bundleID;
 
 
 - (void) addItemsToPlist:(NSArray *)items withID:(NSString *)packID;
 - (void) writeImageData:(NSData *)imgData toDirectory:(NSString *)directory;
 - (void) writeStickersPack:(NSDictionary *)pack fromBundle:(NSString *)bundleID withSticker:(NSArray *)items;
-    
-//- (void) writeStickersPack:(NSArray *)items inPackDIR:(NSString*)packDIR withPathURL:(NSString *)pathURL withPackID:(NSString*)packID byBundleID:(NSString *)bundleID withCompletion:(void (^)(NSArray *stickers, NSString * stickerPath))callback
 
 
 //STORING IMAGES
 - (void) saveLastCatwangImage:(UIImage *)image;
     - (UIImage *) lastCatwangImage;
 
-#pragma PARSE STuff
+#pragma PARSE Stuff
 - (void) parse_trackAnalytic:(NSDictionary *)data forEvent:(NSString *)event;
 
 @end

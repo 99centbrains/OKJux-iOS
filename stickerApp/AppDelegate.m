@@ -178,6 +178,7 @@
     }
 }
 
+//TODO this method is never called
 -(void)processRemoteNotification:(NSDictionary*)userDict {
     [self.viewController dismissViewControllerAnimated:NO completion:nil];
     if ([userDict objectForKey:@"link"] != NULL) {
@@ -216,6 +217,7 @@
     }];
 }
 
+//TODO: This method is never called
 - (void)setParseUser {
     [self setup_parse];
 }

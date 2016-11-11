@@ -27,7 +27,6 @@
 
 @property (nonatomic) BOOL bool_iapProductsAvailable;
 
-
 @property (nonatomic, unsafe_unretained) id <SelectStickerQuickViewControllerDelegate> delegate;
 
 @end
