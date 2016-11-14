@@ -1011,6 +1011,7 @@
 				746A73131A80382C0052E7ED /* Embed App Extensions */,
 				E9C40486B250C9AE5D207084 /* [CP] Embed Pods Frameworks */,
 				A099907E6F09ADBE12B81467 /* [CP] Copy Pods Resources */,
+				FA7BFEBC1DD61C7300C01167 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1189,6 +1190,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Catwang/Pods-Catwang-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		FA7BFEBC1DD61C7300C01167 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 0b2e1d159a4429a311c1bea031e461d1ff27b133 783b32c163c1219d9da49ed6360e0a79ac54d610105b8e9415e9e93ccb701538";
 		};
 /* End PBXShellScriptBuildPhase section */
 
