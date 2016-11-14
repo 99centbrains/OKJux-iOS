@@ -16,4 +16,6 @@ target 'Catwang' do
     pod 'Flurry-iOS-SDK/FlurryAds', '~> 7.8'
     pod 'iVersion', '~> 1.11.4'
     pod 'TAOverlay', '~> 2.0.1'
+    pod 'Fabric'
+    pod 'Crashlytics'
 end

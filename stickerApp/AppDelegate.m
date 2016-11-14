@@ -17,6 +17,8 @@
 #import "DataHolder.h"
 #import "AppManager.h"
 #import "HNKCache.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @implementation AppDelegate
 
@@ -58,7 +60,6 @@
   
   
   //MARK: - SDKS
-  
   [Chartboost startWithAppId:@"54e9f0a004b01637287765c9"
                 appSignature:@"cdaab4f41b9976c9b3c61085b845b30306254379"
                     delegate:self];
@@ -72,7 +73,6 @@
   [Flurry startSession:kFlurryKey];
   
   //MARK:PUSH NOTIFICATIONS
-  
   if (application.applicationState != UIApplicationStateBackground) {
     BOOL preBackgroundPush = ![application respondsToSelector:@selector(backgroundRefreshStatus)];
     BOOL oldPushHandlerOnly = ![self respondsToSelector:@selector(application:didReceiveRemoteNotification:fetchCompletionHandler:)];
@@ -90,7 +90,9 @@
     format.preloadPolicy = HNKPreloadPolicyAll;
   }
   [[HNKCache sharedCache] registerFormat:format];
-  
+
+  [Fabric with:@[[Crashlytics class]]];
+
   return YES;
 }
 

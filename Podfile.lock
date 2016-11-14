@@ -14,7 +14,10 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - Crashlytics (3.8.3):
+    - Fabric (~> 1.6.3)
   - DateTools (1.7.0)
+  - Fabric (1.6.11)
   - FCFileManager (1.0.18)
   - Flurry-iOS-SDK/FlurryAds (7.8.0):
     - Flurry-iOS-SDK/FlurrySDK
@@ -31,7 +34,9 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - Crashlytics
   - DateTools (~> 1.7.0)
+  - Fabric
   - FCFileManager (~> 1.0.18)
   - Flurry-iOS-SDK/FlurryAds (~> 7.8)
   - Flurry-iOS-SDK/FlurrySDK (~> 7.8)
@@ -56,7 +61,9 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   FCFileManager: 3d13576da1f709d37460bd7669cdf07b9d6d8bc3
   Flurry-iOS-SDK: 388df247b9d92659527b608c891c7e474cd9d00e
   Haneke: 01454a67322faa0dd9d81fc0f447885044e71521
@@ -69,6 +76,6 @@ SPEC CHECKSUMS:
   UIImageEffects: 37b99fa461e4965f332ca82e92f2c22a1075ee84
   UIImageTrim: 6291b9cfb05bbc9ca0bb3e510aae4421de4ca5e4
 
-PODFILE CHECKSUM: 7425dc5950e7e20e9998303be8a01c1668c5001e
+PODFILE CHECKSUM: 33385c8b3c2bf59a395f126591a75d37e6d89317
 
 COCOAPODS: 1.0.1

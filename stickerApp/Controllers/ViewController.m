@@ -23,6 +23,7 @@
 #import "OMGTabBarViewController.h"
 #import "TMCache.h"
 
+
 @interface ViewController ()<StickerCategoryViewControllerDelegate, MFMessageComposeViewControllerDelegate, CBImagePickerViewControllerDelegate> {
 
 }
@@ -72,7 +73,6 @@
                                           _ibo_userImage.alpha = 1;
                                       }];
                                   }];
-
     
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:kNewUserKey]){
