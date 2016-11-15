@@ -39,6 +39,9 @@
 "PACK_RESTORE" = "Restaurer";
 "PACK_TITLE" = "Paquets d 'autocollants";
 "PACK_DONE" = "Fini";
+"PACK_RESTORING" = "Restoring...";
+"PACK_CANCELLED" = "Cancelled";
+"PACK_FAILED" = "Transaction Failed";
 
 //PROMPT TITLES
 "PROMPT_FLAG_TITLE" = "Report Photo";
@@ -69,6 +72,7 @@
 "PERMISSION_LOCATION_PUBLISH" = "Votre position est tenu de publier les photos publiques.";
 "PERMISSION_NO_PHOTOS" = "Pas de photos à cet endroit :( Déplacez la carte dans une nouvelle région ou inviter des amis!";
 "PERMISSION_NO_PUBLISHED" = "Vous ne avez pas publié de photos publiques.";
+"PERMISSION_NO_LOCATION" = "App location access is needed to view snaps around the world.";
 
 //PROMPT LOCATION
 "PROMPT_LOCAL_TITLE" = "Services de Localisation";

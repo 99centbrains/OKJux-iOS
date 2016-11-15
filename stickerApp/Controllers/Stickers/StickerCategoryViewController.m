@@ -52,7 +52,6 @@
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"PACK_RESTORE", nil) style:UIBarButtonItemStylePlain target:self
                                                                   action:@selector(iba_restorePurchases:)];
     self.navigationItem.leftBarButtonItem = leftButton;
-    self.navigationItem.leftBarButtonItem.enabled = NO;
     
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"PACK_DONE", nil) style:UIBarButtonItemStylePlain target:self
                                                                    action:@selector(iba_dismissCategoryView:)];

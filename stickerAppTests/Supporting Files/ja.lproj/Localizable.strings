@@ -40,6 +40,9 @@
 "PACK_RESTORE" = "復元する";
 "PACK_TITLE" = "ステッカーパック";
 "PACK_DONE" = "終わった";
+"PACK_RESTORING" = "Restoring...";
+"PACK_CANCELLED" = "Cancelled";
+"PACK_FAILED" = "Transaction Failed";
 
 //PROMPT TITLES
 "PROMPT_FLAG_TITLE" = " 画像を報告";
@@ -70,6 +73,7 @@
 "PERMISSION_LOCATION_PUBLISH" = "公共の写真を公開する, 位置情報アクセスが必要です";
 "PERMISSION_NO_PHOTOS" = "この場所には写真がありません :( 新しい場所にマップを移動, または何人かの友人を招待!";
 "PERMISSION_NO_PUBLISHED" = "あなたは任意のパブリック写真を掲載していません";
+"PERMISSION_NO_LOCATION" = "App location access is needed to view snaps around the world.";
 
 //PROMPT LOCATION
 "PROMPT_LOCAL_TITLE" = "位置情報サービス";

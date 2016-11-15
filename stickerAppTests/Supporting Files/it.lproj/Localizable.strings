@@ -40,6 +40,9 @@
 "PACK_RESTORE" = "Ripristinare";
 "PACK_TITLE" = "Paccos";
 "PACK_DONE" = "Fatto";
+"PACK_RESTORING" = "Restoring...";
+"PACK_CANCELLED" = "Cancelled";
+"PACK_FAILED" = "Transaction Failed";
 
 //PROMPT TITLES
 "PROMPT_FLAG_TITLE" = "Inbandieri questa foto?";
@@ -70,6 +73,7 @@
 "PERMISSION_LOCATION_PUBLISH" = "La tua posizione è necessaria per pubblicare le foto pubbliche.";
 "PERMISSION_NO_PHOTOS" = "Nessuna foto in questa località :( Spostate la mappa di una nuova area o invitare alcuni amici!";
 "PERMISSION_NO_PUBLISHED" = "Non hai pubblicato alcuna foto pubbliche.";
+"PERMISSION_NO_LOCATION" = "App location access is needed to view snaps around the world.";
 
 //PROMPT LOCATION
 "PROMPT_LOCAL_TITLE" = "Servizi di Localizzazione";

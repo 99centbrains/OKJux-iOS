@@ -2814,8 +2814,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ui_bg_gradient_01.png" translatesAutoresizingMaskIntoConstraints="NO" id="pno-uV-giU">
-                                <frame key="frameInset" width="1000" height="1000"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_bg_gradient_01.png" translatesAutoresizingMaskIntoConstraints="NO" id="pno-uV-giU">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="FTz-5n-fam"/>
                                 </constraints>
@@ -2833,8 +2832,7 @@
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c5r-CJ-ARd">
                                 <frame key="frameInset" width="1000" height="1000"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VX6-fH-5Cm">
-                                        <frame key="frameInset" width="1000" height="1000"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VX6-fH-5Cm">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="6N9-PV-XRe"/>
                                             <constraint firstAttribute="width" constant="47" id="Afa-HI-oRg"/>
@@ -2873,8 +2871,7 @@
                                             <action selector="iba_sendTumbler:" destination="ymK-8Q-w8A" eventType="touchUpInside" id="L1x-Xj-FCl"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxd-jp-ggU">
-                                        <frame key="frameInset" width="1000" height="1000"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxd-jp-ggU">
                                         <constraints>
                                             <constraint firstAttribute="width" constant="47" id="W8q-nb-Q4c"/>
                                             <constraint firstAttribute="width" constant="50" id="aV1-4f-vPD"/>
@@ -3036,8 +3033,7 @@
                                             <action selector="iba_messageImage" destination="ymK-8Q-w8A" eventType="touchUpInside" id="obY-gn-upR"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8jP-Ix-Woc">
-                                        <frame key="frameInset" width="1000" height="1000"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8jP-Ix-Woc">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="8zo-sa-ivC"/>
                                             <constraint firstAttribute="width" constant="50" id="Dgl-tw-tpG"/>
@@ -3076,8 +3072,7 @@
                                             <action selector="iba_shareFacebook:" destination="ymK-8Q-w8A" eventType="touchUpInside" id="OBs-8q-JMc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dd7-VZ-P9Y">
-                                        <frame key="frameInset" width="1000" height="1000"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dd7-VZ-P9Y">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="2gf-B9-Amn"/>
                                             <constraint firstAttribute="height" constant="47" id="AGS-C9-2qp"/>
@@ -3116,8 +3111,7 @@
                                             <action selector="iba_sendSnapchat:" destination="ymK-8Q-w8A" eventType="touchUpInside" id="IyN-F4-2zT"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ogc-tt-ciV">
-                                        <frame key="frameInset" width="1000" height="1000"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ogc-tt-ciV">
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="7hE-mh-VMM"/>
                                             <constraint firstAttribute="width" constant="47" id="BWY-zh-Mps"/>
@@ -3432,7 +3426,7 @@
                                     <outlet property="delegate" destination="ymK-8Q-w8A" id="ts9-Z1-Ye9"/>
                                 </connections>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="App location access is needed to view snaps around around the world." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ba-8b-via">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="App location access is needed to view snaps around the world." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ba-8b-via">
                                 <frame key="frameInset" width="1000" height="1000"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="CbV-Uu-YIb"/>

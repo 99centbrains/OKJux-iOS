@@ -40,6 +40,9 @@
 "PACK_RESTORE" = "恢复";
 "PACK_TITLE" = "贴纸包";
 "PACK_DONE" = "完";
+"PACK_RESTORING" = "Restoring...";
+"PACK_CANCELLED" = "Cancelled";
+"PACK_FAILED" = "Transaction Failed";
 
 //PROMPT TITLES
 "PROMPT_FLAG_TITLE" = "报告照片";
@@ -70,6 +73,7 @@
 "PERMISSION_LOCATION_PUBLISH" = "您所在的位置是是必需的以发布公开照片";
 "PERMISSION_NO_PHOTOS" = "没有照片在这个位置 :( 移动地图到新的位置, 或者邀请一些朋友!";
 "PERMISSION_NO_PUBLISHED" = "您还没有发布任何公开的图片 :(";
+"PERMISSION_NO_LOCATION" = "App location access is needed to view snaps around the world.";
 
 //PROMPT LOCATION
 "PROMPT_LOCAL_TITLE" = "位置服务";

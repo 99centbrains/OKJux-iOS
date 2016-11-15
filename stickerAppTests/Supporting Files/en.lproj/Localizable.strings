@@ -39,6 +39,9 @@
 "PACK_RESTORE" = "Restore";
 "PACK_TITLE" = "Packs";
 "PACK_DONE" = "Done";
+"PACK_RESTORING" = "Restoring...";
+"PACK_CANCELLED" = "Cancelled";
+"PACK_FAILED" = "Transaction Failed";
 
 //PROMPT TITLES
 "PROMPT_FLAG_TITLE" = "Report Photo";
@@ -60,9 +63,9 @@
 
 //NEW PHOTO SCREEN
 "PHOTO_STARTOVER" = "Start Over";
-"PHOTO_NEW" = "Want to start a new photo?";
+"PHOTO_NEW" = "Ready to take a new photo?";
 "PHOTO_NOTHANKS" = "No Thanks";
-"PHOTO_YES" = "Yes!";
+"PHOTO_YES" = "Yes";
 
 
 //PERMISSION PROMPTS
@@ -70,6 +73,7 @@
 "PERMISSION_LOCATION_PUBLISH" = "App location is needed to publish public photos.";
 "PERMISSION_NO_PHOTOS" = "There are no photos in this location :( Move map to a new area, or invite some friends!";
 "PERMISSION_NO_PUBLISHED" = "You haven’t published any public photos :(";
+"PERMISSION_NO_LOCATION" = "App location access is needed to view snaps around the world.";
 
 //PROMPT LOCATION
 "PROMPT_LOCAL_TITLE" = "Location Services";
