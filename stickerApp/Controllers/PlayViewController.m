@@ -38,9 +38,6 @@
     PlayEditModeViewController *editMode;
     PlayBorderSelectViewController *borderView;
     
-    //CBColorPickerViewController * colorPickerView;
-    //CBFontToolViewController *textComposerVC;
-    
     UITextField *fontTextField;
   
     CGPoint lastPoint;
@@ -96,12 +93,6 @@
 }
 
 - (void)viewDidLoad {
-//    //Sticker Notification
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(changeCurrentSticker:) 
-//                                                 name:@"SetCurrentStickerNotification"
-//                                               object:nil];
-    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
   
     [self setUpCanvasViews];
@@ -124,7 +115,6 @@
     [_ibo_viewStickerStage addGestureRecognizer:panGesture];
   
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -919,7 +909,7 @@ typedef enum {
 
 #pragma CREATE NEW
 - (IBAction)actionStartNew:(id)sender {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Start Over?" message:@"Ready to take a new photo?" delegate:self cancelButtonTitle:@"No Thanks" otherButtonTitles:@"Yes", nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PHOTO_STARTOVER", nil) message:NSLocalizedString(@"PHOTO_NEW", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"PHOTO_NOTHANKS", nil) otherButtonTitles:NSLocalizedString(@"PHOTO_YES", nil), nil]; 
     alertView.tag = StartOverAlertViewTag;
     [alertView show];
 }
@@ -935,7 +925,6 @@ typedef enum {
         UIGraphicsEndImageContext();
       
         NSData *imgData = UIImagePNGRepresentation(image);
-        //NSLog(@"Size of Image(bytes):%d",[imgData length]);
         
         [self show_shareview:image];
     });

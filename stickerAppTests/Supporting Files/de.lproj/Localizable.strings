@@ -40,6 +40,9 @@
 "PACK_RESTORE" = "Wiederherstellen";
 "PACK_TITLE" = "Aufkleber-Sätze";
 "PACK_DONE" = "Fix und fertig";
+"PACK_RESTORING" = "Restoring...";
+"PACK_CANCELLED" = "Cancelled";
+"PACK_FAILED" = "Transaction Failed";
 
 //PROMPT TITLES
 "PROMPT_FLAG_TITLE" = "Melde dieses Foto";
@@ -70,6 +73,7 @@
 "PERMISSION_LOCATION_PUBLISH" = "Ihre Position wird benötigt, um öffentliche Fotos veröffentlichen.";
 "PERMISSION_NO_PHOTOS" = "Keine Fotos in diesem Ort :( Verschieben Sie die Karte in ein neues Gebiet oder laden einige Freunde ein!";
 "PERMISSION_NO_PUBLISHED" = "Sie haben keine öffentliche Fotos.";
+"PERMISSION_NO_LOCATION" = "App location access is needed to view snaps around the world.";
 
 //PROMPT LOCATION
 "PROMPT_LOCAL_TITLE" = "Ortungsdienste";

@@ -40,6 +40,9 @@
 "PACK_RESTORE" = "восстановление";
 "PACK_TITLE" = "Пакеты стикера";
 "PACK_DONE" = "Сделано";
+"PACK_RESTORING" = "Restoring...";
+"PACK_CANCELLED" = "Cancelled";
+"PACK_FAILED" = "Transaction Failed";
 
 //PROMPT TITLES
 "PROMPT_FLAG_TITLE" = "Сообщить фото";
@@ -70,6 +73,7 @@
 "PERMISSION_LOCATION_PUBLISH" = "Расположение доступ необходим для Опубликуйте открытых фотографий";
 "PERMISSION_NO_PHOTOS" = "Нет фотографий в этом месте :( Переместить карту в новый район, или пригласить друзей!";
 "PERMISSION_NO_PUBLISHED" = "Вы не разместил ни публичной фотографии :(";
+"PERMISSION_NO_LOCATION" = "App location access is needed to view snaps around the world.";
 
 //PROMPT LOCATION
 "PROMPT_LOCAL_TITLE" = "службы определения местоположения";
