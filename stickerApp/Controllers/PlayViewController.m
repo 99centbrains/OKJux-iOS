@@ -39,10 +39,9 @@
     PlayBorderSelectViewController *borderView;
     
     UITextField *fontTextField;
-  
     CGPoint lastPoint;
-    
     UIView *ibo_DarkView;
+    float rotation;
 }
 
 - (IBAction)actionStartNew:(id)sender;
@@ -96,7 +95,8 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
   
     [self setUpCanvasViews];
-    
+    rotation = 0;
+  
     //Gestures
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc]
                                                  initWithTarget:self action:@selector(stickyPinch:)];
@@ -206,6 +206,8 @@
     
     currentSticker.contentMode = UIViewContentModeScaleAspectFit;
     currentSticker.center = CGPointMake(_ibo_renderView.frame.size.width/2, _ibo_renderView.frame.size.height/2);
+    currentSticker.transform = CGAffineTransformMakeRotation(rotation);
+    rotation += 0.1;
     currentSticker.userInteractionEnabled = YES;
 
     [_ibo_viewStickerStage addSubview:currentSticker];
