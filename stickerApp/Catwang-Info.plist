@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSMicrophoneUsageDescription</key>
+	<string> Needs access to the microphone to be able to attach voice notes.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -50,11 +52,11 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>We would like to access your calendar</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Take new pics to okjux</string>
+	<string>Take new pics to share on okjux</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Anonymously Post and View rad jux snaps around you. Your location will never be shared!</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Select pics to okjux</string>
+	<string>Select pics to share on okjux</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AmaticSC-Bold.ttf</string>

@@ -23,6 +23,7 @@ PODS:
     - Flurry-iOS-SDK/FlurrySDK
   - Flurry-iOS-SDK/FlurrySDK (7.8.0)
   - Haneke (1.0.2)
+  - Instabug (6.0.3)
   - iRate (1.11.6)
   - iVersion (1.11.4)
   - JPSThumbnailAnnotation (1.0.0)
@@ -41,6 +42,7 @@ DEPENDENCIES:
   - Flurry-iOS-SDK/FlurryAds (~> 7.8)
   - Flurry-iOS-SDK/FlurrySDK (~> 7.8)
   - Haneke (~> 1.0)
+  - Instabug
   - iRate (from `https://github.com/nicklockwood/iRate.git`)
   - iVersion (~> 1.11.4)
   - JPSThumbnailAnnotation (~> 1.0.0)
@@ -67,6 +69,7 @@ SPEC CHECKSUMS:
   FCFileManager: 3d13576da1f709d37460bd7669cdf07b9d6d8bc3
   Flurry-iOS-SDK: 388df247b9d92659527b608c891c7e474cd9d00e
   Haneke: 01454a67322faa0dd9d81fc0f447885044e71521
+  Instabug: 4daae5fd154e8a83654f8d974ba008ce87b9a104
   iRate: 61e558919c4a7fde63b3c22ebbd6c114a1eee658
   iVersion: 2b6ffe708672cb494ba3cab150a94800c2892e81
   JPSThumbnailAnnotation: 4b35e87788d903db3fec294e7ef44136b9f741fb
@@ -76,6 +79,6 @@ SPEC CHECKSUMS:
   UIImageEffects: 37b99fa461e4965f332ca82e92f2c22a1075ee84
   UIImageTrim: 6291b9cfb05bbc9ca0bb3e510aae4421de4ca5e4
 
-PODFILE CHECKSUM: 33385c8b3c2bf59a395f126591a75d37e6d89317
+PODFILE CHECKSUM: b9be2170c92e0f060b3f29cfdf04bcc5ff56091e
 
 COCOAPODS: 1.2.0.beta.1
