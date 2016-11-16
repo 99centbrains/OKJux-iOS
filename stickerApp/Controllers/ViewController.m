@@ -76,14 +76,22 @@
     
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:kNewUserKey]){
-      UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FTUEStoryboard" bundle:nil];
-            
-      NewUserViewController *newVC = (NewUserViewController *)[storyboard instantiateViewControllerWithIdentifier:@"seg_NewUserViewController"];
-      newVC.sourceVC = self;
-      [self presentViewController:newVC animated:NO completion:^(void){
-          
-      }];
+      [self pushTutorial];
     }
+}
+
+- (void)pushTutorial {
+  UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FTUEStoryboard" bundle:nil];
+  
+  NewUserViewController *newVC = (NewUserViewController *)[storyboard instantiateViewControllerWithIdentifier:@"seg_NewUserViewController"];
+  newVC.sourceVC = self;
+  [self presentViewController:newVC animated:NO completion:^(void){
+    
+  }];
+}
+
+- (IBAction)showTutorial:(UIButton *)sender {
+  [self pushTutorial];
 }
 
 - (IBAction)shareApp:(UIButton *)sender{

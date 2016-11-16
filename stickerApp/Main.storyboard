@@ -38,7 +38,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5wh-3v-whV">
-                                        <rect key="frame" x="327" y="22.5" width="40" height="40"/>
+                                        <rect key="frame" x="327" y="23" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="5Sg-hb-rCI"/>
                                             <constraint firstAttribute="width" constant="40" id="Mph-3o-9V6"/>
@@ -73,7 +73,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OKJUX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="svP-Dg-IXg">
-                                        <rect key="frame" x="90.5" y="22.5" width="194" height="40"/>
+                                        <rect key="frame" x="91" y="23" width="194" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="311" id="Fnf-QC-9ks"/>
                                             <constraint firstAttribute="height" constant="35" id="TpT-WN-7xa">
@@ -108,14 +108,51 @@
                                             </mask>
                                         </variation>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgb-zA-hNI">
+                                        <rect key="frame" x="8" y="22" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="DS5-3X-MRo"/>
+                                            <constraint firstAttribute="height" constant="40" id="RUY-ZT-RfX"/>
+                                            <constraint firstAttribute="width" constant="40" id="cee-U9-PCB"/>
+                                            <constraint firstAttribute="width" constant="40" id="p9Z-to-lMd"/>
+                                        </constraints>
+                                        <state key="normal" image="ui_btn_main_share.png">
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="RUY-ZT-RfX"/>
+                                                <exclude reference="p9Z-to-lMd"/>
+                                                <exclude reference="cee-U9-PCB"/>
+                                                <exclude reference="DS5-3X-MRo"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="cee-U9-PCB"/>
+                                                <include reference="DS5-3X-MRo"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="RUY-ZT-RfX"/>
+                                                <include reference="p9Z-to-lMd"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="showTutorial:" destination="AH9-8K-Vli" eventType="touchUpInside" id="A0c-L0-f5k"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="5wh-3v-whV" secondAttribute="trailing" constant="8" id="7w0-zo-9CZ"/>
+                                    <constraint firstItem="cgb-zA-hNI" firstAttribute="centerY" secondItem="zhx-pF-izw" secondAttribute="centerY" constant="9.5" id="ALa-Th-dJC"/>
                                     <constraint firstAttribute="centerX" secondItem="svP-Dg-IXg" secondAttribute="centerX" id="Cfd-K4-e5Q"/>
                                     <constraint firstAttribute="height" constant="63" id="Evs-xp-7LE">
                                         <variation key="heightClass=regular-widthClass=regular" constant="64"/>
                                     </constraint>
+                                    <constraint firstItem="cgb-zA-hNI" firstAttribute="leading" secondItem="zhx-pF-izw" secondAttribute="leadingMargin" id="LH7-Ub-tD2"/>
                                     <constraint firstAttribute="centerY" secondItem="5wh-3v-whV" secondAttribute="centerY" id="M0f-RV-A6c">
                                         <variation key="heightClass=regular-widthClass=regular" constant="-8"/>
                                     </constraint>
