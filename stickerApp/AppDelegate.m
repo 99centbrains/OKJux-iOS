@@ -19,6 +19,7 @@
 #import "HNKCache.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import <Instabug/Instabug.h>
 
 @implementation AppDelegate
 
@@ -71,6 +72,9 @@
   [self setup_parse];
 
   [Flurry startSession:kFlurryKey];
+
+  //MARK: - INSTABUG
+  [Instabug startWithToken:@"5d3b16ef9fae0c99ea3a4af6f3d62774" invocationEvent:IBGInvocationEventShake];
   
   //MARK:PUSH NOTIFICATIONS
   if (application.applicationState != UIApplicationStateBackground) {

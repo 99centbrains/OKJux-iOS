@@ -18,4 +18,5 @@ target 'Catwang' do
     pod 'TAOverlay', '~> 2.0.1'
     pod 'Fabric'
     pod 'Crashlytics'
+    pod 'Instabug'
 end
