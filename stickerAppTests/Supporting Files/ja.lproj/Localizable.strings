@@ -38,6 +38,7 @@
 
 //STICKERPACKS
 "PACK_RESTORE" = "復元する";
+"PACK_RESTORE_MESSAGE" = "Do you want to restore your in-app purchases?";
 "PACK_TITLE" = "ステッカーパック";
 "PACK_DONE" = "終わった";
 "PACK_RESTORING" = "Restoring...";
@@ -79,7 +80,6 @@
 "PROMPT_LOCAL_TITLE" = "位置情報サービス";
 "PROMPT_LOCAL_BODY" = "一部の機能が必要です位置情報アクセス. 有効にしてください (設定 > プライバシー > 場所 > 位置情報サービス)";
 "PROMPT_LOCAL_ACTION" = "設定";
-"PROMPT_LOCAL_CANCEL" = "キャンセル";
 
 //TOGGLES
 "TOGGLE_NEW" = "新しい";
@@ -87,3 +87,7 @@
 "TOGGLE_RISING" = "上昇";
 "TOGGLE_TOP" = "最高";
 
+//GENERAL
+"CANCEL_BUTTON" = "キャンセル";
+"ACCEPT_BUTTON" = "Accept";
+"SUCCESS_BUTTON" = "Success!";

@@ -133,8 +133,6 @@ static CWInAppHelper * _sharedHelper;
 }
 
 
-
-
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions {
     for (SKPaymentTransaction *transaction in transactions) {
         switch (transaction.transactionState) {
@@ -195,8 +193,11 @@ static CWInAppHelper * _sharedHelper;
     [TAOverlay showOverlayWithLabel:NSLocalizedString(@"PACK_CANCELLED", nil) Options:(TAOverlayOptionOverlayTypeError | TAOverlayOptionAutoHide)];
 }
 
-- (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue{
-    [TAOverlay hideOverlay];
+- (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue {
+    [TAOverlay hideOverlayWithCompletionBlock: ^(BOOL _) {
+        [TAOverlay showOverlayWithLabel:NSLocalizedString(@"SUCCESS_BUTTON", nil) Options:(TAOverlayOptionOverlayTypeSuccess | TAOverlayOptionAutoHide)];
+    }];
+
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 

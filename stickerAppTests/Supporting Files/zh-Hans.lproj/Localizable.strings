@@ -38,6 +38,7 @@
 
 //STICKERPACKS
 "PACK_RESTORE" = "恢复";
+"PACK_RESTORE_MESSAGE" = "Do you want to restore your in-app purchases?";
 "PACK_TITLE" = "贴纸包";
 "PACK_DONE" = "完";
 "PACK_RESTORING" = "Restoring...";
@@ -79,7 +80,6 @@
 "PROMPT_LOCAL_TITLE" = "位置服务";
 "PROMPT_LOCAL_BODY" = "一些功能需要位置访问. 请启用位置服务 (设置 > 隐私 > 地点 > 位置服务)";
 "PROMPT_LOCAL_ACTION" = "设置";
-"PROMPT_LOCAL_CANCEL" = "取消";
 
 //TOGGLES
 "TOGGLE_NEW" = "新";
@@ -87,3 +87,7 @@
 "TOGGLE_RISING" = "升起";
 "TOGGLE_TOP" = "最好的";
 
+//GENERAL
+"CANCEL_BUTTON" = "取消";
+"ACCEPT_BUTTON" = "Accept";
+"SUCCESS_BUTTON" = "Success!";

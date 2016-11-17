@@ -99,7 +99,26 @@
 
 - (IBAction)iba_restorePurchases:(id)sender {
     NSLog(@"Restore Purchases");
-    [[CWInAppHelper sharedHelper] restore_purchases];
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:NSLocalizedString(@"PACK_RESTORE", nil)
+                                message:NSLocalizedString(@"PACK_RESTORE_MESSAGE", nil)
+                                preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *okButton = [UIAlertAction
+                               actionWithTitle:NSLocalizedString(@"ACCEPT_BUTTON", nil)
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action) {
+                                   [[CWInAppHelper sharedHelper] restore_purchases];
+                               }];
+
+    UIAlertAction *cancelButton = [UIAlertAction
+                                   actionWithTitle:NSLocalizedString(@"CANCEL_BUTTON", nil)
+                                   style:UIAlertActionStyleDefault
+                                   handler:nil];
+
+    [alert addAction:cancelButton];
+    [alert addAction:okButton];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma CollectionView Delegates
