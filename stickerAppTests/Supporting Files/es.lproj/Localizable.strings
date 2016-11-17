@@ -38,6 +38,7 @@
 
 //STICKERPACKS
 "PACK_RESTORE" = "Restaurar";
+"PACK_RESTORE_MESSAGE" = "¿Quieres restaurar tus compras hechas en la app?";
 "PACK_TITLE" = "Paquetes de stickers";
 "PACK_DONE" = "Hecho";
 "PACK_RESTORING" = "Restaurando...";
@@ -79,7 +80,6 @@
 "PROMPT_LOCAL_TITLE" = "Servicios de localización";
 "PROMPT_LOCAL_BODY" = "Algunas funciones requieren acceso a la localización. Por favor, active Servicios de Localización en (Ajustes > Privacidad > Localización > Servicios de Localización)";
 "PROMPT_LOCAL_ACTION" = "Ajustes";
-"PROMPT_LOCAL_CANCEL" = "No";
 
 //TOGGLES
 "TOGGLE_NEW" = "Nuevo";
@@ -87,3 +87,7 @@
 "TOGGLE_RISING" = "Subiendo";
 "TOGGLE_TOP" = "Top";
 
+//GENERAL
+"CANCEL_BUTTON" = "Cancelar";
+"ACCEPT_BUTTON" = "Aceptar";
+"SUCCESS_BUTTON" = "Éxito!";

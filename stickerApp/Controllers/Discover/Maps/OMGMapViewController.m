@@ -304,7 +304,7 @@
     UIAlertAction *action_spam = [UIAlertAction actionWithTitle:NSLocalizedString(@"PROMPT_LOCAL_ACTION", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [[UIApplication sharedApplication] openURL:[NSURL  URLWithString:UIApplicationOpenSettingsURLString]];
     }];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"PROMPT_LOCAL_CANCEL", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"CANCEL_BUTTON", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];
     
     [actionSheet addAction:action_spam];
     [actionSheet addAction:cancel];

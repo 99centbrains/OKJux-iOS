@@ -38,6 +38,7 @@
 
 //STICKERPACKS
 "PACK_RESTORE" = "восстановление";
+"PACK_RESTORE_MESSAGE" = "Do you want to restore your in-app purchases?";
 "PACK_TITLE" = "Пакеты стикера";
 "PACK_DONE" = "Сделано";
 "PACK_RESTORING" = "Restoring...";
@@ -79,7 +80,6 @@
 "PROMPT_LOCAL_TITLE" = "службы определения местоположения";
 "PROMPT_LOCAL_BODY" = "Некоторых функций требуется доступ к местоположению. Пожалуйста, включите службы определения местоположения (настройки > конфиденциальность > расположение > службы определения местоположения)";
 "PROMPT_LOCAL_ACTION" = "настройки";
-"PROMPT_LOCAL_CANCEL" = "отменить";
 
 //TOGGLES
 "TOGGLE_NEW" = "новый";
@@ -87,3 +87,7 @@
 "TOGGLE_RISING" = "повышение";
 "TOGGLE_TOP" = "лучший";
 
+//GENERAL
+"CANCEL_BUTTON" = "отменить";
+"ACCEPT_BUTTON" = "Accept";
+"SUCCESS_BUTTON" = "Success!";

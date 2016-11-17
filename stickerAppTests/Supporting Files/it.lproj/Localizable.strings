@@ -38,6 +38,7 @@
 
 //STICKERPACKS
 "PACK_RESTORE" = "Ripristinare";
+"PACK_RESTORE_MESSAGE" = "Do you want to restore your in-app purchases?";
 "PACK_TITLE" = "Paccos";
 "PACK_DONE" = "Fatto";
 "PACK_RESTORING" = "Restoring...";
@@ -79,7 +80,6 @@
 "PROMPT_LOCAL_TITLE" = "Servizi di Localizzazione";
 "PROMPT_LOCAL_BODY" = "Alcune funzioni richiedono l'accesso alla posizione. Si prega di abilitare (Impostazioni > Privacy > Localizzazione > Servizi di Localizzazione)";
 "PROMPT_LOCAL_ACTION" = "Impostazioni";
-"PROMPT_LOCAL_CANCEL" = "Cancellare";
 
 //TOGGLES
 "TOGGLE_NEW" = "Nuovo";
@@ -87,3 +87,7 @@
 "TOGGLE_RISING" = "Crescente";
 "TOGGLE_TOP" = "Migliore";
 
+//GENERAL
+"CANCEL_BUTTON" = "Cancellare";
+"ACCEPT_BUTTON" = "Accept";
+"SUCCESS_BUTTON" = "Success!";

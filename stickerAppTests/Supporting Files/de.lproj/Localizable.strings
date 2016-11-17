@@ -38,6 +38,7 @@
 
 //STICKERPACKS
 "PACK_RESTORE" = "Wiederherstellen";
+"PACK_RESTORE_MESSAGE" = "Do you want to restore your in-app purchases?";
 "PACK_TITLE" = "Aufkleber-Sätze";
 "PACK_DONE" = "Fix und fertig";
 "PACK_RESTORING" = "Restoring...";
@@ -79,10 +80,14 @@
 "PROMPT_LOCAL_TITLE" = "Ortungsdienste";
 "PROMPT_LOCAL_BODY" = "Einige Features erfordern Lage Zugang. Bitte aktivieren Sie (Einstellungen > Datenschutz > Ortungsdienste)";
 "PROMPT_LOCAL_ACTION" = "Einstellungen";
-"PROMPT_LOCAL_CANCEL" = "Stornieren";
 
 //TOGGLES
 "TOGGLE_NEW" = "Neu";
 "TOGGLE_NEAR" = "Der Nähe";
 "TOGGLE_RISING" = "Beste";
 "TOGGLE_TOP" = "Sonder";
+
+//GENERAL
+"CANCEL_BUTTON" = "Stornieren";
+"ACCEPT_BUTTON" = "Accept";
+"SUCCESS_BUTTON" = "Success!";

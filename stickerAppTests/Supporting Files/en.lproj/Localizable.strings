@@ -37,6 +37,7 @@
 
 //STICKERPACKS
 "PACK_RESTORE" = "Restore";
+"PACK_RESTORE_MESSAGE" = "Do you want to restore your in-app purchases?";
 "PACK_TITLE" = "Packs";
 "PACK_DONE" = "Done";
 "PACK_RESTORING" = "Restoring...";
@@ -79,7 +80,6 @@
 "PROMPT_LOCAL_TITLE" = "Location Services";
 "PROMPT_LOCAL_BODY" = "Application requires Location access for some features. Please enable in Settings > Privacy > Location > Location Services";
 "PROMPT_LOCAL_ACTION" = "Settings";
-"PROMPT_LOCAL_CANCEL" = "Cancel";
 
 //TOGGLES
 "TOGGLE_NEW" = "New";
@@ -87,3 +87,7 @@
 "TOGGLE_RISING" = "Rising";
 "TOGGLE_TOP" = "Top";
 
+//GENERAL
+"CANCEL_BUTTON" = "Cancel";
+"ACCEPT_BUTTON" = "Accept";
+"SUCCESS_BUTTON" = "Success!";
