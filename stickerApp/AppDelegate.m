@@ -20,6 +20,7 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import <Instabug/Instabug.h>
+#import "UserServiceManager.h"
 
 @implementation AppDelegate
 
@@ -59,6 +60,8 @@
   
   [[UIApplication sharedApplication] cancelAllLocalNotifications];
   
+  //MARK: NEW BACKEND
+  [self sendUserInfo];
   
   //MARK: - SDKS
   [Chartboost startWithAppId:@"54e9f0a004b01637287765c9"
@@ -115,6 +118,12 @@
   return YES;
 }
 
+#pragma mark Send user info
+
+- (void)sendUserInfo {
+  [UserServiceManager registerUserWith:[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
+}
+
 #pragma PARSE SETUP
 - (void) setup_parse {
     //MARK: - PARSE USER
@@ -141,7 +150,7 @@
             [[NSUserDefaults standardUserDefaults] setObject:currentUser.objectId forKey:@"userid"];
             [DataHolder DataHolderSharedInstance].userObject = currentUser;
         } else {
-            [[PFUser currentUser] fetchInBackground ];
+            [[PFUser currentUser] fetchInBackground];
             [DataHolder DataHolderSharedInstance].userObject = [PFUser currentUser];
             BOOL banned = [[DataHolder DataHolderSharedInstance].userObject[@"banned"] boolValue];
             [[NSUserDefaults standardUserDefaults] setBool:banned forKey:kUserBanStatus];
