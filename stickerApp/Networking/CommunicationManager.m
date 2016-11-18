@@ -11,7 +11,7 @@
 @implementation CommunicationManager
 
 + (NSURL *)serverURL {
-  return [NSURL URLWithString:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"EnvironmentURL"]];
+  return [NSURL URLWithString:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BaseURL"]];
 }
 
 + (CommunicationManager* ) sharedManager {
