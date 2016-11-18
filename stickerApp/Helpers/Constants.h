@@ -17,6 +17,9 @@
 #define kJsonDebug NO
 #define kAdminDebug NO
 
+//IMAGES
+#define ImageMimeType @"image/jpeg"
+#define ImageExtension @"jpeg"
 
 //NSUSERDEFAULSKEYS
 #define kNewUserKey @"kUserDefaultUserNew"

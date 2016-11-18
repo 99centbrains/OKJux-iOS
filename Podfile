@@ -11,7 +11,7 @@ target 'Catwang' do
     pod 'TWRDownloadManager', '~> 1.1.1'
     pod 'JPSThumbnailAnnotation', '~> 1.0.0'
     pod 'FCFileManager', '~> 1.0.18'
-    pod 'AFNetworking', '~> 3.0'
+    pod 'AFNetworking', '~> 2.6'
     pod 'Flurry-iOS-SDK/FlurrySDK', '~> 7.8'
     pod 'Flurry-iOS-SDK/FlurryAds', '~> 7.8'
     pod 'iVersion', '~> 1.11.4'
