@@ -14,6 +14,18 @@
 @property (nonatomic, weak) id delegate;
 
 + (CommunicationManager *) sharedManager;
-- (instancetype)initWithBaseURL:(NSURL *)url;
+- (instancetype) initWithBaseURL:(NSURL *)url;
++ (NSURL *)serverURL;
+
+- (void) sendGetRequestWithURL: (NSString*) url
+                     AndParams: (NSDictionary*) params
+                       Success: (void(^)(id _responseObject))_success
+                       Failure: (void(^)(NSError* _error))_failure;
+
+- (void) sendPostRequestWithURL: (NSString*) url
+                      AndParams: (NSDictionary *)params
+                   AndMediaType: (NSString*)type
+                        Success: (void (^)(id))_success
+                        Failure: (void (^)(NSError *))_failure;
 
 @end

@@ -21,6 +21,7 @@ static DataHolder *DataHolderSharedInstance = nil;
     }
     return nil;
 }
+
 - (id) init {
     self = [super init];
     return self;
@@ -54,8 +55,6 @@ static DataHolder *DataHolderSharedInstance = nil;
     }
 
     return 0;
-    
 }
-
 
 @end

@@ -150,6 +150,7 @@
 		74FA3D721A89229800B8AFC6 /* NewUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74FA3D701A89229800B8AFC6 /* NewUserViewController.m */; };
 		74FA3D761A8922ED00B8AFC6 /* FTUEStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74FA3D751A8922ED00B8AFC6 /* FTUEStoryboard.storyboard */; };
 		80D5287B1AC4736700D5702B /* SwitchHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80D5287A1AC4736700D5702B /* SwitchHeaderCollectionReusableView.m */; };
+		9B6441781DDF75F300C458CD /* UserServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6441771DDF75F300C458CD /* UserServiceManager.m */; };
 		9B6531761DDE1D4700FDF711 /* CommunicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6531751DDE1D4700FDF711 /* CommunicationManager.m */; };
 		9B9A2B551DD10AA70064616D /* AdColony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9A2B511DD10AA70064616D /* AdColony.framework */; };
 		9B9A2B561DD10AA70064616D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9A2B521DD10AA70064616D /* Bolts.framework */; };
@@ -405,6 +406,8 @@
 		74FA3D751A8922ED00B8AFC6 /* FTUEStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FTUEStoryboard.storyboard; sourceTree = "<group>"; };
 		80D528791AC4736700D5702B /* SwitchHeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchHeaderCollectionReusableView.h; sourceTree = "<group>"; };
 		80D5287A1AC4736700D5702B /* SwitchHeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchHeaderCollectionReusableView.m; sourceTree = "<group>"; };
+		9B6441761DDF75F300C458CD /* UserServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserServiceManager.h; path = Services/UserServiceManager.h; sourceTree = "<group>"; };
+		9B6441771DDF75F300C458CD /* UserServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserServiceManager.m; path = Services/UserServiceManager.m; sourceTree = "<group>"; };
 		9B6531741DDE1D4700FDF711 /* CommunicationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommunicationManager.h; path = Networking/CommunicationManager.h; sourceTree = "<group>"; };
 		9B6531751DDE1D4700FDF711 /* CommunicationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommunicationManager.m; path = Networking/CommunicationManager.m; sourceTree = "<group>"; };
 		9B9A2B511DD10AA70064616D /* AdColony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AdColony.framework; sourceTree = "<group>"; };
@@ -835,6 +838,8 @@
 		9B6531731DDE1C8900FDF711 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				9B6441761DDF75F300C458CD /* UserServiceManager.h */,
+				9B6441771DDF75F300C458CD /* UserServiceManager.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -1270,6 +1275,7 @@
 				3753C77815C3136400B8AEDE /* PlayViewController.m in Sources */,
 				746A73A61A813D180052E7ED /* AppManager.m in Sources */,
 				3753C77D15C3139100B8AEDE /* SelectStickerQuickViewController.m in Sources */,
+				9B6441781DDF75F300C458CD /* UserServiceManager.m in Sources */,
 				748FA4561A957ACB0063D0BC /* ChannelSelectViewCell.m in Sources */,
 				3753C79815C328A800B8AEDE /* StickyImageView.m in Sources */,
 				748761781A50ADF90014FF61 /* CBPainterUIView.m in Sources */,

@@ -17,6 +17,8 @@
 @property(nonatomic,strong) NSArray *arrayTopSnaps;
 @property(nonatomic,strong) NSArray *arrayMySnaps;
 @property(nonatomic,strong) NSArray *arrayNewestSnaps;
+@property(nonatomic,strong) NSString *userUUID;
+@property(nonatomic,strong) NSString *userID;
 
 @property (nonatomic, strong) PFGeoPoint * userGeoPoint;
 
