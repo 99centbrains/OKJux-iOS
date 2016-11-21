@@ -13,4 +13,6 @@
 
 + (void)registerUserWith:(NSString*)uuid;
 
++ (void)getUserSnaps:(NSString*)uuid Onsuccess:(void(^)(NSArray* responseObject ))success Onfailure :(void(^)(NSError* error))failure;
+
 @end
