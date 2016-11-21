@@ -11,6 +11,7 @@
 
 @implementation DataHolder
 
+#pragma mark Singleton
 static DataHolder *DataHolderSharedInstance = nil;
 
 + (id ) alloc {
@@ -39,6 +40,7 @@ static DataHolder *DataHolderSharedInstance = nil;
 }
 
 
+#pragma mark User
 - (NSInteger) checkUserLikeStatus:(PFObject *)selectedSnap{
     [selectedSnap fetchInBackground];
     NSMutableArray *likeArray= [[NSMutableArray alloc] initWithArray:selectedSnap[@"likes"]];
@@ -56,5 +58,6 @@ static DataHolder *DataHolderSharedInstance = nil;
 
     return 0;
 }
+
 
 @end

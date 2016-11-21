@@ -22,8 +22,11 @@
 
 @property (nonatomic, strong) PFGeoPoint * userGeoPoint;
 
+#pragma mark Singleton
 + (DataHolder *) DataHolderSharedInstance;
 
+
+#pragma mark User
 - (NSInteger) checkUserLikeStatus:(PFObject *)selectedSnap;
 
 @end
