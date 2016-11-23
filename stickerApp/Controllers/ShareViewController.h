@@ -11,6 +11,9 @@
 #import <Twitter/Twitter.h>
 #import "TAOverlay.h"
 #import <StoreKit/StoreKit.h>
+#import "DataManager.h"
+#import "UserServiceManager.h"
+
 @class ShareViewController;
 
 @protocol ShareViewControllerDelegate <NSObject>

@@ -57,25 +57,23 @@
 
 - (void) sendPostRequestWithURL: (NSString*) url
                       AndParams: (NSDictionary *)params
-                   AndMediaType: (NSString*)type
                         Success: (void (^)(id))_success
                         Failure: (void (^)(NSError *))_failure{
   
   if ([params objectForKey:@"snap"]){
     //TODO: change the names for the real keys
-    NSString *name;
-    NSString *fileName;
     __block NSData *dataMedia;
-    dataMedia = [[params objectForKey:@"message"] objectForKey:@"media_files_attributes"];
-    NSMutableDictionary *message = [[params objectForKey:@"message"] mutableCopy];
-    [message removeObjectForKey:@"media_files_attributes"];
-    params = @{ @"message": message };
-    name = @"message[media]";
-    fileName = [[message objectForKey:@"media_files_name"] lowercaseString];
+    dataMedia = [[params objectForKey:@"snap"] objectForKey:@"image"];
+    NSMutableDictionary *snap = [[params objectForKey:@"snap"] mutableCopy];
+    [snap removeObjectForKey:@"image"];
+    params = @{ @"snap": snap,
+                @"user": @{ @"UUID": [DataManager deviceToken] }
+              };
+    
     
     NSMutableURLRequest *request =
     [self.requestSerializer multipartFormRequestWithMethod:@"POST" URLString:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-      [formData appendPartWithFileData:dataMedia name:name fileName:[NSString stringWithFormat:@"%@.%@",fileName,ImageExtension] mimeType:ImageMimeType];
+      [formData appendPartWithFileData:dataMedia name:@"snap[image]" fileName:[NSString stringWithFormat:@"%@.%@", @"new_snap", ImageExtension] mimeType: ImageMimeType];
     } error:nil];
     
     AFHTTPRequestOperationManager *manager =  [AFHTTPRequestOperationManager manager];

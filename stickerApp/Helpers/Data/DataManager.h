@@ -15,8 +15,10 @@
 #pragma mark User
 + (void)storeUser:(NSString *)userID;
 + (void)storeDeviceToken:(NSString*)token;
++ (void)storeCurrentLocation:(NSArray *)location;
 
 + (NSString*)userID;
 + (NSString*)deviceToken;
++ (NSString*)currentLocation;
 
 @end

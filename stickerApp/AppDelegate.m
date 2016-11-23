@@ -21,6 +21,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import <Instabug/Instabug.h>
 #import "UserServiceManager.h"
+#import "DataManager.h"
 
 @implementation AppDelegate
 
@@ -121,6 +122,7 @@
 #pragma mark Send user info
 
 - (void)sendUserInfo {
+  [self askForLocation];
   [UserServiceManager registerUserWith:[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
 }
 
@@ -261,20 +263,20 @@
 
 #pragma mark CLLocationManagerDelegate
 
--(void)locationManager:(CLLocationManager *)manager
-   didUpdateToLocation:(CLLocation *)newLocation
-          fromLocation:(CLLocation *)oldLocation {
-    NSLog(@"Finding Location");
-    [manager stopUpdatingLocation];
+-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+  NSLog(@"Finding Location");
+  NSArray *location = [NSArray arrayWithObjects:
+                       [NSString stringWithFormat:@"%.8f", newLocation.coordinate.latitude],
+                       [NSString stringWithFormat:@"%.8f", newLocation.coordinate.longitude], nil];
+  [DataManager storeCurrentLocation: location];
+  [manager stopUpdatingLocation];
 }
 
-- (void)locationManager:(CLLocationManager *)manager
-    didStartMonitoringForRegion:(CLRegion *)region {
+- (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region {
     NSLog(@"Finding Location");
 }
 
-- (void)locationManager:(CLLocationManager *)manager
-    didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (status == kCLAuthorizationStatusDenied) {
         [self requestAlwaysAuthorization];
     }
