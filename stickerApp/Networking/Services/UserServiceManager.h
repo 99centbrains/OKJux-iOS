@@ -15,7 +15,7 @@
 
 + (void)registerUserWith:(NSString*)uuid;
 
-+ (void)getUserSnaps:(NSString*)uuid Onsuccess:(void(^)(NSArray* responseObject ))success Onfailure :(void(^)(NSError* error))failure;
++ (void)getUserSnaps:(NSString*)uuid OnSuccess:(void(^)(NSArray* responseObject ))success OnFailure :(void(^)(NSError* error))failure;
 
 + (void)createSnap:(NSDictionary *)params Onsuccess:(void(^)(NSDictionary* responseObject))success Onfailure :(void(^)(NSError* error))failure;
 

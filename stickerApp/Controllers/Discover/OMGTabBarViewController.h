@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "OMGHeadSpaceViewController.h"
+#import "Snap.h"
 
 @interface OMGTabBarViewController : UITabBarController
 
@@ -15,7 +16,9 @@
 
 - (void)shareItem:(UIImage *)image;
 - (void)showSnapFullScreen:(PFObject *)snap preload:(UIImage*)thumbnail shouldShowVoter:(BOOL)voter;
-- (void) lightBoxItemFlag:(PFObject *)flagItem;
-- (BOOL) checkUserInArray:(NSMutableArray *)array;
+//TODO the above method will be deleted and the new one is the one below
+- (void)showFullScreenSnap:(Snap *)snap preload:(UIImage*)thumbnail shouldShowVoter:(BOOL)voter;
+- (void)lightBoxItemFlag:(PFObject *)flagItem;
+- (BOOL)checkUserInArray:(NSMutableArray *)array;
 
 @end

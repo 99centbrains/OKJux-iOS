@@ -22,5 +22,6 @@
 - (void) loadUser:(PFUser *)userBlock;
 
 @property (nonatomic, unsafe_unretained) id <OMGMySnapsViewControllerDelegate> delegate;
+@property (strong, nonatomic) NSArray *mySnaps;
 
 @end

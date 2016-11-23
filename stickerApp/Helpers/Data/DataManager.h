@@ -9,9 +9,6 @@
 @interface DataManager : NSObject
 
 
-#pragma mark Singleton
-+ (id) getInstance;
-
 #pragma mark User
 + (void)storeUser:(NSString *)userID;
 + (void)storeDeviceToken:(NSString*)token;
