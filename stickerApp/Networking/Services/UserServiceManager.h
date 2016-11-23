@@ -17,6 +17,6 @@
 
 + (void)getUserSnaps:(NSString*)uuid Onsuccess:(void(^)(NSArray* responseObject ))success Onfailure :(void(^)(NSError* error))failure;
 
-+ (void)createSnap:(NSDictionary *)params;
++ (void)createSnap:(NSDictionary *)params Onsuccess:(void(^)(NSDictionary* responseObject))success Onfailure :(void(^)(NSError* error))failure;
 
 @end

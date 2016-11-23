@@ -119,17 +119,6 @@
     [super viewDidAppear:animated];
 }
 
-- (IBAction)iba_createNew:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    
-    AppDelegate *apdelegate= (AppDelegate *) [[UIApplication sharedApplication] delegate];
-    [apdelegate askForLocation];
-    
-    if (boolSharePublic){
-        [self iba_publish:nil];
-    }
-}
-
 - (void) setup_yoshirt {
     ibo_previewImage.image = userExportedImage;
 }
@@ -413,50 +402,28 @@
     [super viewDidUnload];
 }
 
+- (IBAction)iba_createNew:(id)sender {
+  AppDelegate *appdelegate= (AppDelegate *) [[UIApplication sharedApplication] delegate];
+  [appdelegate askForLocation];
+  
+  if (boolSharePublic){
+    [self iba_publish:nil];
+  }
+}
 
 #pragma PUBLISH PUBLIC
 - (IBAction)iba_publish:(id)sender{
-//    PFFile *file= [PFFile fileWithData:UIImagePNGRepresentation(userExportedImage)
-//                           contentType:@"image/png"];
-//    [file saveInBackground];
-//    
-//    PFFile *thumbnail= [PFFile fileWithData:UIImagePNGRepresentation([self scaledImageWithImage:userExportedImage]) contentType:@"image/png"];
-//    [thumbnail saveInBackground];
-//    
-//    CLLocationCoordinate2D zoomLocation;
-//    zoomLocation.latitude = [DataHolder DataHolderSharedInstance].userGeoPoint.latitude;
-//    zoomLocation.longitude = [DataHolder DataHolderSharedInstance].userGeoPoint.longitude;
-//    
-//    PFGeoPoint * geoPoint= [PFGeoPoint geoPointWithLatitude:zoomLocation.latitude longitude:zoomLocation.longitude];
-//    
-//    PFObject *obj = [PFObject objectWithClassName:@"snap"];
-//    obj[@"location"] = geoPoint;
-//    obj[@"name"] = filename;
-//    obj[@"image"] = file;
-//    obj[@"thumbnail"] = thumbnail;
-//    obj[@"likes"] = [NSArray array];
-//    obj[@"dislikes"] = [NSArray array];
-//    obj[@"flaggers"] = [NSArray array];
-//    obj[@"netlikes"] = [NSNumber numberWithInt:0];
-//    obj[@"flagged"] = [NSNumber numberWithInt:0];
-//    obj[@"hidden"] = [NSNumber numberWithBool:NO];
-//    obj[@"userId"] = [DataHolder DataHolderSharedInstance].userObject;
-//    obj[@"channels"] = @"General";
-//    [obj saveInBackground];
-//    
-//    NSInteger score = [[DataHolder DataHolderSharedInstance].userObject[@"points"] integerValue] + kParsePostSnap;
-//    [DataHolder DataHolderSharedInstance].userObject[@"points"] = [NSNumber numberWithInteger:score];
-//    [[DataHolder DataHolderSharedInstance].userObject saveInBackground];
-//    
-//    
-//    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Type":@"Public"}
-//                                          forEvent:@"Share"];
-  
   NSData *imageData = [NSData dataWithData:UIImageJPEGRepresentation(userExportedImage, .75)];
   NSMutableDictionary *snap = [NSMutableDictionary dictionary];
   snap[@"image"] = imageData;
-  snap[@"location"] = [[DataManager getInstance] currentLocation];
-  [UserServiceManager createSnap:snap];
+  snap[@"location"] = [DataManager currentLocation];
+  //Delete this key in the future
+  snap[@"channel"] = @"General";
+  [UserServiceManager createSnap: @{ @"snap": snap } Onsuccess:^(NSDictionary *responseObject) {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+  } Onfailure:^(NSError *error) {
+    //TODO
+  }];
 }
 
 - (NSString*)generateFileNameWithExtension:(NSString *)extensionString {
@@ -468,8 +435,6 @@
     
     return fileName;
 }
-
-
 
 - (IBAction)iba_toggle_public:(UIButton *)sender{
     if (![self locationGranted]){

@@ -11,14 +11,15 @@
 @implementation UserServiceManager
 
 + (void)registerUserWith:(NSString *)uuid {
-  if (![[NSUserDefaults standardUserDefaults] objectForKey:@"okjuxUserID"]) {
+  if (![[NSUserDefaults standardUserDefaults] objectForKey:@"okjuxUserID"] != nil) {
     NSDictionary *params = @{ @"user" : @{ @"UUID" : uuid} };
     
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
       [[CommunicationManager sharedManager] sendPostRequestWithURL: [NSString stringWithFormat:@"%@users", [CommunicationManager serverURL]]
                                                          AndParams: params
                                                            Success: ^(id response) {
-                                                              [DataManager storeUser: response[@"user"][@"id"]];
+                                                             [DataManager storeUser: response[@"user"][@"id"]];
+                                                             [DataManager storeDeviceToken:uuid];
                                                            }
                                                            Failure: ^(id failure){
                                                              //TODO
@@ -42,8 +43,8 @@
     });
 }
 
-+ (void)createSnap:(NSDictionary *)params {
-  if (![[NSUserDefaults standardUserDefaults] objectForKey:@"okjuxUserID"]) {
++ (void)createSnap:(NSDictionary *)params Onsuccess:(void(^)(NSDictionary* responseObject))success Onfailure :(void(^)(NSError* error))failure{
+  if ([[NSUserDefaults standardUserDefaults] objectForKey:@"okjuxUserID"] != nil) {
     NSString *userId = [DataManager userID];
     
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
@@ -54,9 +55,7 @@
                                                                NSLog(@"Success");
                                                              });
                                                            }
-                                                           Failure: ^(id failure){
-                                                             //TODO
-                                                           }];
+                                                           Failure: failure];
     });
   }
 }
