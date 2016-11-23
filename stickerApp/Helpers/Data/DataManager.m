@@ -50,4 +50,16 @@
     return [defaults objectForKey:@"okjuxDeviceToken"];
 }
 
++ (void)storeCurrentLocation:(NSArray *)location {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  [defaults setObject:location[0] forKey:@"okjuxLatitude"];
+  [defaults setObject:location[1] forKey:@"okjuxLongitude"];
+  [defaults synchronize];
+}
+
++ (NSString*)currentLocation {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  return [NSString stringWithFormat:@"(%@,%@)", [defaults objectForKey:@"okjuxLatitude"], [defaults objectForKey:@"okjuxLongitude"]];
+}
+
 @end

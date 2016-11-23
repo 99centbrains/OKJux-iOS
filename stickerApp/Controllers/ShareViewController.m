@@ -22,6 +22,8 @@
 #import "JPSThumbnailAnnotation.h"
 #import "OMGMapAnnotation.h"
 #import "TMCache.h"
+#import "DataManager.h"
+#import "UserServiceManager.h"
 
 @interface ShareViewController ()<MFMessageComposeViewControllerDelegate, UIDocumentInteractionControllerDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate, SKStoreProductViewControllerDelegate> {
     
@@ -414,41 +416,47 @@
 
 #pragma PUBLISH PUBLIC
 - (IBAction)iba_publish:(id)sender{
-    PFFile *file= [PFFile fileWithData:UIImagePNGRepresentation(userExportedImage)
-                           contentType:@"image/png"];
-    [file saveInBackground];
-    
-    PFFile *thumbnail= [PFFile fileWithData:UIImagePNGRepresentation([self scaledImageWithImage:userExportedImage]) contentType:@"image/png"];
-    [thumbnail saveInBackground];
-    
-    CLLocationCoordinate2D zoomLocation;
-    zoomLocation.latitude = [DataHolder DataHolderSharedInstance].userGeoPoint.latitude;
-    zoomLocation.longitude = [DataHolder DataHolderSharedInstance].userGeoPoint.longitude;
-    
-    PFGeoPoint * geoPoint= [PFGeoPoint geoPointWithLatitude:zoomLocation.latitude longitude:zoomLocation.longitude];
-    
-    PFObject *obj = [PFObject objectWithClassName:@"snap"];
-    obj[@"location"] = geoPoint;
-    obj[@"name"] = filename;
-    obj[@"image"] = file;
-    obj[@"thumbnail"] = thumbnail;
-    obj[@"likes"] = [NSArray array];
-    obj[@"dislikes"] = [NSArray array];
-    obj[@"flaggers"] = [NSArray array];
-    obj[@"netlikes"] = [NSNumber numberWithInt:0];
-    obj[@"flagged"] = [NSNumber numberWithInt:0];
-    obj[@"hidden"] = [NSNumber numberWithBool:NO];
-    obj[@"userId"] = [DataHolder DataHolderSharedInstance].userObject;
-    obj[@"channels"] = @"General";
-    [obj saveInBackground];
-    
-    NSInteger score = [[DataHolder DataHolderSharedInstance].userObject[@"points"] integerValue] + kParsePostSnap;
-    [DataHolder DataHolderSharedInstance].userObject[@"points"] = [NSNumber numberWithInteger:score];
-    [[DataHolder DataHolderSharedInstance].userObject saveInBackground];
-    
-    
-    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Type":@"Public"}
-                                          forEvent:@"Share"];
+//    PFFile *file= [PFFile fileWithData:UIImagePNGRepresentation(userExportedImage)
+//                           contentType:@"image/png"];
+//    [file saveInBackground];
+//    
+//    PFFile *thumbnail= [PFFile fileWithData:UIImagePNGRepresentation([self scaledImageWithImage:userExportedImage]) contentType:@"image/png"];
+//    [thumbnail saveInBackground];
+//    
+//    CLLocationCoordinate2D zoomLocation;
+//    zoomLocation.latitude = [DataHolder DataHolderSharedInstance].userGeoPoint.latitude;
+//    zoomLocation.longitude = [DataHolder DataHolderSharedInstance].userGeoPoint.longitude;
+//    
+//    PFGeoPoint * geoPoint= [PFGeoPoint geoPointWithLatitude:zoomLocation.latitude longitude:zoomLocation.longitude];
+//    
+//    PFObject *obj = [PFObject objectWithClassName:@"snap"];
+//    obj[@"location"] = geoPoint;
+//    obj[@"name"] = filename;
+//    obj[@"image"] = file;
+//    obj[@"thumbnail"] = thumbnail;
+//    obj[@"likes"] = [NSArray array];
+//    obj[@"dislikes"] = [NSArray array];
+//    obj[@"flaggers"] = [NSArray array];
+//    obj[@"netlikes"] = [NSNumber numberWithInt:0];
+//    obj[@"flagged"] = [NSNumber numberWithInt:0];
+//    obj[@"hidden"] = [NSNumber numberWithBool:NO];
+//    obj[@"userId"] = [DataHolder DataHolderSharedInstance].userObject;
+//    obj[@"channels"] = @"General";
+//    [obj saveInBackground];
+//    
+//    NSInteger score = [[DataHolder DataHolderSharedInstance].userObject[@"points"] integerValue] + kParsePostSnap;
+//    [DataHolder DataHolderSharedInstance].userObject[@"points"] = [NSNumber numberWithInteger:score];
+//    [[DataHolder DataHolderSharedInstance].userObject saveInBackground];
+//    
+//    
+//    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Type":@"Public"}
+//                                          forEvent:@"Share"];
+  
+  NSData *imageData = [NSData dataWithData:UIImageJPEGRepresentation(userExportedImage, .75)];
+  NSMutableDictionary *snap = [NSMutableDictionary dictionary];
+  snap[@"image"] = imageData;
+  snap[@"location"] = [[DataManager getInstance] currentLocation];
+  [UserServiceManager createSnap:snap];
 }
 
 - (NSString*)generateFileNameWithExtension:(NSString *)extensionString {

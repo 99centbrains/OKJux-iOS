@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
+#import "DataManager.h"
 
 @interface CommunicationManager : AFHTTPSessionManager
 
@@ -24,7 +25,6 @@
 
 - (void) sendPostRequestWithURL: (NSString*) url
                       AndParams: (NSDictionary *)params
-                   AndMediaType: (NSString*)type
                         Success: (void (^)(id))_success
                         Failure: (void (^)(NSError *))_failure;
 
