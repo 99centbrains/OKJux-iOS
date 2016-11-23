@@ -77,8 +77,7 @@
 
 - (void) getCurrentUserSnaps {
     //TODO method was called was queryTopSnapsByChannel
-    //TODO here is get users snaps
-    //Get user's snaps
+    //TODO here get user's snaps
     PFQuery *query= [PFQuery queryWithClassName:@"snap"];
     query.limit = 100;
 
@@ -189,7 +188,7 @@
     [owner showSnapFullScreen:object preload:thumbnail shouldShowVoter:NO];
 }
 
-//TODO call this method, new backend
+//TODO call this method, new backend instead of showLightBoxView
 - (void)showLightBoxViewSnap:(NSInteger)itemIndex andThumbnail:(UIImage *)thumbnail withSnap:(Snap *)snap {
     OMGTabBarViewController *owner = (OMGTabBarViewController *)self.parentViewController;
     [owner showFullScreenSnap:snap preload:thumbnail shouldShowVoter:NO];

@@ -15,8 +15,9 @@
 @property (nonatomic, strong) OMGHeadSpaceViewController *ibo_headSpace;
 
 - (void)shareItem:(UIImage *)image;
+//TODO delete this method
 - (void)showSnapFullScreen:(PFObject *)snap preload:(UIImage*)thumbnail shouldShowVoter:(BOOL)voter;
-//TODO the above method will be deleted and the new one is the one below
+//TODO new backend method instead of showSnapFullScreen
 - (void)showFullScreenSnap:(Snap *)snap preload:(UIImage*)thumbnail shouldShowVoter:(BOOL)voter;
 - (void)lightBoxItemFlag:(PFObject *)flagItem;
 - (BOOL)checkUserInArray:(NSMutableArray *)array;

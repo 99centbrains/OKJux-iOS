@@ -306,7 +306,7 @@
     [self.view addSubview:_ibo_lightboxView.view];
 }
 
-//TODO this is the new backend method
+//TODO this is the new backend method instead of showSnapFullScreen
 - (void)showFullScreenSnap:(Snap *)snap preload:(UIImage*)thumbnail shouldShowVoter:(BOOL)voter {
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     UIStoryboard *mainSB = [UIStoryboard storyboardWithName:@"OMGStoryboard" bundle:[NSBundle mainBundle]];
