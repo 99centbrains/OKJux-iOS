@@ -62,7 +62,7 @@ typedef NSInteger OMGVoteSpecifier;
     }
 }
 
-
+//TODO this will be removed
 - (void)setSnapObject:(PFObject *)snapObject {
     _snapObject = snapObject;
     [_snapObject fetchInBackground];
@@ -79,6 +79,17 @@ typedef NSInteger OMGVoteSpecifier;
     [self setInt_userLikeStatus:userStatus];
 }
 
+//TODO with snap model not parse
+- (void)setSnap:(Snap *)snap {
+    _snap = snap;
+    _ibo_userSnapImage.image = _preloadImage;
+    NSString *imageUrl  = _snap.imageUrl;
+    [self setImageURL:[NSURL URLWithString:imageUrl]];
+
+    _ibo_photoKarma.text = [NSString stringWithFormat:@"%ld", (long)_snap.netlikes];
+
+    [self setUserLikeStatus:snap.isLiked noAction:snap.noAction];
+}
 
 - (void)setImageURL:(NSURL *)imageURL {
     NSLog(@"SET IAMGE URL %@", imageURL);
@@ -91,6 +102,7 @@ typedef NSInteger OMGVoteSpecifier;
     }];
 }
 
+//TODO this will be removed
 - (void)setInt_userLikeStatus:(NSInteger)int_userLikeStatus {
     _ibo_btn_likeDown.userInteractionEnabled = NO;
     _ibo_btn_likeDown.userInteractionEnabled = NO;
@@ -123,6 +135,21 @@ typedef NSInteger OMGVoteSpecifier;
     _ibo_photoKarma.text = [NSString stringWithFormat:@"%@", netLikes];
     
     NSLog(@"USER INT STATUS %ld", (long)int_userLikeStatus);
+}
+
+//TODO old setInt_userLikeStatus
+- (void)setUserLikeStatus:(BOOL)isLiked noAction:(BOOL)noAction {
+    _ibo_btn_likeDown.userInteractionEnabled = NO;
+    _ibo_btn_likeUP.userInteractionEnabled = NO;
+
+    _int_userLikeStatus = noAction ? OMGVoteNone : (isLiked ? OMGVoteYES : OMGVoteNO);
+    [_ibo_btn_likeDown setSelected: isLiked || noAction ? NO : YES];
+    [_ibo_btn_likeUP setSelected: !isLiked || noAction ? NO : YES];
+
+    _ibo_photoKarma.text = [NSString stringWithFormat:@"%ld", (long)_snap.netlikes];
+
+    _ibo_btn_likeDown.userInteractionEnabled = YES;
+    _ibo_btn_likeUP.userInteractionEnabled = YES;
 }
 
 - (void) setupFadeout {

@@ -20,15 +20,19 @@
                                                            Success: ^(id response) {
                                                              [DataManager storeUser: response[@"user"][@"id"]];
                                                              [DataManager storeDeviceToken:uuid];
+
                                                            }
                                                            Failure: ^(id failure){
                                                              //TODO
+                                                               dispatch_async(dispatch_get_main_queue(), ^(void){
+
+                                                               });
                                                            }];
     });
   }
 }
 
-+ (void)getUserSnaps:(NSString *)uuid Onsuccess:(void(^)(NSArray* responseObject))success Onfailure :(void(^)(NSError* error))failure {
++ (void)getUserSnaps:(NSString *)uuid OnSuccess:(void(^)(NSArray* responseObject ))success OnFailure :(void(^)(NSError* error))failure {
     NSDictionary *params = @{ @"user" : @{ @"user_uuid" : uuid} };
     NSString *userId = [DataManager userID];
 
@@ -36,10 +40,17 @@
         [[CommunicationManager sharedManager] sendGetRequestWithURL: [NSString stringWithFormat:@"%@users/%@/snaps", [CommunicationManager serverURL], userId]
                                                           AndParams: params
                                                             Success: ^(id response) {
-                                                              NSArray *snaps = [Snap parseSnapsFromAPIData: response];
-                                                              success(snaps);
+                                                                dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                                    NSArray *snaps = [Snap parseSnapsFromAPIData: response];
+                                                                    success(snaps);
+                                                                });
                                                             }
-                                                            Failure: failure];
+                                                            Failure: ^(NSError* error) {
+                                                                //TODO
+                                                                dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                                    failure(error);
+                                                                });
+                                                            }];
     });
 }
 

@@ -17,7 +17,6 @@
 #import "NewUserViewController.h"
 #import "StickerCategoryViewController.h"
 
-
 #import <MessageUI/MessageUI.h>
 #import <ImageIO/ImageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
@@ -28,6 +27,7 @@
 #import "PlayViewController.h"
 
 #import "AppDelegate.h"
+#import "Snap.h"
 
 @interface OMGTabBarViewController ()<UITabBarControllerDelegate, OMGLightBoxViewControllerDelegate, OMGSnapViewControllerDelegate, OMGHeadSpaceViewControllerDelegate, StickerCategoryViewControllerDelegate, MFMessageComposeViewControllerDelegate, OMGSnapVoteViewControllerDelegate>{
     BOOL camera;
@@ -292,6 +292,7 @@
 }
 
 #pragma LightboxViewer
+//TODO this will be removed
 - (void)showSnapFullScreen:(PFObject *)snap preload:(UIImage*)thumbnail shouldShowVoter:(BOOL)voter {
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     UIStoryboard *mainSB = [UIStoryboard storyboardWithName:@"OMGStoryboard" bundle:[NSBundle mainBundle]];
@@ -302,6 +303,20 @@
     _ibo_lightboxView.ibo_fade_voter.hidden = voter;
     [_ibo_lightboxView setSnapObject:snap];
     
+    [self.view addSubview:_ibo_lightboxView.view];
+}
+
+//TODO this is the new backend method
+- (void)showFullScreenSnap:(Snap *)snap preload:(UIImage*)thumbnail shouldShowVoter:(BOOL)voter {
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    UIStoryboard *mainSB = [UIStoryboard storyboardWithName:@"OMGStoryboard" bundle:[NSBundle mainBundle]];
+    _ibo_lightboxView = (OMGLightBoxViewController*)[mainSB instantiateViewControllerWithIdentifier: @"seg_OMGLightBoxViewController"];
+    _ibo_lightboxView.view.frame = self.view.frame;
+    _ibo_lightboxView.delegate = self;
+    _ibo_lightboxView.preloadImage = thumbnail;
+    _ibo_lightboxView.ibo_fade_voter.hidden = voter;
+    [_ibo_lightboxView setSnap:snap];
+
     [self.view addSubview:_ibo_lightboxView.view];
 }
 

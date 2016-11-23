@@ -17,6 +17,8 @@
 @property (assign, nonatomic) NSInteger netlikes;
 @property (assign, nonatomic) bool flagged;
 @property (assign, nonatomic) bool hidden;
+@property (assign, nonatomic) bool noAction;
+@property (assign, nonatomic) bool isLiked;
 @property (strong, nonatomic) NSString *userID;
 
 
