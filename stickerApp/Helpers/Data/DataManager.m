@@ -41,7 +41,7 @@
 
 + (void)storeDeviceToken:(NSString *)token {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:token forKey:@"okjuxDeviceToken"];
+    [defaults setObject:[token lowercaseString] forKey:@"okjuxDeviceToken"];
     [defaults synchronize];
 }
 

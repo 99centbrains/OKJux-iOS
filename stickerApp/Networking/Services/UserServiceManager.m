@@ -52,7 +52,7 @@
                                                          AndParams: params
                                                            Success: ^(id response) {
                                                              dispatch_async(dispatch_get_main_queue(), ^(void){
-                                                               NSLog(@"Success");
+                                                               success(response);
                                                              });
                                                            }
                                                            Failure: failure];
