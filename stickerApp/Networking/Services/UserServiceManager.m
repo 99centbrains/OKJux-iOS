@@ -11,7 +11,7 @@
 @implementation UserServiceManager
 
 + (void)registerUserWith:(NSString *)uuid {
-  if (![[NSUserDefaults standardUserDefaults] objectForKey:@"okjuxUserID"] != nil) {
+  if (![DataManager userExists]) {
     NSDictionary *params = @{ @"user" : @{ @"UUID" : uuid} };
     
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
@@ -20,12 +20,10 @@
                                                            Success: ^(id response) {
                                                              [DataManager storeUser: response[@"user"][@"id"]];
                                                              [DataManager storeDeviceToken:uuid];
-
                                                            }
                                                            Failure: ^(id failure){
-                                                             //TODO
                                                                dispatch_async(dispatch_get_main_queue(), ^(void){
-
+                                                                   //TODO
                                                                });
                                                            }];
     });
@@ -46,7 +44,6 @@
                                                                 });
                                                             }
                                                             Failure: ^(NSError* error) {
-                                                                //TODO
                                                                 dispatch_async(dispatch_get_main_queue(), ^(void){
                                                                     failure(error);
                                                                 });
@@ -55,7 +52,7 @@
 }
 
 + (void)createSnap:(NSDictionary *)params Onsuccess:(void(^)(NSDictionary* responseObject))success Onfailure :(void(^)(NSError* error))failure{
-  if ([[NSUserDefaults standardUserDefaults] objectForKey:@"okjuxUserID"] != nil) {
+  if ([DataManager userExists]) {
     NSString *userId = [DataManager userID];
     
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){

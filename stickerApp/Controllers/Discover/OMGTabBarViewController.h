@@ -15,9 +15,8 @@
 @property (nonatomic, strong) OMGHeadSpaceViewController *ibo_headSpace;
 
 - (void)shareItem:(UIImage *)image;
-//TODO delete this method
+//TODO next will be removed once snap model is used on all the app
 - (void)showSnapFullScreen:(PFObject *)snap preload:(UIImage*)thumbnail shouldShowVoter:(BOOL)voter;
-//TODO new backend method instead of showSnapFullScreen
 - (void)showFullScreenSnap:(Snap *)snap preload:(UIImage*)thumbnail shouldShowVoter:(BOOL)voter;
 - (void)lightBoxItemFlag:(PFObject *)flagItem;
 - (BOOL)checkUserInArray:(NSMutableArray *)array;

@@ -76,36 +76,14 @@
 }
 
 - (void) getCurrentUserSnaps {
-    //TODO method was called was queryTopSnapsByChannel
-    //TODO here get user's snaps
-    PFQuery *query= [PFQuery queryWithClassName:@"snap"];
-    query.limit = 100;
-
-    [query whereKey:@"userId" equalTo:[DataHolder DataHolderSharedInstance].userObject];
-    [query orderByDescending:@"createdAt"];
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        [DataHolder DataHolderSharedInstance].arrayMySnaps = objects;
-        [_ibo_collectionView reloadData];
-        [TAOverlay hideOverlay];
-        if ([objects count] <= 0) {
-            _ibo_notAvailableView.hidden = NO;
-        }
-    }];
-
-
-    //TODO uncomment when backend is ready
-    /*
-    [UserServiceManager getUserSnaps:[[DataManager getInstance] deviceToken] OnSuccess:^(NSArray* responseObject ) {
+    [UserServiceManager getUserSnaps:[DataManager deviceToken] OnSuccess:^(NSArray* responseObject ) {
         _mySnaps = responseObject;
         [_ibo_collectionView reloadData];
         [TAOverlay hideOverlay];
         _ibo_notAvailableView.hidden = _mySnaps.count > 0;
     } OnFailure:^(NSError *error) {
-        //TODO show error if wanted
         [TAOverlay hideOverlay];
     }];
-     */
 }
 
 - (void) updateKarma {
@@ -129,40 +107,19 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    //TODO uncomment when new backend is ready
-    //return [_mySnaps count];
-    return [[DataHolder DataHolderSharedInstance].arrayMySnaps count];
+    return [_mySnaps count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    PFObject *currentObject = [[DataHolder DataHolderSharedInstance].arrayMySnaps objectAtIndex:indexPath.item];
-    //TODO uncomment when new backend is ready
-    //Snap *snap = [_mySnaps objectAtIndex:indexPath.item];
+    Snap *snap = [_mySnaps objectAtIndex:indexPath.item];
     OMGSnapCollectionViewCell *cell = (OMGSnapCollectionViewCell *)[collectionView
                                                                     dequeueReusableCellWithReuseIdentifier:@"cell"
                                                                     forIndexPath:indexPath];
     cell.intCurrentSnap = indexPath.item;
     cell.delegate = self;
-    
-    // IMAGE LOADING
-    PFFile * imageFile;
-    if (currentObject[@"thumbnail"]) {
-        imageFile = currentObject[@"thumbnail"];
-    } else {
-        imageFile = currentObject[@"image"];
-    }
-
-    //TODO uncomment when new backend is ready
-    //NSString *imageUrl = snap.thumbnailUrl ? snap.thumbnailUrl : snap.imageUrl;
-    //[cell setThumbnailImage:[NSURL URLWithString:imageUrl]];
-    
-    [cell setThumbnailImage:[NSURL URLWithString:imageFile.url]];
-
-    //TODO uncomment when new backend is ready
-    //cell.ibo_photoKarma.text = [NSString stringWithFormat:@"%ld", (long)snap.netlikes];
-    NSNumber *netLikes= currentObject[@"netlikes"];
-    cell.ibo_photoKarma.text = [NSString stringWithFormat:@"%@", netLikes];
-
+    NSString *imageUrl = snap.thumbnailUrl ? snap.thumbnailUrl : snap.imageUrl;
+    [cell setThumbnailImage:[NSURL URLWithString:imageUrl]];
+    cell.ibo_photoKarma.text = [NSString stringWithFormat:@"%ld", (long)snap.netlikes];
     cell.ibo_voteContainer.hidden = YES;
     cell.ibo_shareBtn.hidden = YES;
     
@@ -172,23 +129,10 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     OMGSnapCollectionViewCell *featuredCell = (OMGSnapCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     UIImage *cellImage = featuredCell.ibo_userSnapImage.image;
-    NSLog(@"INDEX PATH TAP %ld", (long)indexPath.item);
-    PFObject *touchedObject = [[DataHolder DataHolderSharedInstance].arrayMySnaps objectAtIndex:indexPath.item];
-    //TODO new backend method
-    //Snap *selectedSnap = [_mySnaps objectAtIndex:indexPath.item];
-
-    //TODO new backend method
-    //[self showLightBoxViewSnap:indexPath.item andThumbnail:cellImage withSnap:selectedSnap];
-    [self showLightBoxView:indexPath.item andThumbNail:cellImage withPFObject:touchedObject];
+    Snap *selectedSnap = [_mySnaps objectAtIndex:indexPath.item];
+    [self showLightBoxViewSnap:indexPath.item andThumbnail:cellImage withSnap:selectedSnap];
 }
 
-//TODO this will be removed
-- (void)showLightBoxView:(NSInteger)itemIndex andThumbNail:(UIImage *)thumbnail withPFObject:(PFObject *)object {
-    OMGTabBarViewController *owner = (OMGTabBarViewController *)self.parentViewController;
-    [owner showSnapFullScreen:object preload:thumbnail shouldShowVoter:NO];
-}
-
-//TODO call this method, new backend instead of showLightBoxView
 - (void)showLightBoxViewSnap:(NSInteger)itemIndex andThumbnail:(UIImage *)thumbnail withSnap:(Snap *)snap {
     OMGTabBarViewController *owner = (OMGTabBarViewController *)self.parentViewController;
     [owner showFullScreenSnap:snap preload:thumbnail shouldShowVoter:NO];

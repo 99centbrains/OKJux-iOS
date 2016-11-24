@@ -24,6 +24,10 @@
     return [[defaults objectForKey:@"okjuxUserID"] stringValue];
 }
 
++ (BOOL)userExists {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"okjuxUserID"] != nil;
+}
+
 + (void)storeDeviceToken:(NSString *)token {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[token lowercaseString] forKey:@"okjuxDeviceToken"];

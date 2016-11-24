@@ -292,7 +292,7 @@
 }
 
 #pragma LightboxViewer
-//TODO this will be removed
+//TODO next will be removed once snap model is used on all the app
 - (void)showSnapFullScreen:(PFObject *)snap preload:(UIImage*)thumbnail shouldShowVoter:(BOOL)voter {
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     UIStoryboard *mainSB = [UIStoryboard storyboardWithName:@"OMGStoryboard" bundle:[NSBundle mainBundle]];
@@ -302,11 +302,10 @@
     _ibo_lightboxView.preloadImage = thumbnail;
     _ibo_lightboxView.ibo_fade_voter.hidden = voter;
     [_ibo_lightboxView setSnapObject:snap];
-    
+
     [self.view addSubview:_ibo_lightboxView.view];
 }
 
-//TODO this is the new backend method instead of showSnapFullScreen
 - (void)showFullScreenSnap:(Snap *)snap preload:(UIImage*)thumbnail shouldShowVoter:(BOOL)voter {
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     UIStoryboard *mainSB = [UIStoryboard storyboardWithName:@"OMGStoryboard" bundle:[NSBundle mainBundle]];

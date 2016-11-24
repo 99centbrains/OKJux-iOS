@@ -62,24 +62,6 @@ typedef NSInteger OMGVoteSpecifier;
     }
 }
 
-//TODO this will be removed
-- (void)setSnapObject:(PFObject *)snapObject {
-    _snapObject = snapObject;
-    [_snapObject fetchInBackground];
-    _ibo_userSnapImage.image = _preloadImage;
-    PFFile *imageFile  = _snapObject[@"image"];
-    [self setImageURL:[NSURL URLWithString:imageFile.url]] ;
-    
-    NSNumber *netLikes= _snapObject[@"netlikes"];
-    _ibo_photoKarma.text = [NSString stringWithFormat:@"%@", netLikes];
-    
-    NSInteger userStatus = [[DataHolder DataHolderSharedInstance]
-                            checkUserLikeStatus:_snapObject];
-    
-    [self setInt_userLikeStatus:userStatus];
-}
-
-//TODO with snap model not parse
 - (void)setSnap:(Snap *)snap {
     _snap = snap;
     _ibo_userSnapImage.image = _preloadImage;
@@ -102,42 +84,6 @@ typedef NSInteger OMGVoteSpecifier;
     }];
 }
 
-//TODO this will be removed
-- (void)setInt_userLikeStatus:(NSInteger)int_userLikeStatus {
-    _ibo_btn_likeDown.userInteractionEnabled = NO;
-    _ibo_btn_likeDown.userInteractionEnabled = NO;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .92134 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        _ibo_btn_likeDown.userInteractionEnabled = YES;
-        _ibo_btn_likeDown.userInteractionEnabled = YES;
-    });
-    
-    switch (int_userLikeStatus) {
-        case 0:
-            _int_userLikeStatus = OMGVoteNone;
-            [_ibo_btn_likeDown setSelected:NO];
-            [_ibo_btn_likeUP setSelected:NO];
-            break;
-        case OMGVoteYES:
-            _int_userLikeStatus = OMGVoteYES;
-            [_ibo_btn_likeDown setSelected:NO];
-            [_ibo_btn_likeUP setSelected:YES];
-            break;
-        case OMGVoteNO:
-            _int_userLikeStatus = OMGVoteNO;
-            [_ibo_btn_likeDown setSelected:YES];
-            [_ibo_btn_likeUP setSelected:NO];
-            break;
-        default:
-            break;
-    }
-
-    NSNumber *netLikes= _snapObject[@"netlikes"];
-    _ibo_photoKarma.text = [NSString stringWithFormat:@"%@", netLikes];
-    
-    NSLog(@"USER INT STATUS %ld", (long)int_userLikeStatus);
-}
-
-//TODO old setInt_userLikeStatus
 - (void)setUserLikeStatus:(BOOL)isLiked noAction:(BOOL)noAction {
     _ibo_btn_likeDown.userInteractionEnabled = NO;
     _ibo_btn_likeUP.userInteractionEnabled = NO;
@@ -162,7 +108,6 @@ typedef NSInteger OMGVoteSpecifier;
     
     fadeout = YES;
 }
-
 
 
 #pragma VOTING MECHANICS
