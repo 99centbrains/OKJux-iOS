@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Snap.h"
 
 @class OMGLightBoxViewController;
 
@@ -20,7 +21,9 @@
 
 @interface OMGLightBoxViewController : UIViewController
 
+//TODO snapObject will be removed when likes and delete are added to backend
 @property (nonatomic, strong ) PFObject *snapObject;
+@property (nonatomic, strong ) Snap *snap;
 @property (nonatomic, strong ) UIImage *preloadImage;
 
 @property (nonatomic, weak) IBOutlet UIView *ibo_fade_voter;

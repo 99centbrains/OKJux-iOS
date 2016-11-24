@@ -11,21 +11,6 @@
 
 @implementation DataManager
 
-#pragma mark Singleton
-
-+ (id)getInstance {
-    static DataManager * instance = nil;
-    if (!instance) {
-        instance = [[DataManager alloc] init];
-    }
-    return instance;
-}
-
-- (id)init {
-    if (self = [super init]) {
-    }
-    return self;
-}
 
 #pragma mark User
 + (void)storeUser:(NSString*)userID {
@@ -37,6 +22,10 @@
 + (NSString *)userID {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     return [[defaults objectForKey:@"okjuxUserID"] stringValue];
+}
+
++ (BOOL)userExists {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"okjuxUserID"] != nil;
 }
 
 + (void)storeDeviceToken:(NSString *)token {

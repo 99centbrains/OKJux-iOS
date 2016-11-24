@@ -11,7 +11,7 @@
 @implementation UserServiceManager
 
 + (void)registerUserWith:(NSString *)uuid {
-  if (![[NSUserDefaults standardUserDefaults] objectForKey:@"okjuxUserID"] != nil) {
+  if (![DataManager userExists]) {
     NSDictionary *params = @{ @"user" : @{ @"UUID" : uuid} };
     
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
@@ -22,13 +22,15 @@
                                                              [DataManager storeDeviceToken:uuid];
                                                            }
                                                            Failure: ^(id failure){
-                                                             //TODO
+                                                               dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                                   //TODO
+                                                               });
                                                            }];
     });
   }
 }
 
-+ (void)getUserSnaps:(NSString *)uuid Onsuccess:(void(^)(NSArray* responseObject))success Onfailure :(void(^)(NSError* error))failure {
++ (void)getUserSnaps:(NSString *)uuid OnSuccess:(void(^)(NSArray* responseObject ))success OnFailure :(void(^)(NSError* error))failure {
     NSDictionary *params = @{ @"user" : @{ @"user_uuid" : uuid} };
     NSString *userId = [DataManager userID];
 
@@ -36,15 +38,21 @@
         [[CommunicationManager sharedManager] sendGetRequestWithURL: [NSString stringWithFormat:@"%@users/%@/snaps", [CommunicationManager serverURL], userId]
                                                           AndParams: params
                                                             Success: ^(id response) {
-                                                              NSArray *snaps = [Snap parseSnapsFromAPIData: response];
-                                                              success(snaps);
+                                                                dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                                    NSArray *snaps = [Snap parseSnapsFromAPIData: response];
+                                                                    success(snaps);
+                                                                });
                                                             }
-                                                            Failure: failure];
+                                                            Failure: ^(NSError* error) {
+                                                                dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                                    failure(error);
+                                                                });
+                                                            }];
     });
 }
 
 + (void)createSnap:(NSDictionary *)params Onsuccess:(void(^)(NSDictionary* responseObject))success Onfailure :(void(^)(NSError* error))failure{
-  if ([[NSUserDefaults standardUserDefaults] objectForKey:@"okjuxUserID"] != nil) {
+  if ([DataManager userExists]) {
     NSString *userId = [DataManager userID];
     
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){

@@ -14,10 +14,13 @@
 @property (strong, nonatomic) NSArray *likes;
 @property (strong, nonatomic) NSArray *dislikes;
 @property (strong, nonatomic) NSArray *flaggers;
+@property (strong, nonatomic) NSArray *location;
 @property (assign, nonatomic) NSInteger netlikes;
 @property (assign, nonatomic) bool flagged;
 @property (assign, nonatomic) bool hidden;
-@property (strong, nonatomic) NSString *userID;
+@property (assign, nonatomic) bool noAction;
+@property (assign, nonatomic) bool isLiked;
+@property (assign, nonatomic) NSInteger userID;
 
 
 + (NSArray *)parseSnapsFromAPIData:(NSDictionary *)data;

@@ -30,32 +30,32 @@
 
 + (void) initializeSnap:(Snap*)aSnap withCommonData:(NSDictionary *)snap {
     aSnap.ID = [snap[@"id"] integerValue];
-    aSnap.imageUrl = [snap[@"image_url"] stringValue];
-    aSnap.thumbnailUrl = [snap[@"thumb_url"] stringValue];
-    aSnap.netlikes = [snap[@"snap_likes"] integerValue];
-    aSnap.flagged = [snap[@"is_flagged"] boolValue];
-    aSnap.hidden = [snap[@"is_hidden"] boolValue];
-    aSnap.userID = [snap[@"user_id"] stringValue];
+    aSnap.hidden = [snap[@"hidden"] boolValue];
+    aSnap.userID = [snap[@"user"][@"id"] integerValue];
+    aSnap.imageUrl = snap[@"image"][@"url"];
+    aSnap.thumbnailUrl = snap[@"image"][@"thumbnail"][@"url"];
 
-    //Parse likes and dislikes
-    NSMutableArray *likesArray = [NSMutableArray array];
-    for (NSString *like in snap[@"likes_array"]){
-        [likesArray addObject:like];
-    }
-    aSnap.likes = likesArray;
+    //TODO this will change once likes are added to backend - Parse snap like
+    aSnap.netlikes = snap[@"likes_count"] == nil ? 0 : [snap[@"likes_count"] integerValue];
 
-    NSMutableArray *dislikesArray = [NSMutableArray array];
-    for (NSString *dislike in snap[@"dislikes_array"]){
-        [dislikesArray addObject:dislike];
+    //TODO this will change once flaggers are added to backend - Parse snap flagged
+    if (snap[@"is_flagged"] == nil) {
+        aSnap.flagged = NO;
+        aSnap.flaggers = [NSArray array];
     }
-    aSnap.dislikes = dislikesArray;
 
-    //Parse flaggers
-    NSMutableArray *flaggersArray = [NSMutableArray array];
-    for (NSString *flagger in snap[@"flaggers_array"]){
-        [flaggersArray addObject:flagger];
+    //Parse user like
+    if (snap[@"liked"] == nil) {
+        aSnap.noAction = YES;
+        aSnap.isLiked = NO;
     }
-    aSnap.flaggers = flaggersArray;
+
+    //Parse location
+    NSMutableArray *locationArray = [NSMutableArray array];
+    for (NSString *coord in snap[@"location"]){
+        [locationArray addObject:coord];
+    }
+    aSnap.location = locationArray;
 }
 
 @end
