@@ -274,41 +274,19 @@ typedef NSInteger OMGVoteSpecifier;
 
 #pragma Cell Delegate
 - (void) omgSnapVOTEUP:(NSInteger)snapIndex {
-  Snap* snap = _snapsArray[snapIndex];
-  if (snap.noAction == nil) {
-    if (snap.likes) {
-      [SnapServiceManager rankSnap:snapIndex withLike:YES OnSuccess:^(NSDictionary *responseObject) {
-         [self cleanUpItems:snapIndex];
-      } OnFailure:^(NSError *error) {
-        //TODO
-      }];
-    }else if (!snap.isLiked) {
-      [SnapServiceManager rankSnap:snapIndex withLike:NO OnSuccess:^(NSDictionary *responseObject) {
-         [self cleanUpItems:snapIndex];
-      } OnFailure:^(NSError *error) {
-        //TODO
-      }];
-    }
-  }
+  [SnapServiceManager rankSnap:snapIndex withLike:YES OnSuccess:^(NSDictionary *responseObject) {
+     [self cleanUpItems:snapIndex];
+  } OnFailure:^(NSError *error) {
+    //TODO
+  }];
 }
 
 - (void) omgSnapVOTEDOWN:(NSInteger) snapIndex {
-  Snap* snap = _snapsArray[snapIndex];
-  if (snap.noAction == nil) {
-    if (snap.likes) {
-      [SnapServiceManager rankSnap:snapIndex withLike:YES OnSuccess:^(NSDictionary *responseObject) {
-        [self cleanUpItems:snapIndex];
-      } OnFailure:^(NSError *error) {
-        //TODO
-      }];
-    }else if (!snap.isLiked) {
-      [SnapServiceManager rankSnap:snapIndex withLike:NO OnSuccess:^(NSDictionary *responseObject) {
-        [self cleanUpItems:snapIndex];
-      } OnFailure:^(NSError *error) {
-        //TODO
-      }];
-    }
-  }
+  [SnapServiceManager rankSnap:snapIndex withLike:NO OnSuccess:^(NSDictionary *responseObject) {
+    [self cleanUpItems:snapIndex];
+  } OnFailure:^(NSError *error) {
+    //TODO
+  }];
 }
 
 
