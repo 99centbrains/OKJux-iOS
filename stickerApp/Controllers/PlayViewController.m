@@ -925,11 +925,53 @@ typedef enum {
         [_ibo_renderView.layer renderInContext:UIGraphicsGetCurrentContext()];
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-      
-        NSData *imgData = UIImagePNGRepresentation(image);
-        
-        [self show_shareview:image];
+
+        if ([self isBlankImage:image]) {
+            [TAOverlay hideOverlay];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Blank snap", nil)
+                                                                           message:NSLocalizedString(@"Make some art before saving :)", nil)
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+
+            UIAlertAction *okButton = [UIAlertAction actionWithTitle:NSLocalizedString(@"Ok", nil)
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:nil];
+            
+            [alert addAction:okButton];
+            [self presentViewController:alert animated:YES completion:nil];
+        } else {
+            [self show_shareview:image];
+        }
     });
+}
+
+-(BOOL)isBlankImage:(UIImage *)myImage {
+    typedef struct {
+        uint8_t red;
+        uint8_t green;
+        uint8_t blue;
+        uint8_t alpha;
+    } MyPixel_T;
+
+    CGImageRef myCGImage = [myImage CGImage];
+
+    //Get a bitmap context for the image
+    CGContextRef bitmapContext = CGBitmapContextCreate(NULL, CGImageGetWidth(myCGImage), CGImageGetHeight(myCGImage),
+                                                       CGImageGetBitsPerComponent(myCGImage), CGImageGetBytesPerRow(myCGImage),
+                                                       CGImageGetColorSpace(myCGImage), CGImageGetBitmapInfo(myCGImage));
+
+    //Draw the image into the context
+    CGContextDrawImage(bitmapContext, CGRectMake(0, 0, CGImageGetWidth(myCGImage), CGImageGetHeight(myCGImage)), myCGImage);
+
+    //Get pixel data for the image
+    MyPixel_T *pixels = CGBitmapContextGetData(bitmapContext);
+    size_t pixelCount = CGImageGetWidth(myCGImage) * CGImageGetHeight(myCGImage);
+    for(size_t i = 0; i < pixelCount; i++) {
+        MyPixel_T p = pixels[i];
+        if(p.red > 0 || p.green > 0 || p.blue > 0 || p.alpha > 0)
+            return NO;
+    }
+
+    return YES;
 }
 
 - (void)show_shareview:(UIImage *)img {
