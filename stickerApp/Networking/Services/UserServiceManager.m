@@ -18,6 +18,7 @@
       [[CommunicationManager sharedManager] sendPostRequestWithURL: [NSString stringWithFormat:@"%@users", [CommunicationManager serverURL]]
                                                          AndParams: params
                                                            Success: ^(id response) {
+                                                             [DataManager storeKarma:response[@"user"][@"karma"]];
                                                              [DataManager storeUser: response[@"user"][@"id"]];
                                                              [DataManager storeDeviceToken:uuid];
                                                            }

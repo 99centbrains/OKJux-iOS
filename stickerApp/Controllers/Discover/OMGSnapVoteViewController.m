@@ -267,75 +267,48 @@ typedef NSInteger OMGVoteSpecifier;
     if (snapIndex + 1 < [_snapsArray count]) {
         [_ibo_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:snapIndex + 1  inSection:0] atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
     }
-
+  
     OMGTabBarViewController *owner = (OMGTabBarViewController *)self.parentViewController;
     [owner.ibo_headSpace updateKarma];
 }
 
 #pragma Cell Delegate
 - (void) omgSnapVOTEUP:(NSInteger)snapIndex {
-    int pointsGranted = kParseLikingPoints;
-    int imgVote = kParseLikedPoints;
-
-    PFObject *voteSnap= [_snapsArray objectAtIndex:snapIndex];
-    [voteSnap fetchInBackground];
-    
-    NSMutableArray *likeArray= [[NSMutableArray alloc] initWithArray:voteSnap[@"likes"]];
-    NSMutableArray *disArray= [[NSMutableArray alloc] initWithArray:voteSnap[@"dislikes"]];
-    if ([(OMGTabBarViewController *)self.parentViewController checkUserInArray:likeArray]) {
-        [likeArray addObject:[DataHolder DataHolderSharedInstance].userObject.objectId];
-        voteSnap[@"dislikes"] = [self removeUserInArray:disArray];
-    } else {
-        pointsGranted = 0;
-        imgVote = 0;
+  Snap* snap = _snapsArray[snapIndex];
+  if (snap.noAction == nil) {
+    if (snap.likes) {
+      [SnapServiceManager rankSnap:snapIndex withLike:YES OnSuccess:^(NSDictionary *responseObject) {
+         [self cleanUpItems:snapIndex];
+      } OnFailure:^(NSError *error) {
+        //TODO
+      }];
+    }else if (!snap.isLiked) {
+      [SnapServiceManager rankSnap:snapIndex withLike:NO OnSuccess:^(NSDictionary *responseObject) {
+         [self cleanUpItems:snapIndex];
+      } OnFailure:^(NSError *error) {
+        //TODO
+      }];
     }
-    
-    NSInteger likesnet= [voteSnap[@"netlikes"] integerValue];
-    voteSnap[@"netlikes"] = [NSNumber numberWithInteger:likesnet + imgVote];
-    voteSnap[@"likes"] = likeArray;
-    
-    [voteSnap saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        NSInteger score = [[DataHolder DataHolderSharedInstance].userObject[@"points"] integerValue] + pointsGranted;
-        [DataHolder DataHolderSharedInstance].userObject[@"points"] = [NSNumber numberWithInteger:score];
-        [[DataHolder DataHolderSharedInstance].userObject saveInBackground];
-    }];
-    
-    [self cleanUpItems:snapIndex];
-    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Action":@"VoteUp"} forEvent:@"Explore"];
+  }
 }
 
 - (void) omgSnapVOTEDOWN:(NSInteger) snapIndex {
-    int pointsGranted = kParseLikingPoints;
-    int imgVote = kParseLikedPoints;
-
-    PFObject *voteSnap= [_snapsArray objectAtIndex:snapIndex];
-    [voteSnap fetchInBackground];
-    
-    NSMutableArray *disLikeArray= [[NSMutableArray alloc] initWithArray:voteSnap[@"dislikes"]];
-    NSMutableArray *likeArray= [[NSMutableArray alloc] initWithArray:voteSnap[@"likes"]];
-    if ([(OMGTabBarViewController *)self.parentViewController checkUserInArray:disLikeArray]) {
-        [disLikeArray addObject:[DataHolder DataHolderSharedInstance].userObject.objectId];
-        voteSnap[@"likes"] = [self removeUserInArray:likeArray];
-    } else {
-        pointsGranted = 0;
-        imgVote = 0;
+  Snap* snap = _snapsArray[snapIndex];
+  if (snap.noAction == nil) {
+    if (snap.likes) {
+      [SnapServiceManager rankSnap:snapIndex withLike:YES OnSuccess:^(NSDictionary *responseObject) {
+        [self cleanUpItems:snapIndex];
+      } OnFailure:^(NSError *error) {
+        //TODO
+      }];
+    }else if (!snap.isLiked) {
+      [SnapServiceManager rankSnap:snapIndex withLike:NO OnSuccess:^(NSDictionary *responseObject) {
+        [self cleanUpItems:snapIndex];
+      } OnFailure:^(NSError *error) {
+        //TODO
+      }];
     }
-    
-    NSInteger likesnet= [voteSnap[@"netlikes"] integerValue];
-    voteSnap[@"netlikes"] = [NSNumber numberWithInteger:likesnet - imgVote];
-    if (kAdminDebug && likesnet <= 0) {
-        voteSnap[@"netlikes"] = [NSNumber numberWithInteger:0];
-    }
-
-    voteSnap[@"dislikes"] = disLikeArray;
-    [voteSnap saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        NSInteger score = [[DataHolder DataHolderSharedInstance].userObject[@"points"] integerValue] + pointsGranted;
-        [DataHolder DataHolderSharedInstance].userObject[@"points"] = [NSNumber numberWithInteger:score];
-        [[DataHolder DataHolderSharedInstance].userObject saveInBackground];
-    }];
-    
-    [self cleanUpItems:snapIndex];
-    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Action":@"VoteDown"} forEvent:@"Explore"];
+  }
 }
 
 

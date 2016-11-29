@@ -39,6 +39,17 @@
     return [defaults objectForKey:@"okjuxDeviceToken"];
 }
 
++ (void)storeKarma:(NSString*)karma {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  [defaults setObject:karma forKey:@"okjuxKarma"];
+  [defaults synchronize];
+}
+
++ (NSInteger)karma {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  return (int)[[defaults objectForKey:@"okjuxKarma"] stringValue];
+}
+
 + (void)storeCurrentLocation:(NSArray *)location {
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   [defaults setObject:location[0] forKey:@"okjuxLatitude"];

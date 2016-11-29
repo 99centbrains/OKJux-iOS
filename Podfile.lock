@@ -30,7 +30,7 @@ PODS:
   - Flurry-iOS-SDK/FlurrySDK (7.8.0)
   - Haneke (1.0.2)
   - Instabug (6.0.2)
-  - iRate (1.11.6)
+  - iRate (1.11.7)
   - iVersion (1.11.4)
   - JPSThumbnailAnnotation (1.0.0)
   - TAOverlay (2.0.1)
@@ -64,7 +64,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   iRate:
-    :commit: 710bb0805164885bc715485cc3ba94a4b8651eb1
+    :commit: 2ae7f50a83bdf27e276bf442e04b787d6714e400
     :git: https://github.com/nicklockwood/iRate.git
 
 SPEC CHECKSUMS:
@@ -76,7 +76,7 @@ SPEC CHECKSUMS:
   Flurry-iOS-SDK: 388df247b9d92659527b608c891c7e474cd9d00e
   Haneke: 01454a67322faa0dd9d81fc0f447885044e71521
   Instabug: c6a8970311a2ebb092c0bec8d425eb4d4d4b6ad3
-  iRate: 61e558919c4a7fde63b3c22ebbd6c114a1eee658
+  iRate: adae3f183d83c925ac42d7a2e86e89e838963f57
   iVersion: 2b6ffe708672cb494ba3cab150a94800c2892e81
   JPSThumbnailAnnotation: 4b35e87788d903db3fec294e7ef44136b9f741fb
   TAOverlay: 940e37fdb45fbc9acfc73bf1089668367e3b1be6
@@ -87,4 +87,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 33c03bfce70a1e445048543b316d0e0da1426691
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.0.beta.1
