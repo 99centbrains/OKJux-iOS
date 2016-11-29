@@ -16,6 +16,7 @@
 #import "OMGLightBoxViewController.h"
 #import "NewUserViewController.h"
 #import "SwitchHeaderCollectionReusableView.h"
+#import "SnapServiceManager.h"
 
 @interface OMGSnapVoteViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, OMGSnapCollectionViewCellDelegate, OMGLightBoxViewControllerDelegate>{
     BOOL alreadyVoted;
@@ -62,7 +63,7 @@ typedef NSInteger OMGVoteSpecifier;
 
     bool_nearMe = NO;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [self queryTopSnapsByChannel:nil];
+        [self queryTopSnapsByChannel];
     });
 }
 
@@ -77,7 +78,7 @@ typedef NSInteger OMGVoteSpecifier;
 
 - (void)startRefresh:(UIRefreshControl *)refresh {
     [(UIRefreshControl *)refresh endRefreshing];
-    [self queryTopSnapsByChannel:nil];
+    [self queryTopSnapsByChannel];
 }
 
 - (void)refreshData {
@@ -93,35 +94,34 @@ typedef NSInteger OMGVoteSpecifier;
 }
 
 
-- (void) queryTopSnapsByChannel:(NSString *)channel {
+- (void) queryTopSnapsByChannel {
     _ibo_notAvailableView.hidden = YES;
-    PFQuery *query= [PFQuery queryWithClassName:@"snap"];
-    query.limit = 100;
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
     if (bool_nearMe) {
-        PFGeoPoint *geoPoint = [DataHolder DataHolderSharedInstance].userGeoPoint;
-        [query whereKey:@"location" nearGeoPoint:geoPoint withinMiles:kMaxDistance];
+        params[@"my_location"] = [DataManager currentLocation];
+        params[@"within_miles"] = [NSString stringWithFormat:@"%ld", (long)kMaxDistance];
     }
-    [query orderByDescending:@"createdAt"];
-    [query whereKey:@"hidden" equalTo:[NSNumber numberWithBool:0]];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        //ADDED
-        _snapsArray = [objects mutableCopy];
-        [TAOverlay hideOverlay];
+     
+    params[@"user_id"] = [DataManager userID];
+    params[@"type"] = bool_nearMe ? @"location" : @"by_creation";
+
+    [SnapServiceManager getSnaps:params OnSuccess:^(NSArray* responseObject ) {
+        _snapsArray = [NSMutableArray arrayWithArray:responseObject];
         [_ibo_collectionView reloadData];
+        [TAOverlay hideOverlay];
+        _ibo_notAvailableView.hidden = _snapsArray.count > 0;
         [self refreshData];
-        if ([objects count] <= 0){
-            _ibo_notAvailableView.hidden = NO;
-        }
+    } OnFailure:^(NSError *error) {
+        [TAOverlay hideOverlay];
     }];
 }
 
 #pragma Toggle Near Me
 - (IBAction)iba_toggleNear:(UISegmentedControl *)sender {
-    NSLog(@"TOGGLE TRENDING");
     [TAOverlay showOverlayWithLabel:@"Loading Snaps" Options:TAOverlayOptionOverlaySizeBar | TAOverlayOptionOverlayTypeActivityDefault ];
     [self refreshData];
     [_snapsArray removeAllObjects];
-    NSLog(@"REMOVE ALL OBJECTS %lu", (unsigned long)[_snapsArray count]);
     [_ibo_collectionView reloadData];
     
     if (sender.selectedSegmentIndex == 0) {
@@ -130,7 +130,7 @@ typedef NSInteger OMGVoteSpecifier;
         bool_nearMe = YES;
     }
     
-    [self queryTopSnapsByChannel:nil];
+    [self queryTopSnapsByChannel];
 }
 
 - (BOOL) locationGranted {
@@ -159,110 +159,88 @@ typedef NSInteger OMGVoteSpecifier;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    PFObject *currentObject = [_snapsArray objectAtIndex:indexPath.item];
+    Snap * snap = [_snapsArray objectAtIndex:indexPath.item];
     OMGSnapCollectionViewCell *cell = (OMGSnapCollectionViewCell *)[collectionView
                                                                     dequeueReusableCellWithReuseIdentifier:@"snapCell"
                                                                     forIndexPath:indexPath];
     cell.ibo_uploadDate.text = @"";
     cell.delegate = self;
-    cell.snapObject = currentObject;
+    cell.snap = snap;
     cell.intCurrentSnap = indexPath.item;
     
     // IMAGE LOADING
-    PFFile *file = currentObject[@"image"];
-    PFFile *thumb = currentObject[@"thumbnail"];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [cell setupImageView:[NSURL URLWithString:file.url] andThumbnail:[NSURL URLWithString:thumb.url]];
-    });
-    
-    NSNumber *netLikes= currentObject[@"netlikes"];
-    cell.ibo_photoKarma.text = [NSString stringWithFormat:@"%@", netLikes];
+    [cell setupImageView:[NSURL URLWithString:snap.imageUrl] andThumbnail:[NSURL URLWithString:snap.thumbnailUrl]];
+
+    cell.ibo_photoKarma.text = [NSString stringWithFormat:@"%ld", (long)snap.netlikes];
     cell.ibo_voteContainer.hidden = NO;
     cell.ibo_shareBtn.hidden = NO;
-    
-    NSDate *createdDate = currentObject.createdAt;
+
+    NSDate *createdDate = [NSDate dateWithString:snap.createdAt formatString:SERVER_FORMAT];
     NSDate *nowDate = [NSDate date];
     NSTimeInterval timerPeriod = [nowDate timeIntervalSinceDate:createdDate];
     NSDate *timeAgoDate = [NSDate dateWithTimeIntervalSinceNow:timerPeriod];
     
     NSString *timeString = [@"🕑 " stringByAppendingString:timeAgoDate.timeAgoSinceNow];
-    __block NSString *locationString;
     cell.ibo_uploadDate.text = timeString;
 
-    if (bool_nearMe) {
-        locationString = [self getUserTimeZone:currentObject];
-        cell.ibo_uploadDate.text = [timeString stringByAppendingString:locationString];
-    } else {
-        //TIMEZONE
-        CLGeocoder *reverseGeocoder = [[CLGeocoder alloc] init];
-        PFGeoPoint *geoLocation = currentObject[@"location"];
-        CLLocation *location = [[CLLocation alloc] initWithLatitude:geoLocation.latitude longitude:geoLocation.longitude];
-        
-        [reverseGeocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-             if (error) {
-                 NSLog(@"ERROR");
-                 return;
-             }
-             CLPlacemark *myPlacemark = [placemarks objectAtIndex:0];
-             NSString *country = myPlacemark.country;
-             NSString *city = myPlacemark.locality;
-             if (city != nil && country != nil) {
-                 locationString = [NSString stringWithFormat:@" 📍 %@ - %@", country, city];
-                 cell.ibo_uploadDate.text = [timeString stringByAppendingString:locationString];
-             }
-         }];
-    }
-    
-    cell.ibo_btn_likeUP.userInteractionEnabled = NO;
-    cell.ibo_btn_likeDown.userInteractionEnabled = NO;
+    [self setCellLocation:snap inCell: cell withTime:timeString];
     
     //CHECKS IF USER LIKES ALREADY
-    NSInteger userStatus = [[DataHolder DataHolderSharedInstance]
-                            checkUserLikeStatus:cell.snapObject];
-    NSLog(@"UserStatus %ld", (long)userStatus);
-
-    switch (userStatus) {
-        case 0:
-            [cell.ibo_btn_likeDown setSelected:NO];
-            [cell.ibo_btn_likeUP setSelected:NO];
-            alreadyVoted = NO;
-            break;
-        case OMGVoteYES:
-            [cell.ibo_btn_likeDown setSelected:NO];
-            [cell.ibo_btn_likeUP setSelected:YES];
-            alreadyVoted = YES;
-            break;
-        case OMGVoteNO:
-            [cell.ibo_btn_likeDown setSelected:YES];
-            [cell.ibo_btn_likeUP setSelected:NO];
-            alreadyVoted = YES;
-            break;
-        default:
-            break;
-    }
-
-    cell.ibo_btn_likeUP.userInteractionEnabled = YES;
-    cell.ibo_btn_likeDown.userInteractionEnabled = YES;
+    [self setUserStatus:snap inCell:cell];
     
     return cell;
 }
 
-- (NSString *) getUserTimeZone:(PFObject*)snap {
+- (void) setCellLocation:(Snap *)snap inCell:(OMGSnapCollectionViewCell *)cell withTime: (NSString *)timeString {
+    __block NSString *locationString;
+    if (bool_nearMe) {
+        locationString = [self getUserTimeZone:snap];
+        cell.ibo_uploadDate.text = [timeString stringByAppendingString:locationString];
+    } else {
+        //TIMEZONE
+        CLGeocoder *reverseGeocoder = [[CLGeocoder alloc] init];
+        CLLocation *location = [[CLLocation alloc] initWithLatitude:[snap.location[0] doubleValue] longitude:[snap.location[1] doubleValue]];
+
+        [reverseGeocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+            if (error) {
+                NSLog(@"ERROR");
+                return;
+            }
+            CLPlacemark *myPlacemark = [placemarks objectAtIndex:0];
+            NSString *country = myPlacemark.country;
+            NSString *city = myPlacemark.locality;
+            if (city != nil && country != nil) {
+                locationString = [NSString stringWithFormat:@" 📍 %@ - %@", country, city];
+                cell.ibo_uploadDate.text = [timeString stringByAppendingString:locationString];
+            }
+        }];
+    }
+}
+
+- (void) setUserStatus:(Snap *)snap inCell:(OMGSnapCollectionViewCell *)cell {
+    cell.ibo_btn_likeUP.userInteractionEnabled = NO;
+    cell.ibo_btn_likeDown.userInteractionEnabled = NO;
+
+    [cell.ibo_btn_likeDown setSelected: snap.isLiked || snap.noAction ? NO : YES];
+    [cell.ibo_btn_likeUP setSelected: !snap.isLiked || snap.noAction ? NO : YES];
+    alreadyVoted = snap.noAction ? NO : YES;
+
+    cell.ibo_btn_likeUP.userInteractionEnabled = YES;
+    cell.ibo_btn_likeDown.userInteractionEnabled = YES;
+}
+
+- (NSString *) getUserTimeZone:(Snap*)snap {
     NSLocale *locale = [NSLocale currentLocale];
     BOOL isMetric = [[locale objectForKey:NSLocaleUsesMetricSystem] boolValue];
     //DISTANCE
-     CLLocation *locationCurrent = [[CLLocation alloc] initWithLatitude:[DataHolder DataHolderSharedInstance].userGeoPoint.latitude
-                                                              longitude:[DataHolder DataHolderSharedInstance].userGeoPoint.longitude];
-     PFGeoPoint *snapDistance = snap[@"location"];
-     CLLocation *locationSnap = [[CLLocation alloc] initWithLatitude:snapDistance.latitude
-     longitude:snapDistance.longitude];
-     CLLocationDistance distance = [locationCurrent distanceFromLocation:locationSnap];
-    NSString *miles;
-    if (!isMetric) {
-        miles = [NSString stringWithFormat:@" 📍 %.1f Miles Away",(distance/1609.344)];
-    } else {
-        miles = [NSString stringWithFormat:@" 📍 %.1f Kilometers Away",(distance/1000)];
-    }
+    CLLocation *locationCurrent = [[CLLocation alloc] initWithLatitude:[[DataManager currentLatitud] doubleValue]
+                                                             longitude:[[DataManager currentLongitud] doubleValue]];
+
+    CLLocation *locationSnap = [[CLLocation alloc] initWithLatitude:[snap.location[0] doubleValue]
+                                                          longitude:[snap.location[1] doubleValue]];
+
+    CLLocationDistance distance = [locationCurrent distanceFromLocation:locationSnap];
+    NSString *miles = !isMetric ? [NSString stringWithFormat:@" 📍 %.1f Miles Away",(distance/1609.344)] : [NSString stringWithFormat:@" 📍 %.1f Kilometers Away",(distance/1000)];
 
     return miles;
 }
@@ -270,15 +248,15 @@ typedef NSInteger OMGVoteSpecifier;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     OMGSnapCollectionViewCell *featuredCell = (OMGSnapCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     UIImage *cellImage = featuredCell.ibo_userSnapImage.image;
-    NSLog(@"INDEX PATH TAP %ld", (long)indexPath.item);
-    PFObject *touchedObject = [_snapsArray objectAtIndex:indexPath.item];
-    [self showLightBoxView:indexPath.item andThumbNail:cellImage withPFObject:touchedObject];
+
+    Snap *selectedSnap = [_snapsArray objectAtIndex:indexPath.item];
+    [self showLightBoxViewSnap:indexPath.item andThumbnail:cellImage withSnap:selectedSnap];
 }
 
 //LIGHTBOX
-- (void)showLightBoxView:(NSInteger)itemIndex andThumbNail:(UIImage *)thumbnail withPFObject:(PFObject *)object {
+- (void)showLightBoxViewSnap:(NSInteger)itemIndex andThumbnail:(UIImage *)thumbnail withSnap:(Snap *)snap {
     OMGTabBarViewController *owner = (OMGTabBarViewController *)self.parentViewController;
-    [owner showSnapFullScreen:object preload:thumbnail shouldShowVoter:NO];
+    [owner showFullScreenSnap:snap preload:thumbnail shouldShowVoter:NO];
 }
 
 - (void)cleanUpItems:(NSInteger)snapIndex {
@@ -370,11 +348,11 @@ typedef NSInteger OMGVoteSpecifier;
 
 
 #pragma FLAG
+//TODO this will be replaced for a method that receives a Snap
 - (void) omgSnapFlagItem:(PFObject *)object {
     OMGTabBarViewController *owner = (OMGTabBarViewController *)self.parentViewController;
     [owner lightBoxItemFlag:object];
 }
-
 
 #pragma VOTING ARGUMENTS
 - (BOOL) checkUserInArray:(NSMutableArray *)array {
@@ -422,6 +400,8 @@ typedef NSInteger OMGVoteSpecifier;
     }
 }
 
+//TODO this method will be changed so that it works with Snap and User and not PFObjects
+//This method leads to nothing, last call on stack was never implemented
 - (void) iba_showUserForImage:(NSInteger) snapIndex {
     PFObject *snapObj= [_snapsArray objectAtIndex:snapIndex];
     PFUser *userObj = snapObj[@"userId"];

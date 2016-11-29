@@ -14,11 +14,14 @@
 #import "ChannelSelectViewController.h"
 #import "OMGTabBarViewController.h"
 #import "NewUserViewController.h"
+#import "SnapServiceManager.h"
+#import "DataManager.h"
 
 @interface OMGSnapViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, OMGSnapCollectionViewCellDelegate, OMGLightBoxViewControllerDelegate, ChannelSelectViewControllerDelegate>{
     BOOL alreadyVoted;
     NSInteger pagination;
     BOOL gettingData;
+    BOOL moreElements;
 }
 
 
@@ -63,7 +66,7 @@
     [_ibo_segmentControl setTitle:NSLocalizedString(@"TOGGLE_TOP", nil) forSegmentAtIndex:1];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [self queryTopSnapsByChannel:nil];
+        [self queryTopSnapsByChannel];
     });
     
     _ibo_notAvailableDescription.text = NSLocalizedString(@"PERMISSION_NO_PHOTOS", nil);
@@ -72,7 +75,7 @@
 
 - (void)startRefresh:(UIRefreshControl *)refresh {
     [(UIRefreshControl *)refresh endRefreshing];
-    [self queryTopSnapsByChannel:nil];
+    [self queryTopSnapsByChannel];
 }
 
 - (void)updateObject:(PFObject *)object {
@@ -81,47 +84,37 @@
     [_ibo_snapCollectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:objNum inSection:0]]];
 }
 
-- (void) queryTopSnapsByChannel:(NSString *)channel {
+- (void) queryTopSnapsByChannel {
     gettingData = YES;
     _ibo_notAvailableView.hidden = YES;
 
-    PFQuery *query= [PFQuery queryWithClassName:@"snap"];
-    query.limit = 40;
-    query.skip = 40 * pagination;
-    [query addDescendingOrder:@"netlikes"];
-    if (!_bool_trending){
-        [query whereKey:@"createdAt" greaterThanOrEqualTo:[NSDate dateWithTimeIntervalSinceNow:-86400]];
-    }
-    [query whereKey:@"hidden" equalTo:[NSNumber numberWithBool:0]];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"OBJECTS %lu", (unsigned long)[objects count]);
-        [self insertItemsIntoCollectionView:objects];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"user_id"] = [DataManager userID];
+    params[@"type"] = _bool_trending ? @"top" : @"rising";
+    params[@"page"] = [NSString stringWithFormat:@"%ld", (long)pagination];
+
+    [SnapServiceManager getSnaps:params OnSuccess:^(NSArray* responseObject ) {
+        moreElements = responseObject.count == SNAP_PER_PAGE;
+        [self insertItemsIntoCollectionView:responseObject];
         [TAOverlay hideOverlay];
-        if ([objects count] <= 0) {
-            _ibo_notAvailableView.hidden = NO;
-        }
+        _ibo_notAvailableView.hidden = responseObject.count > 0;
+    } OnFailure:^(NSError *error) {
+        [TAOverlay hideOverlay];
     }];
 }
 
 - (IBAction)iba_toggleTrending:(UISegmentedControl *)sender {
-    NSLog(@"TOGGLE TRENDING");
     [TAOverlay showOverlayWithLabel:@"Loading Snaps" Options:TAOverlayOptionOverlaySizeBar | TAOverlayOptionOverlayTypeActivityDefault ];
     gettingData = YES;
     pagination = 0;
     
     [self refreshData];
     [_snapsArray removeAllObjects];
-    NSLog(@"REMOVE ALL OBJECTS %lu", (unsigned long)[_snapsArray count]);
     [_ibo_snapCollectionView reloadData];
-    
-    if (sender.selectedSegmentIndex == 0) {
-        _bool_trending = NO;
-    } else {
-        _bool_trending = YES;
-    }
-    
-    NSLog(@"TOGGLE %d", _bool_trending);
-    [self queryTopSnapsByChannel:nil];
+
+    _bool_trending = sender.selectedSegmentIndex != 0;
+
+    [self queryTopSnapsByChannel];
 }
 
 - (void) insertItemsIntoCollectionView:(NSArray *)items {
@@ -141,8 +134,10 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (CGRectIntersectsRect(scrollView.bounds, CGRectMake(0, _ibo_snapCollectionView.contentSize.height, CGRectGetWidth(self.view.frame), 200)) && _ibo_snapCollectionView.contentSize.height > 0) {
         if (!gettingData) {
+        //TODO uncomment when backend is paginated
+        //if (!gettingData && moreElements) {
             pagination ++;
-            [self queryTopSnapsByChannel:nil];
+            [self queryTopSnapsByChannel];
         }
     }
 }
@@ -154,8 +149,6 @@
     }
     NSLog(@"Refresh");
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -188,23 +181,15 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    PFObject *currentObject = [_snapsArray objectAtIndex:indexPath.item];
+    Snap *snap = [_snapsArray objectAtIndex:indexPath.item];
     OMGSnapCollectionViewCell *cell = (OMGSnapCollectionViewCell *)[collectionView
                                                                     dequeueReusableCellWithReuseIdentifier:@"cell"
                                                                     forIndexPath:indexPath];
     cell.intCurrentSnap = indexPath.item;
 
     // IMAGE LOADING
-    PFFile * imageFile = currentObject[@"image"];
-    if (currentObject[@"thumbnail"]) {
-        imageFile = currentObject[@"thumbnail"];
-    } else {
-        imageFile = currentObject[@"image"];
-    }
-
-    [cell setThumbnailImage:[NSURL URLWithString:imageFile.url]];
-    NSNumber *netLikes= currentObject[@"netlikes"];
-    cell.ibo_photoKarma.text = [NSString stringWithFormat:@"%@", netLikes];
+    [cell setThumbnailImage:[NSURL URLWithString:snap.thumbnailUrl]];
+    cell.ibo_photoKarma.text = [NSString stringWithFormat:@"%ld", (long)snap.netlikes];
 
     [cell.ibo_btn_likeUP setSelected:NO];
     [cell.ibo_btn_likeDown setSelected:NO];
@@ -225,18 +210,16 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     OMGSnapCollectionViewCell *featuredCell = (OMGSnapCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     UIImage *cellImage = featuredCell.ibo_userSnapImage.image;
-    NSLog(@"INDEX PATH TAP %ld", (long)indexPath.item);
-    PFObject *touchedObject = [_snapsArray objectAtIndex:indexPath.item];
-    [self showLightBoxView:indexPath.item andThumbNail:cellImage withPFObject:touchedObject];
+
+    Snap *selectedSnap = [_snapsArray objectAtIndex:indexPath.item];
+    [self showLightBoxViewSnap:indexPath.item andThumbnail:cellImage withSnap:selectedSnap];
 }
 
 #pragma LIGHTBOX
-
-- (void)showLightBoxView:(NSInteger)itemIndex andThumbNail:(UIImage *)thumbnail withPFObject:(PFObject *)object {
+- (void)showLightBoxViewSnap:(NSInteger)itemIndex andThumbnail:(UIImage *)thumbnail withSnap:(Snap *)snap {
     OMGTabBarViewController *owner = (OMGTabBarViewController *)self.parentViewController;
-    [owner showSnapFullScreen:object preload:thumbnail shouldShowVoter:NO];
+    [owner showFullScreenSnap:snap preload:thumbnail shouldShowVoter:NO];
 }
-
 
 #pragma NO DATA AVAILABLE
 - (IBAction)iba_notAvailableAction:(id)sender{

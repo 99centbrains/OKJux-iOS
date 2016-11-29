@@ -18,5 +18,7 @@
 + (NSString*)userID;
 + (NSString*)deviceToken;
 + (NSString*)currentLocation;
++ (NSString*)currentLatitud;
++ (NSString*)currentLongitud;
 
 @end

@@ -77,6 +77,8 @@
 
 - (IBAction)iba_flagImage:(id)sender {
     [self.delegate omgSnapFlagItem:_snapObject];
+    //TODO above will be deleted instead next call will stay
+    //[self.delegate omgSnapFlagItem:_snap];
 }
 
 - (IBAction)iba_deleteItem:(id)sender {
@@ -84,6 +86,7 @@
 }
 
 - (IBAction)iba_showUser:(id)sender {
+    //TODO this is never called
     [self.delegate iba_showUserForImage:_intCurrentSnap];
 }
 

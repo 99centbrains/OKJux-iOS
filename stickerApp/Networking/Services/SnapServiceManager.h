@@ -14,6 +14,7 @@
 @interface SnapServiceManager : NSObject
 
 
-+ (void)getSnaps:(NSString*)uuid OnSuccess:(void(^)(NSArray* responseObject ))success OnFailure :(void(^)(NSError* error))failure;
++ (void)getSnaps:(NSDictionary *)params OnSuccess:(void(^)(NSArray* responseObject ))success OnFailure :(void(^)(NSError* error))failure;
+
 
 @end

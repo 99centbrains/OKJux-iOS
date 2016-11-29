@@ -11,8 +11,7 @@
 @implementation SnapServiceManager
 
 
-+ (void)getSnaps:(NSString *)uuid OnSuccess:(void(^)(NSArray* responseObject ))success OnFailure :(void(^)(NSError* error))failure {
-    NSDictionary *params = @{ @"user" : @{ @"user_uuid" : uuid} };
++ (void)getSnaps:(NSDictionary *)params OnSuccess:(void(^)(NSArray* responseObject ))success OnFailure :(void(^)(NSError* error))failure {
 
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
         [[CommunicationManager sharedManager] sendGetRequestWithURL: [NSString stringWithFormat:@"%@snaps/", [CommunicationManager serverURL]]

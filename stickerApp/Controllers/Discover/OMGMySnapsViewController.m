@@ -83,6 +83,7 @@
         _ibo_notAvailableView.hidden = _mySnaps.count > 0;
     } OnFailure:^(NSError *error) {
         [TAOverlay hideOverlay];
+        [TAOverlay showOverlayWithLabel:@"Oops! Try again later." Options:TAOverlayOptionAutoHide | TAOverlayOptionOverlaySizeBar | TAOverlayOptionOverlayTypeError ];
     }];
 }
 

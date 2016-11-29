@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Snap.h"
 
 @class OMGSnapCollectionViewCell;
 
@@ -49,7 +50,8 @@
 
 @property (nonatomic) NSInteger intCurrentSnap;
 @property (nonatomic, strong) PFObject* snapObject;
-
+//TODO delete above snapObject and leave bottom one
+@property (nonatomic, strong) Snap* snap;
 
 
 @property (nonatomic, unsafe_unretained) id <OMGSnapCollectionViewCellDelegate> delegate;

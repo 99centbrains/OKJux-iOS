@@ -306,6 +306,7 @@
     [self.view addSubview:_ibo_lightboxView.view];
 }
 
+//TODO instead of showSnapFullScreen this will be called
 - (void)showFullScreenSnap:(Snap *)snap preload:(UIImage*)thumbnail shouldShowVoter:(BOOL)voter {
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     UIStoryboard *mainSB = [UIStoryboard storyboardWithName:@"OMGStoryboard" bundle:[NSBundle mainBundle]];
@@ -366,6 +367,7 @@
 }
 
 - (void) flagImage:(PFObject *)flagObject {
+    //TODO this will change soon
     int flagValue = 0;
     [flagObject fetchInBackground];
     NSInteger likesnet= [flagObject[@"netlikes"] integerValue];
