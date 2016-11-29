@@ -34,20 +34,18 @@
     aSnap.userID = [snap[@"user"][@"id"] integerValue];
     aSnap.imageUrl = snap[@"image"][@"url"];
     aSnap.thumbnailUrl = snap[@"image"][@"thumbnail"][@"url"];
-
-    //TODO this will change once likes are added to backend - Parse snap like
     aSnap.netlikes = snap[@"likes_count"] == nil ? 0 : [snap[@"likes_count"] integerValue];
+    aSnap.noAction = snap[@"liked"] == nil;
+    aSnap.isLiked = snap[@"liked"] == nil ? NO : snap[@"liked"];
 
     //TODO this will change once flaggers are added to backend - Parse snap flagged
     if (snap[@"is_flagged"] == nil) {
-        aSnap.flagged = NO;
-        aSnap.flaggers = [NSArray array];
+        aSnap.flagged = 0;
     }
 
-    //Parse user like
-    if (snap[@"liked"] == nil) {
-        aSnap.noAction = YES;
-        aSnap.isLiked = NO;
+    //TODO this will change once created at added to backend
+    if (snap[@"created_at"] != nil) {
+        aSnap.createdAt = snap[@"created_at"];
     }
 
     //Parse location

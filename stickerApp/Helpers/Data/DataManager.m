@@ -51,4 +51,14 @@
   return [NSString stringWithFormat:@"(%@,%@)", [defaults objectForKey:@"okjuxLatitude"], [defaults objectForKey:@"okjuxLongitude"]];
 }
 
++ (NSString*)currentLatitud {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"okjuxLatitude"];
+}
+
++ (NSString*)currentLongitud {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"okjuxLongitude"];
+}
+
 @end

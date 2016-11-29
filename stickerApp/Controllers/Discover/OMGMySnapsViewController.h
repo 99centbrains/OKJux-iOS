@@ -19,6 +19,7 @@
 @interface OMGMySnapsViewController : UIViewController
 
 - (void) reloadData;
+//TODO this method is not implemented
 - (void) loadUser:(PFUser *)userBlock;
 
 @property (nonatomic, unsafe_unretained) id <OMGMySnapsViewControllerDelegate> delegate;

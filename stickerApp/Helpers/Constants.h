@@ -61,8 +61,13 @@
 #define kMinDistance 50
 #define kMaxDistance 100 /// in Miles
 
+#pragma mark Dates
+static NSString* const SERVER_FORMAT = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
 //MAP
 #define METERS_PER_MILE 16093.4
+
+#pragma mark Pagination
+static NSInteger const SNAP_PER_PAGE = 40;
 
 #endif
