@@ -36,7 +36,7 @@
     NSString *userId = [DataManager userID];
 
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-        [[CommunicationManager sharedManager] sendGetRequestWithURL: [NSString stringWithFormat:@"%@users/%@/my_snaps", [CommunicationManager serverURL], userId]
+        [[CommunicationManager sharedManager] sendGetRequestWithURL: [NSString stringWithFormat:@"%@users/%@/snaps", [CommunicationManager serverURL], userId]
                                                           AndParams: params
                                                             Success: ^(id response) {
                                                                 dispatch_async(dispatch_get_main_queue(), ^(void){

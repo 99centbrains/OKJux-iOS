@@ -104,7 +104,7 @@ typedef NSInteger OMGVoteSpecifier;
     }
      
     params[@"user_id"] = [DataManager userID];
-    params[@"type"] = bool_nearMe ? @"location" : @"by_creation";
+    params[@"type"] = bool_nearMe ? @"by_location" : @"by_creation_date";
 
     [SnapServiceManager getSnaps:params OnSuccess:^(NSArray* responseObject ) {
         _snapsArray = [NSMutableArray arrayWithArray:responseObject];

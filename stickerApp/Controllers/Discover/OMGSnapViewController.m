@@ -133,9 +133,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (CGRectIntersectsRect(scrollView.bounds, CGRectMake(0, _ibo_snapCollectionView.contentSize.height, CGRectGetWidth(self.view.frame), 200)) && _ibo_snapCollectionView.contentSize.height > 0) {
-        if (!gettingData) {
-        //TODO uncomment when backend is paginated
-        //if (!gettingData && moreElements) {
+        if (!gettingData && moreElements) {
             pagination ++;
             [self queryTopSnapsByChannel];
         }
