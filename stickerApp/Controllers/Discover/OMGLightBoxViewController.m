@@ -8,6 +8,7 @@
 
 #import "OMGLightBoxViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "SnapServiceManager.h"
 
 @interface OMGLightBoxViewController () {
     BOOL fadeout;
@@ -112,72 +113,21 @@ typedef NSInteger OMGVoteSpecifier;
 
 #pragma VOTING MECHANICS
 - (IBAction) omgSnapVOTEUP:(NSInteger) snapIndex {
-    int pointsGranted = kParseLikingPoints;
-    int imgVote = kParseLikedPoints;
-    
-    NSMutableArray *likeArray= [[NSMutableArray alloc] initWithArray:_snapObject[@"likes"]];
-    NSMutableArray *disArray= [[NSMutableArray alloc] initWithArray:_snapObject[@"dislikes"]];
-    
-    //CHECK IF USER HAS NOT LIKED PIC
-    if ([self checkUserInArray:likeArray]) {
-        [likeArray addObject:[DataHolder DataHolderSharedInstance].userObject.objectId];
-        _snapObject[@"dislikes"] = [self removeUserInArray:disArray];
-    } else {
-        pointsGranted = 0;
-        imgVote = 0;
-    }
-    
-    NSInteger likesnet = [_snapObject[@"netlikes"] integerValue];
-    
-    _snapObject[@"netlikes"] = [NSNumber numberWithInteger:likesnet + imgVote];
-    _snapObject[@"likes"] = likeArray;
-    
-    [_snapObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        //GRAND POINTS for VOTE
-        NSInteger score = [[DataHolder DataHolderSharedInstance].userObject[@"points"] integerValue] + pointsGranted;
-        [DataHolder DataHolderSharedInstance].userObject[@"points"] = [NSNumber numberWithInteger:score];
-        [[DataHolder DataHolderSharedInstance].userObject saveInBackground];
-    }];
-
-    [self setInt_userLikeStatus:OMGVoteYES];
-    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Action":@"VoteUp"} forEvent:@"Explore"];
-
+  _snap.netlikes += 1;
+  [SnapServiceManager rankSnap:snapIndex withLike:YES OnSuccess:^(NSDictionary *responseObject) {
+    _ibo_photoKarma.text = [NSString stringWithFormat:@"%ld", (long)_snap.netlikes];
+  } OnFailure:^(NSError *error) {
+    _snap.netlikes -= 1;
+  }];
 }
 
 - (IBAction) omgSnapVOTEDOWN:(NSInteger) snapIndex{
-    int pointsGranted = kParseLikingPoints;
-    int imgVote = kParseLikedPoints;
-
-    NSMutableArray *disLikeArray= [[NSMutableArray alloc] initWithArray:_snapObject[@"dislikes"]];
-    NSMutableArray *likeArray= [[NSMutableArray alloc] initWithArray:_snapObject[@"likes"]];
-    
-    if ([self checkUserInArray:disLikeArray]) {
-        [disLikeArray addObject:[DataHolder DataHolderSharedInstance].userObject.objectId];
-        _snapObject[@"likes"] = [self removeUserInArray:likeArray];
-    } else {
-        pointsGranted = 0;
-        imgVote = 0;
-    }
-    
-    NSInteger likesnet= [_snapObject[@"netlikes"] integerValue];
-    
-    _snapObject[@"netlikes"] = [NSNumber numberWithInteger:likesnet - imgVote];
-    
-    if (kAdminDebug && likesnet <= 0){
-        _snapObject[@"netlikes"] = [NSNumber numberWithInteger:0];
-    }
-    
-    _snapObject[@"dislikes"] = disLikeArray;
-    
-    [_snapObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        //GRAND POINTS for VOTE
-        NSInteger score = [[DataHolder DataHolderSharedInstance].userObject[@"points"] integerValue] + pointsGranted;
-        [DataHolder DataHolderSharedInstance].userObject[@"points"] = [NSNumber numberWithInteger:score];
-        [[DataHolder DataHolderSharedInstance].userObject saveInBackground];
-    }];
-    
-    [self setInt_userLikeStatus:OMGVoteNO];
-    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Action":@"VoteDown"} forEvent:@"Explore"];
+  _snap.netlikes -= 1;
+  [SnapServiceManager rankSnap:snapIndex withLike:NO OnSuccess:^(NSDictionary *responseObject) {
+    _ibo_photoKarma.text = [NSString stringWithFormat:@"%ld", (long)_snap.netlikes];
+  } OnFailure:^(NSError *error) {
+    _snap.netlikes += 1;
+  }];
 }
 
 - (BOOL) checkUserInArray:(NSMutableArray *)array {
