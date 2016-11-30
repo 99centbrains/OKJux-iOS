@@ -114,7 +114,7 @@ typedef NSInteger OMGVoteSpecifier;
 #pragma VOTING MECHANICS
 - (IBAction) omgSnapVOTEUP:(NSInteger) snapIndex {
   _snap.netlikes += 1;
-  [SnapServiceManager rankSnap:snapIndex withLike:YES OnSuccess:^(NSDictionary *responseObject) {
+  [SnapServiceManager rankSnap:_snap.ID withLike:YES OnSuccess:^(NSDictionary *responseObject) {
     _ibo_photoKarma.text = [NSString stringWithFormat:@"%ld", (long)_snap.netlikes];
   } OnFailure:^(NSError *error) {
     _snap.netlikes -= 1;
@@ -123,7 +123,7 @@ typedef NSInteger OMGVoteSpecifier;
 
 - (IBAction) omgSnapVOTEDOWN:(NSInteger) snapIndex{
   _snap.netlikes -= 1;
-  [SnapServiceManager rankSnap:snapIndex withLike:NO OnSuccess:^(NSDictionary *responseObject) {
+  [SnapServiceManager rankSnap:_snap.ID withLike:NO OnSuccess:^(NSDictionary *responseObject) {
     _ibo_photoKarma.text = [NSString stringWithFormat:@"%ld", (long)_snap.netlikes];
   } OnFailure:^(NSError *error) {
     _snap.netlikes += 1;

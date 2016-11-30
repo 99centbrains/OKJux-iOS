@@ -32,8 +32,8 @@
 }
 
 + (void)rankSnap:(NSInteger)snapID withLike:(BOOL)like OnSuccess:(void(^)(NSDictionary* responseObject ))success OnFailure :(void(^)(NSError* error))failure {
-  if (![DataManager userExists]) {
-    NSDictionary *params = @{ @"user": @{ @"userID" : [DataManager userID], @"UUID": [[[UIDevice currentDevice] identifierForVendor] UUIDString] } };
+  if ([DataManager userExists]) {
+    NSDictionary *params = @{ @"user": @{ @"id" : [DataManager userID], @"UUID": [DataManager deviceToken] } };
     NSString* url = [NSString stringWithFormat:@"%@snaps/%ld/%@", [CommunicationManager serverURL], (long)snapID, like ? @"like" : @"dislike"];
     
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){

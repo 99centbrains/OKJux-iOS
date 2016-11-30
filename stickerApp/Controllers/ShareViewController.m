@@ -413,16 +413,19 @@
 
 #pragma PUBLISH PUBLIC
 - (IBAction)iba_publish:(id)sender{
-  NSData *imageData = [NSData dataWithData:UIImageJPEGRepresentation(userExportedImage, .75)];
+  [TAOverlay showOverlayWithLabel:@"Saving Snap" Options:TAOverlayOptionOverlaySizeBar | TAOverlayOptionOverlayTypeActivityDefault ];
+  NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(userExportedImage)];
   NSMutableDictionary *snap = [NSMutableDictionary dictionary];
   snap[@"image"] = imageData;
   snap[@"location"] = [DataManager currentLocation];
   //Delete this key in the future
   snap[@"channel"] = @"General";
   [UserServiceManager createSnap: @{ @"snap": snap } Onsuccess:^(NSDictionary *responseObject) {
+    [TAOverlay hideOverlay];
     [self.navigationController popToRootViewControllerAnimated:YES];
   } Onfailure:^(NSError *error) {
-    //TODO
+    [TAOverlay hideOverlay];
+    [TAOverlay showOverlayWithLabel:@"Oops! Try again later." Options:TAOverlayOptionAutoHide | TAOverlayOptionOverlaySizeBar | TAOverlayOptionOverlayTypeError ];
   }];
 }
 

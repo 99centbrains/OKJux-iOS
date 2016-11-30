@@ -18,8 +18,8 @@
 #define kAdminDebug NO
 
 //IMAGES
-#define ImageMimeType @"image/jpeg"
-#define ImageExtension @"jpeg"
+#define ImageMimeType @"image/png"
+#define ImageExtension @"png"
 
 //NSUSERDEFAULSKEYS
 #define kNewUserKey @"kUserDefaultUserNew"

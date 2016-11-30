@@ -27,7 +27,7 @@
 }
 
 - (void)updateKarma {
-  NSString* newKarma = [NSString stringWithFormat:@"%ld", [DataManager karma] + 1];
+  NSString* newKarma = [NSString stringWithFormat:@"%ld", (long)([DataManager karma] + 1)];
   [DataManager storeKarma:newKarma];
   [_ibo_karmabtn setTitle:newKarma forState:UIControlStateNormal];
 }
