@@ -276,7 +276,7 @@ typedef NSInteger OMGVoteSpecifier;
 - (void) omgSnapVOTEUP:(NSInteger)snapIndex {
   Snap* snap = _snapsArray[snapIndex];
   snap.netlikes += 1;
-  [SnapServiceManager rankSnap:snapIndex withLike:YES OnSuccess:^(NSDictionary *responseObject) {
+  [SnapServiceManager rankSnap:snap.ID withLike:YES OnSuccess:^(NSDictionary *responseObject) {
     _snapsArray[snapIndex] = snap;
     [self cleanUpItems:snapIndex];
   } OnFailure:^(NSError *error) {
@@ -287,7 +287,7 @@ typedef NSInteger OMGVoteSpecifier;
 - (void) omgSnapVOTEDOWN:(NSInteger) snapIndex {
   Snap* snap = _snapsArray[snapIndex];
   snap.netlikes -= 1;
-  [SnapServiceManager rankSnap:snapIndex withLike:NO OnSuccess:^(NSDictionary *responseObject) {
+  [SnapServiceManager rankSnap:snap.ID withLike:NO OnSuccess:^(NSDictionary *responseObject) {
     _snapsArray[snapIndex] = snap;
     [self cleanUpItems:snapIndex];
   } OnFailure:^(NSError *error) {

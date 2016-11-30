@@ -47,7 +47,7 @@
 
 + (NSInteger)karma {
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  return (int)[[defaults objectForKey:@"okjuxKarma"] stringValue];
+  return [[defaults objectForKey:@"okjuxKarma"] integerValue];
 }
 
 + (void)storeCurrentLocation:(NSArray *)location {
