@@ -274,18 +274,24 @@ typedef NSInteger OMGVoteSpecifier;
 
 #pragma Cell Delegate
 - (void) omgSnapVOTEUP:(NSInteger)snapIndex {
+  Snap* snap = _snapsArray[snapIndex];
+  snap.netlikes += 1;
   [SnapServiceManager rankSnap:snapIndex withLike:YES OnSuccess:^(NSDictionary *responseObject) {
-     [self cleanUpItems:snapIndex];
+    _snapsArray[snapIndex] = snap;
+    [self cleanUpItems:snapIndex];
   } OnFailure:^(NSError *error) {
-    //TODO
+    snap.netlikes -= 1;
   }];
 }
 
 - (void) omgSnapVOTEDOWN:(NSInteger) snapIndex {
+  Snap* snap = _snapsArray[snapIndex];
+  snap.netlikes -= 1;
   [SnapServiceManager rankSnap:snapIndex withLike:NO OnSuccess:^(NSDictionary *responseObject) {
+    _snapsArray[snapIndex] = snap;
     [self cleanUpItems:snapIndex];
   } OnFailure:^(NSError *error) {
-    //TODO
+    snap.netlikes += 1;
   }];
 }
 
