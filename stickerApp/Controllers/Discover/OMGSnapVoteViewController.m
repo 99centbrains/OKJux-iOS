@@ -17,6 +17,7 @@
 #import "NewUserViewController.h"
 #import "SwitchHeaderCollectionReusableView.h"
 #import "SnapServiceManager.h"
+#import "GeneralHelper.h"
 
 @interface OMGSnapVoteViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, OMGSnapCollectionViewCellDelegate, OMGLightBoxViewControllerDelegate>{
     BOOL alreadyVoted;
@@ -175,7 +176,7 @@ typedef NSInteger OMGVoteSpecifier;
     cell.ibo_voteContainer.hidden = NO;
     cell.ibo_shareBtn.hidden = NO;
 
-    NSDate *createdDate = [NSDate dateWithString:snap.createdAt formatString:SERVER_FORMAT];
+    NSDate *createdDate = [GeneralHelper convertToLocalTimeZone:snap.createdAt];
     NSDate *nowDate = [NSDate date];
     NSTimeInterval timerPeriod = [nowDate timeIntervalSinceDate:createdDate];
     NSDate *timeAgoDate = [NSDate dateWithTimeIntervalSinceNow:timerPeriod];

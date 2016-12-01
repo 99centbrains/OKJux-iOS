@@ -3626,9 +3626,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Info_button" width="80" height="80"/>
+        <image name="Info_button" width="27" height="27"/>
         <image name="back_button" width="145" height="46"/>
-        <image name="ui_bg_gradient_01.png" width="1" height="1131"/>
+        <image name="ui_bg_gradient_01.png" width="700" height="700"/>
         <image name="ui_bg_gradient_02.png" width="1" height="200"/>
         <image name="ui_bg_gradient_03.png" width="1" height="130"/>
         <image name="ui_btn_cam_close" width="104" height="104"/>

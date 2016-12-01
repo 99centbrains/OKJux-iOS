@@ -75,6 +75,9 @@
 "PERMISSION_NO_PHOTOS" = "No hay fotos en este lugar :( Mover el mapa a una nueva área o invitar a algunos amigos!";
 "PERMISSION_NO_PUBLISHED" = "No has publicado ninguna foto pública aún.";
 "PERMISSION_NO_LOCATION" = "Se requiere acceso a la localización para ver snaps en el mundo.";
+"PERMISSION_TITLE" = "Conceder acceso";
+"PERMISSION_CAMERA" = "Debes dar acceso a la cámara para sacar una foto.";
+"PERMISSION_PHOTOS" = "Debes dar acceso a tus fotos para seleccionar una.";
 
 //PROMPT LOCATION
 "PROMPT_LOCAL_TITLE" = "Servicios de localización";

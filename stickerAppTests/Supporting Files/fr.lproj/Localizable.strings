@@ -74,6 +74,9 @@
 "PERMISSION_NO_PHOTOS" = "Pas de photos à cet endroit :( Déplacez la carte dans une nouvelle région ou inviter des amis!";
 "PERMISSION_NO_PUBLISHED" = "Vous ne avez pas publié de photos publiques.";
 "PERMISSION_NO_LOCATION" = "App location access is needed to view snaps around the world.";
+"PERMISSION_TITLE" = "Grant access";
+"PERMISSION_CAMERA" = "Camera access is needed to take a photo.";
+"PERMISSION_PHOTOS" = "Photo access is needed to select a photo.";
 
 //PROMPT LOCATION
 "PROMPT_LOCAL_TITLE" = "Services de Localisation";
