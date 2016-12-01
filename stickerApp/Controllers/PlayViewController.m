@@ -28,6 +28,7 @@
 #import "UIImage+Trim.h"
 #import <CoreImage/CoreImage.h>
 #import "PaintView.h"
+#import "GeneralHelper.h"
 
 #import "OMGPublishViewController.h"
 
@@ -400,38 +401,68 @@
 }
 
 - (IBAction)iba_photoTake:(id)sender {
-    UIImagePickerController* picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = NO;
-    
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
-      picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-      [self presentViewController:picker animated:YES completion:nil];
+    if ([GeneralHelper haveCameraAuthorization]) {
+        UIImagePickerController* picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = NO;
+
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            [self presentViewController:picker animated:YES completion:nil];
+        } else {
+            [self iba_photoChoose:sender];
+        }
     } else {
-      [self iba_photoChoose:sender];
+        UIAlertController *alert = [UIAlertController
+                                    alertControllerWithTitle:NSLocalizedString(@"PERMISSION_TITLE", nil)
+                                    message:NSLocalizedString(@"PERMISSION_CAMERA", nil)
+                                    preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction *okButton = [UIAlertAction
+                                       actionWithTitle:@"Ok"
+                                       style:UIAlertActionStyleDefault
+                                       handler:nil];
+
+        [alert addAction:okButton];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
 - (IBAction)iba_photoChoose:(id)sender {
-    UIImagePickerController* picker = [[UIImagePickerController alloc] init];
-    
-    picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = NO;
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    if ([GeneralHelper havePhotoLibraryAuthorization]) {
+        UIImagePickerController* picker = [[UIImagePickerController alloc] init];
 
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
-        if (popController){
-            [popController  dismissPopoverAnimated:NO];
+        picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = NO;
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+            if (popController){
+                [popController  dismissPopoverAnimated:NO];
+            }
+            popController = [[UIPopoverController alloc] initWithContentViewController:picker];
+            [popController setPopoverContentSize:CGSizeMake(320, 460)];
+            [popController presentPopoverFromRect:_ibo_toolbarView.frame
+                                           inView:self.view
+                         permittedArrowDirections:UIPopoverArrowDirectionAny
+                                         animated:YES ];
+        } else {
+            [self presentViewController:picker animated:YES completion:nil];
         }
-        popController = [[UIPopoverController alloc] initWithContentViewController:picker];
-        [popController setPopoverContentSize:CGSizeMake(320, 460)];
-        [popController presentPopoverFromRect:_ibo_toolbarView.frame
-                                       inView:self.view
-                     permittedArrowDirections:UIPopoverArrowDirectionAny
-                                     animated:YES ];
     } else {
-       [self presentViewController:picker animated:YES completion:nil];
+        UIAlertController *alert = [UIAlertController
+                                    alertControllerWithTitle:NSLocalizedString(@"PERMISSION_TITLE", nil)
+                                    message:NSLocalizedString(@"PERMISSION_PHOTOS", nil)
+                                    preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction *okButton = [UIAlertAction
+                                   actionWithTitle:@"Ok"
+                                   style:UIAlertActionStyleDefault
+                                   handler:nil];
+
+        [alert addAction:okButton];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 

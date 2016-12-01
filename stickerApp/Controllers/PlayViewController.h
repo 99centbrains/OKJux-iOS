@@ -10,6 +10,7 @@
 #import "SelectStickerQuickViewController.h"
 #import "PlayEditModeViewController.h"
 #import "ShareViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface PlayViewController : UIViewController <SelectStickerQuickViewControllerDelegate, UIGestureRecognizerDelegate, PlayEditModeViewControllerDelegate,ShareViewControllerDelegate, UIScrollViewDelegate>
 
