@@ -71,7 +71,7 @@ typedef NSInteger OMGVoteSpecifier;
 
     _ibo_photoKarma.text = [NSString stringWithFormat:@"%ld", (long)_snap.netlikes];
 
-    [self setUserLikeStatus:snap.isLiked noAction:snap.noAction];
+    [self setUserLikeStatus];
 }
 
 - (void)setImageURL:(NSURL *)imageURL {
@@ -85,13 +85,13 @@ typedef NSInteger OMGVoteSpecifier;
     }];
 }
 
-- (void)setUserLikeStatus:(BOOL)isLiked noAction:(BOOL)noAction {
+- (void)setUserLikeStatus {
     _ibo_btn_likeDown.userInteractionEnabled = NO;
     _ibo_btn_likeUP.userInteractionEnabled = NO;
 
-    _int_userLikeStatus = noAction ? OMGVoteNone : (isLiked ? OMGVoteYES : OMGVoteNO);
-    [_ibo_btn_likeDown setSelected: isLiked || noAction ? NO : YES];
-    [_ibo_btn_likeUP setSelected: !isLiked || noAction ? NO : YES];
+    _int_userLikeStatus = _snap.noAction ? OMGVoteNone : (_snap.isLiked ? OMGVoteYES : OMGVoteNO);
+    [_ibo_btn_likeDown setSelected: !_snap.noAction && !_snap.isLiked];
+    [_ibo_btn_likeUP setSelected: !_snap.noAction && _snap.isLiked];
 
     _ibo_photoKarma.text = [NSString stringWithFormat:@"%ld", (long)_snap.netlikes];
 
@@ -113,20 +113,30 @@ typedef NSInteger OMGVoteSpecifier;
 
 #pragma VOTING MECHANICS
 - (IBAction) omgSnapVOTEUP:(NSInteger) snapIndex {
-  _snap.netlikes += 1;
+  Snap* originalSnap = _snap;
+  _snap.netlikes += _snap.noAction ? 1 : 2;
+  _snap.noAction = NO;
+  _snap.isLiked = YES;
+  [self setUserLikeStatus];
   [SnapServiceManager rankSnap:_snap.ID withLike:YES OnSuccess:^(NSDictionary *responseObject) {
-    _ibo_photoKarma.text = [NSString stringWithFormat:@"%ld", (long)_snap.netlikes];
+    //DO SOMETHING
   } OnFailure:^(NSError *error) {
-    _snap.netlikes -= 1;
+    _snap = originalSnap;
+    [self setUserLikeStatus];
   }];
 }
 
 - (IBAction) omgSnapVOTEDOWN:(NSInteger) snapIndex{
-  _snap.netlikes -= 1;
+  Snap* originalSnap = _snap;
+  _snap.netlikes -= _snap.noAction ? 1 : 2;
+  _snap.noAction = NO;
+  _snap.isLiked = NO;
+  [self setUserLikeStatus];
   [SnapServiceManager rankSnap:_snap.ID withLike:NO OnSuccess:^(NSDictionary *responseObject) {
-    _ibo_photoKarma.text = [NSString stringWithFormat:@"%ld", (long)_snap.netlikes];
+    //DO SOMETHING
   } OnFailure:^(NSError *error) {
-    _snap.netlikes += 1;
+    _snap = originalSnap;
+    [self setUserLikeStatus];
   }];
 }
 

@@ -36,7 +36,7 @@
     aSnap.thumbnailUrl = [NSString stringWithFormat:@"%@%@", @"http://192.168.1.125:3000", snap[@"image"][@"thumbnail"][@"url"]]; //TODO this is for local testing, remove after
     aSnap.netlikes = snap[@"likes_count"] == nil ? 0 : [snap[@"likes_count"] integerValue];
     aSnap.noAction = snap[@"liked"] == nil;
-    aSnap.isLiked = snap[@"liked"] == nil ? NO : snap[@"liked"];
+    aSnap.isLiked = snap[@"liked"] == nil ? NO : [snap[@"liked"] boolValue];
 
     //TODO this will change once flaggers are added to backend - Parse snap flagged
     if (snap[@"is_flagged"] == nil) {

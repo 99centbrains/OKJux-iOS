@@ -104,7 +104,7 @@ typedef NSInteger OMGVoteSpecifier;
     }
      
     params[@"user_id"] = [DataManager userID];
-    params[@"type"] = bool_nearMe ? @"by_location" : @"by_creation_date";
+    params[@"type"] = bool_nearMe ? @"by_location" : @"newest";
 
     [SnapServiceManager getSnaps:params OnSuccess:^(NSArray* responseObject ) {
         _snapsArray = [NSMutableArray arrayWithArray:responseObject];
@@ -220,10 +220,11 @@ typedef NSInteger OMGVoteSpecifier;
 - (void) setUserStatus:(Snap *)snap inCell:(OMGSnapCollectionViewCell *)cell {
     cell.ibo_btn_likeUP.userInteractionEnabled = NO;
     cell.ibo_btn_likeDown.userInteractionEnabled = NO;
-
-    [cell.ibo_btn_likeDown setSelected: snap.isLiked || snap.noAction ? NO : YES];
-    [cell.ibo_btn_likeUP setSelected: !snap.isLiked || snap.noAction ? NO : YES];
-    alreadyVoted = snap.noAction ? NO : YES;
+  
+    [cell.ibo_btn_likeDown setSelected: !snap.noAction && !snap.isLiked];
+    [cell.ibo_btn_likeUP setSelected: !snap.noAction && snap.isLiked];
+  
+    alreadyVoted = !snap.noAction;
 
     cell.ibo_btn_likeUP.userInteractionEnabled = YES;
     cell.ibo_btn_likeDown.userInteractionEnabled = YES;
@@ -260,9 +261,7 @@ typedef NSInteger OMGVoteSpecifier;
 }
 
 - (void)cleanUpItems:(NSInteger)snapIndex {
-    if (!alreadyVoted) {
-        [_ibo_collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:snapIndex inSection:0]]];
-    }
+    [_ibo_collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:snapIndex inSection:0]]];
     
     if (snapIndex + 1 < [_snapsArray count]) {
         [_ibo_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:snapIndex + 1  inSection:0] atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
@@ -275,23 +274,27 @@ typedef NSInteger OMGVoteSpecifier;
 #pragma Cell Delegate
 - (void) omgSnapVOTEUP:(NSInteger)snapIndex {
   Snap* snap = _snapsArray[snapIndex];
-  snap.netlikes += 1;
+  snap.netlikes += snap.noAction ? 1 : 2 ;
   [SnapServiceManager rankSnap:snap.ID withLike:YES OnSuccess:^(NSDictionary *responseObject) {
+    snap.isLiked = YES;
+    snap.noAction = NO;
     _snapsArray[snapIndex] = snap;
     [self cleanUpItems:snapIndex];
   } OnFailure:^(NSError *error) {
-    snap.netlikes -= 1;
+    snap.netlikes -= snap.noAction ? 1 : 2;
   }];
 }
 
 - (void) omgSnapVOTEDOWN:(NSInteger) snapIndex {
   Snap* snap = _snapsArray[snapIndex];
-  snap.netlikes -= 1;
+  snap.netlikes -= snap.noAction ? 1 : 2;
   [SnapServiceManager rankSnap:snap.ID withLike:NO OnSuccess:^(NSDictionary *responseObject) {
+    snap.isLiked = NO;
+    snap.noAction = NO;
     _snapsArray[snapIndex] = snap;
     [self cleanUpItems:snapIndex];
   } OnFailure:^(NSError *error) {
-    snap.netlikes += 1;
+    snap.netlikes += snap.noAction ? 1 : 2;
   }];
 }
 
