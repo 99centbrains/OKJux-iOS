@@ -19,4 +19,5 @@ target 'Catwang' do
     pod 'Fabric'
     pod 'Crashlytics'
     pod 'Instabug'
+    pod 'Mixpanel'
 end

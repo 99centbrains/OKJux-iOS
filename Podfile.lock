@@ -33,6 +33,9 @@ PODS:
   - iRate (1.11.7)
   - iVersion (1.11.4)
   - JPSThumbnailAnnotation (1.0.0)
+  - Mixpanel (3.0.4):
+    - Mixpanel/Mixpanel (= 3.0.4)
+  - Mixpanel/Mixpanel (3.0.4)
   - TAOverlay (2.0.1)
   - TMCache (2.1.0)
   - TWRDownloadManager (1.1.1)
@@ -52,6 +55,7 @@ DEPENDENCIES:
   - iRate (from `https://github.com/nicklockwood/iRate.git`)
   - iVersion (~> 1.11.4)
   - JPSThumbnailAnnotation (~> 1.0.0)
+  - Mixpanel
   - TAOverlay (~> 2.0.1)
   - TMCache (~> 2.1.0)
   - TWRDownloadManager (~> 1.1.1)
@@ -79,12 +83,13 @@ SPEC CHECKSUMS:
   iRate: adae3f183d83c925ac42d7a2e86e89e838963f57
   iVersion: 2b6ffe708672cb494ba3cab150a94800c2892e81
   JPSThumbnailAnnotation: 4b35e87788d903db3fec294e7ef44136b9f741fb
+  Mixpanel: 4a2330c26556109d2f42b01e36a05eb9e2caf25e
   TAOverlay: 940e37fdb45fbc9acfc73bf1089668367e3b1be6
   TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
   TWRDownloadManager: 34193d7d1ab6e6b4243d74fa4f686cc2ed5ef40f
   UIImageEffects: 37b99fa461e4965f332ca82e92f2c22a1075ee84
   UIImageTrim: 6291b9cfb05bbc9ca0bb3e510aae4421de4ca5e4
 
-PODFILE CHECKSUM: 33c03bfce70a1e445048543b316d0e0da1426691
+PODFILE CHECKSUM: e025c7a144ac8e0bbd5344b1b669446b2214b0d5
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.0.beta.1

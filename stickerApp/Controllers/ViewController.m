@@ -21,6 +21,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <MessageUI/MessageUI.h>
 #import "OMGTabBarViewController.h"
+#import "MixPanelManager.h"
 #import "TMCache.h"
 
 
@@ -298,7 +299,8 @@
             [self sendMMSAnimated:nil withImage:[self makeAnimatedGif:@[[self getPopmoji:image withPad:5],
                                                                         [self getPopmoji:image withPad:0]
                                                                         ]]];
-            
+          
+            [MixPanelManager triggerEvent:@"Send Emoji" withData:@{ @"PackID": packID }];
             return;
             
             NSData *imgData = UIImagePNGRepresentation([self imageFixBoundingBox:image]);

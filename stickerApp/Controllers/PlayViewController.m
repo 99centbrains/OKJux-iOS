@@ -29,6 +29,7 @@
 #import <CoreImage/CoreImage.h>
 #import "PaintView.h"
 #import "GeneralHelper.h"
+#import "MixPanelManager.h"
 
 #import "OMGPublishViewController.h"
 
@@ -38,7 +39,7 @@
 
     PlayEditModeViewController *editMode;
     PlayBorderSelectViewController *borderView;
-    
+
     UITextField *fontTextField;
     CGPoint lastPoint;
     UIView *ibo_DarkView;
@@ -94,16 +95,16 @@
 
 - (void)viewDidLoad {
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
-  
+
     [self setUpCanvasViews];
     rotation = 0;
-  
+
     //Gestures
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc]
                                                  initWithTarget:self action:@selector(stickyPinch:)];
     pinchRecognizer.delegate = self;
     [_ibo_viewStickerStage addGestureRecognizer:pinchRecognizer];
-    
+
     UIRotationGestureRecognizer *roateRecognizer = [[UIRotationGestureRecognizer alloc]
                                                     initWithTarget:self action:@selector(stickyRotate:)];
     roateRecognizer.delegate = self;
@@ -114,7 +115,7 @@
     [panGesture setMinimumNumberOfTouches:1];
     [panGesture setMaximumNumberOfTouches:2];
     [_ibo_viewStickerStage addGestureRecognizer:panGesture];
-  
+
     [super viewDidLoad];
 }
 
@@ -122,9 +123,9 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     [self.navigationController setNavigationBarHidden:YES];
     [self.view becomeFirstResponder];
-    
+
     [super viewWillAppear:animated];
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(changeCurrentSticker:)
                                                  name:@"SetCurrentStickerNotification"
@@ -151,7 +152,7 @@
     if (userImage){
         [_ibo_imageUser setImage:userImage];
     }
-    
+
     //INIT StickerContainer
     _ibo_viewStickerStage = [[UIView alloc] initWithFrame:_ibo_renderView.bounds];
     _ibo_viewStickerStage.userInteractionEnabled = YES;
@@ -161,13 +162,13 @@
 #pragma tool_SelectSticker
 - (IBAction)actionSelectSticker:(id)sender {
     UIStoryboard *mainSB = [UIStoryboard storyboardWithName:@"StickerSelectStoryboard" bundle:[NSBundle mainBundle]];
-    
+
     //NAVCONT
     UINavigationController *controller = (UINavigationController*)[mainSB instantiateViewControllerWithIdentifier: @"seg_stickerNavigation"];
-    
+
     StickerCategoryViewController *newController = [controller.viewControllers objectAtIndex:0];
     newController.delegate = self;
-    
+
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         _popController = [[UIPopoverController alloc] initWithContentViewController:controller];
         //_popController.delegate = self;
@@ -186,25 +187,25 @@
 //SELECT STICKER DELEGATES
 -(void) stickerCategory:(StickerCategoryViewController *)controller didFinishPickingStickerImage:(UIImage *)image withPackID:(NSString *)packID{
     if (packID){
-        [[CBJSONDictionary shared] parse_trackAnalytic:@{@"PackID":packID} forEvent:@"Sticker"];
+      [MixPanelManager triggerEvent:@"Sticker" withData:@{ @"PackID": packID }];
     }
-    
+
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
         [_popController dismissPopoverAnimated:YES];
     } else {
          [controller dismissViewControllerAnimated:YES completion:nil];
     }
-    
+
     image = [image imageByTrimmingTransparentPixels];
     currentSticker = [[StickyImageView alloc] initWithImage:[self imageWithImage:image
                                                                               scaledToSize:CGSizeMake(640,(image.size.height/image.size.width)* 640 )]];
-    
+
     //[dragger setFrameForFrame];
     currentSticker.frame = CGRectMake(0,
                                0,
                                250,
                                (image.size.height/image.size.width) * 250);
-    
+
     currentSticker.contentMode = UIViewContentModeScaleAspectFit;
     currentSticker.center = CGPointMake(_ibo_renderView.frame.size.width/2, _ibo_renderView.frame.size.height/2);
     currentSticker.transform = CGAffineTransformMakeRotation(rotation);
@@ -215,7 +216,7 @@
 
     [self showEditMode];
     [self hideToolBar];
-    
+
     [self setBorderOnCurrentSticker];
 }
 
@@ -243,10 +244,10 @@
                                          self.view.bounds.size.height - 110,
                                          self.view.bounds.size.width,
                                          110);
-        
+
         [self.view addSubview:editMode.view];
         [self addChildViewController:editMode];
-        
+
         NSLog(@"Create Edit Mode %@", NSStringFromCGRect(editMode.view.frame));
 
         [self hideSelectedViews:@[_ibo_btn_cam, _ibo_btn_painter, _ibo_btn_text]];
@@ -257,9 +258,9 @@
     [editMode.view removeFromSuperview];
     editMode.delegate = nil;
     editMode = nil;
-    
+
     [self showSelectedViews:@[_ibo_btn_cam, _ibo_btn_painter, _ibo_btn_text]];
-  
+
     if (ibo_DarkView){
         [self action_darkenViewRemove];
     }
@@ -280,7 +281,7 @@
             outlet.alpha = 0;
         }
     } completion:^(BOOL done){
-    
+
     }];
 }
 
@@ -289,9 +290,9 @@
         for ( UIView* outlet in viewList){
             outlet.alpha = 1;
         }
-        
+
     } completion:^(BOOL done){
-        
+
     }];
 }
 
@@ -339,7 +340,7 @@
     [self hideEditMode];
     [self showToolBar];
     [self removeBorderOnCurrentSticker];
-    
+
     currentSticker = nil;
 }
 
@@ -357,12 +358,12 @@
                      animations:^ {
                          currentSticker.transform = CGAffineTransformScale(currentSticker.transform, .5, .5);
                          currentSticker.alpha = 0;
-                         
+
                      } completion:^ (BOOL finished) {
                          [currentSticker removeFromSuperview];
                          currentSticker = nil;
                      }];
-    
+
     [self showToolBar];
     [self hideEditMode];
 }
@@ -375,8 +376,7 @@
 #pragma Tool Actions
 
 - (IBAction)iba_toolCam:(id)sender {
-    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Type":@"CameraImport"} forEvent:@"Tool"];
-    
+
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Camera", @"Photo Library", nil];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         [actionSheet showFromRect:CGRectMake(0, 900, 200, 200) inView:self.view animated:YES];
@@ -479,15 +479,15 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     NSLog(@"Cropper Alloc");
-  
+
     [self photoCropUseImage:picker withImage:[info objectForKey:UIImagePickerControllerOriginalImage]];
     return;
-  
+
     CBCropViewController *photoCropViewController = [[CBCropViewController alloc]initWithNibName:@"CBCropViewController" bundle:nil];
     photoCropViewController.delegate = self;
     photoCropViewController.userImage = [info objectForKey:UIImagePickerControllerOriginalImage];
     //[picker pushViewController:photoCropViewController animated:NO];
-    
+
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera){
         [picker pushViewController:photoCropViewController animated:YES];
         [popController dismissPopoverAnimated:YES];
@@ -509,7 +509,7 @@
 
 - (void)photoCropUseImage:(id)controller withImage:(UIImage*)image{
     [TAOverlay showOverlayWithLabel:@"..." Options:(TAOverlayOptionOverlayShadow | TAOverlayOptionOverlayTypeActivityBlur)];
-    
+
     [(UIImagePickerController *)controller dismissViewControllerAnimated:YES completion:^(void){
         [TAOverlay hideOverlay];
         [self stickerCategory:nil didFinishPickingStickerImage:image withPackID:nil];
@@ -518,48 +518,47 @@
 
 #pragma PAINTTOOL
 - (IBAction)iba_toolPaint:(UIButton *)sender{
-    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Type":@"Painter"} forEvent:@"Tool"];
     if (!_painterView){
-        
+
         //INIT PAINTERVIEW
         _painterView = [[PaintView alloc] initWithFrame:_ibo_renderView.bounds];
         [_ibo_renderView insertSubview:_painterView aboveSubview:_ibo_imageUser];
         _painterView.backgroundColor = [UIColor clearColor];
         _painterView.layer.contentsScale = [[UIScreen mainScreen] scale];
-        
+
     }
-    
+
     if (!_ibo_paintViewTool){
-    
+
         _ibo_paintViewTool = (PlayPaintViewController *)[self viewControllerFromMainStoryboardWithName:@"seg_PlayPaintViewController"];
         _ibo_paintViewTool.view.frame = CGRectMake(sender.frame.origin.x,
                                                sender.frame.size.height + sender.frame.origin.y,
                                                50,
                                                160);
-        
+
         NSLog(@"Sender Frame %@", NSStringFromCGRect(_ibo_paintViewTool.view.frame));
-        
+
         _ibo_paintViewTool.delegate = self;
         [self.view addSubview:_ibo_paintViewTool.view];
-        
+
         _ibo_viewStickerStage.userInteractionEnabled = NO;
         _painterView.userInteractionEnabled = YES;
         _painterView.brushcolor = [UIColor blackColor];
         [_painterView setEraser:YES];
         _painterView.strokeSize = 20;
-        
+
         [self hideToolBar];
         [self hideSelectedViews:@[_ibo_btn_text, _ibo_btn_cam]];
-        
+
     } else {
-        
+
         //painterView.userInteractionEnabled = NO;
         _ibo_viewStickerStage.userInteractionEnabled = YES;
-        
+
         [_ibo_paintViewTool.view removeFromSuperview];
         _ibo_paintViewTool.delegate = nil;
         _ibo_paintViewTool = nil;
-        
+
         [self showToolBar];
         [self showSelectedViews:@[_ibo_btn_text, _ibo_btn_cam]];
     }
@@ -572,17 +571,17 @@
     brushView.backgroundColor = [UIColor blackColor];
     brushView.layer.borderColor = [UIColor whiteColor].CGColor;
     brushView.layer.borderWidth = 2;
-  
+
     brushView.frame = CGRectMake(self.view.frame.size.width/2 - size/2, self.view.frame.size.height/2 - size/2, size, size);
     [self.view addSubview:brushView];
-    
+
     [UIView animateWithDuration:.65 animations:^(void){
         brushView.alpha = 0;
     } completion:^(BOOL done){
         [brushView removeFromSuperview];
         brushView = nil;
     }];
-    
+
    _painterView.strokeSize = size;
 }
 
@@ -598,7 +597,6 @@
 
 #pragma TEXTTOOL
 - (IBAction)iba_toolText:(UIButton *)sender {
-    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Type":@"Text"} forEvent:@"Tool"];
     if (!_ibo_fontTool){
         _ibo_fontTool = (CBFontToolViewController *)[self viewControllerFromMainStoryboardWithName:@"seg_CBFontToolViewController"];
         _ibo_fontTool.delegate = self;
@@ -606,27 +604,27 @@
                                               sender.frame.origin.y + sender.frame.size.height,
                                               50,
                                               160);
-        
+
         NSLog(@"Sender Frame %@", NSStringFromCGRect(_ibo_fontTool.view.frame));
-        
+
         [self.view addSubview:_ibo_fontTool.view];
-        
+
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(action_keyboardWasShown:)
                                                      name:UIKeyboardDidShowNotification
                                                    object:nil];
-        
+
         //SETUP FONT
         KSLabel *fancyLabel = [[KSLabel alloc] initWithFrame:CGRectMake(10,
                                                                         _ibo_renderView.frame.size.height/2 - 100,
                                                                         _ibo_renderView.frame.size.width - 20,
                                                                         200)];
-        
+
         NSInteger fontSize = 84;
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             fontSize = 400;
         }
-      
+
         fancyLabel.text = @"";
         fancyLabel.font = [UIFont fontWithName:@"ROCKY AOE" size:fontSize];
         fancyLabel.adjustsFontSizeToFitWidth = YES;
@@ -637,25 +635,25 @@
         [fancyLabel setTextColor:[UIColor whiteColor]];
         [fancyLabel setOutlineColor:[UIColor blackColor]];
         [fancyLabel setDrawGradient:NO];
-        
+
         fontTextField = [[UITextField alloc] initWithFrame:fancyLabel.frame];
         fontTextField.delegate = self;
         fontTextField.hidden = YES;
         [fontTextField becomeFirstResponder];
         [fontTextField addTarget:self action:@selector(iba_changedText:) forControlEvents:UIControlEventEditingChanged];
-        
+
         [_ibo_viewStickerStage addSubview:fontTextField];
         [_ibo_viewStickerStage addSubview:fancyLabel];
 
         _prop_superlabel = fancyLabel;
-        
+
         [self hideToolBar];
         [self hideSelectedViews:@[_ibo_btn_painter, _ibo_btn_cam]];
     } else {
         [_ibo_fontTool.view removeFromSuperview];
         _ibo_fontTool.delegate = nil;
         _ibo_fontTool = nil;
-        
+
         [self renderFancyLabel];
         [self showSelectedViews:@[_ibo_btn_painter, _ibo_btn_cam]];
     }
@@ -678,10 +676,10 @@
     [_ibo_fontTool.view removeFromSuperview];
     _ibo_fontTool.delegate = nil;
     _ibo_fontTool = nil;
-    
+
     [self renderFancyLabel];
     //[self showSelectedViews:@[_ibo_btn_painter, _ibo_btn_cam]];
-    
+
     return YES;
 }
 
@@ -692,15 +690,15 @@
         [_prop_superlabel.layer renderInContext:UIGraphicsGetCurrentContext()];
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-        
+
         [self stickerCategory:nil didFinishPickingStickerImage:image withPackID:nil];
     } else {
         [self editModeStickerDone:nil];
     }
-    
+
     [_prop_superlabel removeFromSuperview];
     _prop_superlabel = nil;
-    
+
     [fontTextField resignFirstResponder];
     [fontTextField removeFromSuperview];
     fontTextField = nil;
@@ -716,26 +714,26 @@
 //FONT LISTER
 - (void) cbFontToolChangeFont:(CBFontToolViewController *)controller {
     [fontTextField resignFirstResponder];
-    
+
     _ibo_fontCollectionList = (CBFontCollectionViewController *)[self viewControllerFromMainStoryboardWithName:@"seg_CBFontCollectionViewController"];
     _ibo_fontCollectionList.delegate = self;
     _ibo_fontCollectionList.view.frame = self.view.frame;
     _ibo_fontCollectionList.view.frame = CGRectOffset(self.view.frame, -self.view.frame.size.width, 0);
     [self.view addSubview:_ibo_fontCollectionList.view];
-    
+
     [UIView animateWithDuration:.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
         _ibo_fontCollectionList.view.frame = CGRectOffset(self.view.frame, 0, 0);
     } completion:^(BOOL done){
-    
+
     }];
-  
+
     //SHOW FONT CONTROLLER
 }
 
 - (void)CBFontCollectionDidChooseFont:(CBFontCollectionViewController *)controller withFont:(UIFont *)font{
     [fontTextField becomeFirstResponder];
     [_prop_superlabel setFont:font];
-    
+
     if (_ibo_fontCollectionList){
         [_ibo_fontCollectionList.view removeFromSuperview];
         _ibo_fontCollectionList.delegate = nil;
@@ -749,18 +747,18 @@
         NSLog(@"Text Field");
         [fontTextField resignFirstResponder];
     }
-    
+
     if (!_ibo_colorPickerView){
-        
+
         _ibo_colorPickerView = [[CBColorPickerViewController alloc] initWithNibName:@"CBColorPickerViewController" bundle:nil];
         _ibo_colorPickerView.view.frame = CGRectMake(0, 0, 10, 10);
         _ibo_colorPickerView.highRes = YES;
         _ibo_colorPickerView.delegate = self;
         _ibo_colorPickerView.someController = sender;
         [self.view addSubview:_ibo_colorPickerView.view];
-        
+
         [UIView animateWithDuration:.5 animations:^(void){
-        
+
             _ibo_colorPickerView.view.frame = self.view.frame;
 
         }];
@@ -772,14 +770,14 @@
         NSLog(@"Sender Tag %@", [_ibo_colorPickerView.someController  class]);
         _painterView.brushcolor = [UIColor colorWithPatternImage:[self imageResize:pickedImage andResizeTo:CGSizeMake(640, 640)]];
     }
-    
+
     if ([_ibo_colorPickerView.someController  isKindOfClass:[CBFontToolViewController class]]){
         NSLog(@"Sender Tag %@", [_ibo_colorPickerView.someController  class]);
 
         [fontTextField becomeFirstResponder];
         [_prop_superlabel setTextColor:[UIColor colorWithPatternImage:[self imageResize:pickedImage andResizeTo:CGSizeMake(640, 640)]]];
     }
-    
+
     _ibo_colorPickerView.view.hidden = YES;
     [_ibo_colorPickerView.view removeFromSuperview];
     _ibo_colorPickerView.delegate = nil;
@@ -791,15 +789,15 @@
     ibo_DarkView.backgroundColor = [UIColor blackColor];
     ibo_DarkView.alpha = .50;
     [self.view addSubview:ibo_DarkView];
-    
-    
+
+
 }
 
 - (void)action_darkenViewRemove{
-    
+
     [ibo_DarkView removeFromSuperview];
     ibo_DarkView = nil;
-    
+
 }
 
 #pragma GESTURE RECOGNITION
@@ -808,7 +806,7 @@ static CGFloat previousScale = 1.0;
 
 -(void) stickyPinch:(UIPinchGestureRecognizer *)recognizer {
     if (currentSticker) {
-        
+
         if([recognizer state] == UIGestureRecognizerStateEnded) {
             currenltyScaling = NO;
             previousScale = 1.0;
@@ -816,15 +814,15 @@ static CGFloat previousScale = 1.0;
         }
         currenltyScaling = YES;
         CGFloat newScale = 1.0 - (previousScale - [recognizer scale]);
-        
+
         CGAffineTransform currentTransformation = currentSticker.transform;
         CGAffineTransform newTransform = CGAffineTransformScale(currentTransformation, newScale, newScale);
-        
+
         currentSticker.transform = newTransform;
-        
+
         previousScale = [recognizer scale];
     }
-    
+
 }
 
 BOOL currentlyRotating = NO;
@@ -838,15 +836,15 @@ static CGFloat previousRotation = 0.0;
             previousRotation = 0.0;
             return;
         }
-        
+
         currentlyRotating = YES;
         CGFloat newRotation = 0.0 - (previousRotation - [recognizer rotation]);
-        
+
         CGAffineTransform currentTransformation = currentSticker.transform;
         CGAffineTransform newTransform = CGAffineTransformRotate(currentTransformation, newRotation);
-        
+
         currentSticker.transform = newTransform;
-        
+
         previousRotation = [recognizer rotation];
     }
 }
@@ -858,24 +856,24 @@ BOOL toggleToolBar = NO;
 -(void)stickyMove:(UIPanGestureRecognizer *) recognizer {
     if (currentSticker){
         StickyImageView *view = currentSticker;
-        
+
         [[currentSticker superview] bringSubviewToFront:currentSticker];
-        
+
         if([recognizer state] == UIGestureRecognizerStateEnded) {
             currentlyRotating = NO;
             return;
         }
-        
+
         if (view == currentSticker) {
             CGPoint newCenter = [recognizer translationInView:self.view];
-            
+
             if([recognizer state] == UIGestureRecognizerStateBegan) {
                 beginX = view.center.x;
                 beginY = view.center.y;
             }
-            
+
             newCenter = CGPointMake(beginX + newCenter.x, beginY + newCenter.y);
-            
+
             [view setCenter:newCenter];
         }
     }
@@ -930,11 +928,11 @@ typedef enum {
 }
 
 - (void) animateOutView:(UIView *)sender{
-    
+
     [UIView animateWithDuration:.2 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
-        
+
         sender.alpha = 0;
-        
+
     } completion:^ (BOOL finished){
 
     }];
@@ -942,7 +940,7 @@ typedef enum {
 
 #pragma CREATE NEW
 - (IBAction)actionStartNew:(id)sender {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PHOTO_STARTOVER", nil) message:NSLocalizedString(@"PHOTO_NEW", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"PHOTO_NOTHANKS", nil) otherButtonTitles:NSLocalizedString(@"PHOTO_YES", nil), nil]; 
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PHOTO_STARTOVER", nil) message:NSLocalizedString(@"PHOTO_NEW", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"PHOTO_NOTHANKS", nil) otherButtonTitles:NSLocalizedString(@"PHOTO_YES", nil), nil];
     alertView.tag = StartOverAlertViewTag;
     [alertView show];
 }
@@ -966,7 +964,7 @@ typedef enum {
             UIAlertAction *okButton = [UIAlertAction actionWithTitle:NSLocalizedString(@"Ok", nil)
                                                                style:UIAlertActionStyleDefault
                                                              handler:nil];
-            
+
             [alert addAction:okButton];
             [self presentViewController:alert animated:YES completion:nil];
         } else {
@@ -1019,26 +1017,26 @@ typedef enum {
     UIGraphicsBeginImageContextWithOptions(_ibo_renderView.bounds.size, NO, 0);
     [_ibo_renderView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    
+
     NSLog(@"Save Image Size %@", NSStringFromCGSize(image.size));
     UIGraphicsEndImageContext();
-    
+
     callback([self imageWithImage:image]);
 }
 
 - (UIImage *)imageWithImage:(UIImage *)image {
     int resolutionScale;
-    
+
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
         resolutionScale = 2;
     } else {
         resolutionScale = 4;
     }
-        
+
     float w = image.size.width *  resolutionScale;
     float h = image.size.height *  resolutionScale;
     CGRect bounds = CGRectMake(0.0, 0.0, w, h);
-        
+
     UIGraphicsBeginImageContextWithOptions(bounds.size, NO, 0.0);
 
     [image drawInRect:CGRectMake(0, 0, bounds.size.width, bounds.size.height)];
@@ -1046,7 +1044,7 @@ typedef enum {
 
     NSLog(@"New Image Size %@", NSStringFromCGSize(newImage.size));
     UIGraphicsEndImageContext();
-        
+
     return newImage;
 }
 
