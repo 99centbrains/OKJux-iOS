@@ -88,7 +88,6 @@
 
 - (IBAction)iba_cleanCanvas:(id)sender {
     [self cbVideoCaptureDidFinish:self withImage:nil];
-    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Canvas":@"Blank"} forEvent:@"Make"];
 }
 
 - (IBAction)iba_dismissViewController:(id)sender{
@@ -144,7 +143,6 @@
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     [picker dismissViewControllerAnimated:YES completion:^(void){
         [self cbVideoCaptureDidFinish:self withImage:[self fixrotation:image]];
-        [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Canvas":@"PhotoLibrary"} forEvent:@"Make"];
     }];
 }
 

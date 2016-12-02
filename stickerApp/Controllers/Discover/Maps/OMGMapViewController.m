@@ -191,7 +191,6 @@
 #pragma ANNOTATIONS
 
 - (void) segmentView_loadSnaps {
-    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Map":@"ChangedLocation"} forEvent:@"Explore"];
 
     PFQuery *query= [PFQuery queryWithClassName:@"snap"];
     

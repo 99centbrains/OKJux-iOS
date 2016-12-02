@@ -486,7 +486,7 @@
                                 </variation>
                             </imageView>
                             <pageControl opaque="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="hhj-z5-I4S">
-                                <rect key="frame" x="37.5" y="557" width="300" height="37"/>
+                                <rect key="frame" x="38" y="557" width="300" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="55W-Jt-8fr"/>
                                     <constraint firstAttribute="width" constant="300" id="wz5-pK-lwB"/>
@@ -826,7 +826,7 @@
             <objects>
                 <navigationController storyboardIdentifier="seg_stickerNavigation" automaticallyAdjustsScrollViewInsets="NO" id="LyK-Ek-cCC" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="QUM-jD-LFH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QUM-jD-LFH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">

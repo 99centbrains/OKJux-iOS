@@ -10,6 +10,7 @@
 #import "ShareViewController.h"
 #import "ChannelSelectViewController.h"
 #import "AppDelegate.h"
+#import "MixPanelManager.h"
 
 #import "FeSlideFilterView.h"
 
@@ -166,8 +167,8 @@
         NSInteger score = [[DataHolder DataHolderSharedInstance].userObject[@"points"] integerValue] + kParsePostSnap;
         [DataHolder DataHolderSharedInstance].userObject[@"points"] = [NSNumber numberWithInteger:score];
         [[DataHolder DataHolderSharedInstance].userObject saveInBackground];
-    
-    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Type":@"Public"} forEvent:@"Share"];
+  
+    [MixPanelManager triggerEvent:@"Share" withData:@{ @"Type": @"Public" }];
     
     boolSharedPublic = YES;
     [self iba_skip:nil];

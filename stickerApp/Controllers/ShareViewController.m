@@ -24,6 +24,7 @@
 #import "TMCache.h"
 #import "DataManager.h"
 #import "UserServiceManager.h"
+#import "MixPanelManager.h"
 
 @interface ShareViewController ()<MFMessageComposeViewControllerDelegate, UIDocumentInteractionControllerDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate, SKStoreProductViewControllerDelegate> {
     
@@ -139,8 +140,7 @@
         [[UIApplication sharedApplication] openURL:url];
         
         [self sharePhotoLibraryComplete];
- 
-        [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Type":@"YoShirt"} forEvent:@"Share"];
+        [MixPanelManager triggerEvent:@"Share" withData:@{ @"Type": @"YoShirt" }];
     } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Yoshirt!" message:@"Download Yoshirt free and make your own custom clothes!" delegate:self cancelButtonTitle:@"Later" otherButtonTitles:@"Download", nil];
         alert.tag = 0;
@@ -163,7 +163,7 @@
     
     [self sharePhotoLibraryComplete];
     [TAOverlay showOverlayWithLabel:@"Saved!" Options:(TAOverlayOptionOverlayTypeSuccess | TAOverlayOptionOverlayShadow | TAOverlayOptionAutoHide)];
-    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Type":@"Photolibrary"} forEvent:@"Share"];
+    [MixPanelManager triggerEvent:@"Share" withData:@{ @"Type": @"Photolibrary" }];
 }
 
 - (void)sharePhotoLibraryComplete {
@@ -209,14 +209,14 @@
     
     [controller dismissViewControllerAnimated:YES completion:^(){
     }];
-    
-    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Type":@"MMS"} forEvent:@"Share"];
+  
+    [MixPanelManager triggerEvent:@"Share" withData:@{ @"Type": @"MMS" }];
 }
 
 
 #pragma SOCIAL SHARING
 - (IBAction)iba_shareTwitter:(id)sender {
-    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Type":@"Twitter"} forEvent:@"Share"];
+    [MixPanelManager triggerEvent:@"Share" withData:@{ @"Type": @"Twitter" }];
     
     SLComposeViewController *twController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
     SLComposeViewControllerCompletionHandler __block completionHandler =
@@ -238,7 +238,7 @@
 
 
 - (IBAction)iba_shareFacebook:(id)sender{
-    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Type":@"Facebook"} forEvent:@"Share"];
+    [MixPanelManager triggerEvent:@"Share" withData:@{ @"Type": @"Facebook" }];
     
     if ([[[UIDevice currentDevice] systemVersion] compare:@"6.0" options:NSNumericSearch] != NSOrderedAscending){
         SLComposeViewController *fbController = [SLComposeViewController
@@ -277,7 +277,7 @@
 
 
 - (IBAction)iba_shareInstagram:(id)sender{
-    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Type":@"Instagram"} forEvent:@"Share"];
+    [MixPanelManager triggerEvent:@"Share" withData:@{ @"Type": @"Instagram" }];
     
     UIImage *image = [UIImage imageWithData:UIImagePNGRepresentation(userExportedImage)];
     
@@ -333,7 +333,7 @@
 
 
 - (IBAction)iba_sendSnapchat:(id)sender{
-     [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Type":@"Snapchat"} forEvent:@"Share"];
+    [MixPanelManager triggerEvent:@"Share" withData:@{ @"Type": @"Snapchat" }];
     
     if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"snapchat://app"]]) {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Ooops" message:@"Snapchat is not installed on this Device." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
@@ -346,7 +346,7 @@
 }
 
 - (IBAction)iba_sendTumbler:(id)sender{
-    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Type":@"Tumblr"} forEvent:@"Share"];
+    [MixPanelManager triggerEvent:@"Share" withData:@{ @"Type": @"Tumblr" }];
     
     if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tumblr://app"]]) {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Ooops" message:@"Tumblr is not installed on this Device." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];

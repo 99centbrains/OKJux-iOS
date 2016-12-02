@@ -25,6 +25,7 @@
 
 #import "ShareViewController.h"
 #import "PlayViewController.h"
+#import "MixPanelManager.h"
 
 #import "AppDelegate.h"
 #import "Snap.h"
@@ -87,23 +88,23 @@
  didSelectViewController:(UIViewController *)viewController {
     switch (self.selectedIndex) {
         case 0://Snap Vote
-            [[CBJSONDictionary shared] parse_trackAnalytic:@{@"View":@"New"} forEvent:@"Explore"];
+            [MixPanelManager triggerEvent:@"Explore" withData:@{ @"View": @"New" }];
             _ibo_headSpace.ibo_titleLabel.text = NSLocalizedString(@"TABBAR_NEW_TITLE", nil);
             _ibo_omgVoteVC = (OMGSnapVoteViewController *)[self.viewControllers objectAtIndex:0];
             [_ibo_omgVoteVC refreshData];
             break;
         case 1://HOTTEST
-            [[CBJSONDictionary shared] parse_trackAnalytic:@{@"View":@"Hottest"} forEvent:@"Explore"];
+            [MixPanelManager triggerEvent:@"Explore" withData:@{ @"View": @"Hottest" }];
             _ibo_headSpace.ibo_titleLabel.text = NSLocalizedString(@"TABBAR_HOT_TITLE", nil);
             _ibo_omgsnapVC = (OMGSnapViewController *)[self.viewControllers objectAtIndex:1];
             [_ibo_omgsnapVC refreshData];
             break;
         case 2://NEWEST
-            [[CBJSONDictionary shared] parse_trackAnalytic:@{@"View":@"Map"} forEvent:@"Explore"];
+            [MixPanelManager triggerEvent:@"Explore" withData:@{ @"View": @"Map" }];
             _ibo_headSpace.ibo_titleLabel.text = NSLocalizedString(@"TABBAR_MAP_TITLE", nil);
             break;
         case 3://MORE
-            [[CBJSONDictionary shared] parse_trackAnalytic:@{@"View":@"Mystuff"} forEvent:@"Explore"];
+            [MixPanelManager triggerEvent:@"Explore" withData:@{ @"View": @"Mystuff" }];
             _ibo_headSpace.ibo_titleLabel.text = NSLocalizedString(@"TABBAR_MORE_TITLE", nil);
             break;
         default:
@@ -222,9 +223,8 @@
 //SELECT STICKER DELEGATES
 -(void) stickerCategory:(StickerCategoryViewController *)controller didFinishPickingStickerImage:(UIImage *)image
              withPackID:(NSString *)packID {
-    
-    NSLog(@"HIT IMAGE");
-    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"PackID":packID} forEvent:@"Emoji"];
+
+    [MixPanelManager triggerEvent:@"Emoji" withData:@{ @"PackID": packID }];
     [controller dismissViewControllerAnimated:YES completion:^(void){
         if(![MFMessageComposeViewController canSendText]) {
             UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device doesn't support MMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -235,7 +235,8 @@
         [self sendMMSAnimated:nil withImage:[self makeAnimatedGif:@[[self getPopmoji:image withPad:5],
                                                                     [self getPopmoji:image withPad:0]
                                                                     ]]];
-        
+      
+        [MixPanelManager triggerEvent:@"Send Emoji" withData:@{ @"PackID": packID }];
         return;
     }];
 }

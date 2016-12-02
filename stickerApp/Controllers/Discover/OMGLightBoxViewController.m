@@ -169,8 +169,6 @@ typedef NSInteger OMGVoteSpecifier;
 - (IBAction)iba_flagImage:(id)sender {
     [self.delegate lightBoxItemFlag:_snapObject];
     NSLog(@"Flag Item");
-    
-    [[CBJSONDictionary shared] parse_trackAnalytic:@{@"Action":@"Flag"} forEvent:@"Explore"];
 }
 
 - (IBAction)iba_deleteItem:(id)sender {

@@ -14,6 +14,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <iAd/iAd.h>
 #import "UIImage+ImageEffects.h"
+#import "MixPanelManager.h"
 
 #import "StickerCellCollectionViewCell.h"
 #import "StickerCategoryViewController.h"
@@ -219,7 +220,8 @@
 
 
 -(void) stickerPackChoseImage:(StickerPackCollectionViewCell *)controller didFinishPickingStickerImage:(UIImage *)image withPackID:(NSString *)packID {
-    [self.delegate selectStickerPackQuickViewController:self didFinishPickingStickerImage:image withPackID:packID];
+  [MixPanelManager triggerEvent:@"Select sticker" withData:@{ @"PackID": packID }];
+  [self.delegate selectStickerPackQuickViewController:self didFinishPickingStickerImage:image withPackID:packID];
 }
 
 - (void) stickerHeaderOpenURL:(StickerPackCollectionViewCell *)controller withURL:(NSURL *)url {

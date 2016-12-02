@@ -22,6 +22,7 @@
 #import <Instabug/Instabug.h>
 #import "UserServiceManager.h"
 #import "DataManager.h"
+#import "Mixpanel/Mixpanel.h"
 
 @implementation AppDelegate
 
@@ -60,6 +61,9 @@
   application.applicationSupportsShakeToEdit = YES;
   
   [[UIApplication sharedApplication] cancelAllLocalNotifications];
+  
+  //MIXPANEL
+  [Mixpanel sharedInstanceWithToken:[[[NSBundle mainBundle] infoDictionary] valueForKey:@"Mixpanel_token"]];
   
   //MARK: NEW BACKEND
   [self sendUserInfo];
@@ -148,7 +152,6 @@
             currentUser[@"banned"] = [NSNumber numberWithBool:NO];
             [currentUser save];
 
-            [[CBJSONDictionary shared] parse_trackAnalytic:@{@"timezone":currentInstallation.timeZone} forEvent:@"Region"];
             [[NSUserDefaults standardUserDefaults] setObject:currentUser.objectId forKey:@"userid"];
             [DataHolder DataHolderSharedInstance].userObject = currentUser;
         } else {
