@@ -100,7 +100,8 @@ typedef NSInteger OMGVoteSpecifier;
 
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     if (bool_nearMe) {
-        params[@"my_location"] = [DataManager currentLocation];
+        params[@"my_latitud"] = [DataManager currentLatitud];
+        params[@"my_longitud"] = [DataManager currentLongitud];
         params[@"within_miles"] = [NSString stringWithFormat:@"%ld", (long)kMaxDistance];
     }
      

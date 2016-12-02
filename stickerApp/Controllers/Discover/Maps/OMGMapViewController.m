@@ -19,6 +19,9 @@
 #import "OMGLightBoxViewController.h"
 #import "OMGTabBarViewController.h"
 #import "ChannelSelectViewCell.h"
+#import "DataManager.h"
+#import "SnapServiceManager.h"
+
 
 @interface OMGMapViewController ()<MKMapViewDelegate, OMGLightBoxViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate> {
     BOOL mapbrowsing;
@@ -106,14 +109,11 @@
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     if (firstLoad) {
         CLLocationCoordinate2D zoomLocation;
-        zoomLocation.latitude = [DataHolder DataHolderSharedInstance].userGeoPoint.latitude;
-        zoomLocation.longitude= [DataHolder DataHolderSharedInstance].userGeoPoint.longitude;
-        
-        NSLog(@"LOCATION LAT %f", [DataHolder DataHolderSharedInstance].userGeoPoint.latitude);
-        NSLog(@"LOCATION LAT %f", [DataHolder DataHolderSharedInstance].userGeoPoint.longitude);
-        
+        zoomLocation.latitude = [[DataManager currentLatitud] doubleValue];
+        zoomLocation.longitude= [[DataManager currentLongitud] doubleValue];
+
         MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, METERS_PER_MILE, METERS_PER_MILE);
-        
+
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [_ibo_mapView setRegion:[_ibo_mapView regionThatFits:viewRegion] animated:YES];
         });
@@ -192,62 +192,51 @@
 
 - (void) segmentView_loadSnaps {
 
-    PFQuery *query= [PFQuery queryWithClassName:@"snap"];
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        query.limit = 50;
-    } else {
-        query.limit = 20;
-    }
-    
-    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:_mapFocusCoordinates.latitude
-                                                  longitude:_mapFocusCoordinates.longitude];
+    NSString *currentLat = [NSString stringWithFormat:@"%f", _mapFocusCoordinates.latitude];
+    NSString *currentLong = [NSString stringWithFormat:@"%f", _mapFocusCoordinates.longitude];
 
-    [query whereKey:@"location" nearGeoPoint:geoPoint withinMiles:kMinDistance];
-    [query orderByDescending:@"createdAt"];
-    [query whereKey:@"hidden" equalTo:[NSNumber numberWithBool:0]];
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"FOUND %lu", (unsigned long)[objects count]);
-        NSLog(@"GEO POINT %@", NSStringFromCGPoint(CGPointMake(_mapFocusCoordinates.latitude, _mapFocusCoordinates.longitude)));
-        
-        _snapsArray = [objects copy];
-        [self displayAnnotationsForQuery:objects];
-    }];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"my_latitud"] = currentLat;
+    params[@"my_longitud"] = currentLong;
+    params[@"within_miles"] = [NSString stringWithFormat:@"%ld", (long)kMinDistance];
+    params[@"user_id"] = [DataManager userID];
+    params[@"type"] = @"by_location";
+
+    [SnapServiceManager getSnaps:params OnSuccess:^(NSArray* responseObject ) {
+        _snapsArray = [responseObject copy];
+        [self displayAnnotationsForQuery:responseObject];
+    } OnFailure:^(NSError *error) {}];
 }
 
 - (void) displayAnnotationsForQuery:(NSArray *)geoObjects {
     if (_ibo_mapView) {
         [_ibo_mapView removeAnnotations:_ibo_mapView.annotations];
     }
-    
-    for (PFObject *obj in geoObjects) {
-            //PFGEOPOINT
-            PFGeoPoint * geoPoint = obj[@"location"];
-            PFFile * imageFile = obj[@"thumbnail"];
 
-            [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                UIImage *img = [UIImage imageWithData:data];
-                
+    for (Snap *snap in geoObjects) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:snap.thumbnailUrl]];
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIImage *image  = [UIImage imageWithData:imageData];
+                NSArray *geoPoint = snap.location;
                 CLLocationCoordinate2D coord;
-                coord.latitude = geoPoint.latitude;
-                coord.longitude = geoPoint.longitude;
+                coord.latitude = [geoPoint[0] doubleValue];
+                coord.longitude = [geoPoint[1] doubleValue];
 
-                OMGMapAnnotation *anno = [[OMGMapAnnotation alloc] initWithCoordinates:coord andTitle:@"turkey" andThumbNail:img];
-                anno.snapObject = obj;
+                OMGMapAnnotation *anno = [[OMGMapAnnotation alloc] initWithCoordinates:coord andTitle:@"turkey" andThumbNail:image];
+                anno.snap = snap;
                 [_ibo_mapView addAnnotation:anno];
-            }];
+            });
+        });
     }
 }
 
-
-
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-     if ([view.annotation isKindOfClass:[OMGMapAnnotation class]]) {
+    if ([view.annotation isKindOfClass:[OMGMapAnnotation class]]) {
         OMGMapAnnotation *anno = view.annotation;
-        [self showLightBoxView:0 andThumbNail:anno.thumbnail withPFObject:anno.snapObject];
-     }
-    NSLog(@"Touched Annotation");
+        [self showLightBoxView:anno.thumbnail withSnap:anno.snap];
+    }
 }
 
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {}
@@ -281,9 +270,9 @@
 
 
 #pragma MAPLIGHTBOX
-- (void)showLightBoxView:(NSInteger)itemIndex andThumbNail:(UIImage *)thumbnail withPFObject:(PFObject *)object {
+- (void)showLightBoxView:(UIImage *)thumbnail withSnap:(Snap *)snap {
     OMGTabBarViewController *owner = (OMGTabBarViewController *)self.parentViewController;
-    [owner showSnapFullScreen:object preload:thumbnail shouldShowVoter:NO];
+    [owner showFullScreenSnap:snap preload:thumbnail shouldShowVoter:NO];
 }
 
 - (BOOL) locationGranted {
