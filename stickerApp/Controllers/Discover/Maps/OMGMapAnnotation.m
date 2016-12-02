@@ -20,7 +20,7 @@
         _thumbnail = [self imageWithImage:thumb scaledToSize:CGSizeMake(58, 58)];
         _coordinate = location;
     }
-    
+
     return self;
 }
 
