@@ -19,8 +19,6 @@
 @property (copy, nonatomic) NSString *title;
 @property (nonatomic, strong) UIImage *thumbnail;
 
-//TODO delete snap object
-@property (nonatomic, strong) PFObject *snapObject;
 @property (nonatomic, strong) Snap *snap;
 
 - (id)initWithCoordinates:(CLLocationCoordinate2D)location andTitle:(NSString *)title andThumbNail:(UIImage*)thumb;
