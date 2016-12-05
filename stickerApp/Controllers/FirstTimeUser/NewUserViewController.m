@@ -28,6 +28,7 @@
 @implementation NewUserViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
     
     _array_ftueInstructions = @[NSLocalizedString(@"TUT_SNAP_TITLE", nil),
@@ -49,7 +50,7 @@
                          @"i_ftue_05.png"];
 
     [_ibo_collectionView reloadData];
-    [super viewDidLoad];
+    _currentpage = 0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,8 +75,7 @@
     cell.ibo_titleLabel.text = [_array_ftueInstructions objectAtIndex:indexPath.item];
     cell.ibo_discriptionLabel.text = [_array_ftueInstructionsDesc objectAtIndex:indexPath.item];
     cell.ibo_panelImage.image = [UIImage imageNamed:[_array_ftueImages objectAtIndex:indexPath.item]];
-    _currentpage = indexPath.item;
-    
+  
     return cell;
 }
 
@@ -90,7 +90,8 @@
 - (IBAction)iba_btnNext:(id)sender {
     AppDelegate *delegate= (AppDelegate *) [[UIApplication sharedApplication] delegate];
     if (_currentpage < [_array_ftueInstructions count]-1) {
-        [_ibo_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_currentpage + 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        _currentpage += 1;
+        [_ibo_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_currentpage inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     } else {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kNewUserKey];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kNewUserMakeSomething];
