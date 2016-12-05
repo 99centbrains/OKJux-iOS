@@ -77,7 +77,7 @@
                                                                    action:@selector(iba_createNew:)];
   
     self.navigationItem.rightBarButtonItem = rightButton;
-    _ibo_noLocation.text = NSLocalizedString(@"PERMISSION_LOCATION_PUBLISH", nil);
+    _ibo_noLocation.text = NSLocalizedString(@"PERMISSION_NO_LOCATION", nil);
     _ibo_noLocation.hidden = YES;
     
     [[TMCache sharedCache] setObject:userExportedImage forKey:@"image" block:nil];

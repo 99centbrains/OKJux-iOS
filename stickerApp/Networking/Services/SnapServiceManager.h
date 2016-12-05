@@ -17,4 +17,6 @@
 
 + (void)rankSnap:(NSInteger)snapID withLike:(BOOL)like OnSuccess:(void(^)(NSDictionary* responseObject ))success OnFailure :(void(^)(NSError* error))failure;
 
++ (void)getSnapsNearBy:(NSDictionary *)params OnSuccess:(void(^)(NSArray* responseObject ))success OnFailure :(void(^)(NSError* error))failure;
+
 @end

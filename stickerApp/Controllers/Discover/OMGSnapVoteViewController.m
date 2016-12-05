@@ -99,24 +99,34 @@ typedef NSInteger OMGVoteSpecifier;
     _ibo_notAvailableView.hidden = YES;
 
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    if (bool_nearMe) {
-        params[@"my_latitud"] = [DataManager currentLatitud];
-        params[@"my_longitud"] = [DataManager currentLongitud];
-        params[@"within_miles"] = [NSString stringWithFormat:@"%ld", (long)kMaxDistance];
-    }
-     
     params[@"user_id"] = [DataManager userID];
-    params[@"type"] = bool_nearMe ? @"by_location" : @"newest";
+    if (bool_nearMe) {
+        params[@"lat"] = [DataManager currentLatitud];
+        params[@"lng"] = [DataManager currentLongitud];
+        params[@"radius"] = [NSString stringWithFormat:@"%f", (long)kMaxDistance * metersInMile];
 
-    [SnapServiceManager getSnaps:params OnSuccess:^(NSArray* responseObject ) {
-        _snapsArray = [NSMutableArray arrayWithArray:responseObject];
-        [_ibo_collectionView reloadData];
-        [TAOverlay hideOverlay];
-        _ibo_notAvailableView.hidden = _snapsArray.count > 0;
-        [self refreshData];
-    } OnFailure:^(NSError *error) {
-        [TAOverlay hideOverlay];
-    }];
+        [SnapServiceManager getSnapsNearBy:params OnSuccess:^(NSArray* responseObject ) {
+            [self reloadSnaps:responseObject];
+        } OnFailure:^(NSError *error) {
+            [TAOverlay hideOverlay];
+        }];
+    } else {
+        params[@"type"] = @"newest";
+
+        [SnapServiceManager getSnaps:params OnSuccess:^(NSArray* responseObject ) {
+            [self reloadSnaps:responseObject];
+        } OnFailure:^(NSError *error) {
+            [TAOverlay hideOverlay];
+        }];
+    }
+}
+
+- (void) reloadSnaps:(NSArray *)snaps {
+    _snapsArray = [NSMutableArray arrayWithArray:snaps];
+    [_ibo_collectionView reloadData];
+    [TAOverlay hideOverlay];
+    _ibo_notAvailableView.hidden = _snapsArray.count > 0;
+    [self refreshData];
 }
 
 #pragma Toggle Near Me
