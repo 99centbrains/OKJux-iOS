@@ -60,6 +60,7 @@
 //DISCOVER
 #define kMinDistance 50
 #define kMaxDistance 100 /// in Miles
+#define metersInMile 1609.34
 
 #pragma mark Dates
 static NSString* const SERVER_FORMAT = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";

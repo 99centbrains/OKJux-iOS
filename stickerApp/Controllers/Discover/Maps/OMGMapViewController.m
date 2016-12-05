@@ -196,16 +196,17 @@
     NSString *currentLong = [NSString stringWithFormat:@"%f", _mapFocusCoordinates.longitude];
 
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"my_latitud"] = currentLat;
-    params[@"my_longitud"] = currentLong;
-    params[@"within_miles"] = [NSString stringWithFormat:@"%ld", (long)kMinDistance];
     params[@"user_id"] = [DataManager userID];
-    params[@"type"] = @"by_location";
+    params[@"lat"] = currentLat;
+    params[@"lng"] = currentLong;
+    params[@"radius"] = [NSString stringWithFormat:@"%f", (long)kMinDistance * metersInMile];
 
-    [SnapServiceManager getSnaps:params OnSuccess:^(NSArray* responseObject ) {
+    [SnapServiceManager getSnapsNearBy:params OnSuccess:^(NSArray* responseObject ) {
         _snapsArray = [responseObject copy];
         [self displayAnnotationsForQuery:responseObject];
-    } OnFailure:^(NSError *error) {}];
+    } OnFailure:^(NSError *error) {
+        [TAOverlay hideOverlay];
+    }];
 }
 
 - (void) displayAnnotationsForQuery:(NSArray *)geoObjects {
