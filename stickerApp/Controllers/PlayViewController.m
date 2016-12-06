@@ -376,13 +376,22 @@
 #pragma Tool Actions
 
 - (IBAction)iba_toolCam:(id)sender {
-
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Camera", @"Photo Library", nil];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         [actionSheet showFromRect:CGRectMake(0, 900, 200, 200) inView:self.view animated:YES];
     }else {
         [actionSheet showFromRect:self.view.frame inView:self.view animated:YES];
     }
+}
+
+- (void)askForPermissions {
+  [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+     if (granted) {
+       [self iba_photoTake:nil];
+     } else {
+       [self permissionsNotGrantedWithMessage:@"PERMISSION_CAMERA"];
+     }
+   }];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -400,6 +409,21 @@
     }
 }
 
+- (void)permissionsNotGrantedWithMessage:(NSString*)message {
+  UIAlertController *alert = [UIAlertController
+                              alertControllerWithTitle:NSLocalizedString(@"PERMISSION_TITLE", nil)
+                              message:NSLocalizedString(message, nil)
+                              preferredStyle:UIAlertControllerStyleAlert];
+  
+  UIAlertAction *okButton = [UIAlertAction
+                             actionWithTitle:@"Ok"
+                             style:UIAlertActionStyleDefault
+                             handler:nil];
+  
+  [alert addAction:okButton];
+  [self presentViewController:alert animated:YES completion:nil];
+}
+
 - (IBAction)iba_photoTake:(id)sender {
     if ([GeneralHelper haveCameraAuthorization]) {
         UIImagePickerController* picker = [[UIImagePickerController alloc] init];
@@ -413,18 +437,7 @@
             [self iba_photoChoose:sender];
         }
     } else {
-        UIAlertController *alert = [UIAlertController
-                                    alertControllerWithTitle:NSLocalizedString(@"PERMISSION_TITLE", nil)
-                                    message:NSLocalizedString(@"PERMISSION_CAMERA", nil)
-                                    preferredStyle:UIAlertControllerStyleAlert];
-
-        UIAlertAction *okButton = [UIAlertAction
-                                       actionWithTitle:@"Ok"
-                                       style:UIAlertActionStyleDefault
-                                       handler:nil];
-
-        [alert addAction:okButton];
-        [self presentViewController:alert animated:YES completion:nil];
+      [self askForPermissions];
     }
 }
 
@@ -451,18 +464,7 @@
             [self presentViewController:picker animated:YES completion:nil];
         }
     } else {
-        UIAlertController *alert = [UIAlertController
-                                    alertControllerWithTitle:NSLocalizedString(@"PERMISSION_TITLE", nil)
-                                    message:NSLocalizedString(@"PERMISSION_PHOTOS", nil)
-                                    preferredStyle:UIAlertControllerStyleAlert];
-
-        UIAlertAction *okButton = [UIAlertAction
-                                   actionWithTitle:@"Ok"
-                                   style:UIAlertActionStyleDefault
-                                   handler:nil];
-
-        [alert addAction:okButton];
-        [self presentViewController:alert animated:YES completion:nil];
+      [self permissionsNotGrantedWithMessage:@"PERMISSION_PHOTOS"];
     }
 }
 
