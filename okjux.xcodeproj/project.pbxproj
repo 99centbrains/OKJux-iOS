@@ -1473,7 +1473,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				BASE_URL = "http://192.168.1.130:3000/api/v1/";
+				BASE_URL = "http://192.168.1.125:3000/api/v1/";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Catwang.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1495,7 +1495,7 @@
 					"$(PROJECT_DIR)/stickerApp/external/Flurry",
 					"$(PROJECT_DIR)/stickerApp/external/Flurry/FlurryAds",
 				);
-				MIXPANEL_KEY = d6d3f82f847b08d597ba8433d42fe5a4;
+				MIXPANEL_KEY = 7f924eaeb659c2b8e53cb71052079356;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Catwang;
 				PROVISIONING_PROFILE = "";
@@ -1515,7 +1515,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				BASE_URL = "https://okjux-api.herokuapp.com/api/v1/";
+				BASE_URL = "https://okjux-api-production.herokuapp.com/api/v1/";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Catwang.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1538,7 +1538,7 @@
 					"$(PROJECT_DIR)/stickerApp/external/Flurry",
 					"$(PROJECT_DIR)/stickerApp/external/Flurry/FlurryAds",
 				);
-				MIXPANEL_KEY = d6d3f82f847b08d597ba8433d42fe5a4;
+				MIXPANEL_KEY = 7f924eaeb659c2b8e53cb71052079356;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Catwang;
 				PROVISIONING_PROFILE = "";

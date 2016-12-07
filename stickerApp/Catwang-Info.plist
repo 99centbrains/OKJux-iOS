@@ -2,12 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Mixpanel_token</key>
-	<string>${MIXPANEL_KEY}</string>
 	<key>BaseURL</key>
 	<string>${BASE_URL}</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string> Needs access to the microphone to be able to attach voice notes.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -31,7 +27,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>3</string>
+	<string>5</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -48,6 +44,8 @@
 	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>Mixpanel_token</key>
+	<string>${MIXPANEL_KEY}</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -59,6 +57,8 @@
 	<string>Take new pics to share on okjux</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Anonymously Post and View rad jux snaps around you. Your location will never be shared!</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string> Needs access to the microphone to be able to attach voice notes.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Select pics to share on okjux</string>
 	<key>UIAppFonts</key>
