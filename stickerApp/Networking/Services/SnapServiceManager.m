@@ -72,4 +72,26 @@
     });
 }
 
++ (void)reportSnap:(NSInteger)snapID OnSuccess:(void(^)(NSDictionary* responseObject ))success OnFailure :(void(^)(NSError* error))failure {
+  if ([DataManager userExists]) {
+    NSDictionary *params = @{ @"user": @{ @"id" : [DataManager userID], @"UUID": [DataManager deviceToken] } };
+    NSString* url = [NSString stringWithFormat:@"%@snaps/%ld/flag", [CommunicationManager serverURL], (long)snapID];
+    
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+      [[CommunicationManager sharedManager] sendPostRequestWithURL: url
+                                                         AndParams: params
+                                                           Success: ^(id response) {
+                                                             dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                               success(response);
+                                                             });
+                                                           }
+                                                           Failure: ^(NSError* error){
+                                                             dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                               failure(error);
+                                                             });
+                                                           }];
+    });
+  }
+}
+
 @end

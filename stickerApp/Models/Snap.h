@@ -17,7 +17,9 @@
 @property (assign, nonatomic) bool hidden;
 @property (assign, nonatomic) bool noAction;
 @property (assign, nonatomic) bool isLiked;
+@property (assign, nonatomic) bool reported;
 @property (assign, nonatomic) NSInteger userID;
+@property (assign, nonatomic) NSInteger flagsCount;
 @property (strong, nonatomic) NSString *createdAt;
 
 

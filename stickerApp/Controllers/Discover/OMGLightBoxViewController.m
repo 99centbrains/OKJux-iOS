@@ -167,8 +167,10 @@ typedef NSInteger OMGVoteSpecifier;
 }
 
 - (IBAction)iba_flagImage:(id)sender {
-    [self.delegate lightBoxItemFlag:_snapObject];
+  if (![_snap reported]) {
+    [self.delegate lightBoxItemFlag:_snap];
     NSLog(@"Flag Item");
+  }
 }
 
 - (IBAction)iba_deleteItem:(id)sender {

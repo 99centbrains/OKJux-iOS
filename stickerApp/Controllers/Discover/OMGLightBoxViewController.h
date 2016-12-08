@@ -14,7 +14,7 @@
 @protocol OMGLightBoxViewControllerDelegate <NSObject>
 
 - (void) lightBoxShareImage:(UIImage *)image;
-- (void) lightBoxItemFlag:(PFObject *)flagItem;
+- (void) lightBoxItemFlag:(Snap *)flagItem;
 - (void) omgSnapDismissLightBox:(PFObject *)object;
 
 @end

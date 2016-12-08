@@ -16,6 +16,7 @@
 #import "OMGSnapVoteViewController.h"
 #import "NewUserViewController.h"
 #import "StickerCategoryViewController.h"
+#import "SnapServiceManager.h"
 
 #import <MessageUI/MessageUI.h>
 #import <ImageIO/ImageIO.h>
@@ -350,13 +351,15 @@
 }
 
 #pragma FLAG
-- (void) lightBoxItemFlag:(PFObject *)flagItem {
+- (void) lightBoxItemFlag:(Snap *)flagItem {
     UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"PROMPT_FLAG_TITLE", nil)
                                                                          message:NSLocalizedString(@"PROMPT_FLAG_BODY", nil)
                                                                   preferredStyle:UIAlertControllerStyleAlert];
 
     UIAlertAction *action_spam = [UIAlertAction actionWithTitle:NSLocalizedString(@"PROMPT_FLAG_ACTION", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+      if (!flagItem.reported) {
         [self flagImage:flagItem];
+      }
     }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"PROMPT_FLAG_CANCEL", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];
@@ -367,40 +370,12 @@
     [self presentViewController:actionSheet animated:YES completion:nil];
 }
 
-- (void) flagImage:(PFObject *)flagObject {
-    //TODO this will change soon
-    int flagValue = 0;
-    [flagObject fetchInBackground];
-    NSInteger likesnet= [flagObject[@"netlikes"] integerValue];
-    
-    if (kAdminDebug) {
-        flagObject[@"hidden"] = [NSNumber numberWithBool:1];
-        flagValue = 10;
-    } else if (likesnet >= 10) {
-        return;
-    }
-    
-    NSMutableArray *flaggersArray= [[NSMutableArray alloc] initWithArray:flagObject[@"flaggers"]];
-
-    if ([self checkUserInArray:flaggersArray]) {
-        [flaggersArray addObject:[DataHolder DataHolderSharedInstance].userObject.objectId];
-        flagValue = 1;
-    }
-    
-    NSInteger flags= [flagObject[@"flagged"] integerValue] + flagValue;
-    
-    if (flags >= 5) {
-        flagObject[@"hidden"] = [NSNumber numberWithBool:1];
-    }
-    
-    flagObject[@"flaggers"] = flaggersArray;
-    flagObject[@"flagged"] = [NSNumber numberWithInteger:flags];
-    
-    [flagObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!succeeded) {
-            [TAOverlay showOverlayWithLabel:@"Oops! Try again later." Options:TAOverlayOptionAutoHide | TAOverlayOptionOverlaySizeBar | TAOverlayOptionOverlayTypeError ];
-        }
-    }];
+- (void) flagImage:(Snap *)flagObject {
+  [SnapServiceManager reportSnap:flagObject.ID OnSuccess:^(NSDictionary *responseObject) {
+    //DO SOMETHING
+  } OnFailure:^(NSError *error) {
+    [TAOverlay showOverlayWithLabel:@"Oops! Try again later." Options:TAOverlayOptionAutoHide | TAOverlayOptionOverlaySizeBar | TAOverlayOptionOverlayTypeError ];
+  }];
 }
 
 
