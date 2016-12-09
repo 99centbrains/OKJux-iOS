@@ -19,4 +19,6 @@
 
 + (void)getSnapsNearBy:(NSDictionary *)params OnSuccess:(void(^)(NSArray* responseObject ))success OnFailure :(void(^)(NSError* error))failure;
 
++ (void)reportSnap:(NSInteger)snapID OnSuccess:(void(^)(NSDictionary* responseObject ))success OnFailure :(void(^)(NSError* error))failure;
+
 @end

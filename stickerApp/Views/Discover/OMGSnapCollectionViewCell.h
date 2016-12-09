@@ -18,7 +18,7 @@
 
 - (void) omgSnapShareImage:(UIImage *)image;
 
-- (void) omgSnapFlagItem:(PFObject *)object;
+- (void) omgSnapFlagItem:(Snap *)object;
 
 - (void) omgsnapCellDelete:(NSInteger) snapIndex;
 
