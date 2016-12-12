@@ -69,4 +69,26 @@
   }
 }
 
++ (void)deleteSnap:(NSInteger)snapID OnSuccess:(void(^)(NSDictionary* responseObject ))success OnFailure :(void(^)(NSError* error))failure {
+  if ([DataManager userExists]) {
+    NSDictionary *params = @{ @"user": @{ @"UUID": [DataManager deviceToken] } };
+    NSString* url = [NSString stringWithFormat:@"%@users/%@/snaps/%ld", [CommunicationManager serverURL], [DataManager userID], (long)snapID];
+    
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+      [[CommunicationManager sharedManager] sendDeleteRequestWithURL: url
+                                                           AndParams: params
+                                                             Success: ^(id response) {
+                                                               dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                                 success(response);
+                                                               });
+                                                             }
+                                                             Failure: ^(NSError* error){
+                                                               dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                                 failure(error);
+                                                               });
+                                                             }];
+    });
+  }
+}
+
 @end

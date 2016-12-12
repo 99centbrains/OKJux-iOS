@@ -28,4 +28,9 @@
                         Success: (void (^)(id))_success
                         Failure: (void (^)(NSError *))_failure;
 
+- (void) sendDeleteRequestWithURL: (NSString*) url
+                      AndParams: (NSDictionary *)params
+                        Success: (void (^)(id))_success
+                        Failure: (void (^)(NSError *))_failure;
+
 @end

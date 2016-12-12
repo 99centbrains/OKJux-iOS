@@ -17,6 +17,7 @@
 #import "Snap.h"
 #import "UserServiceManager.h"
 #import "DataManager.h"
+#import "UserServiceManager.h"
 
 
 @interface OMGMySnapsViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, OMGSnapCollectionViewCellDelegate, OMGLightBoxViewControllerDelegate>{
@@ -144,18 +145,15 @@
     UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Manage Posts" message:@"Manage your public pics." preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *actionDelete = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction *action) {
-                                                             //TODO when delete added to backend this will be change for a mySnaps object
-        PFObject *snapObject= [[DataHolder DataHolderSharedInstance].arrayMySnaps objectAtIndex:snapIndex];
-        [snapObject fetchInBackground];
-        [snapObject deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            NSMutableArray *tempArray = [[DataHolder DataHolderSharedInstance].arrayMySnaps
-                                         mutableCopy];
-            [tempArray removeObjectAtIndex:snapIndex];
-            [DataHolder DataHolderSharedInstance].arrayMySnaps = [tempArray copy];
-            
-            [_ibo_collectionView reloadData];
-
-        }];
+                                                           [UserServiceManager deleteSnap:[_mySnaps[snapIndex] ID] OnSuccess:^(NSDictionary *responseObject) {
+                                                             NSMutableArray *snaps = [_mySnaps mutableCopy];
+                                                             [snaps removeObjectAtIndex:snapIndex];
+                                                             _mySnaps = [snaps copy];
+                                                             [_ibo_collectionView reloadData];
+                                                             
+                                                           } OnFailure:^(NSError *error) {
+                                                             [TAOverlay showOverlayWithLabel:@"Oops! Try again later." Options:TAOverlayOptionAutoHide | TAOverlayOptionOverlaySizeBar | TAOverlayOptionOverlayTypeError ];
+                                                           }];
     }];
     
     UIAlertAction *actionRemove = [UIAlertAction actionWithTitle:@"Nevermind" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];

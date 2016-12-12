@@ -32,9 +32,16 @@
     aSnap.ID = [snap[@"id"] integerValue];
     aSnap.hidden = [snap[@"hidden"] boolValue];
     aSnap.userID = [snap[@"user"][@"id"] integerValue];
+    aSnap.netlikes = snap[@"likes_count"] == nil ? 0 : [snap[@"likes_count"] integerValue];
+  
+    #if LOCALHOST
+    aSnap.imageUrl = [NSString stringWithFormat:@"%@%@", @"http://192.168.1.125:3000", snap[@"image"][@"url"]];
+    aSnap.thumbnailUrl = [NSString stringWithFormat:@"%@%@", @"http://192.168.1.125:3000", snap[@"image"][@"thumbnail"][@"url"]];
+    #else
     aSnap.imageUrl = snap[@"image"][@"url"];
     aSnap.thumbnailUrl = snap[@"image"][@"thumbnail"][@"url"];
-    aSnap.netlikes = snap[@"likes_count"] == nil ? 0 : [snap[@"likes_count"] integerValue];
+    #endif
+  
     aSnap.noAction = snap[@"liked"] == nil;
     aSnap.isLiked = snap[@"liked"] == nil ? NO : [snap[@"liked"] boolValue];
     aSnap.reported = snap[@"reported"] == 0 ? NO : YES;
