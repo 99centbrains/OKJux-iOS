@@ -27,9 +27,7 @@
 }
 
 - (void)updateKarma {
-  NSString* newKarma = [NSString stringWithFormat:@"%ld", (long)([DataManager karma] + 1)];
-  [DataManager storeKarma:newKarma];
-  [_ibo_karmabtn setTitle:newKarma forState:UIControlStateNormal];
+  [_ibo_karmabtn setTitle:[NSString stringWithFormat:@"%ld", (long)([DataManager karma])] forState:UIControlStateNormal];
 }
 
 - (IBAction)iba_emojiTime:(id)sender {

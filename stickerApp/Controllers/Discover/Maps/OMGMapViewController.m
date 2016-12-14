@@ -34,8 +34,6 @@
 
 @property (nonatomic, assign) CLLocationCoordinate2D mapFocusCoordinates;
 
-@property (nonatomic, strong) PFGeoPoint * geoPoint;
-
 @property (nonatomic, strong) NSTimer * mapStopTimer;
 
 @property (nonatomic, strong) UIActivityIndicatorView * ibo_activity;
@@ -184,9 +182,6 @@
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
     NSLog(@"FINISHED LOADING");
 }
-
-
-
 
 #pragma ANNOTATIONS
 
@@ -359,18 +354,17 @@
                          @"Istanbul"
                          ];
     
-    NSArray * coord = @[[NSValue valueWithCGPoint:CGPointMake([DataHolder DataHolderSharedInstance].userGeoPoint.latitude,
-                                                              [DataHolder DataHolderSharedInstance].userGeoPoint.longitude)],
-                        [NSValue valueWithCGPoint:CGPointMake(34.056519, -118.22855)],
-                        [NSValue valueWithCGPoint:CGPointMake(40.745091160629116, -73.98071757051396)],
-                        [NSValue valueWithCGPoint:CGPointMake(31.238705, 121.48997)],
-                        [NSValue valueWithCGPoint:CGPointMake(39.960209, 116.38259)],
-                        [NSValue valueWithCGPoint:CGPointMake(37.514427, 126.84566)],
-                        [NSValue valueWithCGPoint:CGPointMake(51.507954, -0.17872441)],
-                        [NSValue valueWithCGPoint:CGPointMake(55.754387, 37.625851)],
-                        [NSValue valueWithCGPoint:CGPointMake(59.329601, 18.063143)],
-                        [NSValue valueWithCGPoint:CGPointMake(41.014069, 29.007841)]
-                        ];
+  NSArray * coord = @[[NSValue valueWithCGPoint:CGPointMake([[DataManager currentLatitud] floatValue], [[DataManager currentLongitud] floatValue])],
+                      [NSValue valueWithCGPoint:CGPointMake(34.056519, -118.22855)],
+                      [NSValue valueWithCGPoint:CGPointMake(40.745091160629116, -73.98071757051396)],
+                      [NSValue valueWithCGPoint:CGPointMake(31.238705, 121.48997)],
+                      [NSValue valueWithCGPoint:CGPointMake(39.960209, 116.38259)],
+                      [NSValue valueWithCGPoint:CGPointMake(37.514427, 126.84566)],
+                      [NSValue valueWithCGPoint:CGPointMake(51.507954, -0.17872441)],
+                      [NSValue valueWithCGPoint:CGPointMake(55.754387, 37.625851)],
+                      [NSValue valueWithCGPoint:CGPointMake(59.329601, 18.063143)],
+                      [NSValue valueWithCGPoint:CGPointMake(41.014069, 29.007841)]
+                    ];
     
     for (int i = 0; i < [places count]; i++) {
         NSMutableArray *tempArray = [[NSMutableArray alloc] init];

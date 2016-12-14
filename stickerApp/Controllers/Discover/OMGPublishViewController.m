@@ -25,8 +25,8 @@
 @property (nonatomic, weak) IBOutlet UIView *ibo_userFilterView;
 @property (nonatomic, weak) IBOutlet UIButton *ibo_btnChannel;
 
-@property (nonatomic,assign)CLLocationCoordinate2D coord;
-@property (nonatomic,strong)CLLocationManager *locationManager;
+@property (nonatomic,assign) CLLocationCoordinate2D coord;
+@property (nonatomic,strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) NSString *publish_channel;
 
 
@@ -131,47 +131,6 @@
     ShareViewController *vc_shareview = (ShareViewController *)[self  viewControllerFromMainStoryboardWithName:@"ShareViewController"];
     vc_shareview.userExportedImage = [_arrPhoto objectAtIndex:imageFilterNumber];
     [self.navigationController pushViewController:vc_shareview animated:YES];
-}
-
-- (IBAction)iba_publish:(id)sender {
-    //NO PUBLIC
-    if (!boolSharePublic) {
-        [self iba_skip:nil];
-        return;
-    }
-
-    //TODO this is never executed I think
-    UIImage *imageForShare = [_arrPhoto objectAtIndex:imageFilterNumber];
-        PFFile *file= [PFFile fileWithData:UIImagePNGRepresentation(imageForShare)
-                               contentType:@"image/png"];
-        [file saveInBackground];
-        PFFile *thumbnail= [PFFile fileWithData:UIImagePNGRepresentation([self scaledImageWithImage:imageForShare]) contentType:@"image/png"];
-        [thumbnail saveInBackground];
-        PFGeoPoint * geoPoint= [DataHolder DataHolderSharedInstance].userGeoPoint;
-
-        PFObject *obj = [PFObject objectWithClassName:@"snap"];
-        obj[@"location"] = geoPoint;
-        obj[@"name"] = filename;
-        obj[@"image"] = file;
-        obj[@"thumbnail"] = thumbnail;
-        obj[@"likes"] = [NSArray array];
-        obj[@"dislikes"] = [NSArray array];
-        obj[@"flaggers"] = [NSArray array];
-        obj[@"netlikes"] = [NSNumber numberWithInt:0];
-        obj[@"flagged"] = [NSNumber numberWithInt:0];
-        obj[@"hidden"] = [NSNumber numberWithBool:NO];
-        obj[@"userId"] = [DataHolder DataHolderSharedInstance].userObject;
-        obj[@"channels"] = _publish_channel;
-        [obj saveInBackground];
-        
-        NSInteger score = [[DataHolder DataHolderSharedInstance].userObject[@"points"] integerValue] + kParsePostSnap;
-        [DataHolder DataHolderSharedInstance].userObject[@"points"] = [NSNumber numberWithInteger:score];
-        [[DataHolder DataHolderSharedInstance].userObject saveInBackground];
-  
-    [MixPanelManager triggerEvent:@"Share" withData:@{ @"Type": @"Public" }];
-    
-    boolSharedPublic = YES;
-    [self iba_skip:nil];
 }
 
 - (IBAction)iba_toggle_public:(UIButton *)sender {

@@ -325,34 +325,6 @@ typedef NSInteger OMGVoteSpecifier;
     [owner lightBoxItemFlagFromTab:object];
 }
 
-#pragma VOTING ARGUMENTS
-- (BOOL) checkUserInArray:(NSMutableArray *)array {
-    if ([array count] > 0) {
-        for (NSString *userLike in array) {
-            NSLog(@"USER LIKE %@", userLike);
-            if ([userLike isEqualToString:[DataHolder DataHolderSharedInstance].userObject.objectId]){
-                return NO;
-            }
-        }
-    }
-    
-    return YES;
-}
-
-
-- (NSMutableArray *) removeUserInArray:(NSMutableArray *)array {
-    if ([array count] > 0) {
-        for (NSString *userLike in array) {
-            if ([userLike isEqualToString:[DataHolder DataHolderSharedInstance].userObject.objectId]) {
-                [array removeObject:[DataHolder DataHolderSharedInstance].userObject.objectId];
-                return array;
-            }
-        }
-    }
-    
-    return array;
-}
-
 #pragma NO DATA AVAILABLE
 - (IBAction)iba_notAvailableAction:(id)sender {
     NSString *textToShare = kShareDescription;

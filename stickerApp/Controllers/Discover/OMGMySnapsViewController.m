@@ -91,8 +91,8 @@
 - (void) updateKarma {
     OMGTabBarViewController *owner = (OMGTabBarViewController *)self.parentViewController;
     [owner.ibo_headSpace updateKarma];
-    NSString *karmaPoints = [NSString stringWithFormat:@"%@",
-                             [DataHolder DataHolderSharedInstance].userObject[@"points"]];
+  NSString *karmaPoints = [NSString stringWithFormat:@"%ld",
+                           (long)[DataManager karma]];
     _ibo_karmaPoints.text = karmaPoints;
 }
 
