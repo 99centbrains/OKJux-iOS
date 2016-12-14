@@ -58,7 +58,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Anonymously Post and View rad jux snaps around you. Your location will never be shared!</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string> Needs access to the microphone to be able to attach voice notes.</string>
+	<string>Needs access to the microphone to be able to attach voice notes.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Select pics to share on okjux</string>
 	<key>UIAppFonts</key>

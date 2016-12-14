@@ -1,0 +1,7 @@
+/* Localized versions of Info.plist keys */
+
+"NSLocationWhenInUseUsageDescription" = "Postear y ver snaps a tu alrededor anónimamente. ¡Tu locación jamás será compartida!";
+"NSCameraUsageDescription" = "Tomar fotos nuevas para compartir en okjux.";
+"NSCalendarsUsageDescription" = "Quisieramos acceder a tu calendario.";
+"NSMicrophoneUsageDescription" = "Necesita acceder al micrófono para poder adjuntar notas de voz.";
+"NSPhotoLibraryUsageDescription" = "Seleccionar fotos para compartir en okjux.";
