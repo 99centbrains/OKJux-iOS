@@ -50,6 +50,7 @@
 "PROMPT_FLAG_BODY" = "Riferisca tutto lo Spam o foto inadeguate.";
 "PROMPT_FLAG_ACTION" = "Segnalare inadeguato";
 "PROMPT_FLAG_CANCEL" = "Non importa";
+"PROMPT_ALREADY_FLAGED_BODY" = "You have already reported this snap.";
 
 //REMIX PROMPT
 "PROMPT_REMIX_TITLE" = "Rimescoli";
@@ -62,6 +63,7 @@
 "PUBLISH_PUBLIC" = "Pubblichi alla vista pubblica della mappa?";
 "PUBLISH_SHARE" = "Distribuire";
 "PUBLISH_DONE" = "Fatto";
+"PUBLISH_PROGRESS" = "Saving snap";
 
 //NEW PHOTO SCREEN
 "PHOTO_STARTOVER" = "Rincominci?";
@@ -94,3 +96,4 @@
 "CANCEL_BUTTON" = "Cancellare";
 "ACCEPT_BUTTON" = "Accept";
 "SUCCESS_BUTTON" = "Success!";
+"OK_BUTTON" = "Ok";

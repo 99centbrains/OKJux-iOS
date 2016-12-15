@@ -50,6 +50,7 @@
 "PROMPT_FLAG_BODY" = "Пожалуйста сообщить спаме, оскорблениях и неприемлемом контенте";
 "PROMPT_FLAG_ACTION" = "Да , Доклад фото";
 "PROMPT_FLAG_CANCEL" = "не важно";
+"PROMPT_ALREADY_FLAGED_BODY" = "You have already reported this snap.";
 
 //REMIX PROMPT
 "PROMPT_REMIX_TITLE" = "Ремикс";
@@ -62,6 +63,7 @@
 "PUBLISH_PUBLIC" = "Дать свою фотографию для публичного показа на карте?";
 "PUBLISH_SHARE" = "Поделиться";
 "PUBLISH_DONE" = "Сделано";
+"PUBLISH_PROGRESS" = "Saving snap";
 
 //NEW PHOTO SCREEN
 "PHOTO_STARTOVER" = "начать?";
@@ -94,3 +96,4 @@
 "CANCEL_BUTTON" = "отменить";
 "ACCEPT_BUTTON" = "Accept";
 "SUCCESS_BUTTON" = "Success!";
+"OK_BUTTON" = "Ok";

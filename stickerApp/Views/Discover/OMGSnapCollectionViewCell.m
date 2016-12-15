@@ -19,18 +19,14 @@
 - (void)setThumbnailImage:(NSURL *)file {
     [_ibo_userSnapImage setImageWithURLRequest:[NSURLRequest requestWithURL:file] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         _ibo_userSnapImage.image = image;
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"FAILED IMAGE %@", file);
-    }];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {}];
 }
 
 - (void)setupFullImage:(NSURL *)file {
     [_ibo_userSnapImage setImageWithURLRequest:[NSURLRequest requestWithURL:file] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         _ibo_userSnapImage.image = image;
 
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"FAILED IMAGE");
-    }];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {}];
 }
 
 - (void)setupImageView:(NSURL *)file andThumbnail:(NSURL *)thumb {
@@ -43,9 +39,7 @@
         [self setupFullImage:file];
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"FAILED IMAGE");
         [self setupFullImage:file];
-
     }];
 }
 
@@ -59,18 +53,15 @@
     [sender setSelected:YES];
     [self.delegate omgSnapVOTEUP:_intCurrentSnap];
     [_ibo_btn_likeDown setSelected:NO];
-    NSLog(@"Snap Like");
 }
 
 - (IBAction) iba_dislikeOMGSnap:(UIButton *)sender{
     [sender setSelected:YES];
     [self.delegate omgSnapVOTEDOWN:_intCurrentSnap];
     [_ibo_btn_likeUP setSelected:NO];
-    NSLog(@"Snap NO Like");
 }
 
 - (IBAction) iba_shareItem:(id)sender {
-    NSLog(@"Share Item");
     [self.delegate omgSnapShareImage:_ibo_userSnapImage.image];
 }
 

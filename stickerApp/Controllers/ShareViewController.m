@@ -413,7 +413,7 @@
 
 #pragma PUBLISH PUBLIC
 - (IBAction)iba_publish:(id)sender{
-  [TAOverlay showOverlayWithLabel:@"Saving Snap" Options:TAOverlayOptionOverlaySizeBar | TAOverlayOptionOverlayTypeActivityDefault ];
+  [TAOverlay showOverlayWithLabel:NSLocalizedString(@"PUBLISH_PROGRESS", nil) Options:TAOverlayOptionOverlaySizeBar | TAOverlayOptionOverlayTypeActivityDefault ];
   NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(userExportedImage)];
   NSMutableDictionary *snap = [NSMutableDictionary dictionary];
   snap[@"image"] = imageData;

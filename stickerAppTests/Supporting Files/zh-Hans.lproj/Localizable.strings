@@ -50,6 +50,7 @@
 "PROMPT_FLAG_BODY" = "请报告所有垃圾短信或不适当的照片";
 "PROMPT_FLAG_ACTION" = "报告";
 "PROMPT_FLAG_CANCEL" = "没关系";
+"PROMPT_ALREADY_FLAGED_BODY" = "You have already reported this snap.";
 
 //REMIX PROMPT
 "PROMPT_REMIX_TITLE" = "再混合";
@@ -62,6 +63,7 @@
 "PUBLISH_PUBLIC" = "📍 分享此图片公共地图";
 "PUBLISH_SHARE" = "分享";
 "PUBLISH_DONE" = "完";
+"PUBLISH_PROGRESS" = "Saving snap";
 
 //NEW PHOTO SCREEN
 "PHOTO_STARTOVER" = "重新开始";
@@ -94,3 +96,4 @@
 "CANCEL_BUTTON" = "取消";
 "ACCEPT_BUTTON" = "Accept";
 "SUCCESS_BUTTON" = "Success!";
+"OK_BUTTON" = "Ok";

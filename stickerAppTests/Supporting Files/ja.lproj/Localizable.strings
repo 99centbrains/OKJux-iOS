@@ -50,6 +50,7 @@
 "PROMPT_FLAG_BODY" = " スパムや不適切な画像を報告してください";
 "PROMPT_FLAG_ACTION" = "画像を報告";
 "PROMPT_FLAG_CANCEL" = "気にしないで";
+"PROMPT_ALREADY_FLAGED_BODY" = "You have already reported this snap.";
 
 //REMIX PROMPT
 "PROMPT_REMIX_TITLE" = "リミックス";
@@ -62,6 +63,7 @@
 "PUBLISH_PUBLIC" = "公共のマップに画像を追加";
 "PUBLISH_SHARE" = "シェア";
 "PUBLISH_DONE" = "終わった";
+"PUBLISH_PROGRESS" = "Saving snap";
 
 //NEW PHOTO SCREEN
 "PHOTO_STARTOVER" = "最初からやり直す";
@@ -94,3 +96,4 @@
 "CANCEL_BUTTON" = "キャンセル";
 "ACCEPT_BUTTON" = "Accept";
 "SUCCESS_BUTTON" = "Success!";
+"OK_BUTTON" = "Ok";

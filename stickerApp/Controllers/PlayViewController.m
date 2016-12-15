@@ -384,7 +384,7 @@
     }
 }
 
-- (void)askForPermissions {
+- (void)askForCameraPermissions {
   [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
      if (granted) {
        [self iba_photoTake:nil];
@@ -392,6 +392,16 @@
        [self permissionsNotGrantedWithMessage:@"PERMISSION_CAMERA"];
      }
    }];
+}
+
+- (void)askForPhotosPermissions {
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+        if (status == PHAuthorizationStatusAuthorized) {
+            [self iba_photoChoose:nil];
+        } else {
+            [self permissionsNotGrantedWithMessage:@"PERMISSION_PHOTOS"];
+        }
+    }];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -437,7 +447,7 @@
             [self iba_photoChoose:sender];
         }
     } else {
-      [self askForPermissions];
+      [self askForCameraPermissions];
     }
 }
 
@@ -464,7 +474,7 @@
             [self presentViewController:picker animated:YES completion:nil];
         }
     } else {
-      [self permissionsNotGrantedWithMessage:@"PERMISSION_PHOTOS"];
+      [self askForPhotosPermissions];
     }
 }
 

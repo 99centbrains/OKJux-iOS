@@ -1,2 +1,7 @@
 /* Localized versions of Info.plist keys */
 
+"NSLocationWhenInUseUsageDescription" = "Anonymously Post and View rad jux snaps around you. Your location will never be shared!";
+"NSCameraUsageDescription" = "Take new pics to share on okjux";
+"NSCalendarsUsageDescription" = "We would like to access your calendar";
+"NSMicrophoneUsageDescription" = "Needs access to the microphone to be able to attach voice notes";
+"NSPhotoLibraryUsageDescription" = "Select pics to share on okjux";

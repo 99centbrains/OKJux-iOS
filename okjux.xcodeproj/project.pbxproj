@@ -175,6 +175,7 @@
 		FA11887C1DE3493700C6E95B /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA11887B1DE3493700C6E95B /* DataManager.m */; };
 		FA67DB581DCBC2AB006D6950 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA67DB561DCBB636006D6950 /* Assets.xcassets */; };
 		FA74EDFD1DE63C260049A617 /* SnapServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA74EDFC1DE63C260049A617 /* SnapServiceManager.m */; };
+		FA7BB3AB1E0096CF00A9D99B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3753C76715C3132900B8AEDE /* InfoPlist.strings */; };
 		FA8DCF3D1DCD303F00BA22CC /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8DCF3C1DCD303F00BA22CC /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
 /* End PBXBuildFile section */
 
@@ -450,6 +451,7 @@
 		FA67DB561DCBB636006D6950 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA74EDFB1DE63C100049A617 /* SnapServiceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnapServiceManager.h; sourceTree = "<group>"; };
 		FA74EDFC1DE63C260049A617 /* SnapServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapServiceManager.m; sourceTree = "<group>"; };
+		FA7BB3AA1E008B7C00A9D99B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FA85084C1DCCC7A700F885CA /* Catwang.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Catwang.entitlements; sourceTree = "<group>"; };
 		FA8DCF3B1DCD303F00BA22CC /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
 		FA8DCF3C1DCD303F00BA22CC /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
@@ -600,6 +602,8 @@
 				3753C74415C3132900B8AEDE /* Supporting Files */,
 				3735A29315C5EB3B00AA5A56 /* ThirdPartyLibraries */,
 				9B9A2B441DD0FA070064616D /* Views */,
+				3753C76715C3132900B8AEDE /* InfoPlist.strings */,
+				74098BB41AAA1DCF009D63B5 /* Localizable.strings */,
 				3753C74C15C3132900B8AEDE /* AppDelegate.h */,
 				3753C74D15C3132900B8AEDE /* AppDelegate.m */,
 				FA67DB561DCBB636006D6950 /* Assets.xcassets */,
@@ -637,8 +641,6 @@
 			isa = PBXGroup;
 			children = (
 				3753C76615C3132900B8AEDE /* CatwangTests-Info.plist */,
-				3753C76715C3132900B8AEDE /* InfoPlist.strings */,
-				74098BB41AAA1DCF009D63B5 /* Localizable.strings */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -1165,6 +1167,7 @@
 				74EDDB071A881EB200B48ABA /* LeckerliOne-Regular.ttf in Resources */,
 				74B6E0751A1996C8001D6F80 /* CBCropViewController.xib in Resources */,
 				7487619D1A510EE30014FF61 /* Arvil_Sans.ttf in Resources */,
+				FA7BB3AB1E0096CF00A9D99B /* InfoPlist.strings in Resources */,
 				74EDDAF61A881EB200B48ABA /* CabinSketch-Regular.ttf in Resources */,
 				7487617D1A50CAA20014FF61 /* StickerSelectStoryboard.storyboard in Resources */,
 				74EDDAFE1A881EB200B48ABA /* FingerPaint-Regular.ttf in Resources */,
@@ -1218,7 +1221,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A099907E6F09ADBE12B81467 /* [CP] Copy Pods Resources */ = {
@@ -1346,10 +1349,11 @@
 			isa = PBXVariantGroup;
 			children = (
 				3753C76815C3132900B8AEDE /* en */,
+				FA7BB3AA1E008B7C00A9D99B /* es */,
 			);
 			name = InfoPlist.strings;
-			path = .;
-			sourceTree = "<group>";
+			path = "stickerAppTests/Supporting Files/.";
+			sourceTree = SOURCE_ROOT;
 		};
 		74098BB41AAA1DCF009D63B5 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -1365,8 +1369,8 @@
 				74098BBB1AAA9AC0009D63B5 /* zh-Hans */,
 			);
 			name = Localizable.strings;
-			path = .;
-			sourceTree = "<group>";
+			path = "stickerAppTests/Supporting Files/.";
+			sourceTree = SOURCE_ROOT;
 		};
 		74B6E03A1A1996C8001D6F80 /* SVWebViewController.strings */ = {
 			isa = PBXVariantGroup;
@@ -1615,6 +1619,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Reachability",
 					"$(PROJECT_DIR)/stickerApp/ThirdPartyLibraries/Frameworks",
 				);
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "stickerApp/Supporting Files/Catwang-Prefix.pch";
 				INFOPLIST_FILE = "stickerApp/Catwang-Info.plist";

@@ -44,15 +44,9 @@
   
     aSnap.noAction = snap[@"liked"] == nil;
     aSnap.isLiked = snap[@"liked"] == nil ? NO : [snap[@"liked"] boolValue];
-    aSnap.reported = snap[@"reported"] == 0 ? NO : YES;
+    aSnap.reported = [snap[@"reported"] boolValue];
     aSnap.flagsCount = [snap[@"flags_count"] integerValue];
 
-    //TODO this will change once flaggers are added to backend - Parse snap flagged
-    if (snap[@"is_flagged"] == nil) {
-        aSnap.flagged = 0;
-    }
-
-    //TODO this will change once created at added to backend
     if (snap[@"created_at"] != nil) {
         aSnap.createdAt = snap[@"created_at"];
     }
