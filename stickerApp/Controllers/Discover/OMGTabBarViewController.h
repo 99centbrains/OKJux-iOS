@@ -18,7 +18,7 @@
 //TODO next will be removed once snap model is used on all the app
 - (void)showSnapFullScreen:(PFObject *)snap preload:(UIImage*)thumbnail shouldShowVoter:(BOOL)voter;
 - (void)showFullScreenSnap:(Snap *)snap preload:(UIImage*)thumbnail shouldShowVoter:(BOOL)voter;
-- (void)lightBoxItemFlag:(PFObject *)flagItem;
+- (void)lightBoxItemFlagFromTab:(Snap *)flagItem;
 - (BOOL)checkUserInArray:(NSMutableArray *)array;
 
 @end

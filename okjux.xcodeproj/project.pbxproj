@@ -1619,6 +1619,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Reachability",
 					"$(PROJECT_DIR)/stickerApp/ThirdPartyLibraries/Frameworks",
 				);
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "stickerApp/Supporting Files/Catwang-Prefix.pch";
 				INFOPLIST_FILE = "stickerApp/Catwang-Info.plist";

@@ -50,6 +50,7 @@
 "PROMPT_FLAG_BODY" = "Por favor, reportá cualquier spam o foto inadecuada.";
 "PROMPT_FLAG_ACTION" = "Reportar";
 "PROMPT_FLAG_CANCEL" = "No importa";
+"PROMPT_ALREADY_FLAGED_BODY" = "Ya has reportado este snap.";
 
 //REMIX PROMPT
 "PROMPT_REMIX_TITLE" = "Remix imágen";
@@ -62,6 +63,7 @@
 "PUBLISH_PUBLIC" = "📍¿Publicar tu imágen al público?";
 "PUBLISH_SHARE" = "Compartir";
 "PUBLISH_DONE" = "Hecho";
+"PUBLISH_PROGRESS" = "Guardando snap";
 
 //NEW PHOTO SCREEN
 "PHOTO_STARTOVER" = "¿Empezar de nuevo?";
@@ -94,3 +96,4 @@
 "CANCEL_BUTTON" = "Cancelar";
 "ACCEPT_BUTTON" = "Aceptar";
 "SUCCESS_BUTTON" = "Éxito!";
+"OK_BUTTON" = "Ok";

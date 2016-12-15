@@ -322,7 +322,7 @@ typedef NSInteger OMGVoteSpecifier;
 #pragma FLAG
 - (void) omgSnapFlagItem:(Snap *)object {
     OMGTabBarViewController *owner = (OMGTabBarViewController *)self.parentViewController;
-    [owner lightBoxItemFlag:object];
+    [owner lightBoxItemFlagFromTab:object];
 }
 
 #pragma VOTING ARGUMENTS

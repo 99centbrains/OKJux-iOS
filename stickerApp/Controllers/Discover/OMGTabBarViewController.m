@@ -350,21 +350,26 @@
     [self shareItem:image];
 }
 
+- (void) lightBoxItemFlagFromTab:(Snap *)flagItem {
+    [self lightBoxItemFlag: flagItem];
+}
+
 #pragma FLAG
 - (void) lightBoxItemFlag:(Snap *)flagItem {
     UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"PROMPT_FLAG_TITLE", nil)
-                                                                         message:NSLocalizedString(@"PROMPT_FLAG_BODY", nil)
+                                                                         message:!flagItem.reported ? NSLocalizedString(@"PROMPT_FLAG_BODY", nil) : NSLocalizedString(@"PROMPT_ALREADY_FLAGED_BODY", nil)
                                                                   preferredStyle:UIAlertControllerStyleAlert];
 
     UIAlertAction *action_spam = [UIAlertAction actionWithTitle:NSLocalizedString(@"PROMPT_FLAG_ACTION", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-      if (!flagItem.reported) {
         [self flagImage:flagItem];
-      }
     }];
     
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"PROMPT_FLAG_CANCEL", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:!flagItem.reported ? NSLocalizedString(@"PROMPT_FLAG_CANCEL", nil) : NSLocalizedString(@"OK_BUTTON", nil)
+                                                     style:UIAlertActionStyleDefault handler:nil];
 
-    [actionSheet addAction:action_spam];
+    if (!flagItem.reported) {
+        [actionSheet addAction:action_spam];
+    }
     [actionSheet addAction:cancel];
     
     [self presentViewController:actionSheet animated:YES completion:nil];
@@ -372,9 +377,9 @@
 
 - (void) flagImage:(Snap *)flagObject {
   [SnapServiceManager reportSnap:flagObject.ID OnSuccess:^(NSDictionary *responseObject) {
-    //DO SOMETHING
+    [TAOverlay showOverlayWithLabel:NSLocalizedString(@"PUBLISH_DONE", nil) Options:(TAOverlayOptionOverlayTypeSuccess | TAOverlayOptionAutoHide)];
   } OnFailure:^(NSError *error) {
-    [TAOverlay showOverlayWithLabel:@"Oops! Try again later." Options:TAOverlayOptionAutoHide | TAOverlayOptionOverlaySizeBar | TAOverlayOptionOverlayTypeError ];
+    [TAOverlay showOverlayWithLabel:@"Oops! Try again later." Options:TAOverlayOptionAutoHide | TAOverlayOptionOverlaySizeBar | TAOverlayOptionOverlayTypeError];
   }];
 }
 

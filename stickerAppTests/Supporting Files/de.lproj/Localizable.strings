@@ -50,6 +50,7 @@
 "PROMPT_FLAG_BODY" = "Bitte melden Sie Spam oder unangemessene Fotos.";
 "PROMPT_FLAG_ACTION" = "Melde dieses ungeeignetes Foto";
 "PROMPT_FLAG_CANCEL" = "Das macht nichts";
+"PROMPT_ALREADY_FLAGED_BODY" = "You have already reported this snap.";
 
 //REMIX PROMPT
 "PROMPT_REMIX_TITLE" = "Remix";
@@ -62,6 +63,7 @@
 "PUBLISH_PUBLIC" = "📍 Veröffentlichen Sie zur allgemeinen Kartenansicht?";
 "PUBLISH_SHARE" = "Teilen";
 "PUBLISH_DONE" = "Fix und fertig";
+"PUBLISH_PROGRESS" = "Saving snap";
 
 //NEW PHOTO SCREEN
 "PHOTO_STARTOVER" = "Von vorn beginnen ?";
@@ -94,3 +96,4 @@
 "CANCEL_BUTTON" = "Stornieren";
 "ACCEPT_BUTTON" = "Accept";
 "SUCCESS_BUTTON" = "Success!";
+"OK_BUTTON" = "Ok";

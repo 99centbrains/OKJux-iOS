@@ -49,6 +49,7 @@
 "PROMPT_FLAG_BODY" = "Please report any spam or suspicious photos.";
 "PROMPT_FLAG_ACTION" = "Report";
 "PROMPT_FLAG_CANCEL" = "Never Mind";
+"PROMPT_ALREADY_FLAGED_BODY" = "You have already reported this snap.";
 
 //REMIX PROMPT
 "PROMPT_REMIX_TITLE" = "Remix";
@@ -61,6 +62,7 @@
 "PUBLISH_PUBLIC" = "Éditez à la vue publique de carte?";
 "PUBLISH_SHARE" = "Publier";
 "PUBLISH_DONE" = "Fini";
+"PUBLISH_PROGRESS" = "Saving snap";
 
 //NEW PHOTO SCREEN
 "PHOTO_STARTOVER" = "Recommencer?";
@@ -93,3 +95,4 @@
 "CANCEL_BUTTON" = "Annuler";
 "ACCEPT_BUTTON" = "Accept";
 "SUCCESS_BUTTON" = "Success!";
+"OK_BUTTON" = "Ok";
