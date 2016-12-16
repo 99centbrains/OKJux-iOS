@@ -138,19 +138,6 @@ typedef NSInteger OMGVoteSpecifier;
   }];
 }
 
-- (NSMutableArray *) removeUserInArray:(NSMutableArray *)array {
-    if ([array count] > 0) {
-        for (NSString *userLike in array) {
-            if ([userLike isEqualToString:[DataHolder DataHolderSharedInstance].userObject.objectId]){
-                [array removeObject:[DataHolder DataHolderSharedInstance].userObject.objectId];
-                return array;
-            }
-        }
-    }
-
-    return array;
-}
-
 - (IBAction)iba_flagImage:(id)sender {
     [self.delegate lightBoxItemFlag:_snap];
 }

@@ -6,9 +6,9 @@
 //
 //
 
+#import <CoreLocation/CoreLocation.h>
 #import "OMGSnapVoteViewController.h"
 #import "OMGSnapCollectionViewCell.h"
-#import "DataHolder.h"
 #import "TAOverlay.h"
 #import "OMGTabBarViewController.h"
 #import "DateTools.h"

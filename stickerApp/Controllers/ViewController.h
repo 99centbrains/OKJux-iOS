@@ -11,11 +11,8 @@
 
 
 @interface ViewController : UIViewController <UIImagePickerControllerDelegate,
-UINavigationControllerDelegate, UIActionSheetDelegate, UIPopoverControllerDelegate, UIAlertViewDelegate, CBCropViewControllerDelegate
-> {
-    
+UINavigationControllerDelegate, UIActionSheetDelegate, UIPopoverControllerDelegate, UIAlertViewDelegate, CBCropViewControllerDelegate> {
     IBOutlet UIView *ibo_getphoto;
-    
 }
 
 - (void)handleDocumentOpenURL:(NSString *)url;
@@ -24,7 +21,6 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIPopoverControllerDelega
 
 
 @property (nonatomic, strong) IBOutlet UIView *ibo_getphoto;
-
 
 
 @end

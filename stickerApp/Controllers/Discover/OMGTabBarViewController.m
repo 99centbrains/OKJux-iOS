@@ -70,12 +70,6 @@
     [[self.tabBar.items objectAtIndex:2] setTitle:NSLocalizedString(@"TABBAR_MAP", nil)];
     [[self.tabBar.items objectAtIndex:3] setTitle:NSLocalizedString(@"TABBAR_MORE", nil)];
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:kNewUserKey]) {
-        [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-            [DataHolder DataHolderSharedInstance].userGeoPoint = geoPoint;
-        }];
-    }
-    
     self.delegate = self;
 }
 
