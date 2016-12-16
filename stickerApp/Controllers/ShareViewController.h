@@ -23,7 +23,6 @@
 @end
 
 
-//
 @interface ShareViewController : UIViewController
 
 @property (nonatomic, strong) UIImage *userExportedImage;

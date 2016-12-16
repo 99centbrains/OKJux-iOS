@@ -8,7 +8,6 @@
 
 #import "OMGSnapViewController.h"
 #import "OMGSnapCollectionViewCell.h"
-#import "DataHolder.h"
 #import "TAOverlay.h"
 #import "OMGLightBoxViewController.h"
 #import "ChannelSelectViewController.h"
@@ -26,8 +25,6 @@
 
 
 @property (nonatomic, weak) IBOutlet UICollectionView *ibo_snapCollectionView;
-
-@property (nonatomic, strong ) PFObject *snapObject;
 
 @property (nonatomic, strong) NSMutableArray *snapsArray;
 
@@ -78,10 +75,9 @@
     [self queryTopSnapsByChannel];
 }
 
-- (void)updateObject:(PFObject *)object {
-    NSInteger objNum = [_snapsArray indexOfObject:object];
-    NSLog(@"You Tapped Object %ld", (long)objNum);
-    [_ibo_snapCollectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:objNum inSection:0]]];
+- (void)updateObjectInCollection:(Snap *)snap {
+    NSInteger snapIndex = [_snapsArray indexOfObject:snap];
+    [_ibo_snapCollectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:snapIndex inSection:0]]];
 }
 
 - (void) queryTopSnapsByChannel {
@@ -104,7 +100,7 @@
 }
 
 - (IBAction)iba_toggleTrending:(UISegmentedControl *)sender {
-    [TAOverlay showOverlayWithLabel:@"Loading Snaps" Options:TAOverlayOptionOverlaySizeBar | TAOverlayOptionOverlayTypeActivityDefault ];
+    [TAOverlay showOverlayWithLabel:@"Loading Snaps" Options:TAOverlayOptionOverlaySizeBar | TAOverlayOptionOverlayTypeActivityDefault];
     gettingData = YES;
     pagination = 0;
     
@@ -132,14 +128,14 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (CGRectIntersectsRect(scrollView.bounds, CGRectMake(0, _ibo_snapCollectionView.contentSize.height, CGRectGetWidth(self.view.frame), 200)) && _ibo_snapCollectionView.contentSize.height > 0) {
+    if (CGRectIntersectsRect(scrollView.bounds, CGRectMake(0, _ibo_snapCollectionView.contentSize.height, CGRectGetWidth(self.view.frame), 200)) &&
+        _ibo_snapCollectionView.contentSize.height > 0) {
         if (!gettingData && moreElements) {
             pagination ++;
             [self queryTopSnapsByChannel];
         }
     }
 }
-
 
 - (void)refreshData {
     if ([_snapsArray count]>0) {

@@ -32,7 +32,6 @@
     
     NSString * filename;
     BOOL boolSharePublic;
-    
 }
 
 @property (nonatomic, strong) UIActivityViewController *activityVC;
@@ -56,9 +55,6 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
   
     return self;
 }
@@ -104,7 +100,7 @@
     
     if ([self locationGranted]){
         [self setupMapView];
-        
+        //TODO geopoint STILL PARSE
         [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
             [DataHolder DataHolderSharedInstance].userGeoPoint = geoPoint;
             

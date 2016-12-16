@@ -15,7 +15,7 @@
 
 - (void) lightBoxShareImage:(UIImage *)image;
 - (void) lightBoxItemFlag:(Snap *)flagItem;
-- (void) omgSnapDismissLightBox:(PFObject *)object;
+- (void) omgSnapDismissLightBox:(Snap *)object;
 
 @end
 

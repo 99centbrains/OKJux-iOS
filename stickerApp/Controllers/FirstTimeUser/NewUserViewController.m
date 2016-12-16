@@ -57,7 +57,6 @@
     [super didReceiveMemoryWarning];
 }
 
-
 - (NSInteger)numberOfSections {
     return 1;
 }

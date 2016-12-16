@@ -10,7 +10,6 @@
 #import <MapKit/MapKit.h>
 #import "AppDelegate.h"
 #import "TAOverlay.h"
-#import "DataHolder.h"
 #import "OMGHeadSpaceViewController.h"
 #import "NewUserViewController.h"
 #import "JPSThumbnail.h"

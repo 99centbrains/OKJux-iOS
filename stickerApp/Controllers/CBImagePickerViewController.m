@@ -15,17 +15,13 @@
 #import "PlayViewController.h"
 
 @interface CBImagePickerViewController ()<AVCaptureFileOutputRecordingDelegate, UIAlertViewDelegate, AVAudioPlayerDelegate, UINavigationControllerDelegate,UIImagePickerControllerDelegate>{
-
-    
-   
-    
     AVCaptureSession *captureSession;
     AVCaptureStillImageOutput *stillFileOutput;
     AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
 
     BOOL cameraflipped;
-    
 }
+
 @property (nonatomic, weak)  IBOutlet UIView *ibo_videoPreviewView;
 @property (nonatomic, weak)  IBOutlet UIButton *ibo_btnPhotoLib;
 @end
@@ -36,9 +32,6 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
     return self;
 }
 
@@ -199,8 +192,6 @@
         //SET UP CAPTURE DEVICES
         /* Video */
         AVCaptureDevice *deviceVideo = [self getCameraDevice];
-        
-        //AVCaptureDevice *currentDevice =[self getCameraDevice];
       
         NSError *error = nil;
         AVCaptureDeviceInput *inputVideo = [AVCaptureDeviceInput deviceInputWithDevice:deviceVideo error:&error];
@@ -208,8 +199,6 @@
         if (!inputVideo) {
             NSLog(@"ERROR: trying to open camera: %@", error);
         }
-        
-        //[inputVideo setFocusMode:AVCaptureFocusModeAutoFocus];
       
         stillFileOutput = [[AVCaptureStillImageOutput alloc] init];
         [[stillFileOutput connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:AVCaptureVideoOrientationPortrait];

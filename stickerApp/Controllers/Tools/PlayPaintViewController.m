@@ -9,12 +9,10 @@
 #import "PlayPaintViewController.h"
 
 @interface PlayPaintViewController (){
-    
     BOOL bool_paintMode;
     
     NSArray *brushSize;
     int brush;
-
 }
 
 @end
@@ -24,9 +22,6 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-
-    }
     return self;
 }
 
@@ -35,7 +30,6 @@
     bool_paintMode = YES;
     brushSize = @[@"20", @"50", @"100", @"200", @"10", @"5"];
 }
-
 
 - (IBAction)iba_done:(id)sender {
     [self.delegate playPaintVCDone:self];

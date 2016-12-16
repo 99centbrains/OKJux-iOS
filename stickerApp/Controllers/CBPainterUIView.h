@@ -8,10 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CBPainterUIView : UIView{
-
-    
-}
+@interface CBPainterUIView : UIView{}
 
 - (void) action_undoLastStroke;
 

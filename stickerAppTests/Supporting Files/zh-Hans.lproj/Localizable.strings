@@ -92,6 +92,11 @@
 "TOGGLE_RISING" = "升起";
 "TOGGLE_TOP" = "最好的";
 
+//DELETE
+"DELETE_TITLE" = "Manage posts";
+"DELETE_MESSAGE" = "Manage your public pics.";
+"DELETE" = "Delete";
+
 //GENERAL
 "CANCEL_BUTTON" = "取消";
 "ACCEPT_BUTTON" = "Accept";

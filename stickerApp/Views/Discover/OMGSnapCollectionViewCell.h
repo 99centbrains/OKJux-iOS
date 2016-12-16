@@ -22,8 +22,6 @@
 
 - (void) omgsnapCellDelete:(NSInteger) snapIndex;
 
-- (void) iba_showUserForImage:(NSInteger) snapIndex;
-
 @end
 
 

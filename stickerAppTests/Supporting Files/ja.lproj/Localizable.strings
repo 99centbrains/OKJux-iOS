@@ -92,6 +92,11 @@
 "TOGGLE_RISING" = "上昇";
 "TOGGLE_TOP" = "最高";
 
+//DELETE
+"DELETE_TITLE" = "Manage posts";
+"DELETE_MESSAGE" = "Manage your public pics.";
+"DELETE" = "Delete";
+
 //GENERAL
 "CANCEL_BUTTON" = "キャンセル";
 "ACCEPT_BUTTON" = "Accept";

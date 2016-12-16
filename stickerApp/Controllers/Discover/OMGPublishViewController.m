@@ -133,6 +133,10 @@
     [self.navigationController pushViewController:vc_shareview animated:YES];
 }
 
+- (IBAction)iba_publish:(id)sender {//TODO check
+    [self iba_skip:nil];
+}
+
 - (IBAction)iba_toggle_public:(UIButton *)sender {
     if ([[NSUserDefaults standardUserDefaults] boolForKey:kUserBanStatus]) {
         [self promptUserBanned];
@@ -158,7 +162,6 @@
 }
 
 -(UIImage *) scaledImageWithImage:(UIImage *) sourceImage {
-    NSLog(@"Image Size %@", NSStringFromCGSize(sourceImage.size));
     float oldWidth = sourceImage.size.width;
     float i_width = sourceImage.size.width/3;
     float scaleFactor = i_width/oldWidth;
@@ -169,7 +172,6 @@
     UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight));
     [sourceImage drawInRect:CGRectMake(0, 0, newWidth, newHeight)];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    NSLog(@"Image Size %@", NSStringFromCGSize(newImage.size));
     
     UIGraphicsEndImageContext();
     return newImage;

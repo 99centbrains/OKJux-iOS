@@ -119,7 +119,6 @@ typedef NSInteger OMGVoteSpecifier;
   _snap.isLiked = YES;
   [self setUserLikeStatus];
   [SnapServiceManager rankSnap:_snap.ID withLike:YES OnSuccess:^(NSDictionary *responseObject) {
-    //DO SOMETHING
   } OnFailure:^(NSError *error) {
     _snap = originalSnap;
     [self setUserLikeStatus];
@@ -133,24 +132,10 @@ typedef NSInteger OMGVoteSpecifier;
   _snap.isLiked = NO;
   [self setUserLikeStatus];
   [SnapServiceManager rankSnap:_snap.ID withLike:NO OnSuccess:^(NSDictionary *responseObject) {
-    //DO SOMETHING
   } OnFailure:^(NSError *error) {
     _snap = originalSnap;
     [self setUserLikeStatus];
   }];
-}
-
-- (BOOL) checkUserInArray:(NSMutableArray *)array {
-    if ([array count] > 0) {
-        for (NSString *userLike in array) {
-            NSLog(@"USER LIKE %@", userLike);
-            if ([userLike isEqualToString:[DataHolder DataHolderSharedInstance].userObject.objectId]) {
-                return NO;
-            }
-        }
-    }
-    
-    return YES;
 }
 
 - (NSMutableArray *) removeUserInArray:(NSMutableArray *)array {
@@ -168,13 +153,6 @@ typedef NSInteger OMGVoteSpecifier;
 
 - (IBAction)iba_flagImage:(id)sender {
     [self.delegate lightBoxItemFlag:_snap];
-}
-
-- (IBAction)iba_deleteItem:(id)sender {
-    [_snapObject fetchInBackground];
-    [_snapObject deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {}];
-    
-    [self.delegate omgSnapDismissLightBox:_snapObject];
 }
 
 - (IBAction)iba_shareItem:(id)sender {
@@ -196,7 +174,7 @@ typedef NSInteger OMGVoteSpecifier;
     }
     
     _imageURL = nil;
-    [self.delegate omgSnapDismissLightBox:_snapObject];
+    [self.delegate omgSnapDismissLightBox:_snap];
 }
 
 - (void)didReceiveMemoryWarning {
