@@ -61,7 +61,6 @@
                         Failure: (void (^)(NSError *))_failure{
   
   if ([params objectForKey:@"snap"]){
-    //TODO: change the names for the real keys
     __block NSData *dataMedia;
     dataMedia = [[params objectForKey:@"snap"] objectForKey:@"image"];
     NSMutableDictionary *snap = [[params objectForKey:@"snap"] mutableCopy];
@@ -69,10 +68,14 @@
     params = @{ @"snap": snap,
                 @"user": @{ @"UUID": [DataManager deviceToken] }
               };
-    
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *fileName = [dateFormatter stringFromDate:[NSDate date]];
+
     NSMutableURLRequest *request =
     [self.requestSerializer multipartFormRequestWithMethod:@"POST" URLString:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-      [formData appendPartWithFileData:dataMedia name:@"snap[image]" fileName: [NSString stringWithFormat:@"%@.%@", @"new_snap", ImageExtension] mimeType: ImageMimeType];
+      [formData appendPartWithFileData:dataMedia name:@"snap[image]" fileName: [NSString stringWithFormat:@"%@.%@", fileName, ImageExtension] mimeType: ImageMimeType];
     } error:nil];
     
     AFHTTPRequestOperationManager *manager =  [AFHTTPRequestOperationManager manager];
