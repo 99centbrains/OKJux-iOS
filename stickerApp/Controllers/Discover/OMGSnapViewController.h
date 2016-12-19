@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Snap.h"
 
 @class OMGSnapViewController;
 
@@ -19,7 +20,7 @@
 @interface OMGSnapViewController : UIViewController
 
 - (void)refreshData;
-- (void)updateObject:(PFObject *)object;
+- (void)updateObjectInCollection:(Snap *)snap;
 
 @property (nonatomic, unsafe_unretained) id <OMGSnapViewControllerDelegate> delegate;
 @property (nonatomic, assign) BOOL bool_trending;

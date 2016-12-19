@@ -7,8 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Parse/Parse.h>
-
 
 @interface CBJSONDictionary : NSDictionary
 
@@ -54,8 +52,5 @@
 //STORING IMAGES
 - (void) saveLastCatwangImage:(UIImage *)image;
     - (UIImage *) lastCatwangImage;
-
-#pragma PARSE Stuff
-- (void) parse_trackAnalytic:(NSDictionary *)data forEvent:(NSString *)event;
 
 @end

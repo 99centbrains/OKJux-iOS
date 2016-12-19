@@ -13,8 +13,6 @@
 #import "iRate.h"
 #import "iNotify.h"
 #import "CBJSONDictionary.h"
-#import <Parse/Parse.h>
-#import "DataHolder.h"
 #import "AppManager.h"
 #import "HNKCache.h"
 #import <Fabric/Fabric.h>
@@ -72,27 +70,11 @@
   [Chartboost startWithAppId:@"54e9f0a004b01637287765c9"
                 appSignature:@"cdaab4f41b9976c9b3c61085b845b30306254379"
                     delegate:self];
-  
-  //MARK: - PARSE
-  [Parse setApplicationId:@"dUW44SWxZv8z1lVd2ghaLSW8cpSSVk5VSGo55aI0"
-                clientKey:@"f1fUi29cX6hZwZNDMtN87Nnutf9FbPFUcKKTgcFV"];
-  [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-  [self setup_parse];
 
   [Flurry startSession:kFlurryKey];
 
   //MARK: - INSTABUG
   [Instabug startWithToken:@"5d3b16ef9fae0c99ea3a4af6f3d62774" invocationEvent:IBGInvocationEventShake];
-  
-  //MARK:PUSH NOTIFICATIONS
-  if (application.applicationState != UIApplicationStateBackground) {
-    BOOL preBackgroundPush = ![application respondsToSelector:@selector(backgroundRefreshStatus)];
-    BOOL oldPushHandlerOnly = ![self respondsToSelector:@selector(application:didReceiveRemoteNotification:fetchCompletionHandler:)];
-    BOOL noPushPayload = ![launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-    if (preBackgroundPush || oldPushHandlerOnly || noPushPayload) {
-      [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    }
-  }
   
   //register cache format for stickers
   HNKCacheFormat *format = [HNKCache sharedCache].formats[@"sticker"];
@@ -130,72 +112,23 @@
   [UserServiceManager registerUserWith:[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
 }
 
-#pragma PARSE SETUP
-- (void) setup_parse {
-    //MARK: - PARSE USER
-    [PFUser enableAutomaticUser];
-    PFACL *defaultACL = [PFACL ACL];
-    [defaultACL setPublicReadAccess:YES];
-    [defaultACL setPublicWriteAccess:YES];
-    [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
-
-    //MARK: - SET UP CITY
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-
-    currentInstallation[@"user"] = [PFUser currentUser];
-
-    [currentInstallation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        NSLog(@"***************** USER ID %@", [PFUser currentUser].objectId);
-        if (![[NSUserDefaults standardUserDefaults] objectForKey:@"userid"]) {
-            PFUser *currentUser = [PFUser currentUser];
-            currentUser[@"points"] = [NSNumber numberWithInt:5];
-            currentUser[@"banned"] = [NSNumber numberWithBool:NO];
-            [currentUser save];
-
-            [[NSUserDefaults standardUserDefaults] setObject:currentUser.objectId forKey:@"userid"];
-            [DataHolder DataHolderSharedInstance].userObject = currentUser;
-        } else {
-            [[PFUser currentUser] fetchInBackground];
-            [DataHolder DataHolderSharedInstance].userObject = [PFUser currentUser];
-            BOOL banned = [[DataHolder DataHolderSharedInstance].userObject[@"banned"] boolValue];
-            [[NSUserDefaults standardUserDefaults] setBool:banned forKey:kUserBanStatus];
-        }
-        if (!succeeded){
-            NSLog(@"PARSE FAILURE");
-        }
-    }];
-}
-
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
-    // Store the deviceToken in the current installation and save it to Parse.
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    [currentInstallation setDeviceTokenFromData:devToken];
-    [currentInstallation saveInBackground];
+    //TODO when pushwoosh added
 }
 
 - (void)application:(UIApplication *)application
     didReceiveRemoteNotification:(NSDictionary *)userInfo {
-        [PFPush handlePush:userInfo];
-        NSLog(@"remote notification: %@",[userInfo description]);
-        if (application.applicationState == UIApplicationStateInactive) {
-            [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
-        }
+        //TODO when pushwoosh added
 }
 
 - (void)application:(UIApplication *)application
     didReceiveRemoteNotification:(NSDictionary *)userInfo
     fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-        if (application.applicationState == UIApplicationStateInactive) {
-            [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
-        }
+        //TODO when pushwoosh added
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    if (currentInstallation.badge != 0) {
-        currentInstallation.badge = 0;
-        [currentInstallation saveEventually];
-    }
+    //TODO when pushwoosh added
 }
 
 //TODO this method is never called
@@ -231,15 +164,6 @@
     locationMgr.desiredAccuracy = kCLLocationAccuracyBest;
     [locationMgr requestWhenInUseAuthorization];
     [locationMgr startUpdatingLocation];
-
-    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-        [DataHolder DataHolderSharedInstance].userGeoPoint = geoPoint;
-    }];
-}
-
-//TODO: This method is never called
-- (void)setParseUser {
-    [self setup_parse];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

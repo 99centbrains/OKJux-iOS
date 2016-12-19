@@ -58,7 +58,6 @@
 		745D08061A6714370073B7BA /* StickerHeaderCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 745D08051A6714370073B7BA /* StickerHeaderCollectionCell.m */; };
 		745D081D1A6741920073B7BA /* CBJSONDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 745D081C1A6741920073B7BA /* CBJSONDictionary.m */; };
 		746332D51A2D52D400CD24E5 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 746332D41A2D52D400CD24E5 /* Launch Screen.xib */; };
-		746A73A31A813C180052E7ED /* DataHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 746A73A21A813C180052E7ED /* DataHolder.m */; };
 		746A73A61A813D180052E7ED /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 746A73A41A813D180052E7ED /* AppManager.m */; };
 		746A73AD1A818BEB0052E7ED /* OMGSnapCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 746A73AC1A818BEB0052E7ED /* OMGSnapCollectionViewCell.m */; };
 		74760E0C1A82AD5800AD3FE5 /* OMGTopSnapCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74760E0B1A82AD5800AD3FE5 /* OMGTopSnapCollectionViewCell.m */; };
@@ -157,7 +156,6 @@
 		9B9A2B551DD10AA70064616D /* AdColony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9A2B511DD10AA70064616D /* AdColony.framework */; };
 		9B9A2B561DD10AA70064616D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9A2B521DD10AA70064616D /* Bolts.framework */; };
 		9B9A2B571DD10AA70064616D /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9A2B531DD10AA70064616D /* Chartboost.framework */; };
-		9B9A2B581DD10AA70064616D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9A2B541DD10AA70064616D /* Parse.framework */; };
 		D5126E0E1850DFA100024D0A /* TextComposerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5126E0C1850DFA100024D0A /* TextComposerViewController.m */; };
 		D54EC115184D5D3E00538194 /* PlayBorderSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D54EC113184D5D3E00538194 /* PlayBorderSelectViewController.m */; };
 		D54EC195184DB29700538194 /* PlayPaintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D54EC193184DB29700538194 /* PlayPaintViewController.m */; };
@@ -275,8 +273,6 @@
 		745D081B1A6741920073B7BA /* CBJSONDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBJSONDictionary.h; sourceTree = "<group>"; };
 		745D081C1A6741920073B7BA /* CBJSONDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBJSONDictionary.m; sourceTree = "<group>"; };
 		746332D41A2D52D400CD24E5 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
-		746A73A11A813C180052E7ED /* DataHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHolder.h; sourceTree = "<group>"; };
-		746A73A21A813C180052E7ED /* DataHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHolder.m; sourceTree = "<group>"; };
 		746A73A41A813D180052E7ED /* AppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
 		746A73A51A813D180052E7ED /* AppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppManager.h; sourceTree = "<group>"; };
 		746A73AB1A818BEB0052E7ED /* OMGSnapCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMGSnapCollectionViewCell.h; sourceTree = "<group>"; };
@@ -423,7 +419,6 @@
 		9B9A2B511DD10AA70064616D /* AdColony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AdColony.framework; sourceTree = "<group>"; };
 		9B9A2B521DD10AA70064616D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		9B9A2B531DD10AA70064616D /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chartboost.framework; sourceTree = "<group>"; };
-		9B9A2B541DD10AA70064616D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		C8B47C9500291BF740CC2A52 /* Pods-Catwang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catwang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Catwang/Pods-Catwang.debug.xcconfig"; sourceTree = "<group>"; };
 		D5126E0B1850DFA100024D0A /* TextComposerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextComposerViewController.h; sourceTree = "<group>"; };
 		D5126E0C1850DFA100024D0A /* TextComposerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextComposerViewController.m; sourceTree = "<group>"; };
@@ -478,7 +473,6 @@
 				37E2AC50166EA92A00941C4F /* AssetsLibrary.framework in Frameworks */,
 				379FDAA615E6A6B1007E7141 /* CFNetwork.framework in Frameworks */,
 				743D0D0B1A30D36400E41DAA /* EventKitUI.framework in Frameworks */,
-				9B9A2B581DD10AA70064616D /* Parse.framework in Frameworks */,
 				3753C74215C3132900B8AEDE /* CoreGraphics.framework in Frameworks */,
 				3753C74015C3132900B8AEDE /* Foundation.framework in Frameworks */,
 				3705891E16274D7600378A4C /* MobileCoreServices.framework in Frameworks */,
@@ -938,7 +932,6 @@
 				9B9A2B511DD10AA70064616D /* AdColony.framework */,
 				9B9A2B521DD10AA70064616D /* Bolts.framework */,
 				9B9A2B531DD10AA70064616D /* Chartboost.framework */,
-				9B9A2B541DD10AA70064616D /* Parse.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -1033,8 +1026,6 @@
 		FA8DCF381DCD21BE00BA22CC /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				746A73A11A813C180052E7ED /* DataHolder.h */,
-				746A73A21A813C180052E7ED /* DataHolder.m */,
 				FA11887A1DE3492700C6E95B /* DataManager.h */,
 				FA11887B1DE3493700C6E95B /* DataManager.m */,
 			);
@@ -1338,7 +1329,6 @@
 				74B6E07E1A1996C9001D6F80 /* iNotify.m in Sources */,
 				74A2C9AA1A92A29400303AEE /* OMGMapViewController.m in Sources */,
 				74B6E0851A1996C9001D6F80 /* UIActivityInstagram.m in Sources */,
-				746A73A31A813C180052E7ED /* DataHolder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

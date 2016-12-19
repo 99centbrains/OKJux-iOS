@@ -121,7 +121,6 @@
 #pragma DATACOLLECTION
 - (void) loadBundleSection {
     NSInteger packCount = [[[CBJSONDictionary shared] getPacksFromBundleID:_prop_bundleID] count];
-    NSLog(@"PACKS %d", packCount);
     for (int index = 0; index < packCount ; index++) {
         //GETS Pack Dictionary
         NSMutableDictionary *pack = (NSMutableDictionary *)[[[CBJSONDictionary shared] getPacksFromBundleID:_prop_bundleID] objectAtIndex:index];
@@ -152,9 +151,7 @@
     cell.stickerPackID = packID;
     cell.stickerBundleID = _prop_bundleID;
     cell.delegate = self;
-    
-    NSLog(@"SECTION %d", indexPath.section);
-    NSLog(@"PACK ID%@", packID);
+
     [cell setUpCell];
     
     _ibo_pageControl.currentPage = indexPath.section;
@@ -166,10 +163,6 @@
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake(collectionView.frame.size.width, collectionView.frame.size.height);
-}
-
-- (IBAction)temp_unlock:(id)sender {
-    //TODO delete method
 }
 
 #pragma StoryBoard

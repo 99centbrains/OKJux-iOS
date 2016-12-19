@@ -31,7 +31,7 @@
 #import "AppDelegate.h"
 #import "Snap.h"
 
-@interface OMGTabBarViewController ()<UITabBarControllerDelegate, OMGLightBoxViewControllerDelegate, OMGSnapViewControllerDelegate, OMGHeadSpaceViewControllerDelegate, StickerCategoryViewControllerDelegate, MFMessageComposeViewControllerDelegate, OMGSnapVoteViewControllerDelegate>{
+@interface OMGTabBarViewController ()<UITabBarControllerDelegate, OMGLightBoxViewControllerDelegate, OMGSnapViewControllerDelegate, OMGHeadSpaceViewControllerDelegate, StickerCategoryViewControllerDelegate, MFMessageComposeViewControllerDelegate>{
     BOOL camera;
 }
 
@@ -43,9 +43,7 @@
 
 @property (nonatomic, strong) OMGSnapVoteViewController *ibo_omgVoteVC;
 
-
 @property (nonatomic, strong) UIPopoverController *popController;
-
 
 @end
 
@@ -71,12 +69,6 @@
     [[self.tabBar.items objectAtIndex:0] setTitle:NSLocalizedString(@"TABBAR_NEW", nil)];
     [[self.tabBar.items objectAtIndex:2] setTitle:NSLocalizedString(@"TABBAR_MAP", nil)];
     [[self.tabBar.items objectAtIndex:3] setTitle:NSLocalizedString(@"TABBAR_MORE", nil)];
-    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:kNewUserKey]) {
-        [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-            [DataHolder DataHolderSharedInstance].userGeoPoint = geoPoint;
-        }];
-    }
     
     self.delegate = self;
 }
@@ -113,12 +105,6 @@
     }
 }
 
-- (void) showUserSnaps:(PFUser *)user {
-    [self setSelectedIndex:3];
-    _ibo_mysnapsVC = (OMGMySnapsViewController *)[self.viewControllers objectAtIndex:4];
-    [_ibo_mysnapsVC loadUser:user];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
 }
@@ -139,7 +125,6 @@
     return;
 }
 
-
 #pragma GIF SEND
 - (UIImage *) getPopmoji:(UIImage *)image withPad:(int)pad {
     image = [self imageFixBoundingBox:image];
@@ -153,8 +138,7 @@
                                    (rect.size.height - image.size.height)/2 + pad,
                                    image.size.width,
                                    image.size.height);
-    
-    NSLog(@"IMAGE SIZE %@", NSStringFromCGSize(image.size));
+
     CGContextSetBlendMode(context, kCGBlendModeCopy);
     CGContextDrawImage(context, lowerImage, image.CGImage);
     UIImage *final = UIGraphicsGetImageFromCurrentImageContext();
@@ -207,9 +191,6 @@
         }
     }
 
-    if (!CGImageDestinationFinalize(destination)) {
-        NSLog(@"failed to finalize image destination");
-    }
     CFRelease(destination);
 
     return fileURL;
@@ -264,8 +245,7 @@
     CGRect lowerImage = CGRectMake((rect.size.width - width)/2, (rect.size.height - height)/2,
                                    width,
                                    height);
-    
-    NSLog(@"IMAGE SIZE %@", NSStringFromCGSize(image.size));
+
     CGContextSetBlendMode(context, kCGBlendModeCopy);
     CGContextDrawImage(context, lowerImage, image.CGImage);
 
@@ -294,21 +274,6 @@
 }
 
 #pragma LightboxViewer
-//TODO next will be removed once snap model is used on all the app
-- (void)showSnapFullScreen:(PFObject *)snap preload:(UIImage*)thumbnail shouldShowVoter:(BOOL)voter {
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    UIStoryboard *mainSB = [UIStoryboard storyboardWithName:@"OMGStoryboard" bundle:[NSBundle mainBundle]];
-    _ibo_lightboxView = (OMGLightBoxViewController*)[mainSB instantiateViewControllerWithIdentifier: @"seg_OMGLightBoxViewController"];
-    _ibo_lightboxView.view.frame = self.view.frame;
-    _ibo_lightboxView.delegate = self;
-    _ibo_lightboxView.preloadImage = thumbnail;
-    _ibo_lightboxView.ibo_fade_voter.hidden = voter;
-    [_ibo_lightboxView setSnapObject:snap];
-
-    [self.view addSubview:_ibo_lightboxView.view];
-}
-
-//TODO instead of showSnapFullScreen this will be called
 - (void)showFullScreenSnap:(Snap *)snap preload:(UIImage*)thumbnail shouldShowVoter:(BOOL)voter {
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     UIStoryboard *mainSB = [UIStoryboard storyboardWithName:@"OMGStoryboard" bundle:[NSBundle mainBundle]];
@@ -322,22 +287,25 @@
     [self.view addSubview:_ibo_lightboxView.view];
 }
 
-- (void) omgSnapDismissLightBox:(PFObject *)object {
+- (void) omgSnapDismissLightBox:(Snap *)snap {
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [_ibo_lightboxView.view removeFromSuperview];
     _ibo_lightboxView.delegate = nil;
     _ibo_lightboxView = nil;
-    
-    NSLog(@"Did Select VC %lu", (unsigned long)self.selectedIndex);
-    
+
+    //Update snap cell on parent view
     switch (self.selectedIndex) {
-        case 0://Snap Vote
+        case 0:
             _ibo_omgVoteVC = (OMGSnapVoteViewController *)[self.viewControllers objectAtIndex:0];
-            [_ibo_omgVoteVC updateObject:object];
+            [_ibo_omgVoteVC updateObjectInCollection:snap];
             break;
-        case 1://Snap Vote
+        case 1:
             _ibo_omgsnapVC = (OMGSnapViewController *)[self.viewControllers objectAtIndex:1];
-            [_ibo_omgsnapVC updateObject:object];
+            [_ibo_omgsnapVC updateObjectInCollection:snap];
+            break;
+        case 3:
+            _ibo_mysnapsVC = (OMGMySnapsViewController *)[self.viewControllers objectAtIndex:3];
+            [_ibo_mysnapsVC updateObjectInCollection:snap];
             break;
         default:
             break;
@@ -381,20 +349,6 @@
   } OnFailure:^(NSError *error) {
     [TAOverlay showOverlayWithLabel:@"Oops! Try again later." Options:TAOverlayOptionAutoHide | TAOverlayOptionOverlaySizeBar | TAOverlayOptionOverlayTypeError];
   }];
-}
-
-
-- (BOOL) checkUserInArray:(NSMutableArray *)array {
-    if ([array count] > 0){
-        for (NSString *userLike in array) {
-            NSLog(@"USER LIKE %@", userLike);
-            if ([userLike isEqualToString:[DataHolder DataHolderSharedInstance].userObject.objectId]) {
-                return NO;
-            }
-        }
-    }
-    
-    return YES;
 }
 
 #pragma SHAREITEM

@@ -81,23 +81,10 @@
     
     
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-//    
-//    
-//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
-//        
-//        self.navigationController.navigationBarHidden = NO;
-//        
-//    } else {
-//        
-//       self.navigationController.navigationBarHidden = NO;
-//    }
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -106,19 +93,13 @@
     [self autoSizeImage];
 }
 
-- (void)autoSizeImage{
-
-    
+- (void)autoSizeImage {
     if (userImage.size.width >= userImage.size.height){
         NSLog(@"Wide Image");
         ibo_userSelectedImageView.frame = CGRectMake(0, 0,
                                                      userImage.size.width/userImage.size.height * ibo_uiviewCropView.frame.size.height,
                                                      ibo_uiviewCropView.frame.size.height);
-        
-       
-        
     } else {
-        
         ibo_userSelectedImageView.frame = CGRectMake(0, 0,
                                                      ibo_uiviewCropView.frame.size.width,
                                                      userImage.size.height/userImage.size.width * ibo_uiviewCropView.frame.size.width);
@@ -128,52 +109,35 @@
             ibo_userSelectedImageView.frame = CGRectMake(0, 0,
                                                          userImage.size.width/userImage.size.height * ibo_uiviewCropView.frame.size.height,
                                                          ibo_uiviewCropView.frame.size.height);
-            
         }
-        
     }
-    
-    
+
     //SET SCROLLVIEW
-    
     ibo_uiScrollView.contentSize = ibo_userSelectedImageView.frame.size;
     ibo_uiScrollView.minimumZoomScale = 1;
     ibo_uiScrollView.maximumZoomScale = 2;
     ibo_uiScrollView.clipsToBounds = NO;
-    
-    // ibo_userSelectedImageView.center = ibo_uiviewCropView.center;
 }
 
 #pragma UIScroll Scaling
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    
     return [ibo_uiScrollView.subviews objectAtIndex:0];
-    
 }
+
 - (IBAction)iba_chooseNewImage:(id)sender{
-if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
+if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self dismissViewControllerAnimated:YES completion:nil];
     } else {
-        
-    [self.navigationController popViewControllerAnimated:YES];
-        
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
-- (UIImage *)render{
+- (UIImage *)render {
     int resolutionScale;
-    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
-     
-     resolutionScale = 2;
-     
+        resolutionScale = 2;
     } else {
-     
      resolutionScale = 4;
-        
-     
     }
     
     UIGraphicsBeginImageContextWithOptions(ibo_uiviewCropView.bounds.size, NO, 2 * resolutionScale);
@@ -185,33 +149,22 @@ if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
     NSLog(@"crop image w: %f", image.size.width);
     
     return image;
-    
 }
 
 - (IBAction)iba_cropComplete:(id)sender{
-    
     ibo_uiviewCropView.layer.borderColor = [UIColor whiteColor].CGColor;
     ibo_uiviewCropView.layer.borderWidth = 0.0f;
     ibo_uiviewCropView.layer.masksToBounds = NO;
     
     [self.delegate photoCropUseImage:self withImage:[self imageWithImage:[self render]]];
-    
-    
-
 }
 
 - (UIImage *)imageWithImage:(UIImage *)image {
-    
     int resolutionScale;
-    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
-        
         resolutionScale = 2;
-        
     } else {
-        
         resolutionScale = 4;
-        
     }
     
     float w = image.size.width *  resolutionScale;
@@ -223,11 +176,9 @@ if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
     [image drawInRect:CGRectMake(0, 0, bounds.size.width, bounds.size.height)];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
 
-    NSLog(@"New Image Size %@", NSStringFromCGSize(newImage.size));
     UIGraphicsEndImageContext();
 
     return newImage;
-
 }
 
 // GESTURES
@@ -236,11 +187,7 @@ BOOL cbScaling = NO;
 static CGFloat previousScale = 1.0;
 
 - (void)iba_pinchGestureRecognizer:(UIPinchGestureRecognizer *)recognizer{
-    
         if([recognizer state] == UIGestureRecognizerStateEnded) {
-            
-            
-            
             previousScale = 1.0;
             NSLog(@"END SCALE");
             [self correctScaling];
@@ -258,62 +205,41 @@ static CGFloat previousScale = 1.0;
         ibo_userSelectedImageView.transform = newTransform;
         
         previousScale = [recognizer scale];
-        
-        
 }
 
 BOOL kCorrectingImage = NO;
 - (void)correctScaling{
-    
-    //NSLog(@"IMAGE RECT: %@", NSStringFromCGRect(ibo_userSelectedImageView.frame));
-
     kCorrectingImage = YES;
     
     float destinationX;
     float destinationY;
     
-    
     //POSITIONING
     if (ibo_userSelectedImageView.frame.origin.x > 0){
-        
         destinationX = 0;
-        
     } else if (ibo_userSelectedImageView.frame.origin.x + ibo_userSelectedImageView.frame.size.width < ibo_uiviewCropView.frame.origin.x + ibo_uiviewCropView.frame.size.width){
-        
         destinationX = ibo_uiviewCropView.frame.size.width - ibo_userSelectedImageView.frame.size.width;
-        
     } else {
-        
         destinationX = ibo_userSelectedImageView.frame.origin.x;
-        
     }
-    
-    
-    if (ibo_userSelectedImageView.frame.origin.y > ibo_uiviewCropView.frame.origin.y - ibo_uiviewCropView.frame.origin.y){
-        
-        destinationY = ibo_uiviewCropView.frame.origin.y - ibo_uiviewCropView.frame.origin.y;
-        
-    } else if (ibo_userSelectedImageView.frame.origin.y + ibo_userSelectedImageView.frame.size.height < ibo_uiviewCropView.frame.origin.y + ibo_uiviewCropView.frame.size.height - ibo_uiviewCropView.frame.origin.y){
-        
-        destinationY = ibo_uiviewCropView.frame.size.height - ibo_userSelectedImageView.frame.size.height;
-        
-    } else {
-        
-        destinationY = ibo_userSelectedImageView.frame.origin.y;
-        
-    }
-    //POSITIONING END
 
+    if (ibo_userSelectedImageView.frame.origin.y > ibo_uiviewCropView.frame.origin.y - ibo_uiviewCropView.frame.origin.y){
+        destinationY = ibo_uiviewCropView.frame.origin.y - ibo_uiviewCropView.frame.origin.y;
+    } else if (ibo_userSelectedImageView.frame.origin.y + ibo_userSelectedImageView.frame.size.height < ibo_uiviewCropView.frame.origin.y + ibo_uiviewCropView.frame.size.height - ibo_uiviewCropView.frame.origin.y){
+        destinationY = ibo_uiviewCropView.frame.size.height - ibo_userSelectedImageView.frame.size.height;
+    } else {
+        destinationY = ibo_userSelectedImageView.frame.origin.y;
+    }
+
+    //POSITIONING END
     CGRect imageRect  = CGRectMake(destinationX,
                                    destinationY,
                                    ibo_userSelectedImageView.frame.size.width,
                                    ibo_userSelectedImageView.frame.size.height);
     
     //Correct Sizing
-    
-      //PORTRAIT
+    //PORTRAIT
     if (ibo_userSelectedImageView.frame.size.width < ibo_userSelectedImageView.frame.size.height){
-    
         //Width of Image is Less than Crop Width
         if (ibo_userSelectedImageView.frame.size.width < ibo_uiviewCropView.frame.size.width){
             
@@ -321,10 +247,7 @@ BOOL kCorrectingImage = NO;
                                    imageRect.origin.y,
                                    ibo_uiviewCropView.frame.size.width,
                                    ibo_userSelectedImageView.frame.size.height/ibo_userSelectedImageView.frame.size.width * ibo_uiviewCropView.frame.size.width);
-            
-            
         }
-        
     } else {
         //Height of Image is Less than Crop Height
         if (ibo_userSelectedImageView.frame.size.height < ibo_uiviewCropView.frame.size.height){
@@ -335,141 +258,72 @@ BOOL kCorrectingImage = NO;
                                    ibo_uiviewCropView.frame.size.height);
             
         }
-        
     }
     
-    
     //ANIMATE FIX
-    
     [UIView animateWithDuration:.5 animations:^(void){
-        
         ibo_userSelectedImageView.frame = imageRect;
-        
     } completion:^(BOOL completed){
-        
-        //NSLog(@"IMAGE RECT: %@", NSStringFromCGRect(ibo_userSelectedImageView.frame));
         kCorrectingImage = NO;
-        //NSLog(@"Animated");
-        
     }];
-        
-    
-
 }
 
 static CGFloat beginX = 0;
 static CGFloat beginY = 0;
 
 - (void)iba_panGestureRecognizer:(UIPanGestureRecognizer *)recognizer{
-    
     if([recognizer state] == UIGestureRecognizerStateEnded) {
-        
-        //currentlyRotating = NO;
         NSLog(@"END PAN");
         [self correctScaling];
-        if (!cbScaling){
-          //  NSLog(@"DONE PAN");
-        }
         return;
-        
     }
     
     CGPoint newCenter = [recognizer translationInView:self.view];
     
     if([recognizer state] == UIGestureRecognizerStateBegan) {
-        
         beginX = ibo_userSelectedImageView.center.x;
         beginY = ibo_userSelectedImageView.center.y;
-        
     }
     
     newCenter = CGPointMake(beginX + newCenter.x, beginY + newCenter.y);
     
     [ibo_userSelectedImageView setCenter:newCenter];
-    
-    
-    
-    
-    
-    
 }
 
 - (void)correctPan{
-    
     float destinationX;
     float destinationY;
     
-    /////////WIDTH
-    
+    //WIDTH
     if (ibo_userSelectedImageView.frame.origin.x > 0){
-        
         destinationX = 0;
-        
     } else if (ibo_userSelectedImageView.frame.origin.x + ibo_userSelectedImageView.frame.size.width < ibo_uiviewCropView.frame.origin.x + ibo_uiviewCropView.frame.size.width){
-        
         destinationX = ibo_uiviewCropView.frame.size.width - ibo_userSelectedImageView.frame.size.width;
-        
     } else {
-        
         destinationX = ibo_userSelectedImageView.frame.origin.x;
-        
     }
     
-    /////////HEIGHT
-    
+    //HEIGHT
     if (ibo_userSelectedImageView.frame.origin.y > ibo_uiviewCropView.frame.origin.y - ibo_uiviewCropView.frame.origin.y){
-        
         destinationY = ibo_uiviewCropView.frame.origin.y - ibo_uiviewCropView.frame.origin.y;
-    
     } else if (ibo_userSelectedImageView.frame.origin.y + ibo_userSelectedImageView.frame.size.height < ibo_uiviewCropView.frame.origin.y + ibo_uiviewCropView.frame.size.height - ibo_uiviewCropView.frame.origin.y){
-        
         destinationY = ibo_uiviewCropView.frame.size.height - ibo_userSelectedImageView.frame.size.height;
-        
     } else {
-        
         destinationY = ibo_userSelectedImageView.frame.origin.y;
-        
     }
-    
-    
-    /*
-    if (ibo_userSelectedImageView.frame.origin.y + ibo_userSelectedImageView.frame.size.height < ibo_uiviewCropView.frame.origin.y + ibo_uiviewCropView.frame.size.height){
-        
-        destinationY = ibo_uiviewCropView.frame.origin.y - 64;
-        
-    } else {
-        
-        destinationY = ibo_userSelectedImageView.frame.origin.y;
-        
-    }
-     
-     */
-    
-    
-    
+
     [UIView animateWithDuration:.5 animations:^(void){
-        
         ibo_userSelectedImageView.frame = CGRectMake(destinationX,
                                                       destinationY,
                                                       ibo_userSelectedImageView.frame.size.width,
                                                       ibo_userSelectedImageView.frame.size.height);
-        
-    } completion:^(BOOL completed){
-        
-    }];
-    
+    } completion:^(BOOL completed){}];
 }
 
-
-
 - (void)iba_tapGestureRecognizer:(UITapGestureRecognizer *)recognizer {
-
     if([recognizer state] == UIGestureRecognizerStateEnded) {
-        //[self correctScaling];
-        //NSLog(@"TAP DONE");
         return;
     }
-    
 }
 
 
@@ -478,25 +332,19 @@ static CGFloat beginY = 0;
 }
 
 
-
-
-- (void)viewDidDisappear:(BOOL)animated
-{
+- (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     userImage = nil;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSUInteger) supportedInterfaceOrientations {
     // Return a bitmask of supported orientations. If you need more,
     // use bitwise or (see the commented return).
     return UIInterfaceOrientationMaskPortrait;
-    // return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
 }
 
 - (UIInterfaceOrientation) preferredInterfaceOrientationForPresentation {

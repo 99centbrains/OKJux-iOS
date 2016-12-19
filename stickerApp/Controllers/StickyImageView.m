@@ -15,7 +15,6 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
         self.userInteractionEnabled = YES;
     }
   
@@ -23,10 +22,7 @@
 }
 
 - (void)setFrameForFrame {
-    //self.image = [self imageWithImage:self.image scaledToSize:CGSizeMake(500, 500)];
     imageFrame = self.frame;
-    NSLog(@"IMAGE FRAME %@", NSStringFromCGRect(imageFrame));
-    NSLog(@"IMAGE SIZE %@", NSStringFromCGSize(self.image.size));
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -48,9 +44,6 @@
 }
 
 -(UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
-    //UIGraphicsBeginImageContext(newSize);
-    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
-    // Pass 1.0 to force exact pixel size.
     UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
     [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();

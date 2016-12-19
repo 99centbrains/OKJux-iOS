@@ -13,5 +13,4 @@
 @property (nonatomic, strong) UIImage *userExportedImage;
 @property (nonatomic, strong) NSString *assetContents;
 
-
 @end

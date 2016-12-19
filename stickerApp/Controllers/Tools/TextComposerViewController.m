@@ -12,8 +12,7 @@
 @interface TextComposerViewController ()<UITextFieldDelegate, UIBarPositioningDelegate, UIToolbarDelegate, UIPickerViewDelegate, UIPickerViewDataSource>{
 
     IBOutlet UITextField *ibo_displayLabel;
-    
-    //IBOutlet UINavigationBar *ibo_navbar;
+
     IBOutlet UIView *ibo_renderView;
     IBOutlet UIToolbar *ibo_navbar;
     
@@ -37,9 +36,6 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
     return self;
 }
 
@@ -85,10 +81,7 @@
     [fancyLabel setOutlineColor:[UIColor blackColor]];
     [fancyLabel setDrawGradient:NO];
     [ibo_renderView addSubview:fancyLabel];
-  
-    // Do any additional setup after loading the view from its nib.
-    
-    ///pickerView.backgroundColor = [UIColor whiteColor];
+
     pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(pickerView.frame.origin.x,
                                                                 pickerView.frame.origin.y,
                                                                 pickerView.frame.size.width,
@@ -109,12 +102,12 @@
 
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;  // returns the number of 'columns' to display.
+    return 1;
 }
 
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return [fontsPackage count];  // returns the number of rows in each component..
+    return [fontsPackage count];
 }
 
 

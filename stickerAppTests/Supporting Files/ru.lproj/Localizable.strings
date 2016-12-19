@@ -92,6 +92,11 @@
 "TOGGLE_RISING" = "повышение";
 "TOGGLE_TOP" = "лучший";
 
+//DELETE
+"DELETE_TITLE" = "Manage posts";
+"DELETE_MESSAGE" = "Manage your public pics.";
+"DELETE" = "Delete";
+
 //GENERAL
 "CANCEL_BUTTON" = "отменить";
 "ACCEPT_BUTTON" = "Accept";

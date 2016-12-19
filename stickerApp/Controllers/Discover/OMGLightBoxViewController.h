@@ -15,14 +15,12 @@
 
 - (void) lightBoxShareImage:(UIImage *)image;
 - (void) lightBoxItemFlag:(Snap *)flagItem;
-- (void) omgSnapDismissLightBox:(PFObject *)object;
+- (void) omgSnapDismissLightBox:(Snap *)object;
 
 @end
 
 @interface OMGLightBoxViewController : UIViewController
 
-//TODO snapObject will be removed when likes and delete are added to backend
-@property (nonatomic, strong ) PFObject *snapObject;
 @property (nonatomic, strong ) Snap *snap;
 @property (nonatomic, strong ) UIImage *preloadImage;
 

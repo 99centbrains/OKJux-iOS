@@ -7,23 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Snap.h"
 
 @class OMGSnapVoteViewController;
-
-
-@protocol OMGSnapVoteViewControllerDelegate <NSObject>
-
-- (void) showUserSnaps:(PFUser *)user;
-- (void) showSnapFullScreen:(PFObject *)snap;
-
-@end
 
 @interface OMGSnapVoteViewController : UIViewController
 
 - (void)refreshData;
-- (void)updateObject:(PFObject *)object;
-
-@property (nonatomic, unsafe_unretained) id <OMGSnapVoteViewControllerDelegate> delegate;
+- (void)updateObjectInCollection:(Snap *)snap;
 
 
 @end

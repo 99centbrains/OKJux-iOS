@@ -8,7 +8,6 @@
 
 #import "OMGMySnapsViewController.h"
 
-#import "DataHolder.h"
 #import "AppDelegate.h"
 #import "OMGSnapCollectionViewCell.h"
 #import "TAOverlay.h"
@@ -28,7 +27,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *ibo_karmaDescriptor;
 
 @property (nonatomic, weak) IBOutlet UICollectionView * ibo_collectionView;
-@property (nonatomic, strong) PFObject *snapObject;
 @property (nonatomic, strong) OMGLightBoxViewController *ibo_lightboxView;
 
 @property (nonatomic, weak) IBOutlet UIView *ibo_notAvailableView;
@@ -88,11 +86,17 @@
     }];
 }
 
+//TODO check this
+- (void)updateObjectInCollection:(Snap *)snap {
+    NSInteger snapIndex = [_mySnaps indexOfObject:snap];
+    [_ibo_collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:snapIndex inSection:0]]];
+}
+
 - (void) updateKarma {
     OMGTabBarViewController *owner = (OMGTabBarViewController *)self.parentViewController;
     [owner.ibo_headSpace updateKarma];
-    NSString *karmaPoints = [NSString stringWithFormat:@"%@",
-                             [DataHolder DataHolderSharedInstance].userObject[@"points"]];
+  NSString *karmaPoints = [NSString stringWithFormat:@"%ld",
+                           (long)[DataManager karma]];
     _ibo_karmaPoints.text = karmaPoints;
 }
 
@@ -142,8 +146,12 @@
 
 #pragma CELL DELETE
 - (void) omgsnapCellDelete:(NSInteger) snapIndex {
-    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Manage Posts" message:@"Manage your public pics." preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *actionDelete = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDefault
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"DELETE_TITLE", nil)
+                                                                         message:NSLocalizedString(@"DELETE_MESSAGE", nil)
+                                                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *actionDelete = [UIAlertAction actionWithTitle:NSLocalizedString(@"DELETE", nil)
+                                                           style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction *action) {
                                                            [UserServiceManager deleteSnap:[_mySnaps[snapIndex] ID] OnSuccess:^(NSDictionary *responseObject) {
                                                              NSMutableArray *snaps = [_mySnaps mutableCopy];
@@ -156,7 +164,7 @@
                                                            }];
     }];
     
-    UIAlertAction *actionRemove = [UIAlertAction actionWithTitle:@"Nevermind" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];
+    UIAlertAction *actionRemove = [UIAlertAction actionWithTitle:NSLocalizedString(@"PROMPT_REMIX_CANCEL", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];
 
     [actionSheet addAction:actionDelete];
     [actionSheet addAction:actionRemove];

@@ -87,9 +87,6 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
     return self;
 }
 
@@ -200,7 +197,6 @@
     currentSticker = [[StickyImageView alloc] initWithImage:[self imageWithImage:image
                                                                               scaledToSize:CGSizeMake(640,(image.size.height/image.size.width)* 640 )]];
 
-    //[dragger setFrameForFrame];
     currentSticker.frame = CGRectMake(0,
                                0,
                                250,
@@ -280,9 +276,7 @@
         for ( UIView* outlet in viewList){
             outlet.alpha = 0;
         }
-    } completion:^(BOOL done){
-
-    }];
+    } completion:^(BOOL done){}];
 }
 
 - (void) showSelectedViews:(NSArray *)viewList {
@@ -290,10 +284,7 @@
         for ( UIView* outlet in viewList){
             outlet.alpha = 1;
         }
-
-    } completion:^(BOOL done){
-
-    }];
+    } completion:^(BOOL done){}];
 }
 
 -(UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
@@ -498,7 +489,6 @@
     CBCropViewController *photoCropViewController = [[CBCropViewController alloc]initWithNibName:@"CBCropViewController" bundle:nil];
     photoCropViewController.delegate = self;
     photoCropViewController.userImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-    //[picker pushViewController:photoCropViewController animated:NO];
 
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera){
         [picker pushViewController:photoCropViewController animated:YES];
@@ -531,17 +521,14 @@
 #pragma PAINTTOOL
 - (IBAction)iba_toolPaint:(UIButton *)sender{
     if (!_painterView){
-
         //INIT PAINTERVIEW
         _painterView = [[PaintView alloc] initWithFrame:_ibo_renderView.bounds];
         [_ibo_renderView insertSubview:_painterView aboveSubview:_ibo_imageUser];
         _painterView.backgroundColor = [UIColor clearColor];
         _painterView.layer.contentsScale = [[UIScreen mainScreen] scale];
-
     }
 
     if (!_ibo_paintViewTool){
-
         _ibo_paintViewTool = (PlayPaintViewController *)[self viewControllerFromMainStoryboardWithName:@"seg_PlayPaintViewController"];
         _ibo_paintViewTool.view.frame = CGRectMake(sender.frame.origin.x,
                                                sender.frame.size.height + sender.frame.origin.y,
@@ -561,10 +548,7 @@
 
         [self hideToolBar];
         [self hideSelectedViews:@[_ibo_btn_text, _ibo_btn_cam]];
-
     } else {
-
-        //painterView.userInteractionEnabled = NO;
         _ibo_viewStickerStage.userInteractionEnabled = YES;
 
         [_ibo_paintViewTool.view removeFromSuperview];

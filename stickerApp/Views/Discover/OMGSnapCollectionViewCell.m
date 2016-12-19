@@ -74,9 +74,4 @@
     [self.delegate omgsnapCellDelete:_intCurrentSnap];
 }
 
-- (IBAction)iba_showUser:(id)sender {
-    //TODO this is never called
-    [self.delegate iba_showUserForImage:_intCurrentSnap];
-}
-
 @end

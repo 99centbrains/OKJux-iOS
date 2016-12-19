@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Snap.h"
 
 @class OMGMySnapsViewController;
 
@@ -19,8 +20,7 @@
 @interface OMGMySnapsViewController : UIViewController
 
 - (void) reloadData;
-//TODO this method is not implemented
-- (void) loadUser:(PFUser *)userBlock;
+- (void)updateObjectInCollection:(Snap *)snap;
 
 @property (nonatomic, unsafe_unretained) id <OMGMySnapsViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSArray *mySnaps;

@@ -9,16 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <Chartboost/Chartboost.h>
 #import <AdColony/AdColony.h>
+#import <CoreLocation/CoreLocation.h>
 
 @class ViewController;
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate, ChartboostDelegate, AdColonyDelegate, CLLocationManagerDelegate>{
-    
     NSDictionary *userInfoLocal;
     CLLocationManager *locationMgr;
-
-    
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -27,12 +25,9 @@
 @property(nonatomic,assign) CLLocationCoordinate2D myLocation;
 
 
-
 - (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI;
-
 
 - (void)askForPush;
 - (void)askForLocation;
-- (void)setParseUser;
 
 @end

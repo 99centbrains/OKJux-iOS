@@ -6,9 +6,9 @@
 //
 //
 
+#import <CoreLocation/CoreLocation.h>
 #import "OMGSnapVoteViewController.h"
 #import "OMGSnapCollectionViewCell.h"
-#import "DataHolder.h"
 #import "TAOverlay.h"
 #import "OMGTabBarViewController.h"
 #import "DateTools.h"
@@ -88,12 +88,10 @@ typedef NSInteger OMGVoteSpecifier;
     }
 }
 
-- (void)updateObject:(PFObject *)object {
-    NSInteger objNum = [_snapsArray indexOfObject:object];
-    NSLog(@"You Tapped Object %ld", (long)objNum);
-    [_ibo_collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:objNum inSection:0]]];
+- (void)updateObjectInCollection:(Snap *)snap {
+    NSInteger snapIndex = [_snapsArray indexOfObject:snap];
+    [_ibo_collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:snapIndex inSection:0]]];
 }
-
 
 - (void) queryTopSnapsByChannel {
     _ibo_notAvailableView.hidden = YES;
@@ -285,32 +283,30 @@ typedef NSInteger OMGVoteSpecifier;
 
 #pragma Cell Delegate
 - (void) omgSnapVOTEUP:(NSInteger)snapIndex {
-  Snap* snap = _snapsArray[snapIndex];
-  snap.netlikes += snap.noAction ? 1 : 2 ;
-  [SnapServiceManager rankSnap:snap.ID withLike:YES OnSuccess:^(NSDictionary *responseObject) {
-    snap.isLiked = YES;
-    snap.noAction = NO;
-    _snapsArray[snapIndex] = snap;
-    [self cleanUpItems:snapIndex];
-  } OnFailure:^(NSError *error) {
-    snap.netlikes -= snap.noAction ? 1 : 2;
-  }];
+    Snap* snap = _snapsArray[snapIndex];
+    snap.netlikes += snap.noAction ? 1 : 2;
+    [SnapServiceManager rankSnap:snap.ID withLike:YES OnSuccess:^(NSDictionary *responseObject) {
+        snap.isLiked = YES;
+        snap.noAction = NO;
+        _snapsArray[snapIndex] = snap;
+        [self cleanUpItems:snapIndex];
+    } OnFailure:^(NSError *error) {
+        snap.netlikes -= snap.noAction ? 1 : 2;
+    }];
 }
 
 - (void) omgSnapVOTEDOWN:(NSInteger) snapIndex {
-  Snap* snap = _snapsArray[snapIndex];
-  snap.netlikes -= snap.noAction ? 1 : 2;
-  [SnapServiceManager rankSnap:snap.ID withLike:NO OnSuccess:^(NSDictionary *responseObject) {
-    snap.isLiked = NO;
-    snap.noAction = NO;
-    _snapsArray[snapIndex] = snap;
-    [self cleanUpItems:snapIndex];
-  } OnFailure:^(NSError *error) {
-    snap.netlikes += snap.noAction ? 1 : 2;
-  }];
+    Snap* snap = _snapsArray[snapIndex];
+    snap.netlikes -= snap.noAction ? 1 : 2;
+    [SnapServiceManager rankSnap:snap.ID withLike:NO OnSuccess:^(NSDictionary *responseObject) {
+        snap.isLiked = NO;
+        snap.noAction = NO;
+        _snapsArray[snapIndex] = snap;
+        [self cleanUpItems:snapIndex];
+    } OnFailure:^(NSError *error) {
+        snap.netlikes += snap.noAction ? 1 : 2;
+    }];
 }
-
-
 
 #pragma SHARE
 - (void) omgSnapShareImage:(UIImage *)image {
@@ -318,39 +314,10 @@ typedef NSInteger OMGVoteSpecifier;
     [owner shareItem:image];
 }
 
-
 #pragma FLAG
 - (void) omgSnapFlagItem:(Snap *)object {
     OMGTabBarViewController *owner = (OMGTabBarViewController *)self.parentViewController;
     [owner lightBoxItemFlagFromTab:object];
-}
-
-#pragma VOTING ARGUMENTS
-- (BOOL) checkUserInArray:(NSMutableArray *)array {
-    if ([array count] > 0) {
-        for (NSString *userLike in array) {
-            NSLog(@"USER LIKE %@", userLike);
-            if ([userLike isEqualToString:[DataHolder DataHolderSharedInstance].userObject.objectId]){
-                return NO;
-            }
-        }
-    }
-    
-    return YES;
-}
-
-
-- (NSMutableArray *) removeUserInArray:(NSMutableArray *)array {
-    if ([array count] > 0) {
-        for (NSString *userLike in array) {
-            if ([userLike isEqualToString:[DataHolder DataHolderSharedInstance].userObject.objectId]) {
-                [array removeObject:[DataHolder DataHolderSharedInstance].userObject.objectId];
-                return array;
-            }
-        }
-    }
-    
-    return array;
 }
 
 #pragma NO DATA AVAILABLE
@@ -369,15 +336,6 @@ typedef NSInteger OMGVoteSpecifier;
     if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
         [self presentViewController:activityVC animated:YES completion:nil];
     }
-}
-
-//TODO this method will be changed so that it works with Snap and User and not PFObjects
-//This method leads to nothing, last call on stack was never implemented
-- (void) iba_showUserForImage:(NSInteger) snapIndex {
-    PFObject *snapObj= [_snapsArray objectAtIndex:snapIndex];
-    PFUser *userObj = snapObj[@"userId"];
-    NSLog(@"Object ID %@", userObj.objectId );
-    [self.delegate showUserSnaps:userObj];
 }
 
 

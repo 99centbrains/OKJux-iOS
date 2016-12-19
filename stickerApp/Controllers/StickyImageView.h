@@ -9,15 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface StickyImageView : UIImageView <UIGestureRecognizerDelegate>{
-
     CGPoint lastPoint;
-    //CGPoint currentPoint;
-    
+
     CGRect imageFrame;
 }
-
 
 - (void)flipImage;
 
 - (void)setFrameForFrame;
+
 @end

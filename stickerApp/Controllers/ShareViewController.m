@@ -32,7 +32,6 @@
     
     NSString * filename;
     BOOL boolSharePublic;
-    
 }
 
 @property (nonatomic, strong) UIActivityViewController *activityVC;
@@ -56,9 +55,6 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
   
     return self;
 }
@@ -104,14 +100,6 @@
     
     if ([self locationGranted]){
         [self setupMapView];
-        
-        [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-            [DataHolder DataHolderSharedInstance].userGeoPoint = geoPoint;
-            
-            if (!error) {
-                // do something with the new geoPoint
-            }
-        }];
     } else {
         _ibo_mapView.hidden = YES;
         _ibo_noLocation.hidden = NO;
@@ -287,8 +275,7 @@
         CGRect cropRect = CGRectMake(0, 0, image.size.height, image.size.height);
         NSString  *jpgPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Share.igo"];
         CGImageRef imageRef = CGImageCreateWithImageInRect([userExportedImage CGImage], cropRect);
-      
-        //UIImage *img = [[UIImage alloc] initWithCGImage:imageRef];
+
         UIGraphicsBeginImageContext(cropRect.size);
        
         [[UIColor whiteColor] setFill];
@@ -369,7 +356,6 @@
     NSURL *url = [[NSURL alloc] initFileURLWithPath:pngPath];
     
     UIDocumentInteractionController *interactionController = [UIDocumentInteractionController interactionControllerWithURL:url];
-    //interactionController.annotation = [NSDictionary dictionaryWithObject:kInstagramParam forKey:@"InstagramCaption"];
     interactionController.delegate = self;
     
     self.documentInteractionController = interactionController;
@@ -386,12 +372,6 @@
     switch (alertView.tag) {
         case 0:
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/app/id785725887?mt=8&uo=4&at=10ly5p"]];
-            break;
-        case 1:
-            // TODO
-            break;
-        case 2:
-            // TODO
             break;
         default:
             break;
@@ -516,9 +496,9 @@
 #pragma MAPVIEW
 - (void) setupMapView{
     CLLocationCoordinate2D zoomLocation;
-    zoomLocation.latitude = [DataHolder DataHolderSharedInstance].userGeoPoint.latitude;
-    zoomLocation.longitude= [DataHolder DataHolderSharedInstance].userGeoPoint.longitude;
-    
+    zoomLocation.latitude = [[DataManager currentLatitud] doubleValue];
+    zoomLocation.longitude= [[DataManager currentLongitud] doubleValue];
+
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, METERS_PER_MILE, METERS_PER_MILE);
     
     [_ibo_mapView setRegion:viewRegion animated:NO];
@@ -526,8 +506,8 @@
 
 - (void)annotationsADD{
     CLLocationCoordinate2D zoomLocation;
-    zoomLocation.latitude = [DataHolder DataHolderSharedInstance].userGeoPoint.latitude;
-    zoomLocation.longitude= [DataHolder DataHolderSharedInstance].userGeoPoint.longitude;
+    zoomLocation.latitude = [[DataManager currentLatitud] doubleValue];
+    zoomLocation.longitude = [[DataManager currentLongitud] doubleValue];
     
     JPSThumbnail *thumbnail = [[JPSThumbnail alloc] init];
     thumbnail.image = userExportedImage;
@@ -558,7 +538,6 @@
 
 - (BOOL) locationGranted{
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
-    
     if (status == kCLAuthorizationStatusDenied || status == kCLAuthorizationStatusNotDetermined) {
         return NO;
     }
