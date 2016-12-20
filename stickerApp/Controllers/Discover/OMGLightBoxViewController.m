@@ -91,8 +91,8 @@ typedef NSInteger OMGVoteSpecifier;
 
     [self updateLikeStatus];
 
-    _ibo_btn_likeDown.userInteractionEnabled = _snap.noAction ? YES : _snap.isLiked;
-    _ibo_btn_likeUP.userInteractionEnabled = _snap.noAction ? YES : !_snap.isLiked;
+    _ibo_btn_likeDown.userInteractionEnabled = _snap.noAction || _snap.isLiked;
+    _ibo_btn_likeUP.userInteractionEnabled = _snap.noAction || !_snap.isLiked;
 }
 
 - (void)updateLikeStatus {

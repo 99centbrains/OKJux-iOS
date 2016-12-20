@@ -43,6 +43,7 @@
     UITextField *fontTextField;
     CGPoint lastPoint;
     UIView *ibo_DarkView;
+    NSInteger stickersCount;
     float rotation;
 }
 
@@ -95,6 +96,7 @@
 
     [self setUpCanvasViews];
     rotation = 0;
+    stickersCount = 0;
 
     //Gestures
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc]
@@ -183,37 +185,44 @@
 
 //SELECT STICKER DELEGATES
 -(void) stickerCategory:(StickerCategoryViewController *)controller didFinishPickingStickerImage:(UIImage *)image withPackID:(NSString *)packID{
-    if (packID){
-      [MixPanelManager triggerEvent:@"Sticker" withData:@{ @"PackID": packID }];
-    }
-
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+    if (stickersCount < 20) {
+      stickersCount += 1;
+      
+      if (packID){
+        [MixPanelManager triggerEvent:@"Sticker" withData:@{ @"PackID": packID }];
+      }
+      
+      if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
         [_popController dismissPopoverAnimated:YES];
-    } else {
-         [controller dismissViewControllerAnimated:YES completion:nil];
+      } else {
+        [controller dismissViewControllerAnimated:YES completion:nil];
+      }
+      
+      image = [image imageByTrimmingTransparentPixels];
+      currentSticker = [[StickyImageView alloc] initWithImage:[self imageWithImage:image
+                                                                      scaledToSize:CGSizeMake(640,(image.size.height/image.size.width)* 640 )]];
+      
+      currentSticker.frame = CGRectMake(0,
+                                        0,
+                                        250,
+                                        (image.size.height/image.size.width) * 250);
+      
+      currentSticker.contentMode = UIViewContentModeScaleAspectFit;
+      currentSticker.center = CGPointMake(_ibo_renderView.frame.size.width/2, _ibo_renderView.frame.size.height/2);
+      currentSticker.transform = CGAffineTransformMakeRotation(rotation);
+      rotation += 0.1;
+      currentSticker.userInteractionEnabled = YES;
+      
+      [_ibo_viewStickerStage addSubview:currentSticker];
+      
+      [self showEditMode];
+      [self hideToolBar];
+      
+      [self setBorderOnCurrentSticker];
+    }else {
+      UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"STICKER_LIMIT_TITLE", nil) message: NSLocalizedString(@"STICKER_LIMIT", nil) delegate:nil cancelButtonTitle:nil otherButtonTitles: NSLocalizedString(@"OK_BUTTON", nil), nil];
+      [alert show];
     }
-
-    image = [image imageByTrimmingTransparentPixels];
-    currentSticker = [[StickyImageView alloc] initWithImage:[self imageWithImage:image
-                                                                              scaledToSize:CGSizeMake(640,(image.size.height/image.size.width)* 640 )]];
-
-    currentSticker.frame = CGRectMake(0,
-                               0,
-                               250,
-                               (image.size.height/image.size.width) * 250);
-
-    currentSticker.contentMode = UIViewContentModeScaleAspectFit;
-    currentSticker.center = CGPointMake(_ibo_renderView.frame.size.width/2, _ibo_renderView.frame.size.height/2);
-    currentSticker.transform = CGAffineTransformMakeRotation(rotation);
-    rotation += 0.1;
-    currentSticker.userInteractionEnabled = YES;
-
-    [_ibo_viewStickerStage addSubview:currentSticker];
-
-    [self showEditMode];
-    [self hideToolBar];
-
-    [self setBorderOnCurrentSticker];
 }
 
 - (void) setBorderOnCurrentSticker {
@@ -336,8 +345,8 @@
 }
 
 - (void)editModeStickerCopy:(SelectStickerQuickViewController *)controller {
-    [self removeBorderOnCurrentSticker];
-    [self stickerCategory:nil didFinishPickingStickerImage:currentSticker.image withPackID:nil];
+  [self removeBorderOnCurrentSticker];
+  [self stickerCategory:nil didFinishPickingStickerImage:currentSticker.image withPackID:nil];
 }
 
 - (void) editModeStickerSendToBack:(PlayEditModeViewController*)controller {
@@ -345,6 +354,10 @@
 }
 
 - (void) editModeStickerTrash:(PlayEditModeViewController*)controller {
+    if (stickersCount > 0) {
+      stickersCount -= 1;
+    }
+  
     [UIView animateWithDuration:.1 delay: 0.0 options: UIViewAnimationOptionCurveEaseIn
                      animations:^ {
                          currentSticker.transform = CGAffineTransformScale(currentSticker.transform, .5, .5);
