@@ -288,6 +288,7 @@
 }
 
 - (void) omgSnapDismissLightBox:(Snap *)snap {
+    [self.ibo_headSpace updateKarma];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [_ibo_lightboxView.view removeFromSuperview];
     _ibo_lightboxView.delegate = nil;
@@ -305,6 +306,7 @@
             break;
         case 3:
             _ibo_mysnapsVC = (OMGMySnapsViewController *)[self.viewControllers objectAtIndex:3];
+            [_ibo_mysnapsVC updateKarma];
             [_ibo_mysnapsVC updateObjectInCollection:snap];
             break;
         default:

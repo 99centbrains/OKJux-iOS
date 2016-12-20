@@ -38,8 +38,8 @@
     aSnap.imageUrl = [NSString stringWithFormat:@"%@%@", @"http://192.168.1.125:3000", snap[@"image"][@"url"]];
     aSnap.thumbnailUrl = [NSString stringWithFormat:@"%@%@", @"http://192.168.1.125:3000", snap[@"image"][@"thumbnail"][@"url"]];
     #else
-    aSnap.imageUrl = snap[@"image"][@"url"];
-    aSnap.thumbnailUrl = snap[@"image"][@"thumbnail"][@"url"];
+    aSnap.imageUrl = snap[@"image"][@"image"][@"url"];
+    aSnap.thumbnailUrl = snap[@"image"][@"image"][@"thumbnail"][@"url"];
     #endif
   
     aSnap.noAction = snap[@"liked"] == nil;

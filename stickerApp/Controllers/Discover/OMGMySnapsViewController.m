@@ -86,7 +86,6 @@
     }];
 }
 
-//TODO check this
 - (void)updateObjectInCollection:(Snap *)snap {
     NSInteger snapIndex = [_mySnaps indexOfObject:snap];
     [_ibo_collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:snapIndex inSection:0]]];
@@ -95,7 +94,7 @@
 - (void) updateKarma {
     OMGTabBarViewController *owner = (OMGTabBarViewController *)self.parentViewController;
     [owner.ibo_headSpace updateKarma];
-  NSString *karmaPoints = [NSString stringWithFormat:@"%ld",
+    NSString *karmaPoints = [NSString stringWithFormat:@"%ld",
                            (long)[DataManager karma]];
     _ibo_karmaPoints.text = karmaPoints;
 }

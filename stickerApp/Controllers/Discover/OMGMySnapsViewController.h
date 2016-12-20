@@ -20,7 +20,8 @@
 @interface OMGMySnapsViewController : UIViewController
 
 - (void) reloadData;
-- (void)updateObjectInCollection:(Snap *)snap;
+- (void) updateObjectInCollection:(Snap *)snap;
+- (void) updateKarma;
 
 @property (nonatomic, unsafe_unretained) id <OMGMySnapsViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSArray *mySnaps;
