@@ -401,6 +401,8 @@
   //Delete this key in the future
   snap[@"channel"] = @"General";
   [UserServiceManager createSnap: @{ @"snap": snap } Onsuccess:^(NSDictionary *responseObject) {
+    NSInteger karma = [DataManager  karma] + 2;
+    [DataManager storeKarma: [NSString stringWithFormat:@"%ld", (long)karma]];
     [TAOverlay hideOverlay];
     [self.navigationController popToRootViewControllerAnimated:YES];
   } Onfailure:^(NSError *error) {

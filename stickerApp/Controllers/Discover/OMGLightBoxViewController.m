@@ -89,14 +89,18 @@ typedef NSInteger OMGVoteSpecifier;
     _ibo_btn_likeDown.userInteractionEnabled = NO;
     _ibo_btn_likeUP.userInteractionEnabled = NO;
 
+    [self updateLikeStatus];
+
+    _ibo_btn_likeDown.userInteractionEnabled = _snap.noAction ? YES : _snap.isLiked;
+    _ibo_btn_likeUP.userInteractionEnabled = _snap.noAction ? YES : !_snap.isLiked;
+}
+
+- (void)updateLikeStatus {
     _int_userLikeStatus = _snap.noAction ? OMGVoteNone : (_snap.isLiked ? OMGVoteYES : OMGVoteNO);
     [_ibo_btn_likeDown setSelected: !_snap.noAction && !_snap.isLiked];
     [_ibo_btn_likeUP setSelected: !_snap.noAction && _snap.isLiked];
 
     _ibo_photoKarma.text = [NSString stringWithFormat:@"%ld", (long)_snap.netlikes];
-
-    _ibo_btn_likeDown.userInteractionEnabled = YES;
-    _ibo_btn_likeUP.userInteractionEnabled = YES;
 }
 
 - (void) setupFadeout {
@@ -105,6 +109,7 @@ typedef NSInteger OMGVoteSpecifier;
         _ibo_fade_heart.alpha = 0;
         _ibo_fade_share.alpha = 0;
         _ibo_photoKarma.alpha = 0;
+
     } completion:nil];
     
     fadeout = YES;
@@ -113,12 +118,17 @@ typedef NSInteger OMGVoteSpecifier;
 
 #pragma VOTING MECHANICS
 - (IBAction) omgSnapVOTEUP:(NSInteger) snapIndex {
+  _ibo_btn_likeUP.userInteractionEnabled = NO;
+  _ibo_btn_likeDown.userInteractionEnabled = NO;
   Snap* originalSnap = _snap;
   _snap.netlikes += _snap.noAction ? 1 : 2;
   _snap.noAction = NO;
   _snap.isLiked = YES;
-  [self setUserLikeStatus];
+  [self updateLikeStatus];
   [SnapServiceManager rankSnap:_snap.ID withLike:YES OnSuccess:^(NSDictionary *responseObject) {
+    _ibo_btn_likeDown.userInteractionEnabled = YES;
+    NSInteger karma = [DataManager  karma] + 1;
+    [DataManager storeKarma: [NSString stringWithFormat:@"%ld", (long)karma]];
   } OnFailure:^(NSError *error) {
     _snap = originalSnap;
     [self setUserLikeStatus];
@@ -126,12 +136,17 @@ typedef NSInteger OMGVoteSpecifier;
 }
 
 - (IBAction) omgSnapVOTEDOWN:(NSInteger) snapIndex{
+  _ibo_btn_likeUP.userInteractionEnabled = NO;
+  _ibo_btn_likeDown.userInteractionEnabled = NO;
   Snap* originalSnap = _snap;
   _snap.netlikes -= _snap.noAction ? 1 : 2;
   _snap.noAction = NO;
   _snap.isLiked = NO;
-  [self setUserLikeStatus];
+  [self updateLikeStatus];
   [SnapServiceManager rankSnap:_snap.ID withLike:NO OnSuccess:^(NSDictionary *responseObject) {
+    _ibo_btn_likeUP.userInteractionEnabled = YES;
+    NSInteger karma = [DataManager  karma] + 1;
+    [DataManager storeKarma: [NSString stringWithFormat:@"%ld", (long)karma]];
   } OnFailure:^(NSError *error) {
     _snap = originalSnap;
     [self setUserLikeStatus];

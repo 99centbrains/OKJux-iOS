@@ -133,7 +133,7 @@
     [self.navigationController pushViewController:vc_shareview animated:YES];
 }
 
-- (IBAction)iba_publish:(id)sender {//TODO check
+- (IBAction)iba_publish:(id)sender {
     [self iba_skip:nil];
 }
 

@@ -286,6 +286,8 @@ typedef NSInteger OMGVoteSpecifier;
     Snap* snap = _snapsArray[snapIndex];
     snap.netlikes += snap.noAction ? 1 : 2;
     [SnapServiceManager rankSnap:snap.ID withLike:YES OnSuccess:^(NSDictionary *responseObject) {
+        NSInteger karma = [DataManager  karma] + 1;
+        [DataManager storeKarma: [NSString stringWithFormat:@"%ld", (long)karma]];
         snap.isLiked = YES;
         snap.noAction = NO;
         _snapsArray[snapIndex] = snap;
@@ -299,6 +301,8 @@ typedef NSInteger OMGVoteSpecifier;
     Snap* snap = _snapsArray[snapIndex];
     snap.netlikes -= snap.noAction ? 1 : 2;
     [SnapServiceManager rankSnap:snap.ID withLike:NO OnSuccess:^(NSDictionary *responseObject) {
+        NSInteger karma = [DataManager  karma] + 1;
+        [DataManager storeKarma: [NSString stringWithFormat:@"%ld", (long)karma]];
         snap.isLiked = NO;
         snap.noAction = NO;
         _snapsArray[snapIndex] = snap;

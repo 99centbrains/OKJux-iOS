@@ -1005,9 +1005,7 @@ typedef enum {
   [self.navigationController pushViewController:vc_shareview animated:YES];
 }
 
-- (void)shareViewDidComplete:(ShareViewController*)controller withMessage:(NSString *)message {
-  //TODO
-}
+- (void)shareViewDidComplete:(ShareViewController*)controller withMessage:(NSString *)message {}
 
 - (void)saveImage:(void (^)(UIImage *))callback{
     UIGraphicsBeginImageContextWithOptions(_ibo_renderView.bounds.size, NO, 0);
