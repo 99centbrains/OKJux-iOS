@@ -44,6 +44,8 @@
 "PACK_RESTORING" = "Restaurando...";
 "PACK_CANCELLED" = "Cancelado";
 "PACK_FAILED" = "Transacción fallida";
+"STICKER_LIMIT_TITLE" = "Oops!";
+"STICKER_LIMIT" = "Has alcanzado el límite de 20 stickers";
 
 //PROMPT TITLES
 "PROMPT_FLAG_TITLE" = "Reportar foto";
