@@ -126,9 +126,11 @@ typedef NSInteger OMGVoteSpecifier;
   _snap.isLiked = YES;
   [self updateLikeStatus];
   [SnapServiceManager rankSnap:_snap.ID withLike:YES OnSuccess:^(NSDictionary *responseObject) {
+    if (originalSnap.noAction) {
+        NSInteger karma = [DataManager  karma] + 1;
+        [DataManager storeKarma: [NSString stringWithFormat:@"%ld", (long)karma]];
+    }
     _ibo_btn_likeDown.userInteractionEnabled = YES;
-    NSInteger karma = [DataManager  karma] + 1;
-    [DataManager storeKarma: [NSString stringWithFormat:@"%ld", (long)karma]];
   } OnFailure:^(NSError *error) {
     _snap = originalSnap;
     [self setUserLikeStatus];
@@ -144,9 +146,11 @@ typedef NSInteger OMGVoteSpecifier;
   _snap.isLiked = NO;
   [self updateLikeStatus];
   [SnapServiceManager rankSnap:_snap.ID withLike:NO OnSuccess:^(NSDictionary *responseObject) {
+    if (originalSnap.noAction) {
+        NSInteger karma = [DataManager  karma] + 1;
+        [DataManager storeKarma: [NSString stringWithFormat:@"%ld", (long)karma]];
+    }
     _ibo_btn_likeUP.userInteractionEnabled = YES;
-    NSInteger karma = [DataManager  karma] + 1;
-    [DataManager storeKarma: [NSString stringWithFormat:@"%ld", (long)karma]];
   } OnFailure:^(NSError *error) {
     _snap = originalSnap;
     [self setUserLikeStatus];
