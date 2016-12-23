@@ -91,9 +91,17 @@
 
     [SnapServiceManager getSnaps:params OnSuccess:^(NSArray* responseObject ) {
         moreElements = responseObject.count == SNAP_PER_PAGE;
-        [self insertItemsIntoCollectionView:responseObject];
+        gettingData = NO;
+      
+        if (pagination == 0) {
+          _snapsArray = [NSMutableArray arrayWithArray:responseObject];
+        }else {
+          [_snapsArray addObjectsFromArray:responseObject];
+        }
+      
         [TAOverlay hideOverlay];
         _ibo_notAvailableView.hidden = responseObject.count > 0;
+        [_ibo_snapCollectionView reloadData];
     } OnFailure:^(NSError *error) {
         [TAOverlay hideOverlay];
     }];
@@ -103,28 +111,12 @@
     [TAOverlay showOverlayWithLabel:@"Loading Snaps" Options:TAOverlayOptionOverlaySizeBar | TAOverlayOptionOverlayTypeActivityDefault];
     gettingData = YES;
     pagination = 0;
-    
-    [self refreshData];
+  
     [_snapsArray removeAllObjects];
-    [_ibo_snapCollectionView reloadData];
-
+  
     _bool_trending = sender.selectedSegmentIndex != 0;
 
     [self queryTopSnapsByChannel];
-}
-
-- (void) insertItemsIntoCollectionView:(NSArray *)items {
-    [_ibo_snapCollectionView performBatchUpdates:^{
-        NSInteger resultsSize = [_snapsArray count];
-        [_snapsArray addObjectsFromArray:[items copy]];
-        NSMutableArray *arrayWithIndexPaths = [NSMutableArray array];
-        for (NSInteger i = resultsSize; i < resultsSize + items.count; i++)
-            [arrayWithIndexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-        
-        [_ibo_snapCollectionView insertItemsAtIndexPaths:arrayWithIndexPaths];
-    } completion:^(BOOL finished) {
-        gettingData = NO;
-    }];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
