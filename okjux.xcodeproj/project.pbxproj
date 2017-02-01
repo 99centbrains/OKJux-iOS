@@ -1469,7 +1469,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				BASE_URL = "http://192.168.1.125:3000/api/v1/";
+				BASE_URL = "https://okjux-api-production.herokuapp.com/api/v1/";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Catwang.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1487,7 +1487,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
-					"LOCALHOST=1",
+					"LOCALHOST=0",
 				);
 				INFOPLIST_FILE = "stickerApp/Catwang-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

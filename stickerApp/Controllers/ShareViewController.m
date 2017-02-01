@@ -388,6 +388,8 @@
   
   if (boolSharePublic){
     [self iba_publish:nil];
+  } else {
+    [self.navigationController popToRootViewControllerAnimated:YES];
   }
 }
 
