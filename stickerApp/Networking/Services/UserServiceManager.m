@@ -25,6 +25,7 @@
                                                            Failure: ^(id failure){
                                                                dispatch_async(dispatch_get_main_queue(), ^(void){
                                                                    //TODO
+                                                                   NSLog(@"something went wrong");
                                                                });
                                                            }];
     });

@@ -533,15 +533,17 @@
 
 #pragma PAINTTOOL
 - (IBAction)iba_toolPaint:(UIButton *)sender{
+    _painterView.userInteractionEnabled = YES;
     if (!_painterView){
         //INIT PAINTERVIEW
         _painterView = [[PaintView alloc] initWithFrame:_ibo_renderView.bounds];
-        [_ibo_renderView insertSubview:_painterView aboveSubview:_ibo_imageUser];
+        [_ibo_renderView addSubview:_painterView];
         _painterView.backgroundColor = [UIColor clearColor];
         _painterView.layer.contentsScale = [[UIScreen mainScreen] scale];
     }
 
     if (!_ibo_paintViewTool){
+        //Display the drawing options
         _ibo_paintViewTool = (PlayPaintViewController *)[self viewControllerFromMainStoryboardWithName:@"seg_PlayPaintViewController"];
         _ibo_paintViewTool.view.frame = CGRectMake(sender.frame.origin.x,
                                                sender.frame.size.height + sender.frame.origin.y,
@@ -551,7 +553,7 @@
         NSLog(@"Sender Frame %@", NSStringFromCGRect(_ibo_paintViewTool.view.frame));
 
         _ibo_paintViewTool.delegate = self;
-        [self.view addSubview:_ibo_paintViewTool.view];
+        [self.ibo_renderView addSubview:_ibo_paintViewTool.view];
 
         _ibo_viewStickerStage.userInteractionEnabled = NO;
         _painterView.userInteractionEnabled = YES;
@@ -562,6 +564,8 @@
         [self hideToolBar];
         [self hideSelectedViews:@[_ibo_btn_text, _ibo_btn_cam]];
     } else {
+        //Stop drawing
+        _painterView.userInteractionEnabled = NO;
         _ibo_viewStickerStage.userInteractionEnabled = YES;
 
         [_ibo_paintViewTool.view removeFromSuperview];
