@@ -81,7 +81,7 @@
   if (!format) {
     format = [[HNKCacheFormat alloc] initWithName:@"sticker"];
     format.diskCapacity = 500 * 1024 * 1024; // 100MB
-    format.preloadPolicy = HNKPreloadPolicyAll;
+    format.preloadPolicy = HNKPreloadPolicyNone;
   }
   [[HNKCache sharedCache] registerFormat:format];
 
