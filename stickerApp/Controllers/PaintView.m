@@ -241,7 +241,6 @@
 }
 
 - (void) drawRect:(CGRect)rect {
-    NSLog(@"DRAW RECT");
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGImageRef cacheImage = CGBitmapContextCreateImage(cacheContext);
     CGContextDrawImage(context, self.bounds, cacheImage);

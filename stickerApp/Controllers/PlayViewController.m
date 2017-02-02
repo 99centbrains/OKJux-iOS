@@ -390,21 +390,25 @@
 
 - (void)askForCameraPermissions {
   [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
-     if (granted) {
-       [self iba_photoTake:nil];
-     } else {
-       [self permissionsNotGrantedWithMessage:@"PERMISSION_CAMERA"];
-     }
+      dispatch_async(dispatch_get_main_queue(), ^{
+          if (granted) {
+              [self iba_photoTake:nil];
+          } else {
+              [self permissionsNotGrantedWithMessage:@"PERMISSION_CAMERA"];
+          }
+      });
    }];
 }
 
 - (void)askForPhotosPermissions {
     [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-        if (status == PHAuthorizationStatusAuthorized) {
-            [self iba_photoChoose:nil];
-        } else {
-            [self permissionsNotGrantedWithMessage:@"PERMISSION_PHOTOS"];
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (status == PHAuthorizationStatusAuthorized) {
+                [self iba_photoChoose:nil];
+            } else {
+                [self permissionsNotGrantedWithMessage:@"PERMISSION_PHOTOS"];
+            }
+        });
     }];
 }
 
