@@ -69,8 +69,10 @@
   
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
     [self setup_yoshirt];
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"PACK_DONE", nil) style:UIBarButtonItemStylePlain target:self
-                                                                   action:@selector(iba_createNew:)];
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle: NSLocalizedString(@"PACK_DONE", nil)
+                                                                    style: UIBarButtonItemStylePlain
+                                                                   target: self
+                                                                   action: @selector(iba_createNew:)];
   
     self.navigationItem.rightBarButtonItem = rightButton;
     _ibo_noLocation.text = NSLocalizedString(@"PERMISSION_NO_LOCATION", nil);
@@ -371,7 +373,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     switch (alertView.tag) {
         case 0:
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/app/id785725887?mt=8&uo=4&at=10ly5p"]];
+            [[UIApplication sharedApplication] openURL: [NSURL URLWithString:@"https://itunes.apple.com/app/id785725887?mt=8&uo=4&at=10ly5p"]];
             break;
         default:
             break;
@@ -386,7 +388,7 @@
   AppDelegate *appdelegate= (AppDelegate *) [[UIApplication sharedApplication] delegate];
   [appdelegate askForLocation];
   
-  if (boolSharePublic){
+  if (boolSharePublic) {
     [self iba_publish:nil];
   }
 }
