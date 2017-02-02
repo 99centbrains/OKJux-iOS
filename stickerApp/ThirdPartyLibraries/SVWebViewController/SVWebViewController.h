@@ -7,8 +7,9 @@
 //  https://github.com/samvermette/SVWebViewController
 
 #import "SVModalWebViewController.h"
+#import "OkJuxViewController.h"
 
-@interface SVWebViewController : UIViewController
+@interface SVWebViewController : OkJuxViewController
 
 - (id)initWithAddress:(NSString*)urlString;
 - (id)initWithURL:(NSURL*)URL;

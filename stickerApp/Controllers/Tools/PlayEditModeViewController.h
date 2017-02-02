@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "StickyImageView.h"
+#import "OkJuxViewController.h"
 @class PlayEditModeViewController;
 
 @protocol PlayEditModeViewControllerDelegate <NSObject>
@@ -27,7 +28,7 @@
 
 @end
 
-@interface PlayEditModeViewController : UIViewController <UIScrollViewDelegate>{
+@interface PlayEditModeViewController : OkJuxViewController <UIScrollViewDelegate>{
 
     
 

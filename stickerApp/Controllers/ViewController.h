@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CBCropViewController.h"
+#import "OkJuxViewController.h"
 
-
-@interface ViewController : UIViewController <UIImagePickerControllerDelegate,
+@interface ViewController : OkJuxViewController <UIImagePickerControllerDelegate,
 UINavigationControllerDelegate, UIActionSheetDelegate, UIPopoverControllerDelegate, UIAlertViewDelegate, CBCropViewControllerDelegate> {
     IBOutlet UIView *ibo_getphoto;
 }

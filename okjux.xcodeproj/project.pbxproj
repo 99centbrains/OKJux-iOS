@@ -47,6 +47,7 @@
 		37D6CA521603EFFE00B7D674 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D6C9C31602613700B7D674 /* libz.dylib */; };
 		37E2AC50166EA92A00941C4F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E2AC4F166EA92A00941C4F /* AssetsLibrary.framework */; };
 		37EDE5481675228700F89D90 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37EDE5471675228700F89D90 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		44D469691E43A8C00010F202 /* OkJuxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D469681E43A8C00010F202 /* OkJuxViewController.m */; };
 		74098BB21AAA1DCF009D63B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74098BB41AAA1DCF009D63B5 /* Localizable.strings */; };
 		74312C031A9578220053900D /* ChannelSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74312C021A9578220053900D /* ChannelSelectViewController.m */; };
 		7434410F1A7EB18F007171AB /* StickerPackCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7434410E1A7EB18F007171AB /* StickerPackCollectionViewCell.m */; };
@@ -247,6 +248,8 @@
 		37E2AC4F166EA92A00941C4F /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		37EDE5471675228700F89D90 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		37F6B9D91725CA9100B87F4F /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		44D469671E43A8C00010F202 /* OkJuxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OkJuxViewController.h; sourceTree = "<group>"; };
+		44D469681E43A8C00010F202 /* OkJuxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OkJuxViewController.m; sourceTree = "<group>"; };
 		6E15DA48834C64B6C387E3AB /* Pods_Catwang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catwang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74098BB31AAA1DCF009D63B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		74098BB51AAA1DDC009D63B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -524,11 +527,11 @@
 		3753C72E15C3132900B8AEDE = {
 			isa = PBXGroup;
 			children = (
+				3753C74315C3132900B8AEDE /* stickerApp */,
+				3753C76415C3132900B8AEDE /* stickerAppTests */,
 				3753C73C15C3132900B8AEDE /* Frameworks */,
 				9446C9BAC21174F955C63A1A /* Pods */,
 				3753C73A15C3132900B8AEDE /* Products */,
-				3753C74315C3132900B8AEDE /* stickerApp */,
-				3753C76415C3132900B8AEDE /* stickerAppTests */,
 				FA85084C1DCCC7A700F885CA /* Catwang.entitlements */,
 			);
 			sourceTree = "<group>";
@@ -662,6 +665,8 @@
 				3753C79715C328A800B8AEDE /* StickyImageView.m */,
 				3753C74F15C3132900B8AEDE /* ViewController.h */,
 				3753C75015C3132900B8AEDE /* ViewController.m */,
+				44D469671E43A8C00010F202 /* OkJuxViewController.h */,
+				44D469681E43A8C00010F202 /* OkJuxViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1279,6 +1284,7 @@
 				74C420ED1A3D097500C6745C /* CBFontCollectionViewCell.m in Sources */,
 				74760E1F1A83C10C00AD3FE5 /* OMGPublishViewController.m in Sources */,
 				74C420EA1A3CFA0200C6745C /* CBFontToolViewController.m in Sources */,
+				44D469691E43A8C00010F202 /* OkJuxViewController.m in Sources */,
 				74B6E08B1A1996C9001D6F80 /* Reachability.m in Sources */,
 				74B6E0981A1996C9001D6F80 /* SVWebViewControllerActivitySafari.m in Sources */,
 				748FA45C1A970F260063D0BC /* OMGHeadSpaceViewController.m in Sources */,
@@ -1533,6 +1539,11 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "stickerApp/Supporting Files/Catwang-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"RELEASE=1",
+				);
 				INFOPLIST_FILE = "stickerApp/Catwang-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1613,6 +1624,11 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "stickerApp/Supporting Files/Catwang-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"STAGING=1",
+				);
 				INFOPLIST_FILE = "stickerApp/Catwang-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (

@@ -13,6 +13,7 @@
 #import <StoreKit/StoreKit.h>
 #import "DataManager.h"
 #import "UserServiceManager.h"
+#import "OkJuxViewController.h"
 
 @class ShareViewController;
 
@@ -23,7 +24,7 @@
 @end
 
 
-@interface ShareViewController : UIViewController
+@interface ShareViewController : OkJuxViewController
 
 @property (nonatomic, strong) UIImage *userExportedImage;
 

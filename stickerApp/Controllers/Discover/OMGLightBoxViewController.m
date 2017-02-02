@@ -51,6 +51,7 @@ typedef NSInteger OMGVoteSpecifier;
 @synthesize delegate;
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
     _ibo_spinnerView.hidden = NO;
 

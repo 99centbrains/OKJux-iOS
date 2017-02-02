@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CWInAppHelper.h"
+#import "OkJuxViewController.h"
 
 @class SelectStickerQuickViewController;
 
@@ -17,7 +18,7 @@
 
 @end
 
-@interface SelectStickerQuickViewController : UIViewController <UIScrollViewDelegate> {
+@interface SelectStickerQuickViewController : OkJuxViewController <UIScrollViewDelegate> {
     
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OkJuxViewController.h"
 
 @class OMGHeadSpaceViewController;
 
@@ -18,7 +19,7 @@
 @end
 
 
-@interface OMGHeadSpaceViewController : UIViewController
+@interface OMGHeadSpaceViewController : OkJuxViewController
 
 @property (nonatomic, weak) IBOutlet UILabel *ibo_titleLabel;
 @property (nonatomic, weak) IBOutlet UIButton *ibo_karmabtn;

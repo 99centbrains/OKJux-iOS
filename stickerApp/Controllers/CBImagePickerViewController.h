@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "OkJuxViewController.h"
 
 @class CBImagePickerViewController;
 
@@ -20,7 +20,7 @@
 @end
 
 
-@interface CBImagePickerViewController : UIViewController
+@interface CBImagePickerViewController : OkJuxViewController
 
 @property (nonatomic, unsafe_unretained) id <CBImagePickerViewControllerDelegate> delegate;
 

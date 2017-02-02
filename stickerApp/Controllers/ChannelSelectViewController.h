@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OkJuxViewController.h"
 
 @class ChannelSelectViewController;
 
@@ -17,7 +18,7 @@
 @end
 
 
-@interface ChannelSelectViewController : UIViewController
+@interface ChannelSelectViewController : OkJuxViewController
 
 
 @property (nonatomic, unsafe_unretained) id <ChannelSelectViewControllerDelegate> delegate;

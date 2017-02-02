@@ -92,6 +92,8 @@
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
 
     [self setUpCanvasViews];
@@ -114,16 +116,13 @@
     [panGesture setMinimumNumberOfTouches:1];
     [panGesture setMaximumNumberOfTouches:2];
     [_ibo_viewStickerStage addGestureRecognizer:panGesture];
-
-    [super viewDidLoad];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     [self.navigationController setNavigationBarHidden:YES];
     [self.view becomeFirstResponder];
-
-    [super viewWillAppear:animated];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(changeCurrentSticker:)

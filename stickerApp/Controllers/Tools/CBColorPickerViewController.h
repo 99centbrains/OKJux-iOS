@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OkJuxViewController.h"
+
 @class CBColorPickerViewController;
 @protocol CBColorPickerViewControllerDelegate <NSObject>
 
@@ -15,7 +17,7 @@
 
 @end
 
-@interface CBColorPickerViewController : UIViewController
+@interface CBColorPickerViewController : OkJuxViewController
 
 @property (nonatomic) BOOL highRes;
 @property (nonatomic, unsafe_unretained) id <CBColorPickerViewControllerDelegate> delegate;

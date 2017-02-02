@@ -43,6 +43,7 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
     
     UIBarButtonItem *navBarBtnNew = [[UIBarButtonItem alloc] initWithTitle:@"Back"
@@ -77,10 +78,6 @@
     self.navigationController.navigationBarHidden = NO;
     
     NSLog(@"Crop Size Rect: %@", NSStringFromCGRect(ibo_uiviewCropView.frame));
-
-    
-    
-    [super viewDidLoad];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

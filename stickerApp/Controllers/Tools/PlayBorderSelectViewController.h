@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OkJuxViewController.h"
 
 @class PlayBorderSelectViewController;
 
@@ -19,7 +20,7 @@
 @end
 
 
-@interface PlayBorderSelectViewController : UIViewController
+@interface PlayBorderSelectViewController : OkJuxViewController
 
 @property (nonatomic, unsafe_unretained) id <PlayBorderSelectViewControllerDelegate> delegate;
 

@@ -69,6 +69,7 @@ typedef NSInteger OMGVoteSpecifier;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     if (![[NSUserDefaults standardUserDefaults] boolForKey:kNewUserKey]) {
         NSLog(@"SHOULD SHOW FTUE");
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FTUEStoryboard" bundle:nil];

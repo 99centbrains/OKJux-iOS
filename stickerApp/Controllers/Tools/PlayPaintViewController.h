@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OkJuxViewController.h"
 
 @class PlayPaintViewController;
 
@@ -19,7 +20,7 @@
 
 @end
 
-@interface PlayPaintViewController : UIViewController
+@interface PlayPaintViewController : OkJuxViewController
 
 @property (nonatomic, unsafe_unretained) id <PlayPaintViewControllerDelegate> delegate;
 

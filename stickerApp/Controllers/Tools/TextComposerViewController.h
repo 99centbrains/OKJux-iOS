@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OkJuxViewController.h"
 
 @class TextComposerViewController;
 @protocol TextComposerViewControllerDelegate <NSObject>
@@ -16,7 +17,7 @@
 
 @end
 
-@interface TextComposerViewController : UIViewController
+@interface TextComposerViewController : OkJuxViewController
 
 @property (nonatomic, unsafe_unretained) id <TextComposerViewControllerDelegate> delegate;
 

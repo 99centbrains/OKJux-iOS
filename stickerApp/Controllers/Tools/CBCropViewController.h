@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OkJuxViewController.h"
 
 @class CBCropViewController;
 @protocol CBCropViewControllerDelegate <NSObject>
@@ -15,7 +16,7 @@
 
 @end
 
-@interface CBCropViewController : UIViewController
+@interface CBCropViewController : OkJuxViewController
 
 
 @property (nonatomic, strong)UIImage *userImage;

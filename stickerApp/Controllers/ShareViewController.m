@@ -60,6 +60,7 @@
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     self.title = NSLocalizedString(@"PUBLISH_SHARE", nil);
     _ibo_headerShare.text = NSLocalizedString(@"PUBLISH_SHARE", nil);
     
@@ -79,14 +80,12 @@
     _ibo_noLocation.hidden = YES;
     
     [[TMCache sharedCache] setObject:userExportedImage forKey:@"image" block:nil];
-  
-    [super viewDidLoad];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

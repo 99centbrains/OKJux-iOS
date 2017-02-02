@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OkJuxViewController.h"
 
 @class StickerCategoryViewController;
 
@@ -19,7 +20,7 @@
 
 @end
 
-@interface StickerCategoryViewController : UIViewController
+@interface StickerCategoryViewController : OkJuxViewController
 
 @property (nonatomic, unsafe_unretained) id <StickerCategoryViewControllerDelegate> delegate;
 

@@ -51,8 +51,8 @@
 @synthesize ibo_getphoto = _ibo_getphoto;
 
 - (void)viewDidLoad {
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
