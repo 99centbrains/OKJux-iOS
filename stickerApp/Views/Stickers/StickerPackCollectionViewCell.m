@@ -190,7 +190,6 @@
     if ([[TMCache sharedCache] objectForKey:_stickerPackID]){
         [[TMCache sharedCache] objectForKey:_stickerPackID
                                       block:^(TMCache *cache, NSString *key, id object) {
-                                           NSLog(@"HAS PACK %@", (NSArray *)object);
                                           dispatch_async(dispatch_get_main_queue(), ^{
                                               [self addStickersInSection:(NSArray *)object];
                                           });
