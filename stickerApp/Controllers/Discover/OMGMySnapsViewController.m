@@ -40,6 +40,8 @@
 @synthesize delegate;
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
      _ibo_notAvailableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
     
@@ -61,7 +63,6 @@
     });
     
     _ibo_karmaDescriptor.text = NSLocalizedString(@"EXP_KARMA", nil);
-    [super viewDidLoad];
 }
 
 - (void)startRefresh:(UIRefreshControl *)refresh {

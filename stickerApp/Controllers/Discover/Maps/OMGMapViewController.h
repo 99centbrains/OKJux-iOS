@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "OkJuxViewController.h"
 
 @class OMGMapViewController;
 
@@ -18,7 +19,7 @@
 @end
 
 
-@interface OMGMapViewController : UIViewController
+@interface OMGMapViewController : OkJuxViewController
 
 
 //INIT MAP

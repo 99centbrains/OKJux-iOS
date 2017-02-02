@@ -3,10 +3,13 @@
 //
 
 #import <Availability.h>
+#import <Crashlytics/Crashlytics.h>
 
 #ifndef __IPHONE_4_0
 #warning "This project uses features only available in iOS SDK 4.0 and later."
 #endif
+
+#define LOG_ENABLED YES
 
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
@@ -25,3 +28,9 @@
 #endif
 
 #define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+#if DEBUG
+#define NSLog(...) if(LOG_ENABLED)CLS_LOG(__VA_ARGS__)
+#else
+#define NSLog(...) CLS_LOG(__VA_ARGS__)
+#endif

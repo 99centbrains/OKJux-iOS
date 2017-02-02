@@ -59,6 +59,8 @@
 @synthesize delegate;
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    
     mapStopped = YES;
     mapbrowsing = NO;
     _newLocation = NO;
@@ -70,8 +72,6 @@
     _ibo_notAvailableView.hidden = YES;
     _ibo_notAvailableDescription.text = NSLocalizedString(@"PERMISSION_LOCATION_MAP", nil);
     _ibo_dragDescriptor.text = NSLocalizedString(@"EXP_MAPBODY", nil);
-    
-    [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,7 +79,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
         if (![self locationGranted]) {
             NSLog(@"NO LOCATION");
             _ibo_notAvailableView.hidden = NO;

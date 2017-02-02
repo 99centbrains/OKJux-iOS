@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OkJuxViewController.h"
 
-@interface OMGPublishViewController : UIViewController
+@interface OMGPublishViewController : OkJuxViewController
 
 @property (nonatomic, strong) UIImage *userExportedImage;
 @property (nonatomic, strong) NSString *assetContents;

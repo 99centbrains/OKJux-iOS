@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OkJuxViewController.h"
 
 @class CBFontCollectionViewController;
 
@@ -17,7 +18,7 @@
 @end
 
 
-@interface CBFontCollectionViewController : UIViewController
+@interface CBFontCollectionViewController : OkJuxViewController
 
 
 @property (nonatomic, unsafe_unretained) id <CBFontCollectionViewControllerDelegate> delegate;

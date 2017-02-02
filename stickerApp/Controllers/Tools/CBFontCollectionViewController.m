@@ -33,7 +33,7 @@
         [_fontCollection addObject:fontFamily];
     }
     
-    NSLog (@"%@", _fontCollection);
+    NSLog(@"%@", _fontCollection);
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {

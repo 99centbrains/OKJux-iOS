@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Snap.h"
+#import "OkJuxViewController.h"
 
 @class OMGSnapViewController;
 
@@ -17,7 +18,7 @@
 @end
 
 
-@interface OMGSnapViewController : UIViewController
+@interface OMGSnapViewController : OkJuxViewController
 
 - (void)refreshData;
 - (void)updateObjectInCollection:(Snap *)snap;

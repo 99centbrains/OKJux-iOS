@@ -11,8 +11,9 @@
 #import "PlayEditModeViewController.h"
 #import "ShareViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "OkJuxViewController.h"
 
-@interface PlayViewController : UIViewController <SelectStickerQuickViewControllerDelegate, UIGestureRecognizerDelegate, PlayEditModeViewControllerDelegate,ShareViewControllerDelegate, UIScrollViewDelegate>
+@interface PlayViewController : OkJuxViewController <SelectStickerQuickViewControllerDelegate, UIGestureRecognizerDelegate, PlayEditModeViewControllerDelegate,ShareViewControllerDelegate, UIScrollViewDelegate>
 
 
 @property (nonatomic) UIImage* userImage;

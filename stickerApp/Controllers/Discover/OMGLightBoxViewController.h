@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Snap.h"
+#import "OkJuxViewController.h"
 
 @class OMGLightBoxViewController;
 
@@ -19,7 +20,7 @@
 
 @end
 
-@interface OMGLightBoxViewController : UIViewController
+@interface OMGLightBoxViewController : OkJuxViewController
 
 @property (nonatomic, strong ) Snap *snap;
 @property (nonatomic, strong ) UIImage *preloadImage;

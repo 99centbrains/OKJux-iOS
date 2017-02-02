@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OkJuxViewController.h"
+
 @class CBFontToolViewController;
 
 @protocol CBFontToolViewControllerDelegate <NSObject>
@@ -16,7 +18,7 @@
 - (void) cbFontToolToggleStroke:(CBFontToolViewController *)controller withBool:(BOOL)stroked;
 
 @end
-@interface CBFontToolViewController : UIViewController
+@interface CBFontToolViewController : OkJuxViewController
 
 
 @property (nonatomic, unsafe_unretained) id <CBFontToolViewControllerDelegate> delegate;

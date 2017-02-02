@@ -62,6 +62,7 @@
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     adColonyReady = NO;
     self.title = _prop_bundleName;
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
@@ -78,8 +79,6 @@
 
     _ibo_pageControl.numberOfPages = [_array_stickerpack_ids count];
     imageCache = [[NSCache alloc] init];
-
-    [super viewDidLoad];
 }
 
 - (void)viewDidLayoutSubviews {

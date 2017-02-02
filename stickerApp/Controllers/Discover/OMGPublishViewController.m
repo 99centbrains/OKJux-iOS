@@ -40,12 +40,12 @@
 @implementation OMGPublishViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     filename = [self generateFileNameWithExtension:@".png"];
     [self initPhotoFilter];
     imageFilterNumber = 0;
     boolSharedPublic = NO;
     _publish_channel = @"General";
-    [super viewDidLoad];
 }
 
 #pragma FILTERS

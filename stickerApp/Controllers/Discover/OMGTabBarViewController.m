@@ -30,6 +30,7 @@
 
 #import "AppDelegate.h"
 #import "Snap.h"
+#import <Crashlytics/Crashlytics.h>
 
 @interface OMGTabBarViewController ()<UITabBarControllerDelegate, OMGLightBoxViewControllerDelegate, OMGSnapViewControllerDelegate, OMGHeadSpaceViewControllerDelegate, StickerCategoryViewControllerDelegate, MFMessageComposeViewControllerDelegate>{
     BOOL camera;
@@ -81,22 +82,26 @@
  didSelectViewController:(UIViewController *)viewController {
     switch (self.selectedIndex) {
         case 0://Snap Vote
+            NSLog(@"Snap Vote tab item pressed");
             [MixPanelManager triggerEvent:@"Explore" withData:@{ @"View": @"New" }];
             _ibo_headSpace.ibo_titleLabel.text = NSLocalizedString(@"TABBAR_NEW_TITLE", nil);
             _ibo_omgVoteVC = (OMGSnapVoteViewController *)[self.viewControllers objectAtIndex:0];
             [_ibo_omgVoteVC refreshData];
             break;
         case 1://HOTTEST
+            NSLog(@"Hottest tab item pressed");
             [MixPanelManager triggerEvent:@"Explore" withData:@{ @"View": @"Hottest" }];
             _ibo_headSpace.ibo_titleLabel.text = NSLocalizedString(@"TABBAR_HOT_TITLE", nil);
             _ibo_omgsnapVC = (OMGSnapViewController *)[self.viewControllers objectAtIndex:1];
             [_ibo_omgsnapVC refreshData];
             break;
         case 2://NEWEST
+            NSLog(@"Newes tab item pressed");
             [MixPanelManager triggerEvent:@"Explore" withData:@{ @"View": @"Map" }];
             _ibo_headSpace.ibo_titleLabel.text = NSLocalizedString(@"TABBAR_MAP_TITLE", nil);
             break;
         case 3://MORE
+            NSLog(@"More tab item pressed");
             [MixPanelManager triggerEvent:@"Explore" withData:@{ @"View": @"Mystuff" }];
             _ibo_headSpace.ibo_titleLabel.text = NSLocalizedString(@"TABBAR_MORE_TITLE", nil);
             break;
@@ -106,6 +111,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
 }
 

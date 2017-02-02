@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ViewController.h"
+#import "OkJuxViewController.h"
 
-@interface NewUserViewController : UIViewController
+@interface NewUserViewController : OkJuxViewController
 
 @property (nonatomic, strong) ViewController *sourceVC;
 
