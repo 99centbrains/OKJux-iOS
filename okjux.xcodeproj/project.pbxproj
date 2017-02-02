@@ -1487,7 +1487,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
-					"LOCALHOST=1",
+					"LOCALHOST=0",
 				);
 				INFOPLIST_FILE = "stickerApp/Catwang-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
