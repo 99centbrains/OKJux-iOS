@@ -24,6 +24,7 @@
 @property (nonatomic, weak) IBOutlet UIImageView *ibo_userImageView;
 @property (nonatomic, weak) IBOutlet UIView *ibo_userFilterView;
 @property (nonatomic, weak) IBOutlet UIButton *ibo_btnChannel;
+@property (nonatomic, weak) IBOutlet UIButton *ibo_publish;
 
 @property (nonatomic,assign) CLLocationCoordinate2D coord;
 @property (nonatomic,strong) CLLocationManager *locationManager;
@@ -46,6 +47,7 @@
     imageFilterNumber = 0;
     boolSharedPublic = NO;
     _publish_channel = @"General";
+    [_ibo_publish setTitle:NSLocalizedString(@"PUBLISH_SHARE", nil) forState: UIControlStateNormal];
 }
 
 #pragma FILTERS
