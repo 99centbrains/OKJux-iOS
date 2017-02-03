@@ -956,6 +956,11 @@ typedef enum {
 
 #pragma CREATE NEW
 - (IBAction)actionStartNew:(id)sender {
+    if (stickersCount == 0 && !_painterView) {
+        [self.navigationController popViewControllerAnimated:YES];
+        return;
+    }
+
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PHOTO_STARTOVER", nil) message:NSLocalizedString(@"PHOTO_NEW", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"PHOTO_NOTHANKS", nil) otherButtonTitles:NSLocalizedString(@"PHOTO_YES", nil), nil];
     alertView.tag = StartOverAlertViewTag;
     [alertView show];
