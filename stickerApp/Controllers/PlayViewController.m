@@ -890,7 +890,17 @@ BOOL toggleToolBar = NO;
 
             newCenter = CGPointMake(beginX + newCenter.x, beginY + newCenter.y);
 
-            [view setCenter:newCenter];
+            float newMinXPos = newCenter.x + (view.frame.size.width * 0.9) / 2;
+            float newMaxXPos = newCenter.x - (view.frame.size.width * 0.9) / 2;
+
+            float newMinYPos = newCenter.y + (view.frame.size.height * 0.9) / 2;
+            float newMaxYPos = newCenter.y - (view.frame.size.height * 0.9) / 2;
+
+            if (newMinXPos > 0 && newMaxXPos < self.view.bounds.size.width) {
+                if (newMinYPos > 0 && newMaxYPos < self.view.bounds.size.height) {
+                    [view setCenter:newCenter];
+                }
+            }
         }
     }
 }
