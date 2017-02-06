@@ -18,6 +18,7 @@
 "TUT_KARMA_BODY" = "分享你的作品，和表决为其他艺术";
 "TUT_START_TITLE" = "准备";
 "TUT_START_BODY" = "这是轮到你了!";
+"TUT_NEXT" = "下一个";
 
 //EXPLORE MAP
 "EXP_MAPBODY" = "拖动地图发现世界各地的艺术";

@@ -18,6 +18,7 @@
 "TUT_KARMA_BODY" = "Compartí tus creaciones y vota el mejor arte.";
 "TUT_START_TITLE" = "Prepárate";
 "TUT_START_BODY" = "¡Es tu turno!";
+"TUT_NEXT" = "Siguiente";
 
 //EXPLORE MAP
 "EXP_MAPBODY" = "Mueva el mapa para descubrir arte por todo el mundo.";

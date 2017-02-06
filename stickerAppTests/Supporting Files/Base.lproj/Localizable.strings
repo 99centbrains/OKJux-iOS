@@ -17,6 +17,7 @@
 "TUT_KARMA_BODY" = "Share your creations and vote on the best juxart.";
 "TUT_START_TITLE" = "Get Ready";
 "TUT_START_BODY" = "It’s your turn!";
+"TUT_NEXT" = "Next";
 
 //EXPLORE MAP
 "EXP_MAPBODY" = "Drag the map to explore art from around the world.";
