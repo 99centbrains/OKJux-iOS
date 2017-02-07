@@ -152,5 +152,9 @@
 			<string>com.99centbrains.media</string>
 		</dict>
 	</array>
+    <key>NSBluetoothPeripheralUsageDescription</key>
+    <string>We use Bluetooth to enhance your location while in background</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>This allows us to use your location to provide you certain features like tracking movement more accurately, plus some other cool stuff.</string>
 </dict>
 </plist>

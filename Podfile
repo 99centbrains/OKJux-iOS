@@ -20,4 +20,5 @@ target 'Catwang' do
     pod 'Crashlytics'
     pod 'Instabug'
     pod 'Mixpanel'
+    pod 'XModeAPI'
 end

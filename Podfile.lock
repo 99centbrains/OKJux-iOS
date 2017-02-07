@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - BeaconsInSpace (1.5.4)
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
   - DateTools (1.7.0)
@@ -41,6 +42,9 @@ PODS:
   - TWRDownloadManager (1.1.1)
   - UIImageEffects (0.0.1)
   - UIImageTrim (1.02)
+  - XModeAPI (0.2.0):
+    - AFNetworking (~> 2.3)
+    - BeaconsInSpace
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6)
@@ -61,6 +65,7 @@ DEPENDENCIES:
   - TWRDownloadManager (~> 1.1.1)
   - UIImageEffects (~> 0.0.1)
   - UIImageTrim (~> 1.02)
+  - XModeAPI
 
 EXTERNAL SOURCES:
   iRate:
@@ -73,6 +78,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  BeaconsInSpace: eb24d9a2f7a0aeb429817716848a88b3cb68d1a1
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   Fabric: c73f371ee543e3f0b80608f2674750e4910d1669
@@ -89,7 +95,8 @@ SPEC CHECKSUMS:
   TWRDownloadManager: 34193d7d1ab6e6b4243d74fa4f686cc2ed5ef40f
   UIImageEffects: 37b99fa461e4965f332ca82e92f2c22a1075ee84
   UIImageTrim: 6291b9cfb05bbc9ca0bb3e510aae4421de4ca5e4
+  XModeAPI: 5956d861d8b615633087dba82cdec429664ea7ac
 
-PODFILE CHECKSUM: e025c7a144ac8e0bbd5344b1b669446b2214b0d5
+PODFILE CHECKSUM: 17129d1e0d3c2ec504596bd2fd37d845069c45d4
 
 COCOAPODS: 1.1.1
