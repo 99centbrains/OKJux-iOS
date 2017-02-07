@@ -18,6 +18,7 @@
 "TUT_KARMA_BODY" = "Teilen Sie Ihre Arbeit und Abstimmung auf derbesten Kunst.";
 "TUT_START_TITLE" = "Werden Sie fertig";
 "TUT_START_BODY" = "Es ist Ihre Drehung!";
+"TUT_NEXT" = "Nächster";
 
 //EXPLORE MAP
 "EXP_MAPBODY" = "Bewegen Sie die Karte, um Kunst aus der ganzen Welt zu erforschen.";

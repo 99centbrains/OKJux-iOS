@@ -51,6 +51,8 @@
 
     [_ibo_collectionView reloadData];
     _currentpage = 0;
+    [_ibo_btnNext setTitle:NSLocalizedString(@"TUT_NEXT", nil) forState: UIControlStateNormal];
+    [_ibo_btnNext setTitle:NSLocalizedString(@"TUT_NEXT", nil) forState: UIControlStateHighlighted];
 }
 
 - (void)didReceiveMemoryWarning {

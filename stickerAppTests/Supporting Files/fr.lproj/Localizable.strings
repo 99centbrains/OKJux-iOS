@@ -17,6 +17,7 @@
 "TUT_KARMA_BODY" = "Partagez votre travail et vote sur le meilleur art.";
 "TUT_START_TITLE" = "Se préparer";
 "TUT_START_BODY" = "C'est votre tour!";
+"TUT_NEXT" = "prochain";
 
 //EXPLORE MAP
 "EXP_MAPBODY" = "Déplacez la carte pour découvrir l'art autour dumonde.";
