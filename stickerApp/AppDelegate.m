@@ -88,7 +88,7 @@
 
   [Fabric with:@[[Crashlytics class]]];
 
-    [[XModeAPI sharedInstance] startWithApiKey:@"YOUR-API-KEY-HERE"]; 
+  [[XModeAPI sharedInstance] startWithApiKey:@"MeBMl2Xvu27SMDU3s6LaG4TuI8oKsnzh91jSrkKh"]; 
 
   return YES;
 }
