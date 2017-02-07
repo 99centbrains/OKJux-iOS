@@ -21,6 +21,7 @@
 #import "UserServiceManager.h"
 #import "DataManager.h"
 #import "Mixpanel/Mixpanel.h"
+#import <XModeAPI/XModeAPI.h>
 
 @implementation AppDelegate
 
@@ -86,6 +87,8 @@
   [[HNKCache sharedCache] registerFormat:format];
 
   [Fabric with:@[[Crashlytics class]]];
+
+    [[XModeAPI sharedInstance] startWithApiKey:@"YOUR-API-KEY-HERE"]; 
 
   return YES;
 }
