@@ -1,0 +1,1034 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		123C584F6A27F3DEDB7DF084 /* Pods_OKJUXTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D85B11F1555ACDFF094A7E0 /* Pods_OKJUXTests.framework */; };
+		44D61C051E4B8B6D005A1936 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C041E4B8B6D005A1936 /* AppDelegate.swift */; };
+		44D61C071E4B8B6D005A1936 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C061E4B8B6D005A1936 /* ViewController.swift */; };
+		44D61C0A1E4B8B6D005A1936 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C081E4B8B6D005A1936 /* Main.storyboard */; };
+		44D61C0C1E4B8B6D005A1936 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C0B1E4B8B6D005A1936 /* Assets.xcassets */; };
+		44D61C0F1E4B8B6D005A1936 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C0D1E4B8B6D005A1936 /* LaunchScreen.storyboard */; };
+		44D61C1A1E4B8B6D005A1936 /* OKJUXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C191E4B8B6D005A1936 /* OKJUXTests.swift */; };
+		44D61C251E4B8B6D005A1936 /* OKJUXUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C241E4B8B6D005A1936 /* OKJUXUITests.swift */; };
+		44D61C371E4B8D3F005A1936 /* SnapsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C361E4B8D3F005A1936 /* SnapsNetworkManager.swift */; };
+		44D61C391E4B8D58005A1936 /* UsersNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C381E4B8D58005A1936 /* UsersNetworkManager.swift */; };
+		44D61C4E1E4B8E26005A1936 /* Configuration-Beta.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C481E4B8E26005A1936 /* Configuration-Beta.plist */; };
+		44D61C4F1E4B8E26005A1936 /* Configuration-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C491E4B8E26005A1936 /* Configuration-Debug.plist */; };
+		44D61C501E4B8E26005A1936 /* Configuration-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C4A1E4B8E26005A1936 /* Configuration-Release.plist */; };
+		44D61C511E4B8E26005A1936 /* Configuration-Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C4B1E4B8E26005A1936 /* Configuration-Staging.plist */; };
+		44D61C521E4B8E26005A1936 /* ConfigurationManager+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C4C1E4B8E26005A1936 /* ConfigurationManager+Properties.swift */; };
+		44D61C531E4B8E26005A1936 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C4D1E4B8E26005A1936 /* ConfigurationManager.swift */; };
+		44D61C561E4B8E31005A1936 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C551E4B8E31005A1936 /* Settings.bundle */; };
+		44D61C601E4B95AC005A1936 /* BasicNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C5F1E4B95AC005A1936 /* BasicNetworkManager.swift */; };
+		44D61C631E4BB737005A1936 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C621E4BB737005A1936 /* User.swift */; };
+		44D61C651E4BBCF7005A1936 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C641E4BBCF7005A1936 /* UserManager.swift */; };
+		44D61C681E4BBD78005A1936 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C671E4BBD78005A1936 /* UserHelper.swift */; };
+		639BC39B7322A6ECBDC1B901 /* Pods_OKJUXUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B11F0221D0B40C241E151DC /* Pods_OKJUXUITests.framework */; };
+		9ABB4CD034211B67970CDA42 /* Pods_OKJUX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33CD401A90ACB0342495C6DB /* Pods_OKJUX.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		44D61C161E4B8B6D005A1936 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44D61BF91E4B8B6D005A1936 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 44D61C001E4B8B6D005A1936;
+			remoteInfo = OKJUX;
+		};
+		44D61C211E4B8B6D005A1936 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44D61BF91E4B8B6D005A1936 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 44D61C001E4B8B6D005A1936;
+			remoteInfo = OKJUX;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1E1E85DF7A1F09515F03A0F1 /* Pods-OKJUXTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKJUXTests.staging.xcconfig"; path = "Pods/Target Support Files/Pods-OKJUXTests/Pods-OKJUXTests.staging.xcconfig"; sourceTree = "<group>"; };
+		1E7010D77B3569A2F52C3699 /* Pods-OKJUXUITests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKJUXUITests.staging.xcconfig"; path = "Pods/Target Support Files/Pods-OKJUXUITests/Pods-OKJUXUITests.staging.xcconfig"; sourceTree = "<group>"; };
+		214CD4939B9E1435CAF73EDB /* Pods-OKJUXUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKJUXUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OKJUXUITests/Pods-OKJUXUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		269FE97266952F8AAE9735FE /* Pods-OKJUXUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKJUXUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OKJUXUITests/Pods-OKJUXUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2B11F0221D0B40C241E151DC /* Pods_OKJUXUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKJUXUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		33CD401A90ACB0342495C6DB /* Pods_OKJUX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKJUX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44D61C011E4B8B6D005A1936 /* OKJUX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OKJUX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		44D61C041E4B8B6D005A1936 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		44D61C061E4B8B6D005A1936 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		44D61C091E4B8B6D005A1936 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		44D61C0B1E4B8B6D005A1936 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		44D61C0E1E4B8B6D005A1936 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		44D61C101E4B8B6D005A1936 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44D61C151E4B8B6D005A1936 /* OKJUXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OKJUXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44D61C191E4B8B6D005A1936 /* OKJUXTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OKJUXTests.swift; sourceTree = "<group>"; };
+		44D61C1B1E4B8B6D005A1936 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44D61C201E4B8B6D005A1936 /* OKJUXUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OKJUXUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44D61C241E4B8B6D005A1936 /* OKJUXUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OKJUXUITests.swift; sourceTree = "<group>"; };
+		44D61C261E4B8B6D005A1936 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44D61C361E4B8D3F005A1936 /* SnapsNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapsNetworkManager.swift; sourceTree = "<group>"; };
+		44D61C381E4B8D58005A1936 /* UsersNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersNetworkManager.swift; sourceTree = "<group>"; };
+		44D61C481E4B8E26005A1936 /* Configuration-Beta.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Configuration-Beta.plist"; sourceTree = "<group>"; };
+		44D61C491E4B8E26005A1936 /* Configuration-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Configuration-Debug.plist"; sourceTree = "<group>"; };
+		44D61C4A1E4B8E26005A1936 /* Configuration-Release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Configuration-Release.plist"; sourceTree = "<group>"; };
+		44D61C4B1E4B8E26005A1936 /* Configuration-Staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Configuration-Staging.plist"; sourceTree = "<group>"; };
+		44D61C4C1E4B8E26005A1936 /* ConfigurationManager+Properties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConfigurationManager+Properties.swift"; sourceTree = "<group>"; };
+		44D61C4D1E4B8E26005A1936 /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
+		44D61C551E4B8E31005A1936 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		44D61C5F1E4B95AC005A1936 /* BasicNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicNetworkManager.swift; sourceTree = "<group>"; };
+		44D61C621E4BB737005A1936 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		44D61C641E4BBCF7005A1936 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		44D61C671E4BBD78005A1936 /* UserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
+		4D85B11F1555ACDFF094A7E0 /* Pods_OKJUXTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKJUXTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		63173BC5F6AD735A6AD2A83E /* Pods-OKJUXUITests.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKJUXUITests.beta.xcconfig"; path = "Pods/Target Support Files/Pods-OKJUXUITests/Pods-OKJUXUITests.beta.xcconfig"; sourceTree = "<group>"; };
+		7426B5CCC4E102E1DCC9921A /* Pods-OKJUX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKJUX.release.xcconfig"; path = "Pods/Target Support Files/Pods-OKJUX/Pods-OKJUX.release.xcconfig"; sourceTree = "<group>"; };
+		895BEC9B7BC5C9CD1A14AD38 /* Pods-OKJUX.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKJUX.staging.xcconfig"; path = "Pods/Target Support Files/Pods-OKJUX/Pods-OKJUX.staging.xcconfig"; sourceTree = "<group>"; };
+		8FE26CE475DEB0946BB40D79 /* Pods-OKJUX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKJUX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OKJUX/Pods-OKJUX.debug.xcconfig"; sourceTree = "<group>"; };
+		A98ED7D4C2B6C0336EE3AC88 /* Pods-OKJUXTests.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKJUXTests.beta.xcconfig"; path = "Pods/Target Support Files/Pods-OKJUXTests/Pods-OKJUXTests.beta.xcconfig"; sourceTree = "<group>"; };
+		E8B47D4A7EA8B111D7BD8B3A /* Pods-OKJUXTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKJUXTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OKJUXTests/Pods-OKJUXTests.release.xcconfig"; sourceTree = "<group>"; };
+		E8FF7E14FE86A469E78DF13C /* Pods-OKJUXTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKJUXTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OKJUXTests/Pods-OKJUXTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FA4A287AD212E681B7BDA101 /* Pods-OKJUX.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKJUX.beta.xcconfig"; path = "Pods/Target Support Files/Pods-OKJUX/Pods-OKJUX.beta.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		44D61BFE1E4B8B6D005A1936 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9ABB4CD034211B67970CDA42 /* Pods_OKJUX.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44D61C121E4B8B6D005A1936 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				123C584F6A27F3DEDB7DF084 /* Pods_OKJUXTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44D61C1D1E4B8B6D005A1936 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				639BC39B7322A6ECBDC1B901 /* Pods_OKJUXUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		44D61BF81E4B8B6D005A1936 = {
+			isa = PBXGroup;
+			children = (
+				44D61C031E4B8B6D005A1936 /* OKJUX */,
+				44D61C181E4B8B6D005A1936 /* OKJUXTests */,
+				44D61C231E4B8B6D005A1936 /* OKJUXUITests */,
+				44D61C021E4B8B6D005A1936 /* Products */,
+				7F82513C5FFA64D2E5DF5B35 /* Pods */,
+				D6BC82526D8373BE682D73EC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		44D61C021E4B8B6D005A1936 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				44D61C011E4B8B6D005A1936 /* OKJUX.app */,
+				44D61C151E4B8B6D005A1936 /* OKJUXTests.xctest */,
+				44D61C201E4B8B6D005A1936 /* OKJUXUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		44D61C031E4B8B6D005A1936 /* OKJUX */ = {
+			isa = PBXGroup;
+			children = (
+				44D61C661E4BBD5B005A1936 /* Helpers */,
+				44D61C611E4BB72F005A1936 /* Models */,
+				44D61C541E4B8E31005A1936 /* Recources */,
+				44D61C471E4B8E26005A1936 /* Configuration */,
+				44D61C321E4B8C25005A1936 /* Managers */,
+				44D61C041E4B8B6D005A1936 /* AppDelegate.swift */,
+				44D61C061E4B8B6D005A1936 /* ViewController.swift */,
+				44D61C081E4B8B6D005A1936 /* Main.storyboard */,
+				44D61C0B1E4B8B6D005A1936 /* Assets.xcassets */,
+				44D61C0D1E4B8B6D005A1936 /* LaunchScreen.storyboard */,
+				44D61C101E4B8B6D005A1936 /* Info.plist */,
+			);
+			path = OKJUX;
+			sourceTree = "<group>";
+		};
+		44D61C181E4B8B6D005A1936 /* OKJUXTests */ = {
+			isa = PBXGroup;
+			children = (
+				44D61C191E4B8B6D005A1936 /* OKJUXTests.swift */,
+				44D61C1B1E4B8B6D005A1936 /* Info.plist */,
+			);
+			path = OKJUXTests;
+			sourceTree = "<group>";
+		};
+		44D61C231E4B8B6D005A1936 /* OKJUXUITests */ = {
+			isa = PBXGroup;
+			children = (
+				44D61C241E4B8B6D005A1936 /* OKJUXUITests.swift */,
+				44D61C261E4B8B6D005A1936 /* Info.plist */,
+			);
+			path = OKJUXUITests;
+			sourceTree = "<group>";
+		};
+		44D61C321E4B8C25005A1936 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				44D61C331E4B8C25005A1936 /* NetworkManagers */,
+				44D61C641E4BBCF7005A1936 /* UserManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		44D61C331E4B8C25005A1936 /* NetworkManagers */ = {
+			isa = PBXGroup;
+			children = (
+				44D61C361E4B8D3F005A1936 /* SnapsNetworkManager.swift */,
+				44D61C381E4B8D58005A1936 /* UsersNetworkManager.swift */,
+				44D61C5F1E4B95AC005A1936 /* BasicNetworkManager.swift */,
+			);
+			path = NetworkManagers;
+			sourceTree = "<group>";
+		};
+		44D61C471E4B8E26005A1936 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				44D61C481E4B8E26005A1936 /* Configuration-Beta.plist */,
+				44D61C491E4B8E26005A1936 /* Configuration-Debug.plist */,
+				44D61C4A1E4B8E26005A1936 /* Configuration-Release.plist */,
+				44D61C4B1E4B8E26005A1936 /* Configuration-Staging.plist */,
+				44D61C4C1E4B8E26005A1936 /* ConfigurationManager+Properties.swift */,
+				44D61C4D1E4B8E26005A1936 /* ConfigurationManager.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		44D61C541E4B8E31005A1936 /* Recources */ = {
+			isa = PBXGroup;
+			children = (
+				44D61C551E4B8E31005A1936 /* Settings.bundle */,
+			);
+			path = Recources;
+			sourceTree = "<group>";
+		};
+		44D61C611E4BB72F005A1936 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				44D61C621E4BB737005A1936 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		44D61C661E4BBD5B005A1936 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				44D61C671E4BBD78005A1936 /* UserHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7F82513C5FFA64D2E5DF5B35 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8FE26CE475DEB0946BB40D79 /* Pods-OKJUX.debug.xcconfig */,
+				7426B5CCC4E102E1DCC9921A /* Pods-OKJUX.release.xcconfig */,
+				FA4A287AD212E681B7BDA101 /* Pods-OKJUX.beta.xcconfig */,
+				895BEC9B7BC5C9CD1A14AD38 /* Pods-OKJUX.staging.xcconfig */,
+				E8FF7E14FE86A469E78DF13C /* Pods-OKJUXTests.debug.xcconfig */,
+				E8B47D4A7EA8B111D7BD8B3A /* Pods-OKJUXTests.release.xcconfig */,
+				A98ED7D4C2B6C0336EE3AC88 /* Pods-OKJUXTests.beta.xcconfig */,
+				1E1E85DF7A1F09515F03A0F1 /* Pods-OKJUXTests.staging.xcconfig */,
+				214CD4939B9E1435CAF73EDB /* Pods-OKJUXUITests.debug.xcconfig */,
+				269FE97266952F8AAE9735FE /* Pods-OKJUXUITests.release.xcconfig */,
+				63173BC5F6AD735A6AD2A83E /* Pods-OKJUXUITests.beta.xcconfig */,
+				1E7010D77B3569A2F52C3699 /* Pods-OKJUXUITests.staging.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D6BC82526D8373BE682D73EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				33CD401A90ACB0342495C6DB /* Pods_OKJUX.framework */,
+				4D85B11F1555ACDFF094A7E0 /* Pods_OKJUXTests.framework */,
+				2B11F0221D0B40C241E151DC /* Pods_OKJUXUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		44D61C001E4B8B6D005A1936 /* OKJUX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44D61C291E4B8B6D005A1936 /* Build configuration list for PBXNativeTarget "OKJUX" */;
+			buildPhases = (
+				60E9442D99F56B66A584DE11 /* [CP] Check Pods Manifest.lock */,
+				44D61BFD1E4B8B6D005A1936 /* Sources */,
+				44D61BFE1E4B8B6D005A1936 /* Frameworks */,
+				44D61BFF1E4B8B6D005A1936 /* Resources */,
+				CEA152079B7B65A442786C3D /* [CP] Embed Pods Frameworks */,
+				9400137D74DDBDA0E82054B2 /* [CP] Copy Pods Resources */,
+				4425075F1E4CF8B300F24500 /* Warning Script */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OKJUX;
+			productName = OKJUX;
+			productReference = 44D61C011E4B8B6D005A1936 /* OKJUX.app */;
+			productType = "com.apple.product-type.application";
+		};
+		44D61C141E4B8B6D005A1936 /* OKJUXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44D61C2C1E4B8B6D005A1936 /* Build configuration list for PBXNativeTarget "OKJUXTests" */;
+			buildPhases = (
+				E52DE78AA3B3937E90E30CE0 /* [CP] Check Pods Manifest.lock */,
+				44D61C111E4B8B6D005A1936 /* Sources */,
+				44D61C121E4B8B6D005A1936 /* Frameworks */,
+				44D61C131E4B8B6D005A1936 /* Resources */,
+				130A252CA22022EEC53FEC29 /* [CP] Embed Pods Frameworks */,
+				ABAA9C6022EF622920320EA0 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				44D61C171E4B8B6D005A1936 /* PBXTargetDependency */,
+			);
+			name = OKJUXTests;
+			productName = OKJUXTests;
+			productReference = 44D61C151E4B8B6D005A1936 /* OKJUXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		44D61C1F1E4B8B6D005A1936 /* OKJUXUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44D61C2F1E4B8B6D005A1936 /* Build configuration list for PBXNativeTarget "OKJUXUITests" */;
+			buildPhases = (
+				BE930C30251C9A20DF2CDC57 /* [CP] Check Pods Manifest.lock */,
+				44D61C1C1E4B8B6D005A1936 /* Sources */,
+				44D61C1D1E4B8B6D005A1936 /* Frameworks */,
+				44D61C1E1E4B8B6D005A1936 /* Resources */,
+				E5ECECD0F0AEE0DB673CD9E7 /* [CP] Embed Pods Frameworks */,
+				7427F9351A8325AD3516B07A /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				44D61C221E4B8B6D005A1936 /* PBXTargetDependency */,
+			);
+			name = OKJUXUITests;
+			productName = OKJUXUITests;
+			productReference = 44D61C201E4B8B6D005A1936 /* OKJUXUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		44D61BF91E4B8B6D005A1936 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "German Pereyra";
+				TargetAttributes = {
+					44D61C001E4B8B6D005A1936 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = YM28V3B39M;
+						ProvisioningStyle = Automatic;
+					};
+					44D61C141E4B8B6D005A1936 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 44D61C001E4B8B6D005A1936;
+					};
+					44D61C1F1E4B8B6D005A1936 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 44D61C001E4B8B6D005A1936;
+					};
+				};
+			};
+			buildConfigurationList = 44D61BFC1E4B8B6D005A1936 /* Build configuration list for PBXProject "OKJUX" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 44D61BF81E4B8B6D005A1936;
+			productRefGroup = 44D61C021E4B8B6D005A1936 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				44D61C001E4B8B6D005A1936 /* OKJUX */,
+				44D61C141E4B8B6D005A1936 /* OKJUXTests */,
+				44D61C1F1E4B8B6D005A1936 /* OKJUXUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		44D61BFF1E4B8B6D005A1936 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44D61C561E4B8E31005A1936 /* Settings.bundle in Resources */,
+				44D61C0F1E4B8B6D005A1936 /* LaunchScreen.storyboard in Resources */,
+				44D61C501E4B8E26005A1936 /* Configuration-Release.plist in Resources */,
+				44D61C511E4B8E26005A1936 /* Configuration-Staging.plist in Resources */,
+				44D61C0C1E4B8B6D005A1936 /* Assets.xcassets in Resources */,
+				44D61C0A1E4B8B6D005A1936 /* Main.storyboard in Resources */,
+				44D61C4E1E4B8E26005A1936 /* Configuration-Beta.plist in Resources */,
+				44D61C4F1E4B8E26005A1936 /* Configuration-Debug.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44D61C131E4B8B6D005A1936 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44D61C1E1E4B8B6D005A1936 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		130A252CA22022EEC53FEC29 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OKJUXTests/Pods-OKJUXTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4425075F1E4CF8B300F24500 /* Warning Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Warning Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|PENDING:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}/OKJUX\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
+		};
+		60E9442D99F56B66A584DE11 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7427F9351A8325AD3516B07A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OKJUXUITests/Pods-OKJUXUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9400137D74DDBDA0E82054B2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OKJUX/Pods-OKJUX-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ABAA9C6022EF622920320EA0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OKJUXTests/Pods-OKJUXTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE930C30251C9A20DF2CDC57 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CEA152079B7B65A442786C3D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OKJUX/Pods-OKJUX-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E52DE78AA3B3937E90E30CE0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E5ECECD0F0AEE0DB673CD9E7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OKJUXUITests/Pods-OKJUXUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		44D61BFD1E4B8B6D005A1936 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44D61C651E4BBCF7005A1936 /* UserManager.swift in Sources */,
+				44D61C371E4B8D3F005A1936 /* SnapsNetworkManager.swift in Sources */,
+				44D61C071E4B8B6D005A1936 /* ViewController.swift in Sources */,
+				44D61C531E4B8E26005A1936 /* ConfigurationManager.swift in Sources */,
+				44D61C681E4BBD78005A1936 /* UserHelper.swift in Sources */,
+				44D61C601E4B95AC005A1936 /* BasicNetworkManager.swift in Sources */,
+				44D61C631E4BB737005A1936 /* User.swift in Sources */,
+				44D61C521E4B8E26005A1936 /* ConfigurationManager+Properties.swift in Sources */,
+				44D61C051E4B8B6D005A1936 /* AppDelegate.swift in Sources */,
+				44D61C391E4B8D58005A1936 /* UsersNetworkManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44D61C111E4B8B6D005A1936 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44D61C1A1E4B8B6D005A1936 /* OKJUXTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44D61C1C1E4B8B6D005A1936 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44D61C251E4B8B6D005A1936 /* OKJUXUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		44D61C171E4B8B6D005A1936 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 44D61C001E4B8B6D005A1936 /* OKJUX */;
+			targetProxy = 44D61C161E4B8B6D005A1936 /* PBXContainerItemProxy */;
+		};
+		44D61C221E4B8B6D005A1936 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 44D61C001E4B8B6D005A1936 /* OKJUX */;
+			targetProxy = 44D61C211E4B8B6D005A1936 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		44D61C081E4B8B6D005A1936 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				44D61C091E4B8B6D005A1936 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		44D61C0D1E4B8B6D005A1936 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				44D61C0E1E4B8B6D005A1936 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		44D61C271E4B8B6D005A1936 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		44D61C281E4B8B6D005A1936 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		44D61C2A1E4B8B6D005A1936 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FE26CE475DEB0946BB40D79 /* Pods-OKJUX.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YM28V3B39M;
+				INFOPLIST_FILE = OKJUX/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		44D61C2B1E4B8B6D005A1936 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7426B5CCC4E102E1DCC9921A /* Pods-OKJUX.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YM28V3B39M;
+				INFOPLIST_FILE = OKJUX/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		44D61C2D1E4B8B6D005A1936 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8FF7E14FE86A469E78DF13C /* Pods-OKJUXTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = OKJUXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang.OKJUXTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OKJUX.app/OKJUX";
+			};
+			name = Debug;
+		};
+		44D61C2E1E4B8B6D005A1936 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8B47D4A7EA8B111D7BD8B3A /* Pods-OKJUXTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = OKJUXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang.OKJUXTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OKJUX.app/OKJUX";
+			};
+			name = Release;
+		};
+		44D61C301E4B8B6D005A1936 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 214CD4939B9E1435CAF73EDB /* Pods-OKJUXUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = OKJUXUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang.OKJUXUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = OKJUX;
+			};
+			name = Debug;
+		};
+		44D61C311E4B8B6D005A1936 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 269FE97266952F8AAE9735FE /* Pods-OKJUXUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = OKJUXUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang.OKJUXUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = OKJUX;
+			};
+			name = Release;
+		};
+		44D61C571E4B8F56005A1936 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Staging;
+		};
+		44D61C581E4B8F56005A1936 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 895BEC9B7BC5C9CD1A14AD38 /* Pods-OKJUX.staging.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YM28V3B39M;
+				INFOPLIST_FILE = OKJUX/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Staging;
+		};
+		44D61C591E4B8F56005A1936 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E1E85DF7A1F09515F03A0F1 /* Pods-OKJUXTests.staging.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = OKJUXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang.OKJUXTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OKJUX.app/OKJUX";
+			};
+			name = Staging;
+		};
+		44D61C5A1E4B8F56005A1936 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E7010D77B3569A2F52C3699 /* Pods-OKJUXUITests.staging.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = OKJUXUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang.OKJUXUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = OKJUX;
+			};
+			name = Staging;
+		};
+		44D61C5B1E4B8F7F005A1936 /* Beta */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Beta;
+		};
+		44D61C5C1E4B8F7F005A1936 /* Beta */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA4A287AD212E681B7BDA101 /* Pods-OKJUX.beta.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YM28V3B39M;
+				INFOPLIST_FILE = OKJUX/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Beta;
+		};
+		44D61C5D1E4B8F7F005A1936 /* Beta */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A98ED7D4C2B6C0336EE3AC88 /* Pods-OKJUXTests.beta.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = OKJUXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang.OKJUXTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OKJUX.app/OKJUX";
+			};
+			name = Beta;
+		};
+		44D61C5E1E4B8F7F005A1936 /* Beta */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63173BC5F6AD735A6AD2A83E /* Pods-OKJUXUITests.beta.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = OKJUXUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang.OKJUXUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = OKJUX;
+			};
+			name = Beta;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		44D61BFC1E4B8B6D005A1936 /* Build configuration list for PBXProject "OKJUX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44D61C271E4B8B6D005A1936 /* Debug */,
+				44D61C281E4B8B6D005A1936 /* Release */,
+				44D61C5B1E4B8F7F005A1936 /* Beta */,
+				44D61C571E4B8F56005A1936 /* Staging */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44D61C291E4B8B6D005A1936 /* Build configuration list for PBXNativeTarget "OKJUX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44D61C2A1E4B8B6D005A1936 /* Debug */,
+				44D61C2B1E4B8B6D005A1936 /* Release */,
+				44D61C5C1E4B8F7F005A1936 /* Beta */,
+				44D61C581E4B8F56005A1936 /* Staging */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44D61C2C1E4B8B6D005A1936 /* Build configuration list for PBXNativeTarget "OKJUXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44D61C2D1E4B8B6D005A1936 /* Debug */,
+				44D61C2E1E4B8B6D005A1936 /* Release */,
+				44D61C5D1E4B8F7F005A1936 /* Beta */,
+				44D61C591E4B8F56005A1936 /* Staging */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44D61C2F1E4B8B6D005A1936 /* Build configuration list for PBXNativeTarget "OKJUXUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44D61C301E4B8B6D005A1936 /* Debug */,
+				44D61C311E4B8B6D005A1936 /* Release */,
+				44D61C5E1E4B8F7F005A1936 /* Beta */,
+				44D61C5A1E4B8F56005A1936 /* Staging */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 44D61BF91E4B8B6D005A1936 /* Project object */;
+}
