@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		123C584F6A27F3DEDB7DF084 /* Pods_OKJUXTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D85B11F1555ACDFF094A7E0 /* Pods_OKJUXTests.framework */; };
+		442507661E4D05AF00F24500 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442507651E4D05AF00F24500 /* R.generated.swift */; };
 		44D61C051E4B8B6D005A1936 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C041E4B8B6D005A1936 /* AppDelegate.swift */; };
 		44D61C071E4B8B6D005A1936 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C061E4B8B6D005A1936 /* ViewController.swift */; };
 		44D61C0A1E4B8B6D005A1936 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C081E4B8B6D005A1936 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		269FE97266952F8AAE9735FE /* Pods-OKJUXUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKJUXUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OKJUXUITests/Pods-OKJUXUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2B11F0221D0B40C241E151DC /* Pods_OKJUXUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKJUXUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33CD401A90ACB0342495C6DB /* Pods_OKJUX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKJUX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		442507651E4D05AF00F24500 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		44D61C011E4B8B6D005A1936 /* OKJUX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OKJUX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44D61C041E4B8B6D005A1936 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44D61C061E4B8B6D005A1936 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 		44D61C541E4B8E31005A1936 /* Recources */ = {
 			isa = PBXGroup;
 			children = (
+				442507651E4D05AF00F24500 /* R.generated.swift */,
 				44D61C551E4B8E31005A1936 /* Settings.bundle */,
 			);
 			path = Recources;
@@ -272,6 +275,7 @@
 			buildConfigurationList = 44D61C291E4B8B6D005A1936 /* Build configuration list for PBXNativeTarget "OKJUX" */;
 			buildPhases = (
 				60E9442D99F56B66A584DE11 /* [CP] Check Pods Manifest.lock */,
+				442507641E4D056800F24500 /* R.swift Script */,
 				44D61BFD1E4B8B6D005A1936 /* Sources */,
 				44D61BFE1E4B8B6D005A1936 /* Frameworks */,
 				44D61BFF1E4B8B6D005A1936 /* Resources */,
@@ -439,6 +443,20 @@
 			shellPath = /bin/sh;
 			shellScript = "TAGS=\"TODO:|PENDING:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}/OKJUX\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
 		};
+		442507641E4D056800F24500 /* R.swift Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "R.swift Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT/OKJUX/Recources\"";
+		};
 		60E9442D99F56B66A584DE11 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -575,6 +593,7 @@
 				44D61C631E4BB737005A1936 /* User.swift in Sources */,
 				44D61C521E4B8E26005A1936 /* ConfigurationManager+Properties.swift in Sources */,
 				44D61C051E4B8B6D005A1936 /* AppDelegate.swift in Sources */,
+				442507661E4D05AF00F24500 /* R.generated.swift in Sources */,
 				44D61C391E4B8D58005A1936 /* UsersNetworkManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -730,6 +749,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YM28V3B39M;
 				INFOPLIST_FILE = OKJUX/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -744,6 +764,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YM28V3B39M;
 				INFOPLIST_FILE = OKJUX/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -758,6 +779,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = OKJUXTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang.OKJUXTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -773,6 +795,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = OKJUXTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang.OKJUXTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -787,6 +810,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = OKJUXUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang.OKJUXUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -801,6 +825,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = OKJUXUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang.OKJUXUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -859,6 +884,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YM28V3B39M;
 				INFOPLIST_FILE = OKJUX/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -873,6 +899,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = OKJUXTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang.OKJUXTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -887,6 +914,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = OKJUXUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang.OKJUXUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -945,6 +973,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YM28V3B39M;
 				INFOPLIST_FILE = OKJUX/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -959,6 +988,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = OKJUXTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang.OKJUXTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -973,6 +1003,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = OKJUXUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang.OKJUXUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

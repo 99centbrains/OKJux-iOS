@@ -1,12 +1,18 @@
 PODS:
-  - Alamofire (4.3.0)
+  - Alamofire (4.0.1)
+  - R.swift (3.1.0):
+    - R.swift.Library (~> 3.0.2)
+  - R.swift.Library (3.0.2)
 
 DEPENDENCIES:
   - Alamofire
+  - R.swift
 
 SPEC CHECKSUMS:
-  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
+  R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
 
-PODFILE CHECKSUM: 68ff356f2003e93382d87e9a305f2d61039f2723
+PODFILE CHECKSUM: 909ea3f1bb5e9102492c6063cad6385bd43f4bd8
 
 COCOAPODS: 1.1.1
