@@ -23,7 +23,7 @@ class OKJUXTests: XCTestCase {
     
     func test_registerUserPostRequest() {
         let exp = expectation(description: "")
-        BasicNetworkManager().sendPostRequest(method: "users", parameters: ["user[UUID]": "F96034AC-446E-4139-949D-9F7CB4686322"]) { (result, json) in
+        BasicNetworkManager.sendRequest(method: "users", requestMethodType: .post, parameters: ["user[UUID]": "F96034AC-446E-4139-949D-9F7CB4686322"]) { (result, json) in
             if let json = json, result {
                 if json.count > 0 {
                     if let user = json["user"] as? [String: Any], let _ = user["id"] as? Double, let _ = user["UUID"] as? String, let _ = user["karma"] as? Int {
@@ -73,6 +73,7 @@ class OKJUXTests: XCTestCase {
             }
         }
     }
+    
     
     func testPerformanceExample() {
         // This is an example of a performance test case.

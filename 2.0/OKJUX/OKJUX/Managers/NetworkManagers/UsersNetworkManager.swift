@@ -9,10 +9,21 @@
 import Foundation
 import Alamofire
 
-class UsersNetworkManager {
+class UsersNetworkManager: BasicNetworkManager {
 
-    func registerUser() {
-        
+    class func registerUser(parameters: [String: Any], completion: @escaping (Bool, [String: Any]?) -> Void) {
+
+        sendRequest(method: "users", requestMethodType: .post, parameters: parameters) { (result, json) in
+            if let json = json, result {
+                if json.count > 0 {
+                    completion(true, json)
+                } else {
+                    completion(false, nil)
+                }
+            } else {
+                completion(false, nil)
+            }
+        }
 
     }
 }

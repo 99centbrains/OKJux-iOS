@@ -9,16 +9,23 @@
 import Foundation
 import Alamofire
 
+enum RequestMethodType: String {
+    case get = "GET"
+    case delete = "DELETE"
+    case post = "POST"
+    case put = "PUT"
+}
+
 class BasicNetworkManager {
 
-    var basicURLComponents: NSURLComponents {
+    static var basicURLComponents: NSURLComponents {
         let urlComponents = NSURLComponents()
         urlComponents.scheme = ConfigurationManager.serverProtocol
         urlComponents.host = ConfigurationManager.serverHost
         return urlComponents
     }
 
-    func sendPostRequest(method: String, version: String = "v1", parameters: [String: Any]? = nil, completion: @escaping (_ result: Bool, _ json: [String : Any]?) -> Void) {
+    class func sendRequest(method: String, requestMethodType: RequestMethodType = .get, version: String = "v1", parameters: [String: Any]? = nil, completion: @escaping (_ result: Bool, _ json: [String : Any]?) -> Void) {
 
         let urlComponents = self.basicURLComponents
         urlComponents.path = "/api/\(version)/\(method)"
@@ -28,7 +35,7 @@ class BasicNetworkManager {
             return
         }
 
-        Alamofire.request(url, method: .post, parameters: parameters).responseJSON { (response) in
+        Alamofire.request(url, method: HTTPMethod(rawValue: requestMethodType.rawValue)!, parameters: parameters).responseJSON { (response) in
             if let json = response.result.value as? [String: Any], response.result.isSuccess {
                 completion(true, json)
             } else {
