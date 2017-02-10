@@ -24,15 +24,22 @@ class SnapsManager {
         parameters["user_id"] = loggedUser.id
 
         SnapsNetworkManager.getSnaps(parameters: parameters) { (error, json) in
-            guard error != nil else {
+            guard error == nil else {
                 completion(error!, nil)
                 return
             }
 
-            if let json = json, let snaps = json["snaps"] {
-                
+            if let json = json, let snaps = json["snaps"] as? [[String: Any]] {
+                var snapsResult = [Snap]()
+                for snapData in snaps {
+                    if let snap = Snap(json: snapData) {
+                        snapsResult.append(snap)
+                    }
+                }
+                completion(nil, snapsResult)
+            } else {
+                completion(OKJuxError(errorType: OKJuxError.ErrorType.notParsableResponse, generatedClass: type(of: self)), nil)
             }
-
 
         }
     }

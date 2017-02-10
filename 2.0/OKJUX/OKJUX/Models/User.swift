@@ -25,7 +25,10 @@ class User {
         self.karma = karma
     }
 
-    convenience init?(json: [String: Any]) {
+    convenience init?(json: [String: Any]?) {
+        guard let json = json else {
+            return nil
+        }
         self.init(id: json["id"] as? Int, uuid: json["UUID"] as? String, karma: json["karma"] as? Int)
     }
 

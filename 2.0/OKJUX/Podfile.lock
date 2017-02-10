@@ -1,18 +1,21 @@
 PODS:
   - Alamofire (4.0.1)
+  - DateParser (1.1.0)
   - R.swift (3.1.0):
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
 
 DEPENDENCIES:
   - Alamofire
+  - DateParser
   - R.swift
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  DateParser: f6a3351ebf0f2a8e6ab5e1f11f98e9a772089a08
   R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
 
-PODFILE CHECKSUM: 909ea3f1bb5e9102492c6063cad6385bd43f4bd8
+PODFILE CHECKSUM: 6d865ffbc1e6ffb69468bf25d084984c3e9af152
 
 COCOAPODS: 1.1.1

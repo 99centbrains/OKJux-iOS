@@ -21,10 +21,29 @@ class OKJUXTests: XCTestCase {
                     }
 
                 } catch {}
-
             }
         }
         return nil
+    }
+
+    func signInUser(completion: @escaping ()->Void) {
+        UserManager.sharedInstance.registerUser(uuid: "F96034AC-446E-4139-949D-9F7CB4686322", completion: { error in
+            if error == nil {
+                if let user = UserManager.sharedInstance.loggedUser {
+                    if user.id != 0 {
+                        XCTAssert(true, "registered correctly")
+                    } else {
+                        XCTAssert(false, "user was not mapped correctly")
+                    }
+                } else {
+                    XCTAssert(false, "user still not logged in")
+                }
+            } else {
+                XCTAssert(false, "something went wrong registering the user")
+            }
+            completion()
+        })
+
     }
 
     override func setUp() {
@@ -107,6 +126,16 @@ class OKJUXTests: XCTestCase {
         }
     }
 
+    func test_snapConstructor() {
+        if let json = loadMock(mockName: "snap"), let jsonSnaps = json["snaps"] as? [[String: Any]], let firstSnap = jsonSnaps.first {
+            if let _ = Snap(json: firstSnap) {
+                XCTAssert(true)
+            } else {
+                XCTAssert(false, "unable to parse the json when constructing a snap")
+            }
+        }
+    }
+
     //MARK: Managers Tests
     
     func test_registerUserPostRequest() {
@@ -144,29 +173,74 @@ class OKJUXTests: XCTestCase {
 
     func test_registerUser() {
         let exp = expectation(description: "")
-        UserManager.sharedInstance.registerUser(uuid: UserHelper.getUUID(), completion: { error in
-            if error == nil {
-                if let user = UserManager.sharedInstance.loggedUser {
-                    if user.id != 0 {
-                        XCTAssert(true, "registered correctly")
-                    } else {
-                        XCTAssert(false, "user was not mapped correctly")
-                    }
-                } else {
-                    XCTAssert(false, "user still not logged in")
-                }
-            } else {
-                XCTAssert(false, "something went wrong registering the user")
-            }
+        self.signInUser { 
             exp.fulfill()
-        })
-
+        }
         waitForExpectations(timeout: 5) { (error) in
             if let error = error {
                 XCTFail(error.localizedDescription)
             }
         }
     }
+
+    func test_getNewestSnaps() {
+        let exp = expectation(description: "")
+        self.signInUser {
+
+            SnapsManager.sharedInstance.getSnaps(hottest: false, completion: { (error, snapsResult) in
+                if let error = error {
+                    XCTAssert(false, error.description)
+                } else {
+                    if let snapsResult = snapsResult, snapsResult.count > 0 {
+                        if let firstSnap = snapsResult.first, let _ = firstSnap.id {
+                            XCTAssert(true)
+                        } else {
+                            XCTAssert(false, "snaps must be not empty")
+                        }
+                    } else {
+                        XCTAssert(false, "snaps must be not empty")
+                    }
+                }
+
+            })
+            exp.fulfill()
+        }
+        waitForExpectations(timeout: 5) { (error) in
+            if let error = error {
+                XCTFail(error.localizedDescription)
+            }
+        }
+    }
+
+    func test_getHottestSnaps() {
+        let exp = expectation(description: "")
+        self.signInUser {
+
+            SnapsManager.sharedInstance.getSnaps(hottest: true, completion: { (error, snapsResult) in
+                if let error = error {
+                    XCTAssert(false, error.description)
+                } else {
+                    if let snapsResult = snapsResult, snapsResult.count > 0 {
+                        if let firstSnap = snapsResult.first, let _ = firstSnap.id {
+                            XCTAssert(true)
+                        } else {
+                            XCTAssert(false, "snaps must be not empty")
+                        }
+                    } else {
+                        XCTAssert(false, "snaps must be not empty")
+                    }
+                }
+
+            })
+            exp.fulfill()
+        }
+        waitForExpectations(timeout: 5) { (error) in
+            if let error = error {
+                XCTFail(error.localizedDescription)
+            }
+        }
+    }
+
 
     func testPerformanceExample() {
         // This is an example of a performance test case.

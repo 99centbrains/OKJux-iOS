@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         updateAppSettingsVersion()
 
         UserManager.sharedInstance.registerUser(uuid: UserHelper.getUUID()) { (error) in
-            if let error = error {
+            if let _ = error {
                 //TODO: Show error
             } else {
                 //TODO: Present landing

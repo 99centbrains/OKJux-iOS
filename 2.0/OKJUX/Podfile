@@ -8,6 +8,7 @@ target 'OKJUX' do
   # Pods for OKJUX
   pod 'Alamofire'
   pod 'R.swift'
+  pod 'DateParser'
 
   target 'OKJUXTests' do
     inherit! :search_paths
