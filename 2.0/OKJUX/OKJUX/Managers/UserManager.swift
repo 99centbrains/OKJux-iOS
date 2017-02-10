@@ -14,19 +14,24 @@ class UserManager {
 
     var loggedUser: User?
 
-    func registerUser(uuid: String?, completion: @escaping (Bool) -> Void) {
+    func registerUser(uuid: String?, completion: @escaping (NSError?) -> Void) {
 
         let parameters = ["user[UUID]": UserHelper.getUUID()]
-        UsersNetworkManager.registerUser(parameters: parameters) { (success, json) in
-            if let json = json, success {
-                if let user = json["user"] as? [String: Any], let id = user["id"] as? Double, let uuid = user["UUID"] as? String, let karma = user["karma"] as? Int {
-                    self.loggedUser = User(id: id, uuid: uuid, karma: karma)
-                    completion(true)
+        UsersNetworkManager.registerUser(parameters: parameters) { (error, json) in
+            guard error == nil else {
+                completion(error!)
+                return
+            }
+
+            if let json = json {
+                if let user = json["user"] as? [String: Any] {
+                    self.loggedUser = User(json: user)
+                    completion(nil)
                 } else {
-                    completion(false)
+                    completion(OKJuxError(errorType: .notParsableResponse, generatedClass: type(of: self)))
                 }
             } else {
-                completion(false)
+                completion(OKJuxError(errorType: .unknown, generatedClass: type(of: self)))
             }
         }
 

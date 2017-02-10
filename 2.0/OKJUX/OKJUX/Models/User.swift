@@ -11,15 +11,22 @@ import UIKit
 
 class User {
 
-    var id : Double!
-    var uuid: String!
+    var id : Int!
+    var uuid: String?
     var karma: Int!
 
 
-    init(id: Double, uuid: String, karma: Int) {
+    init?(id: Int?, uuid: String?, karma: Int?) {
+        guard let id = id, let uuid = uuid, let karma = karma else {
+            return nil
+        }
         self.id = id
         self.uuid = uuid
         self.karma = karma
+    }
+
+    convenience init?(json: [String: Any]) {
+        self.init(id: json["id"] as? Int, uuid: json["UUID"] as? String, karma: json["karma"] as? Int)
     }
 
 }

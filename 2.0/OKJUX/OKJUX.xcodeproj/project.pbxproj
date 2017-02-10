@@ -29,6 +29,12 @@
 		44D61C631E4BB737005A1936 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C621E4BB737005A1936 /* User.swift */; };
 		44D61C651E4BBCF7005A1936 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C641E4BBCF7005A1936 /* UserManager.swift */; };
 		44D61C681E4BBD78005A1936 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C671E4BBD78005A1936 /* UserHelper.swift */; };
+		44D61C6A1E4E0445005A1936 /* SnapsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C691E4E0445005A1936 /* SnapsManager.swift */; };
+		44D61C6C1E4E04B5005A1936 /* Snap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C6B1E4E04B5005A1936 /* Snap.swift */; };
+		44D61C6F1E4E2EFE005A1936 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C6E1E4E2EFE005A1936 /* user.json */; };
+		44D61C711E4E42B0005A1936 /* snapImage.json in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C701E4E42B0005A1936 /* snapImage.json */; };
+		44D61C741E4E4606005A1936 /* snapImage_withoutImage.json in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C721E4E4606005A1936 /* snapImage_withoutImage.json */; };
+		44D61C751E4E4606005A1936 /* snapImage_withoutThumbnai.json in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C731E4E4606005A1936 /* snapImage_withoutThumbnai.json */; };
 		639BC39B7322A6ECBDC1B901 /* Pods_OKJUXUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B11F0221D0B40C241E151DC /* Pods_OKJUXUITests.framework */; };
 		9ABB4CD034211B67970CDA42 /* Pods_OKJUX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33CD401A90ACB0342495C6DB /* Pods_OKJUX.framework */; };
 /* End PBXBuildFile section */
@@ -84,6 +90,12 @@
 		44D61C621E4BB737005A1936 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		44D61C641E4BBCF7005A1936 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		44D61C671E4BBD78005A1936 /* UserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
+		44D61C691E4E0445005A1936 /* SnapsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapsManager.swift; sourceTree = "<group>"; };
+		44D61C6B1E4E04B5005A1936 /* Snap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snap.swift; sourceTree = "<group>"; };
+		44D61C6E1E4E2EFE005A1936 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
+		44D61C701E4E42B0005A1936 /* snapImage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = snapImage.json; sourceTree = "<group>"; };
+		44D61C721E4E4606005A1936 /* snapImage_withoutImage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = snapImage_withoutImage.json; sourceTree = "<group>"; };
+		44D61C731E4E4606005A1936 /* snapImage_withoutThumbnai.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = snapImage_withoutThumbnai.json; sourceTree = "<group>"; };
 		4D85B11F1555ACDFF094A7E0 /* Pods_OKJUXTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKJUXTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63173BC5F6AD735A6AD2A83E /* Pods-OKJUXUITests.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKJUXUITests.beta.xcconfig"; path = "Pods/Target Support Files/Pods-OKJUXUITests/Pods-OKJUXUITests.beta.xcconfig"; sourceTree = "<group>"; };
 		7426B5CCC4E102E1DCC9921A /* Pods-OKJUX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKJUX.release.xcconfig"; path = "Pods/Target Support Files/Pods-OKJUX/Pods-OKJUX.release.xcconfig"; sourceTree = "<group>"; };
@@ -166,6 +178,7 @@
 		44D61C181E4B8B6D005A1936 /* OKJUXTests */ = {
 			isa = PBXGroup;
 			children = (
+				44D61C6D1E4E2EFE005A1936 /* mocks */,
 				44D61C191E4B8B6D005A1936 /* OKJUXTests.swift */,
 				44D61C1B1E4B8B6D005A1936 /* Info.plist */,
 			);
@@ -186,6 +199,7 @@
 			children = (
 				44D61C331E4B8C25005A1936 /* NetworkManagers */,
 				44D61C641E4BBCF7005A1936 /* UserManager.swift */,
+				44D61C691E4E0445005A1936 /* SnapsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -226,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				44D61C621E4BB737005A1936 /* User.swift */,
+				44D61C6B1E4E04B5005A1936 /* Snap.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -236,6 +251,17 @@
 				44D61C671E4BBD78005A1936 /* UserHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		44D61C6D1E4E2EFE005A1936 /* mocks */ = {
+			isa = PBXGroup;
+			children = (
+				44D61C721E4E4606005A1936 /* snapImage_withoutImage.json */,
+				44D61C731E4E4606005A1936 /* snapImage_withoutThumbnai.json */,
+				44D61C701E4E42B0005A1936 /* snapImage.json */,
+				44D61C6E1E4E2EFE005A1936 /* user.json */,
+			);
+			path = mocks;
 			sourceTree = "<group>";
 		};
 		7F82513C5FFA64D2E5DF5B35 /* Pods */ = {
@@ -401,6 +427,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44D61C6F1E4E2EFE005A1936 /* user.json in Resources */,
+				44D61C741E4E4606005A1936 /* snapImage_withoutImage.json in Resources */,
+				44D61C751E4E4606005A1936 /* snapImage_withoutThumbnai.json in Resources */,
+				44D61C711E4E42B0005A1936 /* snapImage.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +615,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44D61C651E4BBCF7005A1936 /* UserManager.swift in Sources */,
+				44D61C6A1E4E0445005A1936 /* SnapsManager.swift in Sources */,
 				44D61C371E4B8D3F005A1936 /* SnapsNetworkManager.swift in Sources */,
 				44D61C071E4B8B6D005A1936 /* ViewController.swift in Sources */,
 				44D61C531E4B8E26005A1936 /* ConfigurationManager.swift in Sources */,
@@ -593,6 +624,7 @@
 				44D61C631E4BB737005A1936 /* User.swift in Sources */,
 				44D61C521E4B8E26005A1936 /* ConfigurationManager+Properties.swift in Sources */,
 				44D61C051E4B8B6D005A1936 /* AppDelegate.swift in Sources */,
+				44D61C6C1E4E04B5005A1936 /* Snap.swift in Sources */,
 				442507661E4D05AF00F24500 /* R.generated.swift in Sources */,
 				44D61C391E4B8D58005A1936 /* UsersNetworkManager.swift in Sources */,
 			);

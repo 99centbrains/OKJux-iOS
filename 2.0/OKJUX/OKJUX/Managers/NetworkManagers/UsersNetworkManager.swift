@@ -11,19 +11,25 @@ import Alamofire
 
 class UsersNetworkManager: BasicNetworkManager {
 
-    class func registerUser(parameters: [String: Any], completion: @escaping (Bool, [String: Any]?) -> Void) {
+    class func registerUser(parameters: [String: Any], completion: @escaping (NSError?, [String: Any]?) -> Void) {
 
-        sendRequest(method: "users", requestMethodType: .post, parameters: parameters) { (result, json) in
-            if let json = json, result {
+        self.sendRequest(method: "users", requestMethodType: .post, parameters: parameters) { (error, json) in
+            if let error = error {
+                completion(error, nil)
+                return
+            }
+
+            if let json = json {
+
                 if json.count > 0 {
-                    completion(true, json)
+                    completion(nil, json)
                 } else {
-                    completion(false, nil)
+                    completion(OKJuxError(errorType: .emptyResponseBody, generatedClass: type(of: self)), nil)
                 }
             } else {
-                completion(false, nil)
+                completion(OKJuxError(errorType: .emptyResponseBody, generatedClass: type(of: self)), nil)
             }
         }
-
     }
+
 }
