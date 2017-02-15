@@ -20,29 +20,29 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - BeaconsInSpace (1.5.4)
+  - BeaconsInSpace (1.5.5)
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
   - DateTools (1.7.0)
-  - Fabric (1.6.10)
+  - Fabric (1.6.11)
   - FCFileManager (1.0.18)
-  - Flurry-iOS-SDK/FlurryAds (7.8.0):
+  - Flurry-iOS-SDK/FlurryAds (7.9.2):
     - Flurry-iOS-SDK/FlurrySDK
-  - Flurry-iOS-SDK/FlurrySDK (7.8.0)
+  - Flurry-iOS-SDK/FlurrySDK (7.9.2)
   - Haneke (1.0.2)
-  - Instabug (6.0.2)
+  - Instabug (7.0.2)
   - iRate (1.11.7)
-  - iVersion (1.11.4)
+  - iVersion (1.11.5)
   - JPSThumbnailAnnotation (1.0.0)
-  - Mixpanel (3.0.4):
-    - Mixpanel/Mixpanel (= 3.0.4)
-  - Mixpanel/Mixpanel (3.0.4)
+  - Mixpanel (3.0.9):
+    - Mixpanel/Mixpanel (= 3.0.9)
+  - Mixpanel/Mixpanel (3.0.9)
   - TAOverlay (2.0.1)
   - TMCache (2.1.0)
   - TWRDownloadManager (1.1.1)
   - UIImageEffects (0.0.1)
   - UIImageTrim (1.02)
-  - XModeAPI (0.2.0):
+  - XModeAPI (0.2.1):
     - AFNetworking (~> 2.3)
     - BeaconsInSpace
 
@@ -78,24 +78,24 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
-  BeaconsInSpace: eb24d9a2f7a0aeb429817716848a88b3cb68d1a1
+  BeaconsInSpace: af71781fab13da64d2b1d66cfa1e0a4e2d662fac
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
-  Fabric: c73f371ee543e3f0b80608f2674750e4910d1669
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   FCFileManager: 3d13576da1f709d37460bd7669cdf07b9d6d8bc3
-  Flurry-iOS-SDK: 388df247b9d92659527b608c891c7e474cd9d00e
+  Flurry-iOS-SDK: 300dc1d78443dea3d433a38e76292f20f14f0a96
   Haneke: 01454a67322faa0dd9d81fc0f447885044e71521
-  Instabug: c6a8970311a2ebb092c0bec8d425eb4d4d4b6ad3
+  Instabug: d7eefe2e2056df89216a74c471d9edcc407586df
   iRate: adae3f183d83c925ac42d7a2e86e89e838963f57
-  iVersion: 2b6ffe708672cb494ba3cab150a94800c2892e81
+  iVersion: 3a93a89259eb3b52b0a8ba52c46a0027fa6b4d30
   JPSThumbnailAnnotation: 4b35e87788d903db3fec294e7ef44136b9f741fb
-  Mixpanel: 4a2330c26556109d2f42b01e36a05eb9e2caf25e
+  Mixpanel: 106bad33d5b9a05312316a01938f17b6baa2d99f
   TAOverlay: 940e37fdb45fbc9acfc73bf1089668367e3b1be6
   TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
   TWRDownloadManager: 34193d7d1ab6e6b4243d74fa4f686cc2ed5ef40f
   UIImageEffects: 37b99fa461e4965f332ca82e92f2c22a1075ee84
   UIImageTrim: 6291b9cfb05bbc9ca0bb3e510aae4421de4ca5e4
-  XModeAPI: 5956d861d8b615633087dba82cdec429664ea7ac
+  XModeAPI: 1e057d3f0f8e94bfcdbda57d705f465a32229ae9
 
 PODFILE CHECKSUM: 17129d1e0d3c2ec504596bd2fd37d845069c45d4
 

@@ -38,7 +38,7 @@
 
 //App URLs
 #define kPlistURL @"http://www.okjux.com/plists/41bde25a8b4d63beb14b74ba67229fce.plist"
-#define kJSONScheme @"http://www.okjux.com/assets/okjux_schema.json"
+#define kJSONScheme @"https://okjux-api-production.herokuapp.com/api/v1/sections.json"
 #define kiTunesAPPURL @"https://itunes.apple.com/app/id511664488"
 
 

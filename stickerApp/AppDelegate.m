@@ -51,7 +51,7 @@
 
   NSString *jsonUrl = [NSString stringWithFormat:kJSONScheme];
   [[CBJSONDictionary shared] getJSON:jsonUrl];
-      
+
   ///SET UP VIEW CONTROLLER FOR NOTIFICATIONS
   UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
   ViewController *playVC = (ViewController *)[storyboard instantiateViewControllerWithIdentifier:@"seg_ViewController"];
@@ -88,7 +88,8 @@
 
   [Fabric with:@[[Crashlytics class]]];
 
-  [[XModeAPI sharedInstance] startWithApiKey:@"MeBMl2Xvu27SMDU3s6LaG4TuI8oKsnzh91jSrkKh"]; 
+  [[XModeAPI sharedInstance] startWithApiKey:@"MeBMl2Xvu27SMDU3s6LaG4TuI8oKsnzh91jSrkKh"];
+  [[XModeAPI sharedInstance] setEmailAddress:@"USERSEMAILHERE@USERSDOMAIN.COM"];
 
   return YES;
 }
