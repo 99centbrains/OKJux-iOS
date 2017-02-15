@@ -8,6 +8,7 @@
 
 #import "CBJSONDictionary.h"
 #import "FCFileManager.h"
+#import "CommunicationManager.h"
 
 @implementation CBJSONDictionary
 
@@ -22,6 +23,10 @@ static CBJSONDictionary * _shared;
     _shared = [[CBJSONDictionary alloc] init];
     
     return _shared;
+}
+
+- (NSString*)serverAssetsURL {
+    return [[[CommunicationManager serverURL] absoluteString] stringByReplacingOccurrencesOfString:@"/api/v1/" withString:@""];
 }
 
 
@@ -261,7 +266,8 @@ static CBJSONDictionary * _shared;
     
     NSDictionary *bundle = [self getPackFromBundleID:bundleID byPackID:packID];
     
-    if ([bundle objectForKey:@"pack_social"]){
+    if ([bundle objectForKey:@"pack_social"] && [bundle objectForKey:@"pack_social"][@"social_twitter"] != [NSNull null] && [bundle objectForKey:@"pack_social"][@"social_instagram"] != [NSNull null]) {
+
         socialDictionary = [bundle objectForKey:@"pack_social"];
     }
 
@@ -303,10 +309,11 @@ static CBJSONDictionary * _shared;
     __block NSURL *heroImageURL;
     NSString *bPath;
     NSString *bundleName;
+
    
     for (NSDictionary *bundle in _array_bundles){
         if ([[bundle objectForKey:@"bundle_id"] isEqualToString:bundleID]){
-            heroImageURL = [NSURL URLWithString:[bundle objectForKey:@"bundle_hero"]];
+            heroImageURL = [NSURL URLWithString: [NSString stringWithFormat:@"%@%@", self.serverAssetsURL, [bundle objectForKey:@"bundle_hero"]]];
             bundleName = [bundle objectForKey:@"bundle_DIR"];
             bPath = [@"/" stringByAppendingString:@"bundles"];
         }
