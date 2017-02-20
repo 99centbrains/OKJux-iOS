@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		123C584F6A27F3DEDB7DF084 /* Pods_OKJUXTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D85B11F1555ACDFF094A7E0 /* Pods_OKJUXTests.framework */; };
 		442507661E4D05AF00F24500 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442507651E4D05AF00F24500 /* R.generated.swift */; };
+		4471E6041E5B81DD00C41F87 /* OKJuxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471E6031E5B81DD00C41F87 /* OKJuxViewController.swift */; };
+		4471E6081E5B880200C41F87 /* UIView+CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471E6071E5B880200C41F87 /* UIView+CGRect.swift */; };
+		4471E60A1E5B8CEF00C41F87 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4471E6091E5B8CEF00C41F87 /* Localizable.strings */; };
 		44D61C051E4B8B6D005A1936 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C041E4B8B6D005A1936 /* AppDelegate.swift */; };
-		44D61C071E4B8B6D005A1936 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C061E4B8B6D005A1936 /* ViewController.swift */; };
-		44D61C0A1E4B8B6D005A1936 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C081E4B8B6D005A1936 /* Main.storyboard */; };
+		44D61C071E4B8B6D005A1936 /* SnapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C061E4B8B6D005A1936 /* SnapsViewController.swift */; };
 		44D61C0C1E4B8B6D005A1936 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C0B1E4B8B6D005A1936 /* Assets.xcassets */; };
 		44D61C0F1E4B8B6D005A1936 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C0D1E4B8B6D005A1936 /* LaunchScreen.storyboard */; };
 		44D61C1A1E4B8B6D005A1936 /* OKJUXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C191E4B8B6D005A1936 /* OKJUXTests.swift */; };
@@ -64,10 +66,12 @@
 		2B11F0221D0B40C241E151DC /* Pods_OKJUXUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKJUXUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33CD401A90ACB0342495C6DB /* Pods_OKJUX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKJUX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		442507651E4D05AF00F24500 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		4471E6031E5B81DD00C41F87 /* OKJuxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OKJuxViewController.swift; sourceTree = "<group>"; };
+		4471E6071E5B880200C41F87 /* UIView+CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+CGRect.swift"; sourceTree = "<group>"; };
+		4471E6091E5B8CEF00C41F87 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		44D61C011E4B8B6D005A1936 /* OKJUX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OKJUX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44D61C041E4B8B6D005A1936 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		44D61C061E4B8B6D005A1936 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		44D61C091E4B8B6D005A1936 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		44D61C061E4B8B6D005A1936 /* SnapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapsViewController.swift; sourceTree = "<group>"; };
 		44D61C0B1E4B8B6D005A1936 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44D61C0E1E4B8B6D005A1936 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44D61C101E4B8B6D005A1936 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -135,6 +139,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4471E6061E5B880200C41F87 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4471E6071E5B880200C41F87 /* UIView+CGRect.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		44D61BF81E4B8B6D005A1936 = {
 			isa = PBXGroup;
 			children = (
@@ -166,11 +178,11 @@
 				44D61C471E4B8E26005A1936 /* Configuration */,
 				44D61C321E4B8C25005A1936 /* Managers */,
 				44D61C041E4B8B6D005A1936 /* AppDelegate.swift */,
-				44D61C061E4B8B6D005A1936 /* ViewController.swift */,
-				44D61C081E4B8B6D005A1936 /* Main.storyboard */,
+				44D61C061E4B8B6D005A1936 /* SnapsViewController.swift */,
 				44D61C0B1E4B8B6D005A1936 /* Assets.xcassets */,
 				44D61C0D1E4B8B6D005A1936 /* LaunchScreen.storyboard */,
 				44D61C101E4B8B6D005A1936 /* Info.plist */,
+				4471E6031E5B81DD00C41F87 /* OKJuxViewController.swift */,
 			);
 			path = OKJUX;
 			sourceTree = "<group>";
@@ -232,6 +244,7 @@
 			children = (
 				442507651E4D05AF00F24500 /* R.generated.swift */,
 				44D61C551E4B8E31005A1936 /* Settings.bundle */,
+				4471E6091E5B8CEF00C41F87 /* Localizable.strings */,
 			);
 			path = Recources;
 			sourceTree = "<group>";
@@ -248,6 +261,7 @@
 		44D61C661E4BBD5B005A1936 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4471E6061E5B880200C41F87 /* Extensions */,
 				44D61C671E4BBD78005A1936 /* UserHelper.swift */,
 			);
 			path = Helpers;
@@ -417,7 +431,7 @@
 				44D61C501E4B8E26005A1936 /* Configuration-Release.plist in Resources */,
 				44D61C511E4B8E26005A1936 /* Configuration-Staging.plist in Resources */,
 				44D61C0C1E4B8B6D005A1936 /* Assets.xcassets in Resources */,
-				44D61C0A1E4B8B6D005A1936 /* Main.storyboard in Resources */,
+				4471E60A1E5B8CEF00C41F87 /* Localizable.strings in Resources */,
 				44D61C4E1E4B8E26005A1936 /* Configuration-Beta.plist in Resources */,
 				44D61C4F1E4B8E26005A1936 /* Configuration-Debug.plist in Resources */,
 			);
@@ -617,9 +631,11 @@
 				44D61C651E4BBCF7005A1936 /* UserManager.swift in Sources */,
 				44D61C6A1E4E0445005A1936 /* SnapsManager.swift in Sources */,
 				44D61C371E4B8D3F005A1936 /* SnapsNetworkManager.swift in Sources */,
-				44D61C071E4B8B6D005A1936 /* ViewController.swift in Sources */,
+				44D61C071E4B8B6D005A1936 /* SnapsViewController.swift in Sources */,
 				44D61C531E4B8E26005A1936 /* ConfigurationManager.swift in Sources */,
 				44D61C681E4BBD78005A1936 /* UserHelper.swift in Sources */,
+				4471E6041E5B81DD00C41F87 /* OKJuxViewController.swift in Sources */,
+				4471E6081E5B880200C41F87 /* UIView+CGRect.swift in Sources */,
 				44D61C601E4B95AC005A1936 /* BasicNetworkManager.swift in Sources */,
 				44D61C631E4BB737005A1936 /* User.swift in Sources */,
 				44D61C521E4B8E26005A1936 /* ConfigurationManager+Properties.swift in Sources */,
@@ -662,14 +678,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		44D61C081E4B8B6D005A1936 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				44D61C091E4B8B6D005A1936 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		44D61C0D1E4B8B6D005A1936 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

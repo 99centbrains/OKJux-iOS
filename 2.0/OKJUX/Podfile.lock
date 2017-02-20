@@ -1,21 +1,30 @@
 PODS:
   - Alamofire (4.0.1)
   - DateParser (1.1.0)
+  - Font-Awesome-Swift (1.6.1)
+  - Neon (0.4.0)
   - R.swift (3.1.0):
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
+  - TAOverlay (2.0.1)
 
 DEPENDENCIES:
   - Alamofire
   - DateParser
+  - Font-Awesome-Swift
+  - Neon
   - R.swift
+  - TAOverlay
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   DateParser: f6a3351ebf0f2a8e6ab5e1f11f98e9a772089a08
+  Font-Awesome-Swift: 70ab020f6749d7048bb49807c3e78b702d78afca
+  Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
   R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
+  TAOverlay: 940e37fdb45fbc9acfc73bf1089668367e3b1be6
 
-PODFILE CHECKSUM: 6d865ffbc1e6ffb69468bf25d084984c3e9af152
+PODFILE CHECKSUM: 6d19c31dcf2e1a8e7afdf7bf57173f102e00a5c4
 
 COCOAPODS: 1.1.1

@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var mainViewController: UIViewController!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
@@ -23,8 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 //TODO: Show error
             } else {
                 //TODO: Present landing
+                self.mainViewController = SnapsViewController()
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                let navigationController = UINavigationController(rootViewController: self.mainViewController)
+                navigationController.isNavigationBarHidden = true
+                self.window?.rootViewController = navigationController
+                self.window?.makeKeyAndVisible()
             }
         }
+
+
 
         return true
     }

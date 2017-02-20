@@ -9,6 +9,8 @@
 import XCTest
 
 class OKJUXUITests: XCTestCase {
+
+    let app = XCUIApplication()
         
     override func setUp() {
         super.setUp()
@@ -20,6 +22,7 @@ class OKJUXUITests: XCTestCase {
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
 
+        Thread.sleep(forTimeInterval: 1)
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
     
@@ -29,8 +32,22 @@ class OKJUXUITests: XCTestCase {
     }
     
     func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        //1 - check if there is at least one snap
+        //2 - check failing getting snaps
+        //3 - favorite button appears
+        //4 - check if the content changes when I change the location
+        //5 - don't crash if there is none
+        //6 - how much favorites a snaps have (could be 0 or more)
+
+        XCUIApplication().toolbars.staticTexts["Loading Snaps"].tap()
+        //TODO: no termine con esto, hay que hacer una funcion que espera a que desaparezca el loading, y después corra el test siguiente.
+
+        
+
+    }
+
+    func test_snapsView() {
+        XCTAssertTrue(app.collectionViews["Snaps collection"].cells.element(boundBy: 0).buttons["favorite snap"].exists, "hear button is not appering")
     }
     
 }
