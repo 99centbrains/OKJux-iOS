@@ -3,6 +3,21 @@ PODS:
   - DateParser (1.1.0)
   - Font-Awesome-Swift (1.6.1)
   - Neon (0.4.0)
+  - OHHTTPStubs (5.2.3):
+    - OHHTTPStubs/Default (= 5.2.3)
+  - OHHTTPStubs/Core (5.2.3)
+  - OHHTTPStubs/Default (5.2.3):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (5.2.3):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (5.2.3):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (5.2.3)
+  - OHHTTPStubs/Swift (5.2.3):
+    - OHHTTPStubs/Core
   - R.swift (3.1.0):
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
@@ -13,6 +28,8 @@ DEPENDENCIES:
   - DateParser
   - Font-Awesome-Swift
   - Neon
+  - OHHTTPStubs
+  - OHHTTPStubs/Swift
   - R.swift
   - TAOverlay
 
@@ -21,10 +38,11 @@ SPEC CHECKSUMS:
   DateParser: f6a3351ebf0f2a8e6ab5e1f11f98e9a772089a08
   Font-Awesome-Swift: 70ab020f6749d7048bb49807c3e78b702d78afca
   Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
+  OHHTTPStubs: e238cd5b66d8efa51c861db45895de8fe079f4a7
   R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
   TAOverlay: 940e37fdb45fbc9acfc73bf1089668367e3b1be6
 
-PODFILE CHECKSUM: 6d19c31dcf2e1a8e7afdf7bf57173f102e00a5c4
+PODFILE CHECKSUM: 3f5389835c074491f9e19240f16f7f3b6fb870fc
 
 COCOAPODS: 1.1.1

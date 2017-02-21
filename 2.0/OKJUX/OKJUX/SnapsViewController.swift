@@ -44,21 +44,20 @@ class SnapsViewController: OKJuxViewController {
 
     private func fetchData() {
         showLoading(localizedMessage: R.string.localizable.loadingSnaps())
-
         SnapsManager.sharedInstance.getSnaps(hottest: false, completion: { (error, snapsResult) in
             if let error = error {
                 self.showGenericErrorMessage(error: error)
             } else {
                 if let snapsResult = snapsResult {
                     self.nearbySnaps = snapsResult
-                    //self.hideLoading()
-                    //self.reloadData()
+
+                    self.hideLoading()
+                    self.reloadData()
                     return
 
                 }
                 self.showGenericErrorMessage(error: nil)
             }
-            
         })
     }
 

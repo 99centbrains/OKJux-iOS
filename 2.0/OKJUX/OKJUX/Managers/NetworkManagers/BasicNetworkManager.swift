@@ -69,7 +69,7 @@ class BasicNetworkManager {
             if let json = response.result.value as? [String: Any], response.result.isSuccess {
                 completion(nil, json)
             } else {
-                completion(OKJuxError(errorType: .unknown, generatedClass: type(of: self)), nil)
+                completion(OKJuxError(errorType: .unknown, generatedClass: self), nil)
             }
         }
 

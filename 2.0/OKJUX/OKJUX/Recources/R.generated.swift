@@ -21,7 +21,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 5 files.
+  /// This `R.file` struct is generated, and contains static references to 6 files.
   struct file {
     /// Resource file `Configuration-Beta.plist`.
     static let configurationBetaPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Configuration-Beta", pathExtension: "plist")
@@ -31,6 +31,8 @@ struct R: Rswift.Validatable {
     static let configurationReleasePlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Configuration-Release", pathExtension: "plist")
     /// Resource file `Configuration-Staging.plist`.
     static let configurationStagingPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Configuration-Staging", pathExtension: "plist")
+    /// Resource file `MockFiles`.
+    static let mockFiles = Rswift.FileResource(bundle: R.hostingBundle, name: "MockFiles", pathExtension: "")
     /// Resource file `Settings.bundle`.
     static let settingsBundle = Rswift.FileResource(bundle: R.hostingBundle, name: "Settings", pathExtension: "bundle")
     
@@ -55,6 +57,12 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "Configuration-Staging", withExtension: "plist")`
     static func configurationStagingPlist(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.configurationStagingPlist
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "MockFiles", withExtension: "")`
+    static func mockFiles(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.mockFiles
       return fileResource.bundle.url(forResource: fileResource)
     }
     

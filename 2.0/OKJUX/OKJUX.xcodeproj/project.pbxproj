@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		123C584F6A27F3DEDB7DF084 /* Pods_OKJUXTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D85B11F1555ACDFF094A7E0 /* Pods_OKJUXTests.framework */; };
 		442507661E4D05AF00F24500 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442507651E4D05AF00F24500 /* R.generated.swift */; };
+		4440495C1E5CBE1300D0D983 /* MockRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4440495B1E5CBE1300D0D983 /* MockRequestHelper.swift */; };
+		444049611E5CBFE900D0D983 /* MockFiles in Resources */ = {isa = PBXBuildFile; fileRef = 444049601E5CBFE900D0D983 /* MockFiles */; };
+		444049631E5CCA2600D0D983 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444049621E5CCA2600D0D983 /* ModelTests.swift */; };
+		444049651E5CCADF00D0D983 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444049641E5CCADF00D0D983 /* RequestTests.swift */; };
+		444049671E5CCB6500D0D983 /* OtherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444049661E5CCB6500D0D983 /* OtherTests.swift */; };
+		444049701E5CCBF400D0D983 /* snapImage.json in Resources */ = {isa = PBXBuildFile; fileRef = 4440496B1E5CCBF400D0D983 /* snapImage.json */; };
+		444049711E5CCBF400D0D983 /* snapImage_withoutImage.json in Resources */ = {isa = PBXBuildFile; fileRef = 4440496C1E5CCBF400D0D983 /* snapImage_withoutImage.json */; };
+		444049721E5CCBF400D0D983 /* snapImage_withoutThumbnai.json in Resources */ = {isa = PBXBuildFile; fileRef = 4440496D1E5CCBF400D0D983 /* snapImage_withoutThumbnai.json */; };
+		444049731E5CCBF400D0D983 /* snaps.json in Resources */ = {isa = PBXBuildFile; fileRef = 4440496E1E5CCBF400D0D983 /* snaps.json */; };
+		444049741E5CCBF400D0D983 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 4440496F1E5CCBF400D0D983 /* user.json */; };
 		4471E6041E5B81DD00C41F87 /* OKJuxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471E6031E5B81DD00C41F87 /* OKJuxViewController.swift */; };
 		4471E6081E5B880200C41F87 /* UIView+CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471E6071E5B880200C41F87 /* UIView+CGRect.swift */; };
 		4471E60A1E5B8CEF00C41F87 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4471E6091E5B8CEF00C41F87 /* Localizable.strings */; };
@@ -33,10 +43,6 @@
 		44D61C681E4BBD78005A1936 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C671E4BBD78005A1936 /* UserHelper.swift */; };
 		44D61C6A1E4E0445005A1936 /* SnapsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C691E4E0445005A1936 /* SnapsManager.swift */; };
 		44D61C6C1E4E04B5005A1936 /* Snap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C6B1E4E04B5005A1936 /* Snap.swift */; };
-		44D61C6F1E4E2EFE005A1936 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C6E1E4E2EFE005A1936 /* user.json */; };
-		44D61C711E4E42B0005A1936 /* snapImage.json in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C701E4E42B0005A1936 /* snapImage.json */; };
-		44D61C741E4E4606005A1936 /* snapImage_withoutImage.json in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C721E4E4606005A1936 /* snapImage_withoutImage.json */; };
-		44D61C751E4E4606005A1936 /* snapImage_withoutThumbnai.json in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C731E4E4606005A1936 /* snapImage_withoutThumbnai.json */; };
 		639BC39B7322A6ECBDC1B901 /* Pods_OKJUXUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B11F0221D0B40C241E151DC /* Pods_OKJUXUITests.framework */; };
 		9ABB4CD034211B67970CDA42 /* Pods_OKJUX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33CD401A90ACB0342495C6DB /* Pods_OKJUX.framework */; };
 /* End PBXBuildFile section */
@@ -66,6 +72,16 @@
 		2B11F0221D0B40C241E151DC /* Pods_OKJUXUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKJUXUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33CD401A90ACB0342495C6DB /* Pods_OKJUX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKJUX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		442507651E4D05AF00F24500 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		4440495B1E5CBE1300D0D983 /* MockRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockRequestHelper.swift; sourceTree = "<group>"; };
+		444049601E5CBFE900D0D983 /* MockFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MockFiles; sourceTree = "<group>"; };
+		444049621E5CCA2600D0D983 /* ModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
+		444049641E5CCADF00D0D983 /* RequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
+		444049661E5CCB6500D0D983 /* OtherTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherTests.swift; sourceTree = "<group>"; };
+		4440496B1E5CCBF400D0D983 /* snapImage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = snapImage.json; sourceTree = "<group>"; };
+		4440496C1E5CCBF400D0D983 /* snapImage_withoutImage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = snapImage_withoutImage.json; sourceTree = "<group>"; };
+		4440496D1E5CCBF400D0D983 /* snapImage_withoutThumbnai.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = snapImage_withoutThumbnai.json; sourceTree = "<group>"; };
+		4440496E1E5CCBF400D0D983 /* snaps.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = snaps.json; sourceTree = "<group>"; };
+		4440496F1E5CCBF400D0D983 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
 		4471E6031E5B81DD00C41F87 /* OKJuxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OKJuxViewController.swift; sourceTree = "<group>"; };
 		4471E6071E5B880200C41F87 /* UIView+CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+CGRect.swift"; sourceTree = "<group>"; };
 		4471E6091E5B8CEF00C41F87 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -96,10 +112,6 @@
 		44D61C671E4BBD78005A1936 /* UserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		44D61C691E4E0445005A1936 /* SnapsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapsManager.swift; sourceTree = "<group>"; };
 		44D61C6B1E4E04B5005A1936 /* Snap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snap.swift; sourceTree = "<group>"; };
-		44D61C6E1E4E2EFE005A1936 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
-		44D61C701E4E42B0005A1936 /* snapImage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = snapImage.json; sourceTree = "<group>"; };
-		44D61C721E4E4606005A1936 /* snapImage_withoutImage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = snapImage_withoutImage.json; sourceTree = "<group>"; };
-		44D61C731E4E4606005A1936 /* snapImage_withoutThumbnai.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = snapImage_withoutThumbnai.json; sourceTree = "<group>"; };
 		4D85B11F1555ACDFF094A7E0 /* Pods_OKJUXTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKJUXTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63173BC5F6AD735A6AD2A83E /* Pods-OKJUXUITests.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKJUXUITests.beta.xcconfig"; path = "Pods/Target Support Files/Pods-OKJUXUITests/Pods-OKJUXUITests.beta.xcconfig"; sourceTree = "<group>"; };
 		7426B5CCC4E102E1DCC9921A /* Pods-OKJUX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKJUX.release.xcconfig"; path = "Pods/Target Support Files/Pods-OKJUX/Pods-OKJUX.release.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +151,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4440496A1E5CCBF400D0D983 /* mocks */ = {
+			isa = PBXGroup;
+			children = (
+				4440496B1E5CCBF400D0D983 /* snapImage.json */,
+				4440496C1E5CCBF400D0D983 /* snapImage_withoutImage.json */,
+				4440496D1E5CCBF400D0D983 /* snapImage_withoutThumbnai.json */,
+				4440496E1E5CCBF400D0D983 /* snaps.json */,
+				4440496F1E5CCBF400D0D983 /* user.json */,
+			);
+			path = mocks;
+			sourceTree = "<group>";
+		};
 		4471E6061E5B880200C41F87 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,7 +198,7 @@
 			children = (
 				44D61C661E4BBD5B005A1936 /* Helpers */,
 				44D61C611E4BB72F005A1936 /* Models */,
-				44D61C541E4B8E31005A1936 /* Recources */,
+				44D61C541E4B8E31005A1936 /* Resources */,
 				44D61C471E4B8E26005A1936 /* Configuration */,
 				44D61C321E4B8C25005A1936 /* Managers */,
 				44D61C041E4B8B6D005A1936 /* AppDelegate.swift */,
@@ -190,9 +214,12 @@
 		44D61C181E4B8B6D005A1936 /* OKJUXTests */ = {
 			isa = PBXGroup;
 			children = (
-				44D61C6D1E4E2EFE005A1936 /* mocks */,
-				44D61C191E4B8B6D005A1936 /* OKJUXTests.swift */,
+				4440496A1E5CCBF400D0D983 /* mocks */,
 				44D61C1B1E4B8B6D005A1936 /* Info.plist */,
+				444049621E5CCA2600D0D983 /* ModelTests.swift */,
+				44D61C191E4B8B6D005A1936 /* OKJUXTests.swift */,
+				444049661E5CCB6500D0D983 /* OtherTests.swift */,
+				444049641E5CCADF00D0D983 /* RequestTests.swift */,
 			);
 			path = OKJUXTests;
 			sourceTree = "<group>";
@@ -239,13 +266,15 @@
 			path = Configuration;
 			sourceTree = "<group>";
 		};
-		44D61C541E4B8E31005A1936 /* Recources */ = {
+		44D61C541E4B8E31005A1936 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				444049601E5CBFE900D0D983 /* MockFiles */,
 				442507651E4D05AF00F24500 /* R.generated.swift */,
 				44D61C551E4B8E31005A1936 /* Settings.bundle */,
 				4471E6091E5B8CEF00C41F87 /* Localizable.strings */,
 			);
+			name = Resources;
 			path = Recources;
 			sourceTree = "<group>";
 		};
@@ -263,19 +292,9 @@
 			children = (
 				4471E6061E5B880200C41F87 /* Extensions */,
 				44D61C671E4BBD78005A1936 /* UserHelper.swift */,
+				4440495B1E5CBE1300D0D983 /* MockRequestHelper.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		44D61C6D1E4E2EFE005A1936 /* mocks */ = {
-			isa = PBXGroup;
-			children = (
-				44D61C721E4E4606005A1936 /* snapImage_withoutImage.json */,
-				44D61C731E4E4606005A1936 /* snapImage_withoutThumbnai.json */,
-				44D61C701E4E42B0005A1936 /* snapImage.json */,
-				44D61C6E1E4E2EFE005A1936 /* user.json */,
-			);
-			path = mocks;
 			sourceTree = "<group>";
 		};
 		7F82513C5FFA64D2E5DF5B35 /* Pods */ = {
@@ -396,6 +415,7 @@
 					};
 					44D61C1F1E4B8B6D005A1936 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = YM28V3B39M;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 44D61C001E4B8B6D005A1936;
 					};
@@ -426,6 +446,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				444049611E5CBFE900D0D983 /* MockFiles in Resources */,
 				44D61C561E4B8E31005A1936 /* Settings.bundle in Resources */,
 				44D61C0F1E4B8B6D005A1936 /* LaunchScreen.storyboard in Resources */,
 				44D61C501E4B8E26005A1936 /* Configuration-Release.plist in Resources */,
@@ -441,10 +462,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44D61C6F1E4E2EFE005A1936 /* user.json in Resources */,
-				44D61C741E4E4606005A1936 /* snapImage_withoutImage.json in Resources */,
-				44D61C751E4E4606005A1936 /* snapImage_withoutThumbnai.json in Resources */,
-				44D61C711E4E42B0005A1936 /* snapImage.json in Resources */,
+				444049721E5CCBF400D0D983 /* snapImage_withoutThumbnai.json in Resources */,
+				444049711E5CCBF400D0D983 /* snapImage_withoutImage.json in Resources */,
+				444049701E5CCBF400D0D983 /* snapImage.json in Resources */,
+				444049731E5CCBF400D0D983 /* snaps.json in Resources */,
+				444049741E5CCBF400D0D983 /* user.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,6 +655,7 @@
 				44D61C371E4B8D3F005A1936 /* SnapsNetworkManager.swift in Sources */,
 				44D61C071E4B8B6D005A1936 /* SnapsViewController.swift in Sources */,
 				44D61C531E4B8E26005A1936 /* ConfigurationManager.swift in Sources */,
+				4440495C1E5CBE1300D0D983 /* MockRequestHelper.swift in Sources */,
 				44D61C681E4BBD78005A1936 /* UserHelper.swift in Sources */,
 				4471E6041E5B81DD00C41F87 /* OKJuxViewController.swift in Sources */,
 				4471E6081E5B880200C41F87 /* UIView+CGRect.swift in Sources */,
@@ -650,7 +673,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				444049671E5CCB6500D0D983 /* OtherTests.swift in Sources */,
+				444049651E5CCADF00D0D983 /* RequestTests.swift in Sources */,
 				44D61C1A1E4B8B6D005A1936 /* OKJUXTests.swift in Sources */,
+				444049631E5CCA2600D0D983 /* ModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -849,11 +875,13 @@
 			baseConfigurationReference = 214CD4939B9E1435CAF73EDB /* Pods-OKJUXUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = YM28V3B39M;
 				INFOPLIST_FILE = OKJUXUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang.OKJUXUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = OKJUX;
 			};
@@ -864,11 +892,13 @@
 			baseConfigurationReference = 269FE97266952F8AAE9735FE /* Pods-OKJUXUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = YM28V3B39M;
 				INFOPLIST_FILE = OKJUXUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang.OKJUXUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = OKJUX;
 			};
@@ -953,11 +983,13 @@
 			baseConfigurationReference = 1E7010D77B3569A2F52C3699 /* Pods-OKJUXUITests.staging.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = YM28V3B39M;
 				INFOPLIST_FILE = OKJUXUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99centbrains.catwang.OKJUXUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = OKJUX;
 			};
