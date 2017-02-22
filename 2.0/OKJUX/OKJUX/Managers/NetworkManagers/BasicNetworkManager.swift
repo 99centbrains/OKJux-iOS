@@ -23,6 +23,7 @@ class OKJuxError: NSError {
         case emptyResponseBody
         case notParsableResponse
         case loginRequired
+        case noInternet
 
         var description: String {
             switch self {
@@ -66,8 +67,17 @@ class BasicNetworkManager {
         }
 
         Alamofire.request(url, method: HTTPMethod(rawValue: requestMethodType.rawValue)!, parameters: parameters).responseJSON { (response) in
+            guard response.result.error == nil else {
+                completion(OKJuxError(errorType: .noInternet, generatedClass: self), nil)
+                return
+            }
+
             if let json = response.result.value as? [String: Any], response.result.isSuccess {
-                completion(nil, json)
+                if let statusCode = response.response?.statusCode, statusCode < 200 || statusCode > 300 {
+                    completion(OKJuxError(errorType: .unknown, generatedClass: self), nil)
+                } else {
+                    completion(nil, json)
+                }
             } else {
                 completion(OKJuxError(errorType: .unknown, generatedClass: self), nil)
             }

@@ -22,20 +22,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #if DEBUG
             for arg in ProcessInfo.processInfo.arguments {
                 if arg.contains("Mock-") {
-                    MockRequestHelper.mockAppByString(arg)
+                    let _ = MockRequestHelper.mockAppByString(arg)
                     break
                 }
             }
         #endif
-
 
         UserManager.sharedInstance.registerUser(uuid: UserHelper.getUUID()) { (error) in
             if let _ = error {
                 //TODO: Show error
             } else {
                 //TODO: Present landing
-
-                MockRequestHelper.mockRequest(path: "/api/v1/snaps", responseFile: "get_snaps_mock")
                 self.mainViewController = SnapsViewController()
                 self.window = UIWindow(frame: UIScreen.main.bounds)
                 let navigationController = UINavigationController(rootViewController: self.mainViewController)
@@ -44,8 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.makeKeyAndVisible()
             }
         }
-
-
 
         return true
     }

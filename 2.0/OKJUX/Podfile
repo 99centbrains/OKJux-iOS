@@ -10,6 +10,8 @@ def shared_pods
     pod 'Neon'
     pod 'Font-Awesome-Swift'
     pod 'TAOverlay'
+    pod 'SDWebImage'
+    pod 'SwiftMessages'
 end
 
 target 'OKJUX' do

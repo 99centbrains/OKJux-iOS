@@ -67,18 +67,18 @@ class SnapImage {
     private var _thumbnailURL: String?
     private var _imageURL: String?
 
-    var thumbnailURL: String? {
+    var thumbnailURL: String {
         if let _  = _thumbnailURL {
-            return _thumbnailURL
+            return _thumbnailURL!
         }
-        return _imageURL
+        return _imageURL!
     }
 
-    var imageURL: String? {
+    var imageURL: String {
         if let _ = _imageURL {
-            return _imageURL
+            return _imageURL!
         }
-        return _thumbnailURL
+        return _thumbnailURL!
     }
 
     init?(imageURL: String?, thumbnailURL: String?) {

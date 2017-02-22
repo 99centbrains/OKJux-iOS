@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Neon
-import Font_Awesome_Swift
 
 class SnapsViewController: OKJuxViewController {
 
@@ -45,13 +43,12 @@ class SnapsViewController: OKJuxViewController {
     private func fetchData() {
         showLoading(localizedMessage: R.string.localizable.loadingSnaps())
         SnapsManager.sharedInstance.getSnaps(hottest: false, completion: { (error, snapsResult) in
+            self.hideLoading()
             if let error = error {
                 self.showGenericErrorMessage(error: error)
             } else {
-                if let snapsResult = snapsResult {
+                if let snapsResult = snapsResult, snapsResult.count > 0 {
                     self.nearbySnaps = snapsResult
-
-                    self.hideLoading()
                     self.reloadData()
                     return
 
@@ -83,44 +80,5 @@ extension SnapsViewController: UICollectionViewDataSource {
         cell.loadData(snap: nearbySnaps![indexPath.row])
 
         return cell
-    }
-
-
-}
-
-
-class SnapsCollectionViewCell: UICollectionViewCell {
-
-    static let reuseIdentifier: String = "SnapsCollectionViewCell"
-
-    var snapImage: UIImageView!
-    var favorite: UIButton!
-    var favoritesCount: UILabel!
-    var reportAbuse: UIButton!
-    var snapLocation: UILabel!
-
-    private var favoriteImage: UIImage {
-        get {
-            return UIImage.init(icon: .FAHeart, size: CGSize(width: 35, height: 35))
-        }
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        favorite = UIButton(type: .custom)
-        favorite.anchorInCorner(.topLeft, xPad: 20, yPad: 20, width: 40, height: 40)
-        favorite.setImage(favoriteImage, for: .normal)
-        favorite.accessibilityLabel = "favorite snap"
-        contentView.addSubview(favorite)
-        //TODO: favorite doesnt have an action yet
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    func loadData(snap: Snap) {
-
     }
 }

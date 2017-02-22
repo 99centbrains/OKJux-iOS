@@ -17,7 +17,7 @@ class OKJUXUITests: XCTestCase {
         let strDisappear = disappears ? "false" : "true"
         let exists = NSPredicate(format: "exists == \(strDisappear)")
         expectation(for: exists, evaluatedWith: element, handler: nil)
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 15, handler: nil)
 
         if disappears {
             XCTAssertFalse(element.exists)
@@ -45,22 +45,45 @@ class OKJUXUITests: XCTestCase {
     }
     
     func atestExample() {
-        //1 - check if there is at least one snap
-        //2 - check failing getting snaps
-        //3 - favorite button appears
         //4 - check if the content changes when I change the location
-        //5 - don't crash if there is none
-        //6 - how much favorites a snaps have (could be 0 or more)
     }
 
-    func test_snapsView() {
+    func test_snaps_newest_list() {
         app.launchArguments.append("Mock-1,2")
         app.launch()
 
         let loading = app.toolbars.staticTexts["Loading Snaps"]
         self.waitFor(element: loading, disappears: true)
-        XCTAssertTrue(app.collectionViews["Snaps collection"].cells.element(boundBy: 0).buttons["favorite snap"].exists, "hear button is not appering")
+        XCTAssertTrue(app.collectionViews["Snaps collection"].cells.element(boundBy: 0).buttons["I like it"].exists, "hear button is not appering")
+        XCTAssertTrue(app.collectionViews["Snaps collection"].cells.element(boundBy: 0).staticTexts["Likes count"].exists, "likes count is not appering")
+        if let strLikesCount = app.collectionViews["Snaps collection"].cells.element(boundBy: 0).staticTexts["Likes count"].value as? String,
+            let likesCount = Int(strLikesCount) {
+            if likesCount != 99 {
+                XCTAssert(false, "the likes count is not the correct one")
+            }
+        } else {
+            XCTAssert(false, "unable to get the likes count")
+        }
+        XCTAssertTrue(app.collectionViews["Snaps collection"].cells.element(boundBy: 0).buttons["Report abuse"].exists, "abuse button is not appering")
+        let locationAndTimeLabel = app.collectionViews["Snaps collection"].cells.element(boundBy: 0).staticTexts["Snap location and time ago"]
+        XCTAssertTrue(locationAndTimeLabel.exists, "location text is not appering")
+        XCTAssertTrue((locationAndTimeLabel.value as? String ?? "").contains("ago"), "wasn't able to find the snap time")
+        XCTAssertTrue((locationAndTimeLabel.value as? String ?? "").contains("Uruguay"), "wasn't able to find the snap location")
+        XCTAssertTrue(app.collectionViews["Snaps collection"].cells.element(boundBy: 0).images["Snap photo"].exists)
+    }
 
+    func test_snaps_list_error_500() {
+        app.launchArguments.append("Mock-3")
+        app.launch()
+        waitFor(element: app.staticTexts["Error"])
+        waitFor(element: app.staticTexts["Oops, there was an error trying get the snaps. please try again later."])
+    }
+
+    func test_snaps_list_error_empty() {
+        app.launchArguments.append("Mock-4")
+        app.launch()
+        waitFor(element: app.staticTexts["Error"])
+        waitFor(element: app.staticTexts["Oops, there was an error trying get the snaps. please try again later."])
     }
     
 }
