@@ -18,7 +18,7 @@ class SnapsNetworkManager: BaseNetworkManager {
                 return
             }
 
-            if let json = json, json.count > 0 {
+            if let json = json, !json.isEmpty {
                 completion(nil, json)
             } else {
                 completion(OKJuxError(errorType: OKJuxError.ErrorType.notParsableResponse, generatedClass: type(of: self)), nil)

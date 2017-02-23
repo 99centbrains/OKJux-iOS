@@ -56,7 +56,11 @@ class BaseNetworkManager {
         return urlComponents
     }
 
-    class func sendRequest(method: String, requestMethodType: RequestMethodType = .get, version: String = "v1", parameters: [String: Any]? = nil, completion: @escaping (NSError?, [String: Any]?) -> Void) {
+    class func sendRequest(method: String,
+                           requestMethodType: RequestMethodType = .get,
+                           version: String = "v1",
+                           parameters: [String: Any]? = nil,
+                           completion: @escaping (NSError?, [String: Any]?) -> Void) {
 
         let urlComponents = self.basicURLComponents
         urlComponents.path = "/api/\(version)/\(method)"

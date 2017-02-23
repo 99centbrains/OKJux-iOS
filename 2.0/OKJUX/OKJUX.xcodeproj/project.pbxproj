@@ -545,6 +545,7 @@
 				CEA152079B7B65A442786C3D /* [CP] Embed Pods Frameworks */,
 				9400137D74DDBDA0E82054B2 /* [CP] Copy Pods Resources */,
 				4425075F1E4CF8B300F24500 /* Warning Script */,
+				444049E81E5F3E1800D0D983 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -775,6 +776,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT/OKJUX/Recources\"";
+		};
+		444049E81E5F3E1800D0D983 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
 		};
 		60E9442D99F56B66A584DE11 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -12,6 +12,7 @@ def shared_pods
     pod 'TAOverlay'
     pod 'SDWebImage'
     pod 'SwiftMessages'
+    pod 'SwiftLint'
 end
 
 target 'OKJUX' do

@@ -1,0 +1,40 @@
+#swiftlint rules
+disabled_rules: 
+ # - legacy_cggeometry_functions
+ - force_cast
+ # - legacy_constructor
+ - force_try
+opt_in_rules: 
+  - empty_count
+# included: 
+#   - Sitcomd
+#   - SitcomdTests
+#   - SitcomdUITests
+excluded: 
+  - Pods
+  - OKJUX/Recources
+# function_body_length: 100
+cyclomatic_complexity:
+  - 10 # warning
+  - 1000 # error
+type_body_length:
+  - 300 # warning
+  - 401 # error
+file_length: 1000
+# line_length: 300
+force_try: severity: warning # explicitly
+custom_rules:
+  equals_bool_compare: # rule identifier
+    name: "Equals Bool compare is forbiden" # rule name. optional.
+    regex: "==\s?(true|false)\s?\{" # matching pattern
+    message: "replace by if (bool)" # violation message. optional.
+    severity: warning # violation severity. optional.
+    match_kinds: # SyntaxKinds to match. optional.
+      - keyword
+  breakline_between_closing_brackets: # rule identifier
+    name: "breakline between closing brackets" # rule name. optional.
+    regex: "\}\s*([\r\n]\s*){3,}\}" # matching pattern
+    message: "remove empty lines" # violation message. optional.
+    severity: error # violation severity. optional.
+    match_kinds: # SyntaxKinds to match. optional.
+      - keyword

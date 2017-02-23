@@ -21,7 +21,7 @@ class UsersNetworkManager: BaseNetworkManager {
 
             if let json = json {
 
-                if json.count > 0 {
+                if !json.isEmpty {
                     completion(nil, json)
                 } else {
                     completion(OKJuxError(errorType: .emptyResponseBody, generatedClass: type(of: self)), nil)

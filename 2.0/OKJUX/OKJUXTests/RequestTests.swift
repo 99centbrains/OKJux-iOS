@@ -22,7 +22,7 @@ class RequestTests: OKJUXTests {
             }
 
             if let json = json {
-                if json.count > 0 {
+                if !json.isEmpty {
                     if let user = json["user"] as? [String: Any], let _ = user["id"] as? Double, let _ = user["UUID"] as? String, let _ = user["karma"] as? Int {
                         XCTAssert(true)
                     } else {
@@ -65,7 +65,7 @@ class RequestTests: OKJUXTests {
                 if let error = error {
                     XCTAssert(false, error.description)
                 } else {
-                    if let snapsResult = snapsResult, snapsResult.count > 0 {
+                    if let snapsResult = snapsResult, !snapsResult.isEmpty {
                         if let firstSnap = snapsResult.first, let _ = firstSnap.id {
                             XCTAssert(true)
                         } else {
@@ -93,7 +93,7 @@ class RequestTests: OKJUXTests {
                 if let error = error {
                     XCTAssert(false, error.description)
                 } else {
-                    if let snapsResult = snapsResult, snapsResult.count > 0 {
+                    if let snapsResult = snapsResult, !snapsResult.isEmpty {
                         if let firstSnap = snapsResult.first, let snapId = firstSnap.id {
                             SnapsManager.sharedInstance.getSnaps(hottest: true, page: 2, completion: { (error2, snapsResultSecondPage) in
                                 if let firstSnapSecondPage = snapsResultSecondPage?.first, let snapIdSecondPage = firstSnapSecondPage.id {

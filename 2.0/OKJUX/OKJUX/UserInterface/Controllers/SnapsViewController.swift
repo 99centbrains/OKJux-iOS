@@ -64,7 +64,7 @@ class SnapsViewController: OKJuxViewController {
             if let error = error {
                 self.showGenericErrorMessage(error: error)
             } else {
-                if let snapsResult = snapsResult, snapsResult.count > 0 {
+                if let snapsResult = snapsResult, !snapsResult.isEmpty {
                     self.nearbySnaps = snapsResult
                     self.reloadData()
                     return

@@ -17,7 +17,7 @@ public func timeAgoSince(_ date: Date) -> String {
     if let year = components.year, year >= 1 {
         return "Last year"
     }
-    
+
     if let month = components.month, month >= 2 {
         return "\(month) months ago"
     }

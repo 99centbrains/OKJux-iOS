@@ -24,6 +24,7 @@ PODS:
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
+  - SwiftLint (0.16.1)
   - SwiftMessages (3.1.5)
   - TAOverlay (2.0.1)
 
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - OHHTTPStubs/Swift
   - R.swift
   - SDWebImage
+  - SwiftLint
   - SwiftMessages
   - TAOverlay
 
@@ -48,9 +50,10 @@ SPEC CHECKSUMS:
   R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SwiftLint: b8b683208cc09640898f16318a7a452274e91f61
   SwiftMessages: bb85d7c30e85256f9367214b0907e1f409e1870a
   TAOverlay: 940e37fdb45fbc9acfc73bf1089668367e3b1be6
 
-PODFILE CHECKSUM: 11caf09d827d4d128a44c2ee05b5172dd97c01bb
+PODFILE CHECKSUM: 9c47917a15bbe48d6b208b05ba5bf7e317fe8e39
 
 COCOAPODS: 1.1.1
