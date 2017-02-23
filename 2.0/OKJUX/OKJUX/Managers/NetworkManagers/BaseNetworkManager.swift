@@ -38,9 +38,11 @@ class OKJuxError: NSError {
     }
 
     init<T>(errorType: ErrorType, generatedClass: T.Type) {
-        super.init(domain: "com.okjux." + NSStringFromClass(generatedClass as! AnyClass), code: errorType.rawValue, userInfo: ["description" : errorType.description])
+        super.init(domain: "com.okjux." + NSStringFromClass(generatedClass as! AnyClass),
+                   code: errorType.rawValue,
+                   userInfo: ["description": errorType.description])
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

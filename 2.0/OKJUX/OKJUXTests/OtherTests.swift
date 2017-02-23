@@ -20,5 +20,5 @@ class OtherTests: OKJUXTests {
         XCTAssertTrue(MockRequestHelper.mockAppByString("Mock-1,2").count == 2)
         XCTAssertTrue(MockRequestHelper.mockAppByString("Mock-99999,999998").isEmpty)
     }
-    
+
 }

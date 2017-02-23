@@ -13,7 +13,9 @@ class RequestTests: OKJUXTests {
 
     func test_registerUserPostRequest() {
         let exp = expectation(description: "")
-        BaseNetworkManager.sendRequest(method: "users", requestMethodType: .post, parameters: ["user[UUID]": "F96034AC-446E-4139-949D-9F7CB4686322"]) { (error, json) in
+        BaseNetworkManager.sendRequest(method: "users",
+                                       requestMethodType: .post,
+                                       parameters: ["user[UUID]": "F96034AC-446E-4139-949D-9F7CB4686322"]) { (error, json) in
 
             guard error == nil else {
                 XCTAssert(false, "request faild")
@@ -66,7 +68,7 @@ class RequestTests: OKJUXTests {
                     XCTAssert(false, error.description)
                 } else {
                     if let snapsResult = snapsResult, !snapsResult.isEmpty {
-                        if let firstSnap = snapsResult.first, let _ = firstSnap.id {
+                        if let firstSnap = snapsResult.first, let _ = firstSnap.identifier {
                             XCTAssert(true)
                         } else {
                             XCTAssert(false, "snaps must be not empty")
@@ -94,9 +96,9 @@ class RequestTests: OKJUXTests {
                     XCTAssert(false, error.description)
                 } else {
                     if let snapsResult = snapsResult, !snapsResult.isEmpty {
-                        if let firstSnap = snapsResult.first, let snapId = firstSnap.id {
-                            SnapsManager.sharedInstance.getSnaps(hottest: true, page: 2, completion: { (error2, snapsResultSecondPage) in
-                                if let firstSnapSecondPage = snapsResultSecondPage?.first, let snapIdSecondPage = firstSnapSecondPage.id {
+                        if let firstSnap = snapsResult.first, let snapId = firstSnap.identifier {
+                            SnapsManager.sharedInstance.getSnaps(hottest: true, page: 2, completion: { (_, snapsResultSecondPage) in
+                                if let firstSnapSecondPage = snapsResultSecondPage?.first, let snapIdSecondPage = firstSnapSecondPage.identifier {
                                     if snapId != snapIdSecondPage {
                                         XCTAssert(true)
                                     } else {

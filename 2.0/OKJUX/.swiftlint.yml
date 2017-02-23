@@ -2,7 +2,8 @@
 disabled_rules: 
  # - legacy_cggeometry_functions
  - force_cast
- # - legacy_constructor
+ - implicit_getter
+ - todo
  - force_try
 opt_in_rules: 
   - empty_count
@@ -13,6 +14,7 @@ opt_in_rules:
 excluded: 
   - Pods
   - OKJUX/Recources
+  - OKJUX/Helpers/ThirdParty
 # function_body_length: 100
 cyclomatic_complexity:
   - 10 # warning
@@ -21,7 +23,9 @@ type_body_length:
   - 300 # warning
   - 401 # error
 file_length: 1000
-# line_length: 300
+line_length: 
+  - 170
+  - 300
 force_try: severity: warning # explicitly
 custom_rules:
   equals_bool_compare: # rule identifier

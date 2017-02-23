@@ -10,22 +10,22 @@ import UIKit
 
 class SnapsViewController: OKJuxViewController {
 
-    //MARK: - Data variables
+    // MARK: - Data variables
 
     var nearbySnaps: [Snap]?
     var hottest: Bool = false
 
-    //MARK: - UI variables
+    // MARK: - UI variables
 
     var collection: UICollectionView!
 
-    //MARK: - Life cycle
+    // MARK: - Life cycle
 
     init(hottest: Bool = false) {
         super.init(nibName: nil, bundle: nil)
         self.hottest = hottest
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -37,7 +37,7 @@ class SnapsViewController: OKJuxViewController {
         fetchData()
     }
 
-    //MARK: - Setup UI
+    // MARK: - Setup UI
 
     func setUpCollection() {
         let layout = UICollectionViewFlowLayout()
@@ -55,7 +55,7 @@ class SnapsViewController: OKJuxViewController {
         view.addSubview(collection)
     }
 
-    //MARK: - Data manipulation
+    // MARK: - Data manipulation
 
     private func fetchData() {
         showLoading(localizedMessage: R.string.localizable.loadingSnaps())
@@ -80,7 +80,7 @@ class SnapsViewController: OKJuxViewController {
     }
 }
 
-//MARK: - UICollectionViewDataSource
+// MARK: - UICollectionViewDataSource
 
 extension SnapsViewController: UICollectionViewDataSource {
 

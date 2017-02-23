@@ -31,7 +31,7 @@ class OKJuxViewController: UIViewController {
             errorTitle = R.string.localizable.error_not_internet_title()
             errorMessage = R.string.localizable.error_not_internet_description()
         }
-        
+
         let view = MessageView.viewFromNib(layout: .CardView)
         view.button?.isHidden = true
         view.configureTheme(.warning)
@@ -42,7 +42,7 @@ class OKJuxViewController: UIViewController {
     }
 
     func showLoading(localizedMessage: String? = R.string.localizable.loading()) {
-        TAOverlay.show(withLabel: localizedMessage , options: [.overlaySizeBar, .overlayTypeActivityDefault ])
+        TAOverlay.show(withLabel: localizedMessage, options: [.overlaySizeBar, .overlayTypeActivityDefault ])
     }
 
     func hideLoading() {

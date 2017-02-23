@@ -51,7 +51,11 @@ class SnapsCollectionViewCell: UICollectionViewCell {
         locationAndTimeAgo.minimumScaleFactor = 0.4
         locationAndTimeAgo.adjustsFontSizeToFitWidth = true
         locationAndTimeAgo.font = UIFont.systemFont(ofSize: 12)
-        locationAndTimeAgo.alignBetweenHorizontal(align: .toTheRightMatchingTop, primaryView: likesCount, secondaryView: reportAbuse, padding: 10, height: 20)
+        locationAndTimeAgo.alignBetweenHorizontal(align: .toTheRightMatchingTop,
+                                                  primaryView: likesCount,
+                                                  secondaryView: reportAbuse,
+                                                  padding: 10,
+                                                  height: 20)
 
         image = UIImageView(frame: bounds)
         contentView.insertSubview(image, at: 0)
@@ -81,10 +85,10 @@ class SnapsCollectionViewCell: UICollectionViewCell {
 
         let thumbnailURL = URL(string: snap.snapImage.thumbnailURL)
 
-        self.image.sd_setImage(with: thumbnailURL, placeholderImage: nil, options: SDWebImageOptions.highPriority) { (img, error, cache, url) in
+        self.image.sd_setImage(with: thumbnailURL, placeholderImage: nil, options: SDWebImageOptions.highPriority) { (img, _, _, _) in
             self.image.image = img
             let realImageURL = URL(string: snap.snapImage.imageURL)
-            self.image.sd_setImage(with: realImageURL, placeholderImage: img, options: SDWebImageOptions.highPriority) { (img, error, cache, url) in
+            self.image.sd_setImage(with: realImageURL, placeholderImage: img, options: SDWebImageOptions.highPriority) { (img, _, _, _) in
                 self.image.image = img
             }
         }

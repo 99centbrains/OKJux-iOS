@@ -13,7 +13,7 @@ class OKJUXUITests: XCTestCase {
 
     let app = XCUIApplication()
 
-    func waitFor(element: XCUIElement, disappears: Bool = false) -> Void {
+    func waitFor(element: XCUIElement, disappears: Bool = false) {
         let strDisappear = disappears ? "false" : "true"
         let exists = NSPredicate(format: "exists == \(strDisappear)")
         expectation(for: exists, evaluatedWith: element, handler: nil)
@@ -26,30 +26,27 @@ class OKJUXUITests: XCTestCase {
         }
     }
 
-
     override func setUp() {
         super.setUp()
-        
+
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        
+
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
 
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        // In UI tests it’s important to set the initial state - such as interface orientation - 
+        // required for your tests before they run. The setUp method is a good place to do this.
     }
-    
+
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+
     func testExample() {
         //4 - check if the content changes when I change the location
 //        snapsCollectionCollectionView.staticTexts["🕑 16 hours ago  📍 United States - Nazareth"].swipeLeft()
-
-        
-
 
     }
 
@@ -84,10 +81,11 @@ class OKJUXUITests: XCTestCase {
             return
         }
         XCTAssertTrue(locationAndTimeLabelValue.contains("Uruguay"), "wasn't able to find the snap location")
-        XCTAssertTrue(locationAndTimeLabelValue.contains("ago") || locationAndTimeLabelValue.contains("year") || locationAndTimeLabelValue.contains("month"), "wasn't able to find the snap time")
+        XCTAssertTrue(locationAndTimeLabelValue.contains("ago") ||
+            locationAndTimeLabelValue.contains("year") ||
+            locationAndTimeLabelValue.contains("month"), "wasn't able to find the snap time")
         XCTAssertTrue(firstNewestCollectionCell.images["Snap photo"].exists, "unable to find the email")
     }
-
 
     func test_snaps_hottest_list() {
         app.launchArguments.append("Mock-1,5")
@@ -132,5 +130,5 @@ class OKJUXUITests: XCTestCase {
         waitFor(element: app.staticTexts["Error"])
         waitFor(element: app.staticTexts["Oops, there was an error trying get the snaps. please try again later."])
     }
-    
+
 }

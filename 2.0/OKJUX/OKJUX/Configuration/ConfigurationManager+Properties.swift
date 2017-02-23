@@ -9,11 +9,11 @@
 import Foundation
 
 extension ConfigurationManager {
-    
+
     static var environment: Environment {
         return Environment(rawValue: ConfigurationManager.currentConfiguration as! String)!
     }
-    
+
     static var serverHost: String {
         return sharedInstance.configs["Server_Host"]!
     }
@@ -21,5 +21,5 @@ extension ConfigurationManager {
     static var serverProtocol: String {
         return sharedInstance.configs["Server_Protocol"]!
     }
-    
+
 }

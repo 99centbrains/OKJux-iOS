@@ -11,7 +11,7 @@ import DateParser
 
 class Snap {
 
-    var id: Int!
+    var identifier: Int!
     var location: (Double, Double)!
     var hidden: Bool!
     var createdAt: Date!
@@ -21,11 +21,21 @@ class Snap {
     var user: User!
     var snapImage: SnapImage!
 
-    init?(id: Int?, location: (Double?, Double?)?, hidden: Bool? = false, createdAt: Date?, flagsCount: Int? = 0, likescount: Int? = 0, reported: Bool? = false, user: User?, snapImage: SnapImage?) {
-        guard let id = id, let location = location, let latitude = location.0, let longitude = location.1, let createdAt = createdAt, let user = user, let snapImage = snapImage else {
+    init?(identifier: Int?,
+          location: (Double?, Double?)?, hidden: Bool? = false,
+          createdAt: Date?, flagsCount: Int? = 0, likescount: Int? = 0,
+          reported: Bool? = false, user: User?, snapImage: SnapImage?) {
+
+        guard let identifier = identifier,
+            let location = location,
+            let latitude = location.0,
+            let longitude = location.1,
+            let createdAt = createdAt,
+            let user = user,
+            let snapImage = snapImage else {
             return nil
         }
-        self.id = id
+        self.identifier = identifier
         self.location = (latitude, longitude)
         self.hidden = hidden
         self.createdAt = createdAt
@@ -49,7 +59,7 @@ class Snap {
             createdAtAux = try Date(dateString: createdStr)
             } catch {}
         }
-        self.init(id: json["id"] as? Int,
+        self.init(identifier: json["id"] as? Int,
                   location: locationParsed,
                   hidden: json["hidden"] as? Bool,
                   createdAt: createdAtAux,

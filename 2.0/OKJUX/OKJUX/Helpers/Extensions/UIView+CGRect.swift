@@ -58,7 +58,6 @@ extension UIView {
         self.change(size: self.sizeThatFits(size))
     }
 
-    // swiftlint:disable legacy_cggeometry_functions
     var maxX: CGFloat {
         get {
             return self.frame.maxX
@@ -79,7 +78,6 @@ extension UIView {
             return self.frame.maxY
         }
     }
-    // swiftlint:enable legacy_cggeometry_functions
 
     var width: CGFloat {
         get {

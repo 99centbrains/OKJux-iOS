@@ -15,8 +15,8 @@ class ModelTests: XCTestCase {
         if let path = Bundle(for: self.classForCoder).url(forResource: mockName, withExtension: "json") {
             if let jsonData = NSData(contentsOf: path) {
                 do {
-                    if let jsonResult: NSDictionary = try JSONSerialization.jsonObject(with: jsonData as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
-                    {
+                    if let jsonResult: NSDictionary = try JSONSerialization.jsonObject(with: jsonData as Data,
+                                                                                       options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
                         return jsonResult as? [String: Any]
                     }
 
@@ -25,7 +25,7 @@ class ModelTests: XCTestCase {
         }
         return nil
     }
-    
+
     func test_userJsonConsuctor() {
         var json: [String: Any] = [:]
         if let _ = User(json: json) {
@@ -74,7 +74,7 @@ class ModelTests: XCTestCase {
 
     func test_snapWithoutImage() {
         if let json = loadMock(mockName: "snapImage_withoutImage"), let jsonSnapImage = json["image"] as? [String: Any] {
-            if let snapImage = SnapImage(json: jsonSnapImage) {
+            if let _ = SnapImage(json: jsonSnapImage) {
                 XCTAssert(true)
             } else {
                 XCTAssert(false, "snap must show the thumbnail if there is no image")
@@ -84,7 +84,7 @@ class ModelTests: XCTestCase {
         }
 
         if let json = loadMock(mockName: "snapImage_withoutThumbnai"), let jsonSnapImage = json["image"] as? [String: Any] {
-            if let snapImage = SnapImage(json: jsonSnapImage) {
+            if let _ = SnapImage(json: jsonSnapImage) {
                 XCTAssert(true)
             } else {
                 XCTAssert(false, "snap must show the image if there is no thumbnail")

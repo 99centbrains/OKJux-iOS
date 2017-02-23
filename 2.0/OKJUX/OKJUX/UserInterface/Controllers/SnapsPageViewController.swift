@@ -10,20 +10,20 @@ import UIKit
 
 class SnapsPageViewController: UIViewController {
 
-    //MARK: - Data Variables
+    // MARK: - Data Variables
 
     var orderedViewControllers: [UIViewController]!
     weak var currentPresentedViewController: UIViewController?
 
-    //MARK: - UI Variables
+    // MARK: - UI Variables
 
     var pageViewController: UIPageViewController!
 
-    //MARK: - Life cycle
+    // MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.view.backgroundColor = .white
         automaticallyAdjustsScrollViewInsets = false
 
@@ -37,7 +37,6 @@ class SnapsPageViewController: UIViewController {
         pageViewController.dataSource = self
         pageViewController.delegate = self
 
-
         addChildViewController(pageViewController)
         view.addSubview(pageViewController.view)
         pageViewController.didMove(toParentViewController: self)
@@ -50,19 +49,18 @@ class SnapsPageViewController: UIViewController {
 
 }
 
-
-//MARK: - UIPageViewControllerDataSource
+// MARK: - UIPageViewControllerDataSource
 
 extension SnapsPageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
     func pageViewController(_ pageViewController: UIPageViewController,
                             willTransitionTo pendingViewControllers: [UIViewController]) {
-        
+
         guard let newPresentingController = pendingViewControllers.first else {
             return
         }
         self.currentPresentedViewController = newPresentingController
-        if let index = self.orderedViewControllers.index(of: newPresentingController) {
+        if let _ = self.orderedViewControllers.index(of: newPresentingController) {
             //TODO: mark the segmented option as selected
         }
     }
@@ -80,7 +78,6 @@ extension SnapsPageViewController: UIPageViewControllerDataSource, UIPageViewCon
         return orderedViewControllers[previousIndex]
     }
 
-
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
 
@@ -97,4 +94,5 @@ extension SnapsPageViewController: UIPageViewControllerDataSource, UIPageViewCon
 
         return orderedViewControllers[nextIndex]
     }
+
 }
