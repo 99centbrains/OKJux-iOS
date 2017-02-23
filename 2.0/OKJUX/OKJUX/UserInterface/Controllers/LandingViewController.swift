@@ -44,9 +44,9 @@ extension LandingViewController: SnapsViewControllerScrollDelegate {
 
     func snapsViewController(_ snapsViewController: SnapsViewController, hasBeenExpandedToSizeHeight height: CGFloat) {
         if height > 50 {
-            UIView.animate(withDuration: 0.3) {
-                self.snapsPagedView.change(originY: self.view.height - self.expandedBottomMargin - self.mapHeigth)
-            }
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
+                self.snapsPagedView.change(originY: self.view.height - self.expandedBottomMargin)
+            }, completion: nil)
         }
     }
 }
