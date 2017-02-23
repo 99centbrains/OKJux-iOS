@@ -12,7 +12,7 @@ class SnapsManager {
 
     static let sharedInstance = SnapsManager()
 
-    func getSnaps(hottest: Bool = false, completion: @escaping (NSError?, [Snap]?) -> ()) {
+    func getSnaps(hottest: Bool = false, page: Int = 1, completion: @escaping (NSError?, [Snap]?) -> ()) {
 
         guard let loggedUser = UserManager.sharedInstance.loggedUser else {
             completion(OKJuxError(errorType: OKJuxError.ErrorType.loginRequired, generatedClass: type(of: self)), nil)
@@ -20,8 +20,9 @@ class SnapsManager {
         }
 
         var parameters = [String: Any]()
-        parameters["type"] = hottest ? "hottest" : "newest"
+        parameters["type"] = hottest ? "top" : "newest"
         parameters["user_id"] = loggedUser.id
+        parameters["page"] = page
 
         SnapsNetworkManager.getSnaps(parameters: parameters) { (error, json) in
             guard error == nil else {

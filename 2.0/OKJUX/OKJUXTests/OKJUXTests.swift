@@ -15,9 +15,7 @@ class OKJUXTests: XCTestCase {
         UserManager.sharedInstance.registerUser(uuid: "F96034AC-446E-4139-949D-9F7CB4686322", completion: { error in
             if error == nil {
                 if let user = UserManager.sharedInstance.loggedUser {
-                    if user.id != 0 {
-                        XCTAssert(true, "registered correctly")
-                    } else {
+                    if user.id == 0 {
                         XCTAssert(false, "user was not mapped correctly")
                     }
                 } else {

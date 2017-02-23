@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SnapsNetworkManager: BasicNetworkManager {
+class SnapsNetworkManager: BaseNetworkManager {
 
     class func getSnaps(parameters: [String: Any], completion: @escaping (NSError?, [String: Any]?) -> Void) {
 

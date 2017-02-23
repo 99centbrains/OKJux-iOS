@@ -13,7 +13,7 @@ class RequestTests: OKJUXTests {
 
     func test_registerUserPostRequest() {
         let exp = expectation(description: "")
-        BasicNetworkManager.sendRequest(method: "users", requestMethodType: .post, parameters: ["user[UUID]": "F96034AC-446E-4139-949D-9F7CB4686322"]) { (error, json) in
+        BaseNetworkManager.sendRequest(method: "users", requestMethodType: .post, parameters: ["user[UUID]": "F96034AC-446E-4139-949D-9F7CB4686322"]) { (error, json) in
 
             guard error == nil else {
                 XCTAssert(false, "request faild")
@@ -47,6 +47,7 @@ class RequestTests: OKJUXTests {
     func test_registerUser() {
         let exp = expectation(description: "")
         self.signInUser {
+            XCTAssert(true)
             exp.fulfill()
         }
         waitForExpectations(timeout: 5) { (error) in
@@ -74,9 +75,8 @@ class RequestTests: OKJUXTests {
                         XCTAssert(false, "snaps must be not empty")
                     }
                 }
-
+                exp.fulfill()
             })
-            exp.fulfill()
         }
         waitForExpectations(timeout: 5) { (error) in
             if let error = error {
@@ -94,8 +94,20 @@ class RequestTests: OKJUXTests {
                     XCTAssert(false, error.description)
                 } else {
                     if let snapsResult = snapsResult, snapsResult.count > 0 {
-                        if let firstSnap = snapsResult.first, let _ = firstSnap.id {
-                            XCTAssert(true)
+                        if let firstSnap = snapsResult.first, let snapId = firstSnap.id {
+                            SnapsManager.sharedInstance.getSnaps(hottest: true, page: 2, completion: { (error2, snapsResultSecondPage) in
+                                if let firstSnapSecondPage = snapsResultSecondPage?.first, let snapIdSecondPage = firstSnapSecondPage.id {
+                                    if snapId != snapIdSecondPage {
+                                        XCTAssert(true)
+                                    } else {
+                                        XCTAssert(false, "second query result contains duplicated data")
+                                    }
+                                } else {
+                                    XCTAssert(false, "second query result was empty")
+                                }
+                                exp.fulfill()
+                            })
+
                         } else {
                             XCTAssert(false, "snaps must be not empty")
                         }
@@ -103,9 +115,7 @@ class RequestTests: OKJUXTests {
                         XCTAssert(false, "snaps must be not empty")
                     }
                 }
-
             })
-            exp.fulfill()
         }
         waitForExpectations(timeout: 5) { (error) in
             if let error = error {

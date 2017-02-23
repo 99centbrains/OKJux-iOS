@@ -74,7 +74,7 @@ class ModelTests: XCTestCase {
 
     func test_snapWithoutImage() {
         if let json = loadMock(mockName: "snapImage_withoutImage"), let jsonSnapImage = json["image"] as? [String: Any] {
-            if let snapImage = SnapImage(json: jsonSnapImage), let _ = snapImage.imageURL, let _ = snapImage.thumbnailURL {
+            if let snapImage = SnapImage(json: jsonSnapImage) {
                 XCTAssert(true)
             } else {
                 XCTAssert(false, "snap must show the thumbnail if there is no image")
@@ -84,7 +84,7 @@ class ModelTests: XCTestCase {
         }
 
         if let json = loadMock(mockName: "snapImage_withoutThumbnai"), let jsonSnapImage = json["image"] as? [String: Any] {
-            if let snapImage = SnapImage(json: jsonSnapImage), let _ = snapImage.imageURL, let _ = snapImage.thumbnailURL {
+            if let snapImage = SnapImage(json: jsonSnapImage) {
                 XCTAssert(true)
             } else {
                 XCTAssert(false, "snap must show the image if there is no thumbnail")

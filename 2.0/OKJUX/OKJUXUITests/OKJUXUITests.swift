@@ -44,8 +44,13 @@ class OKJUXUITests: XCTestCase {
         super.tearDown()
     }
     
-    func atestExample() {
+    func testExample() {
         //4 - check if the content changes when I change the location
+//        snapsCollectionCollectionView.staticTexts["🕑 16 hours ago  📍 United States - Nazareth"].swipeLeft()
+
+        
+
+
     }
 
     func test_snaps_newest_list() {
@@ -54,9 +59,14 @@ class OKJUXUITests: XCTestCase {
 
         let loading = app.toolbars.staticTexts["Loading Snaps"]
         self.waitFor(element: loading, disappears: true)
-        XCTAssertTrue(app.collectionViews["Snaps collection"].cells.element(boundBy: 0).buttons["I like it"].exists, "hear button is not appering")
-        XCTAssertTrue(app.collectionViews["Snaps collection"].cells.element(boundBy: 0).staticTexts["Likes count"].exists, "likes count is not appering")
-        if let strLikesCount = app.collectionViews["Snaps collection"].cells.element(boundBy: 0).staticTexts["Likes count"].value as? String,
+        let newestSnapsCollection = app.collectionViews["Snaps collection newest"]
+
+        let firstNewestCollectionCell = newestSnapsCollection.cells.element(boundBy: 0)
+        XCTAssertTrue(firstNewestCollectionCell.exists, "unable to find the first cell")
+
+        XCTAssertTrue(firstNewestCollectionCell.buttons["I like it"].exists, "hear button is not appering")
+        XCTAssertTrue(firstNewestCollectionCell.staticTexts["Likes count"].exists, "likes count is not appering")
+        if let strLikesCount = firstNewestCollectionCell.staticTexts["Likes count"].value as? String,
             let likesCount = Int(strLikesCount) {
             if likesCount != 99 {
                 XCTAssert(false, "the likes count is not the correct one")
@@ -64,12 +74,49 @@ class OKJUXUITests: XCTestCase {
         } else {
             XCTAssert(false, "unable to get the likes count")
         }
-        XCTAssertTrue(app.collectionViews["Snaps collection"].cells.element(boundBy: 0).buttons["Report abuse"].exists, "abuse button is not appering")
-        let locationAndTimeLabel = app.collectionViews["Snaps collection"].cells.element(boundBy: 0).staticTexts["Snap location and time ago"]
+        XCTAssertTrue(firstNewestCollectionCell.buttons["Report abuse"].exists, "abuse button is not appering")
+
+        let locationAndTimeLabel = firstNewestCollectionCell.staticTexts["Snap location and time ago"]
+        waitFor(element: locationAndTimeLabel)
         XCTAssertTrue(locationAndTimeLabel.exists, "location text is not appering")
-        XCTAssertTrue((locationAndTimeLabel.value as? String ?? "").contains("ago"), "wasn't able to find the snap time")
-        XCTAssertTrue((locationAndTimeLabel.value as? String ?? "").contains("Uruguay"), "wasn't able to find the snap location")
-        XCTAssertTrue(app.collectionViews["Snaps collection"].cells.element(boundBy: 0).images["Snap photo"].exists)
+        guard let locationAndTimeLabelValue = locationAndTimeLabel.value as? String else {
+            XCTAssert(false, "time and location label doesn't have a value")
+            return
+        }
+        XCTAssertTrue(locationAndTimeLabelValue.contains("Uruguay"), "wasn't able to find the snap location")
+        XCTAssertTrue(locationAndTimeLabelValue.contains("ago") || locationAndTimeLabelValue.contains("year") || locationAndTimeLabelValue.contains("month"), "wasn't able to find the snap time")
+        XCTAssertTrue(firstNewestCollectionCell.images["Snap photo"].exists, "unable to find the email")
+    }
+
+
+    func test_snaps_hottest_list() {
+        app.launchArguments.append("Mock-1,5")
+        app.launch()
+
+        let loading = app.toolbars.staticTexts["Loading Snaps"]
+        self.waitFor(element: loading, disappears: true)
+        let newestSnapsCollection = app.collectionViews["Snaps collection newest"]
+        let hottestSnapsCollection = app.collectionViews["Snaps collection hottest"]
+        newestSnapsCollection.swipeLeft()
+        self.waitFor(element: loading, disappears: true)
+
+        let firstHottestCollectionCell = hottestSnapsCollection.cells.element(boundBy: 0)
+        XCTAssertTrue(firstHottestCollectionCell.exists, "unable to find the first cell")
+
+        XCTAssertTrue(firstHottestCollectionCell.buttons["I like it"].exists, "hear button is not appering")
+        XCTAssertTrue(firstHottestCollectionCell.staticTexts["Likes count"].exists, "likes count is not appering")
+        if let strLikesCount = firstHottestCollectionCell.staticTexts["Likes count"].value as? String,
+            let likesCount = Int(strLikesCount) {
+            if likesCount != 220 {
+                XCTAssert(false, "the likes count is not the correct one")
+            }
+        } else {
+            XCTAssert(false, "unable to get the likes count")
+        }
+        XCTAssertFalse(firstHottestCollectionCell.buttons["Report abuse"].exists, "abuse button should be hidden")
+        let locationAndTimeLabel = firstHottestCollectionCell.staticTexts["Snap location and time ago"]
+        XCTAssertFalse(locationAndTimeLabel.exists, "location text should not appear")
+        XCTAssertTrue(firstHottestCollectionCell.images["Snap photo"].exists, "unable to find the email")
     }
 
     func test_snaps_list_error_500() {

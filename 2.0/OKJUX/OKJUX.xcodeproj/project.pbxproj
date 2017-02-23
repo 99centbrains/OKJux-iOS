@@ -72,6 +72,7 @@
 		444049E01E5DE6FB00D0D983 /* SnapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444049DE1E5DE6FB00D0D983 /* SnapsViewController.swift */; };
 		444049E21E5DE71400D0D983 /* OKJuxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444049E11E5DE71400D0D983 /* OKJuxViewController.swift */; };
 		444049E41E5DE73900D0D983 /* SnapsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444049E31E5DE73900D0D983 /* SnapsCollectionViewCell.swift */; };
+		444049E71E5DFC2500D0D983 /* SnapsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444049E61E5DFC2500D0D983 /* SnapsPageViewController.swift */; };
 		4471E6081E5B880200C41F87 /* UIView+CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471E6071E5B880200C41F87 /* UIView+CGRect.swift */; };
 		4471E60A1E5B8CEF00C41F87 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4471E6091E5B8CEF00C41F87 /* Localizable.strings */; };
 		44D61C051E4B8B6D005A1936 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C041E4B8B6D005A1936 /* AppDelegate.swift */; };
@@ -88,7 +89,7 @@
 		44D61C521E4B8E26005A1936 /* ConfigurationManager+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C4C1E4B8E26005A1936 /* ConfigurationManager+Properties.swift */; };
 		44D61C531E4B8E26005A1936 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C4D1E4B8E26005A1936 /* ConfigurationManager.swift */; };
 		44D61C561E4B8E31005A1936 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C551E4B8E31005A1936 /* Settings.bundle */; };
-		44D61C601E4B95AC005A1936 /* BasicNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C5F1E4B95AC005A1936 /* BasicNetworkManager.swift */; };
+		44D61C601E4B95AC005A1936 /* BaseNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C5F1E4B95AC005A1936 /* BaseNetworkManager.swift */; };
 		44D61C631E4BB737005A1936 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C621E4BB737005A1936 /* User.swift */; };
 		44D61C651E4BBCF7005A1936 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C641E4BBCF7005A1936 /* UserManager.swift */; };
 		44D61C681E4BBD78005A1936 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C671E4BBD78005A1936 /* UserHelper.swift */; };
@@ -186,6 +187,7 @@
 		444049DE1E5DE6FB00D0D983 /* SnapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapsViewController.swift; sourceTree = "<group>"; };
 		444049E11E5DE71400D0D983 /* OKJuxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OKJuxViewController.swift; sourceTree = "<group>"; };
 		444049E31E5DE73900D0D983 /* SnapsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapsCollectionViewCell.swift; sourceTree = "<group>"; };
+		444049E61E5DFC2500D0D983 /* SnapsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapsPageViewController.swift; sourceTree = "<group>"; };
 		4471E6071E5B880200C41F87 /* UIView+CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+CGRect.swift"; sourceTree = "<group>"; };
 		4471E6091E5B8CEF00C41F87 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		44D61C011E4B8B6D005A1936 /* OKJUX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OKJUX.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,7 +210,7 @@
 		44D61C4C1E4B8E26005A1936 /* ConfigurationManager+Properties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConfigurationManager+Properties.swift"; sourceTree = "<group>"; };
 		44D61C4D1E4B8E26005A1936 /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
 		44D61C551E4B8E31005A1936 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		44D61C5F1E4B95AC005A1936 /* BasicNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicNetworkManager.swift; sourceTree = "<group>"; };
+		44D61C5F1E4B95AC005A1936 /* BaseNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNetworkManager.swift; sourceTree = "<group>"; };
 		44D61C621E4BB737005A1936 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		44D61C641E4BBCF7005A1936 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		44D61C671E4BBD78005A1936 /* UserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 			children = (
 				444049E11E5DE71400D0D983 /* OKJuxViewController.swift */,
 				444049DE1E5DE6FB00D0D983 /* SnapsViewController.swift */,
+				444049E61E5DFC2500D0D983 /* SnapsPageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -447,7 +450,7 @@
 			children = (
 				44D61C361E4B8D3F005A1936 /* SnapsNetworkManager.swift */,
 				44D61C381E4B8D58005A1936 /* UsersNetworkManager.swift */,
-				44D61C5F1E4B95AC005A1936 /* BasicNetworkManager.swift */,
+				44D61C5F1E4B95AC005A1936 /* BaseNetworkManager.swift */,
 			);
 			path = NetworkManagers;
 			sourceTree = "<group>";
@@ -902,12 +905,13 @@
 			files = (
 				44D61C651E4BBCF7005A1936 /* UserManager.swift in Sources */,
 				44D61C6A1E4E0445005A1936 /* SnapsManager.swift in Sources */,
+				444049E71E5DFC2500D0D983 /* SnapsPageViewController.swift in Sources */,
 				44D61C371E4B8D3F005A1936 /* SnapsNetworkManager.swift in Sources */,
 				44D61C531E4B8E26005A1936 /* ConfigurationManager.swift in Sources */,
 				4440495C1E5CBE1300D0D983 /* MockRequestHelper.swift in Sources */,
 				44D61C681E4BBD78005A1936 /* UserHelper.swift in Sources */,
 				4471E6081E5B880200C41F87 /* UIView+CGRect.swift in Sources */,
-				44D61C601E4B95AC005A1936 /* BasicNetworkManager.swift in Sources */,
+				44D61C601E4B95AC005A1936 /* BaseNetworkManager.swift in Sources */,
 				44D61C631E4BB737005A1936 /* User.swift in Sources */,
 				44D61C521E4B8E26005A1936 /* ConfigurationManager+Properties.swift in Sources */,
 				444049E41E5DE73900D0D983 /* SnapsCollectionViewCell.swift in Sources */,

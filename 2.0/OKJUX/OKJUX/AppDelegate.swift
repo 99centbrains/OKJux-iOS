@@ -33,7 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 //TODO: Show error
             } else {
                 //TODO: Present landing
-                self.mainViewController = SnapsViewController()
+                let pagedSnaps = SnapsPageViewController()
+                pagedSnaps.orderedViewControllers = [SnapsViewController(), SnapsViewController(hottest: true)]
+                self.mainViewController = pagedSnaps
+
+
                 self.window = UIWindow(frame: UIScreen.main.bounds)
                 let navigationController = UINavigationController(rootViewController: self.mainViewController)
                 navigationController.isNavigationBarHidden = true

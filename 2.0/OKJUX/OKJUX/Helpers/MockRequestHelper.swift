@@ -14,8 +14,9 @@ class MockRequestHelper {
     private enum MockRequest: Int {
         case post_register_user = 1
         case get_newest_snaps = 2
-        case get_newest_snaps_error_500
-        case get_newest_snaps_empty_result
+        case get_newest_snaps_error_500 = 3
+        case get_newest_snaps_empty_result = 4
+        case get_hottest_snaps = 5
     }
 
     class func mockRequest(path: String, responseFile: String, statusCode: Int32 = 200) {
@@ -43,6 +44,9 @@ class MockRequestHelper {
             break
         case .get_newest_snaps_empty_result:
             mockRequest(path: "/api/v1/snaps", responseFile: "get_snaps_empty_mock")
+            break
+        case .get_hottest_snaps:
+            mockRequest(path: "/api/v1/snaps", responseFile: "get_hottest_snaps_mock")
             break
         }
     }

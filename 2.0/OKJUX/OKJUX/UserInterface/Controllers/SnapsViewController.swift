@@ -11,11 +11,24 @@ import UIKit
 class SnapsViewController: OKJuxViewController {
 
     //MARK: - Data variables
+
     var nearbySnaps: [Snap]?
+    var hottest: Bool = false
 
     //MARK: - UI variables
 
     var collection: UICollectionView!
+
+    //MARK: - Life cycle
+
+    init(hottest: Bool = false) {
+        super.init(nibName: nil, bundle: nil)
+        self.hottest = hottest
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,12 +41,16 @@ class SnapsViewController: OKJuxViewController {
 
     func setUpCollection() {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: view.width - 20, height: view.height - 40)
+        if hottest {
+            layout.itemSize = CGSize(width: view.width / 2 - 15, height: view.width / 2 - 15)
+        } else {
+            layout.itemSize = CGSize(width: view.width - 20, height: view.height - 40)
+        }
         layout.scrollDirection = .vertical
         collection = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collection.register(SnapsCollectionViewCell.self, forCellWithReuseIdentifier: SnapsCollectionViewCell.reuseIdentifier)
         collection.dataSource = self
-        collection.accessibilityIdentifier = "Snaps collection"
+        collection.accessibilityIdentifier = "Snaps collection " + (hottest ? "hottest" : "newest")
         collection.backgroundColor = .white
         view.addSubview(collection)
     }
@@ -42,7 +59,7 @@ class SnapsViewController: OKJuxViewController {
 
     private func fetchData() {
         showLoading(localizedMessage: R.string.localizable.loadingSnaps())
-        SnapsManager.sharedInstance.getSnaps(hottest: false, completion: { (error, snapsResult) in
+        SnapsManager.sharedInstance.getSnaps(hottest: hottest, completion: { (error, snapsResult) in
             self.hideLoading()
             if let error = error {
                 self.showGenericErrorMessage(error: error)
@@ -77,7 +94,7 @@ extension SnapsViewController: UICollectionViewDataSource {
             fatalError("unable to cast to SnapsCollectionViewCell")
         }
 
-        cell.loadData(snap: nearbySnaps![indexPath.row])
+        cell.loadData(snap: nearbySnaps![indexPath.row], hottest: hottest)
 
         return cell
     }

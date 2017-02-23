@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-class UsersNetworkManager: BasicNetworkManager {
+class UsersNetworkManager: BaseNetworkManager {
 
     class func registerUser(parameters: [String: Any], completion: @escaping (NSError?, [String: Any]?) -> Void) {
 

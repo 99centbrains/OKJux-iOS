@@ -47,7 +47,7 @@ class OKJuxError: NSError {
 
 }
 
-class BasicNetworkManager {
+class BaseNetworkManager {
 
     static var basicURLComponents: NSURLComponents {
         let urlComponents = NSURLComponents()

@@ -48,7 +48,6 @@ class SnapsCollectionViewCell: UICollectionViewCell {
 
         locationAndTimeAgo = UILabel()
         contentView.addSubview(locationAndTimeAgo)
-        locationAndTimeAgo.accessibilityLabel = "Snap location and time ago"
         locationAndTimeAgo.minimumScaleFactor = 0.4
         locationAndTimeAgo.adjustsFontSizeToFitWidth = true
         locationAndTimeAgo.font = UIFont.systemFont(ofSize: 12)
@@ -56,8 +55,10 @@ class SnapsCollectionViewCell: UICollectionViewCell {
 
         image = UIImageView(frame: bounds)
         contentView.insertSubview(image, at: 0)
+        image.contentMode = .scaleAspectFill
         image.accessibilityLabel = "Snap photo"
         image.backgroundColor = UIColor(patternImage: R.image.common_background_transparent()!)
+        image.clipsToBounds = true
 
         //TODO: likes doesnt have an action yet
         //TODO: reportAbuse doesn't have an action yet
@@ -67,11 +68,16 @@ class SnapsCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func loadData(snap: Snap) {
+    func loadData(snap: Snap, hottest: Bool) {
         likesCount.text = String(snap.likescount)
         likesCount.accessibilityValue = String(snap.likescount)
         locationAndTimeAgo.text = ""
-        setTimeAndLocation(snap: snap)
+        if !hottest {
+            setTimeAndLocation(snap: snap)
+        } else {
+            reportAbuse.isHidden = true
+            locationAndTimeAgo.isHidden = true
+        }
 
         let thumbnailURL = URL(string: snap.snapImage.thumbnailURL)
 
@@ -100,11 +106,13 @@ class SnapsCollectionViewCell: UICollectionViewCell {
                     }
                     self?.locationAndTimeAgo.text = strTimeAgo
                     self?.locationAndTimeAgo.accessibilityValue = strTimeAgo
+                    self?.locationAndTimeAgo.accessibilityLabel = "Snap location and time ago"
                     return
             }
 
             self?.locationAndTimeAgo.text = String(format: "%@  📍 %@ - %@", strTimeAgo, country, city)
             self?.locationAndTimeAgo.accessibilityValue = self?.locationAndTimeAgo.text
+            self?.locationAndTimeAgo.accessibilityLabel = "Snap location and time ago"
         })
     }
 }
