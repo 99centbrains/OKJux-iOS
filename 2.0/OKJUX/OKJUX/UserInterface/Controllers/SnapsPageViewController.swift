@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SnapsPageViewController: UIViewController {
+class SnapsPageViewController: OKJuxViewController {
 
     // MARK: - Data Variables
 

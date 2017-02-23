@@ -16,6 +16,7 @@ class OKJuxViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        automaticallyAdjustsScrollViewInsets = false
     }
 
     func showGenericErrorMessage(error: NSError?) {

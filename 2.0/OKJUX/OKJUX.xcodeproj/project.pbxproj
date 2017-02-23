@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		123C584F6A27F3DEDB7DF084 /* Pods_OKJUXTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D85B11F1555ACDFF094A7E0 /* Pods_OKJUXTests.framework */; };
 		442507661E4D05AF00F24500 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442507651E4D05AF00F24500 /* R.generated.swift */; };
+		442AC7BE1E5F7B00004F69A4 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442AC7BD1E5F7B00004F69A4 /* LandingViewController.swift */; };
 		4440495C1E5CBE1300D0D983 /* MockRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4440495B1E5CBE1300D0D983 /* MockRequestHelper.swift */; };
 		444049611E5CBFE900D0D983 /* MockFiles in Resources */ = {isa = PBXBuildFile; fileRef = 444049601E5CBFE900D0D983 /* MockFiles */; };
 		444049631E5CCA2600D0D983 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444049621E5CCA2600D0D983 /* ModelTests.swift */; };
@@ -124,6 +125,7 @@
 		2B11F0221D0B40C241E151DC /* Pods_OKJUXUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKJUXUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33CD401A90ACB0342495C6DB /* Pods_OKJUX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKJUX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		442507651E4D05AF00F24500 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		442AC7BD1E5F7B00004F69A4 /* LandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		4440495B1E5CBE1300D0D983 /* MockRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockRequestHelper.swift; sourceTree = "<group>"; };
 		444049601E5CBFE900D0D983 /* MockFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MockFiles; sourceTree = "<group>"; };
 		444049621E5CCA2600D0D983 /* ModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				444049E11E5DE71400D0D983 /* OKJuxViewController.swift */,
 				444049DE1E5DE6FB00D0D983 /* SnapsViewController.swift */,
 				444049E61E5DFC2500D0D983 /* SnapsPageViewController.swift */,
+				442AC7BD1E5F7B00004F69A4 /* LandingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -936,6 +939,7 @@
 				444049E21E5DE71400D0D983 /* OKJuxViewController.swift in Sources */,
 				444049E01E5DE6FB00D0D983 /* SnapsViewController.swift in Sources */,
 				44D61C391E4B8D58005A1936 /* UsersNetworkManager.swift in Sources */,
+				442AC7BE1E5F7B00004F69A4 /* LandingViewController.swift in Sources */,
 				444049DA1E5CD92800D0D983 /* TimeAgo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

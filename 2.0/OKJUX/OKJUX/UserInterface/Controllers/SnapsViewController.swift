@@ -14,12 +14,13 @@ class SnapsViewController: OKJuxViewController {
 
     var nearbySnaps: [Snap]?
     var hottest: Bool = false
+    var expandableDelegate: SnapsViewControllerScrollDelegate?
 
     // MARK: - UI variables
 
     var collection: UICollectionView!
 
-    // MARK: - Life cycle
+    // MARK: - Controller life cycle
 
     init(hottest: Bool = false) {
         super.init(nibName: nil, bundle: nil)
@@ -37,6 +38,12 @@ class SnapsViewController: OKJuxViewController {
         fetchData()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        collection.frame = view.bounds
+    }
+
     // MARK: - Setup UI
 
     func setUpCollection() {
@@ -50,6 +57,7 @@ class SnapsViewController: OKJuxViewController {
         collection = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collection.register(SnapsCollectionViewCell.self, forCellWithReuseIdentifier: SnapsCollectionViewCell.reuseIdentifier)
         collection.dataSource = self
+        collection.delegate = self
         collection.accessibilityIdentifier = "Snaps collection " + (hottest ? "hottest" : "newest")
         collection.backgroundColor = .white
         view.addSubview(collection)
@@ -82,7 +90,11 @@ class SnapsViewController: OKJuxViewController {
 
 // MARK: - UICollectionViewDataSource
 
-extension SnapsViewController: UICollectionViewDataSource {
+protocol SnapsViewControllerScrollDelegate {
+    func snapsViewController(_ snapsViewController: SnapsViewController, hasBeenExpandedToSizeHeight height: CGFloat)
+}
+
+extension SnapsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return nearbySnaps?.count ?? 0
@@ -98,4 +110,12 @@ extension SnapsViewController: UICollectionViewDataSource {
 
         return cell
     }
+
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+
+//        scrollView.scrollsToTop = true
+        expandableDelegate?.snapsViewController(self, hasBeenExpandedToSizeHeight: -scrollView.contentOffset.y)
+//        scrollView.bounces = false
+    }
+
 }
