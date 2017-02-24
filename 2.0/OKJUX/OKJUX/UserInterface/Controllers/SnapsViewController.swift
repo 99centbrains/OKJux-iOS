@@ -14,7 +14,7 @@ class SnapsViewController: OKJuxViewController {
 
     var nearbySnaps: [Snap]?
     var hottest: Bool = false
-    var expandableDelegate: SnapsViewControllerScrollDelegate?
+    weak var delegate: SnapsViewControllerDelegate?
 
     // MARK: - UI variables
 
@@ -74,6 +74,9 @@ class SnapsViewController: OKJuxViewController {
             } else {
                 if let snapsResult = snapsResult, !snapsResult.isEmpty {
                     self.nearbySnaps = snapsResult
+                    if let nearbySnaps = self.nearbySnaps {
+                        self.delegate?.snapsViewController(self, updatedSnapsList: nearbySnaps)
+                    }
                     self.reloadData()
                     return
 
@@ -90,8 +93,9 @@ class SnapsViewController: OKJuxViewController {
 
 // MARK: - UICollectionViewDataSource
 
-protocol SnapsViewControllerScrollDelegate {
-    func snapsViewController(_ snapsViewController: SnapsViewController, hasBeenExpandedToSizeHeight height: CGFloat)
+protocol SnapsViewControllerDelegate: class {
+    func snapsViewController(_ snapsViewController: SnapsViewController, hasBeenExpandedToPosition position: CGFloat)
+    func snapsViewController(_ snapsViewController: SnapsViewController, updatedSnapsList snaps: [Snap])
 }
 
 extension SnapsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -112,10 +116,7 @@ extension SnapsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
 
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-
-//        scrollView.scrollsToTop = true
-        expandableDelegate?.snapsViewController(self, hasBeenExpandedToSizeHeight: -scrollView.contentOffset.y)
-//        scrollView.bounces = false
+        delegate?.snapsViewController(self, hasBeenExpandedToPosition: -scrollView.contentOffset.y)
     }
 
 }
