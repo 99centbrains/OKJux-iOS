@@ -21,6 +21,10 @@ class LandingViewController: OKJuxViewController {
     var snapsPagedView: UIView!
     var map: MKMapView!
 
+    // MARK: - Data variables
+
+    var mapExpanded: Bool = false
+
     // MARK: - Controller life cycle
 
     override func viewDidLoad() {
@@ -82,8 +86,16 @@ extension LandingViewController: MKMapViewDelegate {
 
 extension LandingViewController: SnapsViewControllerDelegate {
 
-    func snapsViewController(_ snapsViewController: SnapsViewController, hasBeenExpandedToPosition position: CGFloat) {
+    func snapsViewController(_ snapsViewController: SnapsViewController, isExpandingToPosition position: CGFloat) {
+        if !mapExpanded {
+            snapsPagedView.change(originY: mapHeigth + position * 2)
+            map.change(height: mapHeigth + position * 2)
+        }
+    }
+
+    func snapsViewController(_ snapsViewController: SnapsViewController, didFinishExpandingToPosition position: CGFloat) {
         if position > 50 {
+            mapExpanded = true
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
                 self.map.change(height: self.view.height - self.expandedBottomMargin)
                 self.map.isUserInteractionEnabled = true

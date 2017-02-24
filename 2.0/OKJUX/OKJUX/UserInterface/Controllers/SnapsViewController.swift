@@ -90,7 +90,8 @@ class SnapsViewController: OKJuxViewController {
 // MARK: - UICollectionViewDataSource
 
 protocol SnapsViewControllerDelegate: class {
-    func snapsViewController(_ snapsViewController: SnapsViewController, hasBeenExpandedToPosition position: CGFloat)
+    func snapsViewController(_ snapsViewController: SnapsViewController, isExpandingToPosition position: CGFloat)
+    func snapsViewController(_ snapsViewController: SnapsViewController, didFinishExpandingToPosition position: CGFloat)
 }
 
 extension SnapsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -111,7 +112,11 @@ extension SnapsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
 
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        delegate?.snapsViewController(self, hasBeenExpandedToPosition: -scrollView.contentOffset.y)
+        delegate?.snapsViewController(self, didFinishExpandingToPosition: -scrollView.contentOffset.y)
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        delegate?.snapsViewController(self, isExpandingToPosition: -scrollView.contentOffset.y)
     }
 
 }
