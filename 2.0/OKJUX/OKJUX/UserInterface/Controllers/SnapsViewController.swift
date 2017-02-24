@@ -74,12 +74,8 @@ class SnapsViewController: OKJuxViewController {
             } else {
                 if let snapsResult = snapsResult, !snapsResult.isEmpty {
                     self.nearbySnaps = snapsResult
-                    if let nearbySnaps = self.nearbySnaps {
-                        self.delegate?.snapsViewController(self, updatedSnapsList: nearbySnaps)
-                    }
                     self.reloadData()
                     return
-
                 }
                 self.showGenericErrorMessage(error: nil)
             }
@@ -95,7 +91,6 @@ class SnapsViewController: OKJuxViewController {
 
 protocol SnapsViewControllerDelegate: class {
     func snapsViewController(_ snapsViewController: SnapsViewController, hasBeenExpandedToPosition position: CGFloat)
-    func snapsViewController(_ snapsViewController: SnapsViewController, updatedSnapsList snaps: [Snap])
 }
 
 extension SnapsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
