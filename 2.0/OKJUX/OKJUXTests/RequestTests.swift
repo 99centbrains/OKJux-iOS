@@ -126,4 +126,43 @@ class RequestTests: OKJUXTests {
         }
     }
 
+    func test_getNewestNearBySnaps() {
+        let exp = expectation(description: "")
+        let lat = -34.907000
+        let lng = -56.190005
+        self.signInUser {
+
+            SnapsManager.sharedInstance.getSnaps(hottest: false, page: 1,
+                                                 latitude: lat,
+                                                 longitude: lng,
+                                                 radius: 1609,
+                                                 completion: { (error, snapsResult) in
+                if let error = error {
+                    XCTAssert(false, error.description)
+                } else {
+                    if let snapsResult = snapsResult, !snapsResult.isEmpty {
+                        if let firstSnap = snapsResult.first, let _ = firstSnap.identifier {
+                            let distance = MapHelper.distanceInMettersBetween(location1: (lat, lng), location2: (firstSnap.location.0, firstSnap.location.1))
+                            if distance < 2000 {
+                                XCTAssert(true)
+                            } else {
+                                XCTAssert(false, "seems that the first snap is not even close")
+                            }
+
+                        } else {
+                            XCTAssert(false, "snaps must be not empty")
+                        }
+                    } else {
+                        XCTAssert(false, "snaps must be not empty")
+                    }
+                }
+                                                    exp.fulfill()
+            })
+        }
+        waitForExpectations(timeout: 5) { (error) in
+            if let error = error {
+                XCTFail(error.localizedDescription)
+            }
+        }
+    }
 }

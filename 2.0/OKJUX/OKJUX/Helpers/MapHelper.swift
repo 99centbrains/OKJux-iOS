@@ -12,6 +12,12 @@ import MapKit
 class MapHelper {
 
     // MARK: - Constants
+//    #define kMinDistance 50
+//    #define kMaxDistance 100 /// in Miles
+//    #define metersInMile 1609.34
+
+    static let metersInMile: Double = 1609.34
+    static let desireMiles: Double = 50
 
     static let location = CLLocationCoordinate2D(
         latitude: -34.907000,
@@ -64,21 +70,32 @@ class MapHelper {
         map.setRegion(region, animated: true)
     }
 
+    class func distanceInMettersBetween(location1: (Double, Double), location2: (Double, Double)) -> Double {
+        let loc1 = CLLocation(latitude: location1.0, longitude: location1.1)
+        let loc2 = CLLocation(latitude: location2.0, longitude: location2.1)
+        return loc1.distance(from: loc2)
+    }
+
     class func loadMapWithNearbySnaps(mapView map: MKMapView) {
-        //TODO: get the correct snaps
-        //TODO: show loading
-        SnapsManager.sharedInstance.getSnaps(hottest: false, completion: { (error, snapsResult) in
-            //TODO: hide loading
-            if let error = error {
-                //TODO: show error
-            } else {
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        map.isUserInteractionEnabled = false
+        map.addSubview(activityIndicator)
+        activityIndicator.center = map.center
+        activityIndicator.startAnimating()
+
+        SnapsManager.sharedInstance.getSnaps(hottest: false,
+                                             page: 1,
+                                             latitude: location.latitude,
+                                             longitude: location.longitude,
+                                             radius: metersInMile * metersInMile) { (error, snapsResult) in
+            activityIndicator.stopAnimating()
+            if error == nil {
                 if let snapsResult = snapsResult, !snapsResult.isEmpty {
                     self.reloadMap(MapView: map, snaps: snapsResult)
                     return
                 }
-                //TODO: show error
             }
-        })
+        }
     }
 
     class func reloadMap(MapView map: MKMapView, snaps: [Snap]) {

@@ -12,7 +12,12 @@ class SnapsNetworkManager: BaseNetworkManager {
 
     class func getSnaps(parameters: [String: Any], completion: @escaping (NSError?, [String: Any]?) -> Void) {
 
-        sendRequest(method: "snaps", parameters: parameters) { (error, json) in
+        var nearBy = false
+        if let _ = parameters["lat"], let _ = parameters["lng"] {
+            nearBy = true
+        }
+
+        sendRequest(method: "snaps" + (nearBy ? "/nearby" : ""), parameters: parameters) { (error, json) in
             guard error == nil else {
                 completion(error!, nil)
                 return

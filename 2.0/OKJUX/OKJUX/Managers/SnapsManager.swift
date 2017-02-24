@@ -12,7 +12,9 @@ class SnapsManager {
 
     static let sharedInstance = SnapsManager()
 
-    func getSnaps(hottest: Bool = false, page: Int = 1, completion: @escaping (NSError?, [Snap]?) -> Void) {
+    func getSnaps(hottest: Bool = false, page: Int = 1,
+                  latitude: Double? = nil, longitude: Double? = nil,
+                  radius: Double = 80.450, completion: @escaping (NSError?, [Snap]?) -> Void) {
 
         guard let loggedUser = UserManager.sharedInstance.loggedUser else {
             completion(OKJuxError(errorType: OKJuxError.ErrorType.loginRequired, generatedClass: type(of: self)), nil)
@@ -23,6 +25,11 @@ class SnapsManager {
         parameters["type"] = hottest ? "top" : "newest"
         parameters["user_id"] = loggedUser.identifier
         parameters["page"] = page
+        if let lat = latitude, let lng = longitude {
+            parameters["lat"] = lat
+            parameters["lng"] = lng
+            parameters["radius"] = radius
+        }
 
         SnapsNetworkManager.getSnaps(parameters: parameters) { (error, json) in
             guard error == nil else {

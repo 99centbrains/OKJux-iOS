@@ -74,7 +74,7 @@ extension LandingViewController: MKMapViewDelegate {
 
         annotationView?.annotation = annotation
         annotationView?.snapImage.sd_setImage(with: URL(string: annotation.snap.snapImage.thumbnailURL))
-        annotationView?.image = R.image.snap_heart_like()
+        annotationView?.image = R.image.snap_heart_like() //TODO: use the real background image
         return annotationView
     }
 
@@ -85,6 +85,8 @@ extension LandingViewController: SnapsViewControllerDelegate {
     func snapsViewController(_ snapsViewController: SnapsViewController, hasBeenExpandedToPosition position: CGFloat) {
         if position > 50 {
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
+                self.map.change(height: self.view.height - self.expandedBottomMargin)
+                self.map.isUserInteractionEnabled = true
                 self.snapsPagedView.change(originY: self.view.height - self.expandedBottomMargin)
             }, completion: nil)
         }
