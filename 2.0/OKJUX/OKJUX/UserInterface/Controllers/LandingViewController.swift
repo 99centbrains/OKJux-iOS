@@ -20,10 +20,11 @@ class LandingViewController: OKJuxViewController {
 
     var snapsPagedView: UIView!
     var map: MKMapView!
+    var expandButton: UIButton!
 
     // MARK: - Data variables
 
-    var mapExpanded: Bool = false
+    var isMapExpanded: Bool = false
 
     // MARK: - Controller life cycle
 
@@ -59,6 +60,36 @@ class LandingViewController: OKJuxViewController {
         MapHelper.zoomToRegion(mapView: map)
         MapHelper.loadMapWithNearbySnaps(mapView: map)
         map.delegate = self
+
+        expandButton = UIButton(type: .custom)
+        expandButton.frame = map.frame
+        view.insertSubview(expandButton, at: 1)
+        expandButton.addTarget(self, action: #selector(expandMap), for: .touchUpInside)
+    }
+
+    // MARK: Util methods
+
+    func expandMap() {
+        map.isUserInteractionEnabled = true
+        expandButton.isHidden = true
+        isMapExpanded = true
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
+            self.map.change(height: self.view.height - self.expandedBottomMargin)
+            self.map.isUserInteractionEnabled = true
+            self.snapsPagedView.change(originY: self.view.height - self.expandedBottomMargin)
+        }, completion: nil)
+
+    }
+
+    func collapseMap() {
+        isMapExpanded = false
+        expandButton.isHidden = false
+        map.isUserInteractionEnabled = false
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
+            self.map.change(height: self.mapHeigth)
+            self.map.isUserInteractionEnabled = false
+            self.snapsPagedView.change(originY: self.mapHeigth)
+        }, completion: nil)
     }
 
 }
@@ -87,7 +118,7 @@ extension LandingViewController: MKMapViewDelegate {
 extension LandingViewController: SnapsViewControllerDelegate {
 
     func snapsViewController(_ snapsViewController: SnapsViewController, isExpandingToPosition position: CGFloat) {
-        if !mapExpanded {
+        if !isMapExpanded {
             snapsPagedView.change(originY: mapHeigth + position * 2)
             map.change(height: mapHeigth + position * 2)
         }
@@ -95,12 +126,7 @@ extension LandingViewController: SnapsViewControllerDelegate {
 
     func snapsViewController(_ snapsViewController: SnapsViewController, didFinishExpandingToPosition position: CGFloat) {
         if position > 50 {
-            mapExpanded = true
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
-                self.map.change(height: self.view.height - self.expandedBottomMargin)
-                self.map.isUserInteractionEnabled = true
-                self.snapsPagedView.change(originY: self.view.height - self.expandedBottomMargin)
-            }, completion: nil)
+            expandMap()
         }
     }
 }
