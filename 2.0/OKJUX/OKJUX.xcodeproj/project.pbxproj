@@ -552,6 +552,7 @@
 				9400137D74DDBDA0E82054B2 /* [CP] Copy Pods Resources */,
 				4425075F1E4CF8B300F24500 /* Warning Script */,
 				444049E81E5F3E1800D0D983 /* SwiftLint */,
+				440C3ED11E64B93400732379 /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -754,6 +755,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OKJUXTests/Pods-OKJUXTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		440C3ED11E64B93400732379 /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Fabric;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 0b2e1d159a4429a311c1bea031e461d1ff27b133 783b32c163c1219d9da49ed6360e0a79ac54d610105b8e9415e9e93ccb701538";
 		};
 		4425075F1E4CF8B300F24500 /* Warning Script */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -43,11 +43,6 @@ class SnapsViewController: OKJuxViewController {
         fetchData()
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        collection.setContentOffset(CGPoint.zero, animated: false)
-    }
-
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
