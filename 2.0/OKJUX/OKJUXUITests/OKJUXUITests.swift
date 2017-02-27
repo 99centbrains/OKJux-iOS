@@ -138,7 +138,6 @@ class OKJUXUITests: XCTestCase {
         let finish = firstCell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 6))
         start.press(forDuration: 0, thenDragTo: finish)
 
-
         //TODO: Need to close the map instead of kill the app
         app.terminate()
 
@@ -148,6 +147,36 @@ class OKJUXUITests: XCTestCase {
         let map2 = app.otherElements["Snaps map"]
         map2.tap()
         XCTAssertTrue((map2.value as? String) == "expanded", "the map is not being expanded")
+    }
+
+    func test_switching_between_newest_and_hottest() {
+        app.launchArguments.append("Mock-1,2")
+        app.launch()
+        let loading = app.toolbars.staticTexts["Loading Snaps"]
+        waitFor(element: loading, disappears: true)
+
+        let hottest = app.collectionViews["Snaps collection hottest"]
+        let newest = app.collectionViews["Snaps collection newest"]
+
+        XCTAssertFalse(hottest.exists, "Hottest should not be visible")
+        app.buttons["Hottest\t"].tap()
+
+        self.waitFor(element: newest, disappears: true)
+        XCTAssertTrue(hottest.exists, "Hottest should be visible")
+        XCTAssertFalse(newest.exists, "Newest should not be visible")
+
+        app.buttons["Newest"].tap()
+        self.waitFor(element: hottest, disappears: true)
+        XCTAssertTrue(newest.exists, "Newest should be visible")
+
+        newest.swipeRight()
+        XCTAssertTrue(newest.exists, "swiping left should not change to hotest")
+        newest.swipeLeft()
+        self.waitFor(element: newest, disappears: true)
+        XCTAssertFalse(newest.exists, "Newest should NOT be visible")
+        XCTAssertTrue(hottest.exists, "Hottest should be visible")
+        hottest.swipeRight()
+        XCTAssertTrue(newest.exists, "swiping left should not change to hotest")
     }
 
 }
