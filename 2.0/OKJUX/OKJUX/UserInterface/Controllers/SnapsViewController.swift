@@ -43,6 +43,11 @@ class SnapsViewController: OKJuxViewController {
         fetchData()
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        collection.setContentOffset(CGPoint.zero, animated: false)
+    }
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
@@ -156,4 +161,14 @@ extension SnapsViewController: UICollectionViewDataSource, UICollectionViewDeleg
         return UICollectionReusableView()
     }
 
+}
+
+extension SnapsViewController: SnapsPageViewControllerTransitionDelegate {
+    func currentScrollPosition() -> CGFloat {
+        return collection.contentOffset.y
+    }
+
+    func setScrollPosition(_ position: CGFloat) {
+        collection.setContentOffset(CGPoint(x: 0, y: position), animated: false)
+    }
 }

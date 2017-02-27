@@ -54,6 +54,7 @@ class LandingViewController: OKJuxViewController {
     func setUpSnapsPager() {
 
         snapsPageViewController = SnapsPageViewController()
+        snapsPageViewController.delegate = self
         let newestSnaps = SnapsViewController()
         let hottestSnaps = SnapsViewController(hottest: true)
         newestSnaps.delegate = self
@@ -141,6 +142,8 @@ class LandingViewController: OKJuxViewController {
 
 }
 
+// MARK: - MKMapViewDelegate
+
 extension LandingViewController: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -161,6 +164,8 @@ extension LandingViewController: MKMapViewDelegate {
     }
 
 }
+
+// MARK: - SnapsViewControllerDelegate
 
 extension LandingViewController: SnapsViewControllerDelegate {
 
@@ -192,4 +197,12 @@ extension LandingViewController: SnapsViewControllerDelegate {
     func snapsViewControllerExpandMap(_ snapsViewController: SnapsViewController, didPressOnHeader header: UIView?) {
         expandMap()
     }
+}
+
+extension LandingViewController: SnapsPageViewControllerDelegate {
+
+    func willChangeToPage(index: Int) {
+        self.segment.selectedSegmentIndex = index
+    }
+
 }

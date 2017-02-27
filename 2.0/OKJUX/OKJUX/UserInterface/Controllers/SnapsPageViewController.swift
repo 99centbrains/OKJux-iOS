@@ -8,6 +8,15 @@
 
 import UIKit
 
+protocol SnapsPageViewControllerDelegate: class {
+    func willChangeToPage(index: Int)
+}
+
+protocol SnapsPageViewControllerTransitionDelegate: class {
+    func currentScrollPosition() -> CGFloat
+    func setScrollPosition(_ position: CGFloat)
+}
+
 class SnapsPageViewController: OKJuxViewController {
 
     // MARK: - Data Variables
@@ -18,6 +27,7 @@ class SnapsPageViewController: OKJuxViewController {
     // MARK: - UI Variables
 
     var pageViewController: UIPageViewController!
+    weak var delegate: SnapsPageViewControllerDelegate?
 
     // MARK: - Life cycle
 
@@ -53,7 +63,18 @@ class SnapsPageViewController: OKJuxViewController {
                                                    direction: fromOption > toOption ? .reverse : .forward,
                                                    animated: true,
                                                    completion: nil)
+        self.correctScrolls(newPresentingController: self.orderedViewControllers[toOption])
         self.currentPresentedViewController = self.orderedViewControllers[toOption]
+    }
+
+    // MARK: - Utils
+
+    func correctScrolls(newPresentingController: UIViewController) {
+        if let currentPresentedViewController = currentPresentedViewController as? SnapsPageViewControllerTransitionDelegate,
+            let newPresentingController = newPresentingController as? SnapsPageViewControllerTransitionDelegate {
+            let currPosition = currentPresentedViewController.currentScrollPosition()
+            newPresentingController.setScrollPosition(min(currPosition, LandingViewController.landingScreenMapHeight - LandingViewController.landingScreenSegmentHeight))
+        }
     }
 
 }
@@ -68,9 +89,20 @@ extension SnapsPageViewController: UIPageViewControllerDataSource, UIPageViewCon
         guard let newPresentingController = pendingViewControllers.first else {
             return
         }
+
+        self.correctScrolls(newPresentingController: newPresentingController)
         self.currentPresentedViewController = newPresentingController
-        if let _ = self.orderedViewControllers.index(of: newPresentingController) {
-            //TODO: mark the segmented option as selected
+    }
+
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            didFinishAnimating finished: Bool,
+                            previousViewControllers: [UIViewController],
+                            transitionCompleted completed: Bool) {
+
+        guard let currentPresentedViewController = currentPresentedViewController else { return }
+
+        if let index = self.orderedViewControllers.index(of: currentPresentedViewController) {
+            delegate?.willChangeToPage(index: index)
         }
     }
 
@@ -103,5 +135,4 @@ extension SnapsPageViewController: UIPageViewControllerDataSource, UIPageViewCon
 
         return orderedViewControllers[nextIndex]
     }
-
 }
