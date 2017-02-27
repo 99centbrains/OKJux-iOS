@@ -16,3 +16,8 @@
 "Error_not_internet_title" = "No internet connection";
 "Error_not_internet_description" = "Make sure your device is connected to the internet.";
 "Error_while_getting_the_snaps" = "Oops, there was an error trying get the snaps. please try again later.";
+
+//LANDING
+"landing_title" = "Explore";
+"Newest" = "Newest";
+"Hottest" = "Hottest	";

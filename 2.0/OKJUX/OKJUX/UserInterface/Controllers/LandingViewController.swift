@@ -8,12 +8,13 @@
 
 import UIKit
 import MapKit
+import Neon
 
 class LandingViewController: OKJuxViewController {
 
     // MARK: - Constants
 
-    static let landingScreenMapHeight: CGFloat = 120
+    static let landingScreenMapHeight: CGFloat = 160
     static let landingScreenSegmentHeight: CGFloat = 40
 
     fileprivate var mapHeigth: CGFloat {
@@ -29,7 +30,9 @@ class LandingViewController: OKJuxViewController {
 
     var snapsPagedView: UIView!
     var map: MKMapView!
-    var segment: UIView!
+    var segmentContainer: UIView!
+    var segment: UISegmentedControl!
+    var snapsPageViewController: SnapsPageViewController!
 
     // MARK: - Data variables
 
@@ -39,26 +42,28 @@ class LandingViewController: OKJuxViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setUpSnapsPager()
         setUpMap()
         setUpSegment()
+        setUpNavigation()
     }
 
     // MARK: - Layout methods
 
     func setUpSnapsPager() {
 
-        let pagedSnapsViewController = SnapsPageViewController()
+        snapsPageViewController = SnapsPageViewController()
         let newestSnaps = SnapsViewController()
         let hottestSnaps = SnapsViewController(hottest: true)
         newestSnaps.delegate = self
         hottestSnaps.delegate = self
-        pagedSnapsViewController.orderedViewControllers = [newestSnaps, hottestSnaps]
+        snapsPageViewController.orderedViewControllers = [newestSnaps, hottestSnaps]
 
-        snapsPagedView = pagedSnapsViewController.view
-        addChildViewController(pagedSnapsViewController)
+        snapsPagedView = snapsPageViewController.view
+        addChildViewController(snapsPageViewController)
         view.addSubview(snapsPagedView)
-        pagedSnapsViewController.didMove(toParentViewController: self)
+        snapsPageViewController.didMove(toParentViewController: self)
     }
 
     func setUpMap() {
@@ -73,17 +78,48 @@ class LandingViewController: OKJuxViewController {
     }
 
     func setUpSegment() {
-        segment = UIView(frame: CGRect(x: 0, y: mapHeigth, width: view.width, height: segmentHeight))
-        view.addSubview(segment)
-        segment.backgroundColor = .yellow
+        segmentContainer = UIView(frame: CGRect(x: 0, y: mapHeigth, width: view.width, height: segmentHeight))
+        view.addSubview(segmentContainer)
+        segmentContainer.backgroundColor = .lightGray
+        let items = [R.string.localizable.newest(), R.string.localizable.hottest()]
+        self.segment = UISegmentedControl(items: items)
+        segment.selectedSegmentIndex = 0
+        segment.layer.cornerRadius = 5.0
+        segment.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.black], for: .normal)
+        segment.frame = segmentContainer.bounds
+        segment.addTarget(self, action: #selector(segmentChanged), for: .valueChanged)
+        segmentContainer.addSubview(segment)
     }
 
-    // MARK: Util methods
+    func setUpNavigation() {
+        self.title = R.string.localizable.landing_title()
+        self.navigationController?.navigationBar.setTitleVerticalPositionAdjustment(-4, for: .default)
+        let leftButtonView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        let karmaIcon = UIImageView(image: UIImage.init(icon: .FAAdjust, size: CGSize(width: 25, height: 25)))
+        let karmaValue = UILabel()
+        karmaValue.font = UIFont.systemFont(ofSize: 14)
+        karmaValue.textColor = .black
+        karmaValue.text = String(UserManager.sharedInstance.loggedUser?.karma ?? 0)
+        karmaValue.sizeToFit()
+        leftButtonView.addSubview(karmaValue)
+        leftButtonView.addSubview(karmaIcon)
+        karmaValue.align(.toTheRightCentered, relativeTo: karmaIcon, padding: 5, width: karmaValue.width, height: karmaValue.height)
+
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButtonView)
+    }
+
+    // MARK: - Actions
+
+    func segmentChanged() {
+        snapsPageViewController.changeSelectedOption(segment.selectedSegmentIndex, fromOption: segment.selectedSegmentIndex == 0 ? 1 : 0)
+    }
+
+    // MARK: - Util methods
 
     func expandMap() {
         map.isUserInteractionEnabled = true
         isMapExpanded = true
-        segment.isHidden = true
+        segmentContainer.isHidden = true
         map.accessibilityValue = "expanded"
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
             self.map.change(height: self.view.height - self.expandedBottomMargin)
@@ -135,11 +171,15 @@ extension LandingViewController: SnapsViewControllerDelegate {
                 map.change(height: mapHeigth + position)
             }
             //Move segment
-            if mapHeigth + position >= 0 {
-                segment.change(originY: mapHeigth + position)
+            if mapHeigth + position >= self.navigationController?.navigationBar.height ?? 0 {
+                segmentContainer.change(originY: mapHeigth + position)
             } else {
-                segment.change(originY: 0)
+                segmentContainer.change(originY: self.navigationController?.navigationBar.height ?? 0)
             }
+
+            let percentage = (((position * 100) / (mapHeigth - segmentHeight)) / 100) * -1
+            let alpha = max(min(1, percentage), 0)
+            self.navigationController?.navigationBar.backgroundColor = UIColor(white: 1, alpha: alpha)
         }
     }
 

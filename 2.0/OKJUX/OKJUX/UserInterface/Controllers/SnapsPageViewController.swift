@@ -47,6 +47,15 @@ class SnapsPageViewController: OKJuxViewController {
         self.pageViewController.view.anchorToEdge(.top, padding: 0, width: self.view.width, height: self.view.height)
     }
 
+    func changeSelectedOption(_ toOption: Int, fromOption: Int) {
+        guard toOption != fromOption else { return }
+        self.pageViewController.setViewControllers([self.orderedViewControllers[toOption]],
+                                                   direction: fromOption > toOption ? .reverse : .forward,
+                                                   animated: true,
+                                                   completion: nil)
+        self.currentPresentedViewController = self.orderedViewControllers[toOption]
+    }
+
 }
 
 // MARK: - UIPageViewControllerDataSource

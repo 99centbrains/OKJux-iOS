@@ -37,7 +37,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
                 self.window = UIWindow(frame: UIScreen.main.bounds)
                 let navigationController = UINavigationController(rootViewController: self.mainViewController)
-                navigationController.isNavigationBarHidden = true
+                navigationController.isNavigationBarHidden = false
+
+                UIApplication.shared.isStatusBarHidden = true
+                navigationController.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+                navigationController.navigationBar.shadowImage = UIImage()
+                navigationController.navigationBar.isTranslucent = true
+                navigationController.view.backgroundColor = .clear
+                navigationController.navigationBar.backgroundColor = .clear
+
                 self.window?.rootViewController = navigationController
                 self.window?.makeKeyAndVisible()
             }
