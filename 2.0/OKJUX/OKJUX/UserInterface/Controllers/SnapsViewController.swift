@@ -61,8 +61,11 @@ class SnapsViewController: OKJuxViewController {
         layout.scrollDirection = .vertical
         layout.headerReferenceSize = CGSize(width: view.width, height: LandingViewController.landingScreenMapHeight + LandingViewController.landingScreenSegmentHeight)
         collection = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
-        collection.register(SnapsCollectionViewCell.self, forCellWithReuseIdentifier: SnapsCollectionViewCell.reuseIdentifier)
-        collection.register(SnapsCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: SnapsCollectionReusableView.reuseIdentifier)
+        collection.register(SnapsCollectionViewCell.self,
+                            forCellWithReuseIdentifier: SnapsCollectionViewCell.reuseIdentifier)
+        collection.register(SnapsCollectionReusableView.self,
+                            forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                            withReuseIdentifier: SnapsCollectionReusableView.reuseIdentifier)
         collection.dataSource = self
         collection.delegate = self
         collection.accessibilityIdentifier = "Snaps collection " + (hottest ? "hottest" : "newest")

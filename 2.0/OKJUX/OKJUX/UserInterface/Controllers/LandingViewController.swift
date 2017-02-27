@@ -25,7 +25,6 @@ class LandingViewController: OKJuxViewController {
     fileprivate let expandedBottomMargin: CGFloat = 15
     fileprivate let expandTriggerPosition: CGFloat = 100
 
-
     // MARK: - UI variables
 
     var snapsPagedView: UIView!
@@ -64,6 +63,8 @@ class LandingViewController: OKJuxViewController {
 
     func setUpMap() {
         map = MKMapView(frame: CGRect(x: 0, y: 0, width: view.width, height: mapHeigth))
+        map.accessibilityLabel = "Snaps map"
+        map.accessibilityValue = "collapsed"
         map.showsUserLocation = true
         view.insertSubview(map, at: 0)
         MapHelper.zoomToRegion(mapView: map)
@@ -83,6 +84,7 @@ class LandingViewController: OKJuxViewController {
         map.isUserInteractionEnabled = true
         isMapExpanded = true
         segment.isHidden = true
+        map.accessibilityValue = "expanded"
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
             self.map.change(height: self.view.height - self.expandedBottomMargin)
             self.map.isUserInteractionEnabled = true
@@ -92,6 +94,7 @@ class LandingViewController: OKJuxViewController {
 
     func collapseMap() {
         isMapExpanded = false
+        map.accessibilityValue = "collapsed"
         map.isUserInteractionEnabled = false
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
             self.map.change(height: self.mapHeigth)

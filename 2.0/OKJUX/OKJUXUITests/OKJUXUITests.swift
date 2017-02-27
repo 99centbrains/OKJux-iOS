@@ -44,12 +44,6 @@ class OKJUXUITests: XCTestCase {
         super.tearDown()
     }
 
-    func testExample() {
-        //4 - check if the content changes when I change the location
-//        snapsCollectionCollectionView.staticTexts["🕑 16 hours ago  📍 United States - Nazareth"].swipeLeft()
-
-    }
-
     func test_snaps_newest_list() {
         app.launchArguments.append("Mock-1,2")
         app.launch()
@@ -129,6 +123,31 @@ class OKJUXUITests: XCTestCase {
         app.launch()
         waitFor(element: app.staticTexts["Error"])
         waitFor(element: app.staticTexts["Oops, there was an error trying get the snaps. please try again later."])
+    }
+
+    func test_landing_expand_map() {
+        app.launchArguments.append("Mock-1,2")
+        app.launch()
+        let loading = app.toolbars.staticTexts["Loading Snaps"]
+        waitFor(element: loading, disappears: true)
+        let map = app.otherElements["Snaps map"]
+        XCTAssertTrue((map.value as? String) == "collapsed", "the map is not being collapsed")
+
+        let firstCell = app.collectionViews["Snaps collection newest"].cells.element(boundBy: 0)
+        let start = firstCell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
+        let finish = firstCell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 6))
+        start.press(forDuration: 0, thenDragTo: finish)
+
+
+        //TODO: Need to close the map instead of kill the app
+        app.terminate()
+
+        app.launchArguments.append("Mock-1,2")
+        app.launch()
+        self.waitFor(element: loading, disappears: true)
+        let map2 = app.otherElements["Snaps map"]
+        map2.tap()
+        XCTAssertTrue((map2.value as? String) == "expanded", "the map is not being expanded")
     }
 
 }
