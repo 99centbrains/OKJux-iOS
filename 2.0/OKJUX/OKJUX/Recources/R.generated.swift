@@ -10,7 +10,7 @@ import UIKit
 /// This `R` struct is generated and contains references to static resources.
 struct R: Rswift.Validatable {
   fileprivate static let applicationLocale = hostingBundle.preferredLocalizations.first.flatMap(Locale.init) ?? Locale.current
-  fileprivate static let hostingBundle = Bundle(identifier: "com.99centbrains.catwang-debug") ?? Bundle.main
+  fileprivate static let hostingBundle = Bundle(identifier: "com.99centbrains.catwang-staging") ?? Bundle.main
   
   static func validate() throws {
     try font.validate()
@@ -22,7 +22,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 55 files.
+  /// This `R.file` struct is generated, and contains static references to 54 files.
   struct file {
     /// Resource file `AmaticSC-Bold.ttf`.
     static let amaticSCBoldTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "AmaticSC-Bold", pathExtension: "ttf")
@@ -40,8 +40,6 @@ struct R: Rswift.Validatable {
     static let cabinSketchRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "CabinSketch-Regular", pathExtension: "ttf")
     /// Resource file `Chewy.ttf`.
     static let chewyTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Chewy", pathExtension: "ttf")
-    /// Resource file `Configuration-Beta.plist`.
-    static let configurationBetaPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Configuration-Beta", pathExtension: "plist")
     /// Resource file `Configuration-Debug.plist`.
     static let configurationDebugPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Configuration-Debug", pathExtension: "plist")
     /// Resource file `Configuration-Release.plist`.
@@ -180,12 +178,6 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "Chewy", withExtension: "ttf")`
     static func chewyTtf(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.chewyTtf
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-    
-    /// `bundle.url(forResource: "Configuration-Beta", withExtension: "plist")`
-    static func configurationBetaPlist(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.configurationBetaPlist
       return fileResource.bundle.url(forResource: fileResource)
     }
     

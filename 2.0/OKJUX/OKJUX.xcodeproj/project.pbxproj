@@ -84,7 +84,6 @@
 		44D61C251E4B8B6D005A1936 /* OKJUXUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C241E4B8B6D005A1936 /* OKJUXUITests.swift */; };
 		44D61C371E4B8D3F005A1936 /* SnapsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C361E4B8D3F005A1936 /* SnapsNetworkManager.swift */; };
 		44D61C391E4B8D58005A1936 /* UsersNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C381E4B8D58005A1936 /* UsersNetworkManager.swift */; };
-		44D61C4E1E4B8E26005A1936 /* Configuration-Beta.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C481E4B8E26005A1936 /* Configuration-Beta.plist */; };
 		44D61C4F1E4B8E26005A1936 /* Configuration-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C491E4B8E26005A1936 /* Configuration-Debug.plist */; };
 		44D61C501E4B8E26005A1936 /* Configuration-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C4A1E4B8E26005A1936 /* Configuration-Release.plist */; };
 		44D61C511E4B8E26005A1936 /* Configuration-Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C4B1E4B8E26005A1936 /* Configuration-Staging.plist */; };
@@ -207,7 +206,6 @@
 		44D61C261E4B8B6D005A1936 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44D61C361E4B8D3F005A1936 /* SnapsNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapsNetworkManager.swift; sourceTree = "<group>"; };
 		44D61C381E4B8D58005A1936 /* UsersNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersNetworkManager.swift; sourceTree = "<group>"; };
-		44D61C481E4B8E26005A1936 /* Configuration-Beta.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Configuration-Beta.plist"; sourceTree = "<group>"; };
 		44D61C491E4B8E26005A1936 /* Configuration-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Configuration-Debug.plist"; sourceTree = "<group>"; };
 		44D61C4A1E4B8E26005A1936 /* Configuration-Release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Configuration-Release.plist"; sourceTree = "<group>"; };
 		44D61C4B1E4B8E26005A1936 /* Configuration-Staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Configuration-Staging.plist"; sourceTree = "<group>"; };
@@ -463,7 +461,6 @@
 		44D61C471E4B8E26005A1936 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				44D61C481E4B8E26005A1936 /* Configuration-Beta.plist */,
 				44D61C491E4B8E26005A1936 /* Configuration-Debug.plist */,
 				44D61C4A1E4B8E26005A1936 /* Configuration-Release.plist */,
 				44D61C4B1E4B8E26005A1936 /* Configuration-Staging.plist */,
@@ -709,7 +706,6 @@
 				4471E60A1E5B8CEF00C41F87 /* Localizable.strings in Resources */,
 				444049AD1E5CCFB600D0D983 /* CabinSketch-Bold.ttf in Resources */,
 				444049C61E5CCFB600D0D983 /* LiveSimply.ttf in Resources */,
-				44D61C4E1E4B8E26005A1936 /* Configuration-Beta.plist in Resources */,
 				444049C21E5CCFB600D0D983 /* knewave.ttf in Resources */,
 				444049CD1E5CCFB600D0D983 /* OVFont-Sheepman-Bold.ttf in Resources */,
 				444049D01E5CCFB600D0D983 /* ProximaNova-Black.ttf in Resources */,
