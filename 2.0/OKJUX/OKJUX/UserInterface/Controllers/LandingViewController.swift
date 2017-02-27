@@ -13,14 +13,25 @@ class LandingViewController: OKJuxViewController {
 
     // MARK: - Constants
 
-    let mapHeigth: CGFloat = 120
-    let expandedBottomMargin: CGFloat = 15
+    static let landingScreenMapHeight: CGFloat = 120
+    static let landingScreenSegmentHeight: CGFloat = 40
+
+    fileprivate var mapHeigth: CGFloat {
+        return type(of: self).landingScreenMapHeight
+    }
+    fileprivate var segmentHeight: CGFloat {
+        return type(of: self).landingScreenSegmentHeight
+    }
+    fileprivate let expandedBottomMargin: CGFloat = 15
+    fileprivate let expandTriggerPosition: CGFloat = 100
+
 
     // MARK: - UI variables
 
     var snapsPagedView: UIView!
     var map: MKMapView!
     var expandButton: UIButton!
+    var segment: UIView!
 
     // MARK: - Data variables
 
@@ -32,6 +43,7 @@ class LandingViewController: OKJuxViewController {
         super.viewDidLoad()
         setUpSnapsPager()
         setUpMap()
+        setUpSegment()
     }
 
     // MARK: - Layout methods
@@ -46,8 +58,6 @@ class LandingViewController: OKJuxViewController {
         pagedSnapsViewController.orderedViewControllers = [newestSnaps, hottestSnaps]
 
         snapsPagedView = pagedSnapsViewController.view
-        snapsPagedView.change(height: view.height - mapHeigth)
-        snapsPagedView.change(originY: mapHeigth)
         addChildViewController(pagedSnapsViewController)
         view.addSubview(snapsPagedView)
         pagedSnapsViewController.didMove(toParentViewController: self)
@@ -67,18 +77,24 @@ class LandingViewController: OKJuxViewController {
         expandButton.addTarget(self, action: #selector(expandMap), for: .touchUpInside)
     }
 
+    func setUpSegment() {
+        segment = UIView(frame: CGRect(x: 0, y: mapHeigth, width: view.width, height: segmentHeight))
+        view.addSubview(segment)
+        segment.backgroundColor = .yellow
+    }
+
     // MARK: Util methods
 
     func expandMap() {
         map.isUserInteractionEnabled = true
         expandButton.isHidden = true
         isMapExpanded = true
+        segment.isHidden = true
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
             self.map.change(height: self.view.height - self.expandedBottomMargin)
             self.map.isUserInteractionEnabled = true
             self.snapsPagedView.change(originY: self.view.height - self.expandedBottomMargin)
         }, completion: nil)
-
     }
 
     func collapseMap() {
@@ -119,13 +135,21 @@ extension LandingViewController: SnapsViewControllerDelegate {
 
     func snapsViewController(_ snapsViewController: SnapsViewController, isExpandingToPosition position: CGFloat) {
         if !isMapExpanded {
-            snapsPagedView.change(originY: mapHeigth + position * 2)
-            map.change(height: mapHeigth + position * 2)
+            if position >= 0 {
+                //Resize map
+                map.change(height: mapHeigth + position)
+            }
+            //Move segment
+            if mapHeigth + position >= 0 {
+                segment.change(originY: mapHeigth + position)
+            } else {
+                segment.change(originY: 0)
+            }
         }
     }
 
     func snapsViewController(_ snapsViewController: SnapsViewController, didFinishExpandingToPosition position: CGFloat) {
-        if position > 50 {
+        if position > expandTriggerPosition {
             expandMap()
         }
     }

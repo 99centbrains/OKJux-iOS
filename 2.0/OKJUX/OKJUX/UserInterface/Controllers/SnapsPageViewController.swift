@@ -24,7 +24,7 @@ class SnapsPageViewController: OKJuxViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .white
+        view.backgroundColor = .clear
         automaticallyAdjustsScrollViewInsets = false
 
         pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)

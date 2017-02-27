@@ -8,6 +8,10 @@
 
 import UIKit
 
+class SnapsCollectionReusableView: UICollectionReusableView {
+    static let reuseIdentifier = "SnapsCollectionHeaderReuseIdentifier"
+}
+
 class SnapsViewController: OKJuxViewController {
 
     // MARK: - Data variables
@@ -34,6 +38,7 @@ class SnapsViewController: OKJuxViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .clear
         setUpCollection()
         fetchData()
     }
@@ -54,12 +59,15 @@ class SnapsViewController: OKJuxViewController {
             layout.itemSize = CGSize(width: view.width - 20, height: view.height - 40)
         }
         layout.scrollDirection = .vertical
+        layout.headerReferenceSize = CGSize(width: view.width, height: LandingViewController.landingScreenMapHeight + LandingViewController.landingScreenSegmentHeight)
         collection = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collection.register(SnapsCollectionViewCell.self, forCellWithReuseIdentifier: SnapsCollectionViewCell.reuseIdentifier)
+        collection.register(SnapsCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: SnapsCollectionReusableView.reuseIdentifier)
         collection.dataSource = self
         collection.delegate = self
         collection.accessibilityIdentifier = "Snaps collection " + (hottest ? "hottest" : "newest")
-        collection.backgroundColor = .white
+        collection.backgroundColor = .clear
+        collection.backgroundView?.backgroundColor = .clear
         view.addSubview(collection)
     }
 
@@ -117,6 +125,24 @@ extension SnapsViewController: UICollectionViewDataSource, UICollectionViewDeleg
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         delegate?.snapsViewController(self, isExpandingToPosition: -scrollView.contentOffset.y)
+    }
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionElementKindSectionHeader {
+            guard let header = collection.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                     withReuseIdentifier: SnapsCollectionReusableView.reuseIdentifier,
+                                                                     for: indexPath) as? SnapsCollectionReusableView else {
+                                                                        return UICollectionReusableView()
+            }
+
+            header.backgroundColor = .clear
+            return header
+        }
+        return UICollectionReusableView()
     }
 
 }
