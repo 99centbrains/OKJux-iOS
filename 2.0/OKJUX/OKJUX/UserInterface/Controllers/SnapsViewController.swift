@@ -93,6 +93,10 @@ class SnapsViewController: OKJuxViewController {
     func reloadData() {
         collection.reloadData()
     }
+
+    func collectionHeaderPressed(gesture: UITapGestureRecognizer) {
+        delegate?.snapsViewControllerExpandMap(self, didPressOnHeader: gesture.view)
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -100,6 +104,7 @@ class SnapsViewController: OKJuxViewController {
 protocol SnapsViewControllerDelegate: class {
     func snapsViewController(_ snapsViewController: SnapsViewController, isExpandingToPosition position: CGFloat)
     func snapsViewController(_ snapsViewController: SnapsViewController, didFinishExpandingToPosition position: CGFloat)
+    func snapsViewControllerExpandMap(_ snapsViewController: SnapsViewController, didPressOnHeader header: UIView?)
 }
 
 extension SnapsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -140,6 +145,9 @@ extension SnapsViewController: UICollectionViewDataSource, UICollectionViewDeleg
             }
 
             header.backgroundColor = .clear
+            header.gestureRecognizers?.removeAll()
+            header.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(collectionHeaderPressed(gesture:))))
+
             return header
         }
         return UICollectionReusableView()

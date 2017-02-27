@@ -30,7 +30,6 @@ class LandingViewController: OKJuxViewController {
 
     var snapsPagedView: UIView!
     var map: MKMapView!
-    var expandButton: UIButton!
     var segment: UIView!
 
     // MARK: - Data variables
@@ -70,11 +69,6 @@ class LandingViewController: OKJuxViewController {
         MapHelper.zoomToRegion(mapView: map)
         MapHelper.loadMapWithNearbySnaps(mapView: map)
         map.delegate = self
-
-        expandButton = UIButton(type: .custom)
-        expandButton.frame = map.frame
-        view.insertSubview(expandButton, at: 1)
-        expandButton.addTarget(self, action: #selector(expandMap), for: .touchUpInside)
     }
 
     func setUpSegment() {
@@ -87,7 +81,6 @@ class LandingViewController: OKJuxViewController {
 
     func expandMap() {
         map.isUserInteractionEnabled = true
-        expandButton.isHidden = true
         isMapExpanded = true
         segment.isHidden = true
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
@@ -99,7 +92,6 @@ class LandingViewController: OKJuxViewController {
 
     func collapseMap() {
         isMapExpanded = false
-        expandButton.isHidden = false
         map.isUserInteractionEnabled = false
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
             self.map.change(height: self.mapHeigth)
@@ -152,5 +144,9 @@ extension LandingViewController: SnapsViewControllerDelegate {
         if position > expandTriggerPosition {
             expandMap()
         }
+    }
+
+    func snapsViewControllerExpandMap(_ snapsViewController: SnapsViewController, didPressOnHeader header: UIView?) {
+        expandMap()
     }
 }
