@@ -179,4 +179,29 @@ class OKJUXUITests: XCTestCase {
         XCTAssertTrue(newest.exists, "swiping left should not change to hotest")
     }
 
+    func test_report_snap() {
+        app.launchArguments.append("Mock-1,2,6")
+        app.launch()
+        let loading = app.toolbars.staticTexts["Loading Snaps"]
+        waitFor(element: loading, disappears: true)
+
+        let hottest = app.collectionViews["Snaps collection newest"]
+        hottest.cells.element(boundBy: 0).buttons["Report abuse"].tap()
+        XCTAssertTrue(app.staticTexts["Report Photo"].exists, "The alert is not appearing")
+        XCTAssertTrue(app.buttons["Report"].exists, "The alert does not contain the report button")
+        XCTAssertTrue(app.buttons["Never Mind"].exists, "The alert does not contain the Never Mind button")
+
+        app.buttons["Never Mind"].tap()
+        XCTAssertFalse(app.staticTexts["Report Photo"].exists, "The alert should be dismmissed")
+
+        hottest.cells.element(boundBy: 0).buttons["Report abuse"].tap()
+        app.buttons["Report"].tap()
+
+        waitFor(element: app.toolbars.staticTexts["Loading"], disappears: true)
+        waitFor(element: app.staticTexts["Success"])
+        XCTAssertTrue(app.staticTexts["Success"].exists, "The done message it's not appearing")
+
+
+    }
+
 }

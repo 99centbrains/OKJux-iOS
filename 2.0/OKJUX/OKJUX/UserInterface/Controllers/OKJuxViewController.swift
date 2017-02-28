@@ -19,35 +19,54 @@ class OKJuxViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
     }
 
-    func showGenericErrorMessage(error: NSError?) {
-        if ConfigurationManager.environment == .development {
-            print("ERROR: -> \(error?.localizedDescription)")
-        }
+    func showError(title: String, body: String) {
 
-        var errorTitle = R.string.localizable.error_generic_title()
-        var errorMessage = R.string.localizable.error_while_getting_the_snaps()
         let errorIcon = UIImage.init(icon:.FAExclamationCircle, size: CGSize(width: 35, height: 35), textColor: .white, backgroundColor: .clear)
-
-        if let error = error, error.code == OKJuxError.ErrorType.noInternet.rawValue {
-            errorTitle = R.string.localizable.error_not_internet_title()
-            errorMessage = R.string.localizable.error_not_internet_description()
-        }
 
         let view = MessageView.viewFromNib(layout: .CardView)
         view.button?.isHidden = true
         view.configureTheme(.warning)
         view.backgroundView.backgroundColor = UIColor(red: 249.0/255.0, green: 66.0/255.0, blue: 47.0/255.0, alpha: 1.0)
         view.configureDropShadow()
-        view.configureContent(title: errorTitle, body: errorMessage, iconImage: errorIcon)
+        view.configureContent(title: title, body: body, iconImage: errorIcon)
         SwiftMessages.show(view: view)
     }
 
+    func showGenericErrorMessage(error: NSError?) {
+        if ConfigurationManager.environment == .development {
+            print("ERROR: -> \(error?.localizedDescription)")
+        }
+
+        var errorTitle = R.string.localizable.error_generic_title()
+        var errorMessage = R.string.localizable.error_while_getting_the_snaps_body()
+
+        if let error = error, error.code == OKJuxError.ErrorType.noInternet.rawValue {
+            errorTitle = R.string.localizable.error_not_internet_title()
+            errorMessage = R.string.localizable.error_not_internet_body()
+        }
+        self.showError(title: errorTitle, body: errorMessage)
+    }
+
     func showLoading(localizedMessage: String? = R.string.localizable.loading()) {
-        TAOverlay.show(withLabel: localizedMessage, options: [.overlaySizeBar, .overlayTypeActivityDefault ])
+        TAOverlay.show(withLabel: localizedMessage, options: [.overlaySizeBar, .overlayTypeActivityDefault])
     }
 
     func hideLoading() {
         TAOverlay.hide()
+    }
+
+    func showSucccess(title: String, body: String) {
+        let view = MessageView.viewFromNib(layout: .CardView)
+        view.button?.isHidden = true
+        view.configureTheme(.success)
+        view.configureDropShadow()
+        view.configureContent(title: title, body: body)
+        SwiftMessages.show(view: view)
+    }
+
+    func showGenericErrorMessage() {
+        //TODO: TEST
+        self.showError(title: R.string.localizable.error_generic_title(), body: R.string.localizable.error_generic_body())
     }
 
 }

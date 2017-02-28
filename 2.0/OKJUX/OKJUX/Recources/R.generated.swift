@@ -918,26 +918,49 @@ struct R: Rswift.Validatable {
   
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 9 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 18 localization keys.
     struct localizable {
+      /// Value: Done
+      static let done = Rswift.StringResource(key: "Done", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Error
       static let error_generic_title = Rswift.StringResource(key: "Error_generic_title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Explore
       static let landing_title = Rswift.StringResource(key: "landing_title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: Hottest	
+      /// Value: Hottest
       static let hottest = Rswift.StringResource(key: "Hottest", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Loading
       static let loading = Rswift.StringResource(key: "Loading", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Loading Snaps
       static let loadingSnaps = Rswift.StringResource(key: "Loading Snaps", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Make sure your device is connected to the internet.
-      static let error_not_internet_description = Rswift.StringResource(key: "Error_not_internet_description", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let error_not_internet_body = Rswift.StringResource(key: "Error_not_internet_body", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Never Mind
+      static let prompt_report_cancel = Rswift.StringResource(key: "Prompt_report_cancel", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Newest
       static let newest = Rswift.StringResource(key: "Newest", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: No internet connection
       static let error_not_internet_title = Rswift.StringResource(key: "Error_not_internet_title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Oops! Try again later.
+      static let error_generic_body = Rswift.StringResource(key: "Error_generic_body", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Oops, there was an error trying get the snaps. please try again later.
-      static let error_while_getting_the_snaps = Rswift.StringResource(key: "Error_while_getting_the_snaps", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let error_while_getting_the_snaps_body = Rswift.StringResource(key: "Error_while_getting_the_snaps_body", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Please report any spam or suspicious photos.
+      static let prompt_report_body = Rswift.StringResource(key: "Prompt_report_body", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Report
+      static let prompt_report_action = Rswift.StringResource(key: "Prompt_report_action", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Report Photo
+      static let prompt_report_title = Rswift.StringResource(key: "Prompt_report_title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Success
+      static let success = Rswift.StringResource(key: "success", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Successfully reported.
+      static let prompt_report_successfully = Rswift.StringResource(key: "Prompt_report_successfully", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: You have already reported this snap.
+      static let prompt_already_reported_body = Rswift.StringResource(key: "Prompt_already_reported_body", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      
+      /// Value: Done
+      static func done(_: Void = ()) -> String {
+        return NSLocalizedString("Done", bundle: R.hostingBundle, comment: "")
+      }
       
       /// Value: Error
       static func error_generic_title(_: Void = ()) -> String {
@@ -949,7 +972,7 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("landing_title", bundle: R.hostingBundle, comment: "")
       }
       
-      /// Value: Hottest	
+      /// Value: Hottest
       static func hottest(_: Void = ()) -> String {
         return NSLocalizedString("Hottest", bundle: R.hostingBundle, comment: "")
       }
@@ -965,8 +988,13 @@ struct R: Rswift.Validatable {
       }
       
       /// Value: Make sure your device is connected to the internet.
-      static func error_not_internet_description(_: Void = ()) -> String {
-        return NSLocalizedString("Error_not_internet_description", bundle: R.hostingBundle, comment: "")
+      static func error_not_internet_body(_: Void = ()) -> String {
+        return NSLocalizedString("Error_not_internet_body", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// Value: Never Mind
+      static func prompt_report_cancel(_: Void = ()) -> String {
+        return NSLocalizedString("Prompt_report_cancel", bundle: R.hostingBundle, comment: "")
       }
       
       /// Value: Newest
@@ -979,9 +1007,44 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Error_not_internet_title", bundle: R.hostingBundle, comment: "")
       }
       
+      /// Value: Oops! Try again later.
+      static func error_generic_body(_: Void = ()) -> String {
+        return NSLocalizedString("Error_generic_body", bundle: R.hostingBundle, comment: "")
+      }
+      
       /// Value: Oops, there was an error trying get the snaps. please try again later.
-      static func error_while_getting_the_snaps(_: Void = ()) -> String {
-        return NSLocalizedString("Error_while_getting_the_snaps", bundle: R.hostingBundle, comment: "")
+      static func error_while_getting_the_snaps_body(_: Void = ()) -> String {
+        return NSLocalizedString("Error_while_getting_the_snaps_body", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// Value: Please report any spam or suspicious photos.
+      static func prompt_report_body(_: Void = ()) -> String {
+        return NSLocalizedString("Prompt_report_body", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// Value: Report
+      static func prompt_report_action(_: Void = ()) -> String {
+        return NSLocalizedString("Prompt_report_action", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// Value: Report Photo
+      static func prompt_report_title(_: Void = ()) -> String {
+        return NSLocalizedString("Prompt_report_title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// Value: Success
+      static func success(_: Void = ()) -> String {
+        return NSLocalizedString("success", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// Value: Successfully reported.
+      static func prompt_report_successfully(_: Void = ()) -> String {
+        return NSLocalizedString("Prompt_report_successfully", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// Value: You have already reported this snap.
+      static func prompt_already_reported_body(_: Void = ()) -> String {
+        return NSLocalizedString("Prompt_already_reported_body", bundle: R.hostingBundle, comment: "")
       }
       
       fileprivate init() {}

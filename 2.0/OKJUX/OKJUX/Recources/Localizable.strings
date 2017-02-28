@@ -7,17 +7,29 @@
 */
 
 //LOADING
-
 "Loading" = "Loading";
 "Loading Snaps" = "Loading Snaps";
 
 //COMMON
+"Done" = "Done";
+"success" = "Success";
+
+//COMMON - ERROR
 "Error_generic_title" = "Error";
+"Error_generic_body" = "Oops! Try again later.";
 "Error_not_internet_title" = "No internet connection";
-"Error_not_internet_description" = "Make sure your device is connected to the internet.";
-"Error_while_getting_the_snaps" = "Oops, there was an error trying get the snaps. please try again later.";
+"Error_not_internet_body" = "Make sure your device is connected to the internet.";
+"Error_while_getting_the_snaps_body" = "Oops, there was an error trying get the snaps. please try again later.";
+
+//COMMON - REPORT SNAP
+"Prompt_report_title" = "Report Photo";
+"Prompt_report_body" = "Please report any spam or suspicious photos.";
+"Prompt_report_action" = "Report";
+"Prompt_report_cancel" = "Never Mind";
+"Prompt_already_reported_body" = "You have already reported this snap.";
+"Prompt_report_successfully" = "Successfully reported.";
 
 //LANDING
 "landing_title" = "Explore";
 "Newest" = "Newest";
-"Hottest" = "Hottest	";
+"Hottest" = "Hottest";

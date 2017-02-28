@@ -17,13 +17,19 @@ class MockRequestHelper {
         case get_newest_snaps_error_500 = 3
         case get_newest_snaps_empty_result = 4
         case get_hottest_snaps = 5
+        case post_snap_reported_succeeded = 6
+        case post_snap_reported_fail = 7
+        case post_snap_reported_already_reported = 8
     }
 
     class func mockRequest(path: String, responseFile: String, statusCode: Int32 = 200) {
         #if DEBUG
         _ = stub(condition: isPath(path)) { _ in
-            let stubPath = OHPathForFile("MockFiles/\(responseFile).json", self)
-            return OHHTTPStubsResponse(fileAtPath: stubPath!, statusCode: statusCode, headers: ["Content-Type": "application/json; charset=utf-8"])
+            if !responseFile.characters.isEmpty {
+                let stubPath = OHPathForFile("MockFiles/\(responseFile).json", self)
+                return OHHTTPStubsResponse(fileAtPath: stubPath!, statusCode: statusCode, headers: ["Content-Type": "application/json; charset=utf-8"])
+            }
+            return OHHTTPStubsResponse(jsonObject: [], statusCode: statusCode, headers: ["Content-Type": "application/json; charset=utf-8"])
         }
         #endif
     }
@@ -47,6 +53,15 @@ class MockRequestHelper {
             break
         case .get_hottest_snaps:
             mockRequest(path: "/api/v1/snaps", responseFile: "get_hottest_snaps_mock")
+            break
+        case .post_snap_reported_succeeded:
+            mockRequest(path: "/api/v1/snaps/13666/flag", responseFile: "", statusCode: 204)
+            break
+        case .post_snap_reported_fail:
+            mockRequest(path: "/api/v1/snaps/13666/flag", responseFile: "", statusCode: 500)
+            break
+        case .post_snap_reported_already_reported:
+            mockRequest(path: "/api/v1/snaps/13666/flag", responseFile: "", statusCode: 422)
             break
         }
     }

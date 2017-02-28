@@ -7,6 +7,13 @@
 //
 
 import UIKit
+import SCLAlertView
+
+protocol SnapsViewControllerDelegate: class {
+    func snapsViewController(_ snapsViewController: SnapsViewController, isExpandingToPosition position: CGFloat)
+    func snapsViewController(_ snapsViewController: SnapsViewController, didFinishExpandingToPosition position: CGFloat)
+    func snapsViewControllerExpandMap(_ snapsViewController: SnapsViewController, didPressOnHeader header: UIView?)
+}
 
 class SnapsCollectionReusableView: UICollectionReusableView {
     static let reuseIdentifier = "SnapsCollectionHeaderReuseIdentifier"
@@ -102,13 +109,7 @@ class SnapsViewController: OKJuxViewController {
     }
 }
 
-// MARK: - UICollectionViewDataSource
-
-protocol SnapsViewControllerDelegate: class {
-    func snapsViewController(_ snapsViewController: SnapsViewController, isExpandingToPosition position: CGFloat)
-    func snapsViewController(_ snapsViewController: SnapsViewController, didFinishExpandingToPosition position: CGFloat)
-    func snapsViewControllerExpandMap(_ snapsViewController: SnapsViewController, didPressOnHeader header: UIView?)
-}
+// MARK: - UICollectionViewDataSource & UICollectionViewDelegate
 
 extension SnapsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -121,8 +122,10 @@ extension SnapsViewController: UICollectionViewDataSource, UICollectionViewDeleg
                                                         for: indexPath) as? SnapsCollectionViewCell else {
             fatalError("unable to cast to SnapsCollectionViewCell")
         }
-
-        cell.loadData(snap: nearbySnaps![indexPath.row], hottest: hottest)
+        cell.indexPath = indexPath
+        cell.hottest = hottest
+        cell.delegate = self
+        cell.loadData(snap: nearbySnaps![indexPath.row])
 
         return cell
     }
@@ -159,6 +162,7 @@ extension SnapsViewController: UICollectionViewDataSource, UICollectionViewDeleg
 }
 
 extension SnapsViewController: SnapsPageViewControllerTransitionDelegate {
+
     func currentScrollPosition() -> CGFloat {
         return collection.contentOffset.y
     }
@@ -166,4 +170,32 @@ extension SnapsViewController: SnapsPageViewControllerTransitionDelegate {
     func setScrollPosition(_ position: CGFloat) {
         collection.setContentOffset(CGPoint(x: 0, y: position), animated: false)
     }
+
+}
+
+extension SnapsViewController: SnapsCollectionViewCellDelegate {
+
+    func snapsCollectionViewCell(cell: SnapsCollectionViewCell, didPressedOnReportAt indexPath: IndexPath) {
+
+        let alert = SCLAlertView()
+        alert.addButton(R.string.localizable.prompt_report_action()) {
+            self.showLoading()
+            SnapsManager.sharedInstance.reportSnap(snap: self.nearbySnaps![indexPath.row], completion: { (error) in
+                self.hideLoading()
+                if let error = error {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2 , execute: {
+                        //self.showSucccess(title: R.string.localizable.success(), body: R.string.localizable.prompt_report_successfully())
+                    })
+                } else {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2 , execute: { 
+                        self.showSucccess(title: R.string.localizable.success(), body: R.string.localizable.prompt_report_successfully())
+                    })
+                }
+            })
+        }
+
+        let icon = UIImage(icon: .FAQuestion, size: CGSize(width: 50, height: 50), textColor: .white, backgroundColor: .clear)
+        _ = alert.showCustom(R.string.localizable.prompt_report_title(), subTitle: R.string.localizable.prompt_report_body(), color: UIColor.orange, icon: icon, closeButtonTitle: R.string.localizable.prompt_report_cancel())
+    }
+
 }
