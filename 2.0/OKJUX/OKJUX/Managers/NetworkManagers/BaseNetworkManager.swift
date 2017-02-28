@@ -76,7 +76,7 @@ class BaseNetworkManager {
         }
 
         Alamofire.request(url, method: HTTPMethod(rawValue: requestMethodType.rawValue)!, parameters: parameters).responseJSON { (response) in
-            
+            print(url, response.response?.statusCode)
             guard response.result.error == nil else {
                 let okJuxError = searchForTheRealErrorMessage(url: url, response: response)
                 completion(okJuxError, nil)

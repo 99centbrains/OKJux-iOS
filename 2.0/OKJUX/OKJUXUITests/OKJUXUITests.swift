@@ -180,7 +180,17 @@ class OKJUXUITests: XCTestCase {
     }
 
     func test_report_snap() {
-        app.launchArguments.append("Mock-1,2,6")
+
+        let mockItem = MockRequestItem(requestPath: "/api/v1/snaps/13666/flag", responseFileName: "")
+        mockItem.removeAfterCalled = true
+        mockItem.responseHTTPCode = 204
+
+        let mockItem2 = MockRequestItem(requestPath: "/api/v1/snaps/13666/flag", responseFileName: "")
+        mockItem2.removeAfterCalled = true
+        mockItem2.responseHTTPCode = 422
+
+        app.launchArguments.append(mockItem2.toJsonString())
+        app.launchArguments.append(mockItem.toJsonString())
         app.launch()
         let loading = app.toolbars.staticTexts["Loading Snaps"]
         waitFor(element: loading, disappears: true)
@@ -200,7 +210,6 @@ class OKJUXUITests: XCTestCase {
         waitFor(element: app.toolbars.staticTexts["Loading"], disappears: true)
         waitFor(element: app.staticTexts["Success"])
         XCTAssertTrue(app.staticTexts["Success"].exists, "The done message it's not appearing")
-
 
     }
 

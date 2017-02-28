@@ -11,6 +11,8 @@ import OHHTTPStubs
 
 class MockRequestHelper {
 
+    private static var mockRequestItems = [MockRequestItem: OHHTTPStubsDescriptor]()
+
     private enum MockRequest: Int {
         case post_register_user = 1
         case get_newest_snaps = 2
@@ -33,6 +35,31 @@ class MockRequestHelper {
         }
         #endif
     }
+
+        class func mockRequest(mockRequestItem: MockRequestItem) {
+            #if DEBUG
+                guard let path: String = mockRequestItem.requestPath,
+                    let responseFile: String = mockRequestItem.responseFileName,
+                    let statusCode: Int32 = mockRequestItem.responseHTTPCode else {
+                        return
+                }
+
+                let stubDescriptor = stub(condition: isPath(path)) { _ in
+                    if mockRequestItem.removeAfterCalled {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                            OHHTTPStubs.removeStub(mockRequestItems[mockRequestItem]!)
+                        })
+                    }
+                    if !responseFile.characters.isEmpty {
+                        let stubPath = OHPathForFile("MockFiles/\(responseFile).json", self)
+                        return OHHTTPStubsResponse(fileAtPath: stubPath!, statusCode: statusCode, headers: ["Content-Type": "application/json; charset=utf-8"])
+                    }
+                    return OHHTTPStubsResponse(jsonObject: [], statusCode: statusCode, headers: ["Content-Type": "application/json; charset=utf-8"])
+                }
+                mockRequestItems[mockRequestItem] = stubDescriptor
+
+            #endif
+        }
 
     private class func mockRequest(request: MockRequest?) {
         guard let request = request else {

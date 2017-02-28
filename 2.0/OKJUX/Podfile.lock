@@ -3,6 +3,9 @@ PODS:
   - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
   - DateParser (1.1.0)
+  - EVReflection (4.4.1):
+    - EVReflection/Core (= 4.4.1)
+  - EVReflection/Core (4.4.1)
   - Fabric (1.6.11)
   - Font-Awesome-Swift (1.6.1)
   - Neon (0.4.0)
@@ -36,6 +39,7 @@ DEPENDENCIES:
   - Alamofire
   - Crashlytics
   - DateParser
+  - EVReflection
   - Fabric
   - Font-Awesome-Swift
   - Neon
@@ -52,6 +56,7 @@ SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   DateParser: f6a3351ebf0f2a8e6ab5e1f11f98e9a772089a08
+  EVReflection: 19aa5cd37051999ac2cab7a33d6619c97104f42a
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   Font-Awesome-Swift: 70ab020f6749d7048bb49807c3e78b702d78afca
   Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
@@ -64,6 +69,6 @@ SPEC CHECKSUMS:
   SwiftMessages: bb85d7c30e85256f9367214b0907e1f409e1870a
   TAOverlay: 940e37fdb45fbc9acfc73bf1089668367e3b1be6
 
-PODFILE CHECKSUM: 820c6ed6074b949fd62dc6f44127f0b812f630fc
+PODFILE CHECKSUM: 520eedb5e40a66c73cca03ae0dbd29aaf857cfb7
 
 COCOAPODS: 1.1.1
