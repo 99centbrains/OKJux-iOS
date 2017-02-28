@@ -24,6 +24,7 @@ class OKJuxError: NSError {
         case notParsableResponse
         case loginRequired
         case noInternet
+        case cannotReportSnapTwice
 
         var description: String {
             switch self {
@@ -31,6 +32,8 @@ class OKJuxError: NSError {
                 return "Something went wrong"
             case .emptyResponseBody, .notParsableResponse, .loginRequired:
                 return "Server didn't response a correct answer"
+            case .cannotReportSnapTwice:
+                return "You cannot report a snap more than once"
             default:
                 return "Something went wrong"
             }
@@ -73,8 +76,10 @@ class BaseNetworkManager {
         }
 
         Alamofire.request(url, method: HTTPMethod(rawValue: requestMethodType.rawValue)!, parameters: parameters).responseJSON { (response) in
+            print(url.absoluteString, response.response!.statusCode)
             guard response.result.error == nil else {
-                completion(OKJuxError(errorType: .noInternet, generatedClass: self), nil)
+                let okJuxError = searchForTheRealErrorMessage(url: url, response: response)
+                completion(okJuxError, nil)
                 return
             }
 
@@ -85,10 +90,25 @@ class BaseNetworkManager {
                     completion(nil, json)
                 }
             } else {
+                if let statusCode = response.response?.statusCode, statusCode == 204 {
+                    completion(nil, nil)
+                    return
+                }
                 completion(OKJuxError(errorType: .unknown, generatedClass: self), nil)
             }
         }
 
+    }
+
+    private class func searchForTheRealErrorMessage(url: URL, response: DataResponse<Any>) -> OKJuxError {
+        if let statusCode = response.response?.statusCode {
+            if statusCode == 422, url.absoluteString.contains("flag") {
+                return OKJuxError(errorType: .cannotReportSnapTwice, generatedClass: self)
+            } else {
+                return OKJuxError(errorType: .unknown, generatedClass: self)
+            }
+        }
+        return OKJuxError(errorType: .noInternet, generatedClass: self)
     }
 
 }

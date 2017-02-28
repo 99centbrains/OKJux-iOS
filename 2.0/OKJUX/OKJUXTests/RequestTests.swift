@@ -11,11 +11,11 @@ import XCTest
 
 class RequestTests: OKJUXTests {
 
-    func test_registerUserPostRequest() {
+    func test_register_user_post_request() {
         let exp = expectation(description: "")
         BaseNetworkManager.sendRequest(method: "users",
                                        requestMethodType: .post,
-                                       parameters: ["user[UUID]": "F96034AC-446E-4139-949D-9F7CB4686322"]) { (error, json) in
+                                       parameters: ["user[UUID]": "F96034AC-446E-4139-949D-9F7CB4686324"]) { (error, json) in
 
             guard error == nil else {
                 XCTAssert(false, "request faild")
@@ -46,7 +46,7 @@ class RequestTests: OKJUXTests {
         }
     }
 
-    func test_registerUser() {
+    func test_register_user() {
         let exp = expectation(description: "")
         self.signInUser {
             XCTAssert(true)
@@ -59,7 +59,7 @@ class RequestTests: OKJUXTests {
         }
     }
 
-    func test_getNewestSnaps() {
+    func test_get_newest_snaps() {
         let exp = expectation(description: "")
         self.signInUser {
 
@@ -87,7 +87,7 @@ class RequestTests: OKJUXTests {
         }
     }
 
-    func test_getHottestSnaps() {
+    func test_get_hottest_snaps() {
         let exp = expectation(description: "")
         self.signInUser {
 
@@ -126,7 +126,7 @@ class RequestTests: OKJUXTests {
         }
     }
 
-    func test_getNewestNearBySnaps() {
+    func test_get_newest_nearby_snaps() {
         let exp = expectation(description: "")
         let lat = -34.907000
         let lng = -56.190005
@@ -159,6 +159,38 @@ class RequestTests: OKJUXTests {
                                                     exp.fulfill()
             })
         }
+        waitForExpectations(timeout: 5) { (error) in
+            if let error = error {
+                XCTFail(error.localizedDescription)
+            }
+        }
+    }
+
+    func test_report_snap() {
+        let exp = expectation(description: "")
+        self.signInUser {
+            SnapsManager.sharedInstance.getSnaps(completion: { (error, snaps) in
+                if let snap = snaps?.last {
+                    SnapsManager.sharedInstance.reportSnap(snap: snap, completion: { (error) in
+                        if let error = error {
+                            if error.code == OKJuxError.ErrorType.cannotReportSnapTwice.rawValue {
+                                XCTAssert(true)
+                            } else {
+                                XCTAssert(false, "error reporting snap \(error.localizedDescription)")
+                            }
+                        } else {
+                            XCTAssert(true)
+                        }
+                        exp.fulfill()
+                    })
+                } else {
+                    XCTAssert(false, "error while getting snaps")
+                    exp.fulfill()
+                }
+            })
+
+        }
+
         waitForExpectations(timeout: 5) { (error) in
             if let error = error {
                 XCTFail(error.localizedDescription)
