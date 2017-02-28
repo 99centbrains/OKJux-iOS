@@ -10,6 +10,7 @@ import UIKit
 import OHHTTPStubs
 import Fabric
 import Crashlytics
+import Instabug
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Fabric.with([Crashlytics.self])
 
+        Instabug.start(withToken: ConfigurationManager.instabugToken, invocationEvent: .shake)
+        //TODO: use it on the onboarding Instabug.showIntroMessage()
         updateAppSettingsVersion()
 
         #if DEBUG

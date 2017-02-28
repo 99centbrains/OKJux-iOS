@@ -108,5 +108,13 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Needs access to the microphone to be able to attach voice notes.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Select pics to share on okjux</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Anonymously Post and View rad jux snaps around you. Your location will never be shared!</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Take new pics to share on okjux</string>
 </dict>
 </plist>
