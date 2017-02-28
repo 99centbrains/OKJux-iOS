@@ -7,3 +7,28 @@
 //
 
 import Foundation
+
+class SnapsNetworkManager: BaseNetworkManager {
+
+    class func getSnaps(parameters: [String: Any], completion: @escaping (NSError?, [String: Any]?) -> Void) {
+
+        var nearBy = false
+        if let _ = parameters["lat"], let _ = parameters["lng"] {
+            nearBy = true
+        }
+
+        sendRequest(method: "snaps" + (nearBy ? "/nearby" : ""), parameters: parameters) { (error, json) in
+            guard error == nil else {
+                completion(error!, nil)
+                return
+            }
+
+            if let json = json, !json.isEmpty {
+                completion(nil, json)
+            } else {
+                completion(OKJuxError(errorType: OKJuxError.ErrorType.notParsableResponse, generatedClass: type(of: self)), nil)
+            }
+        }
+
+    }
+}

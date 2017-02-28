@@ -9,20 +9,20 @@
 import Foundation
 
 class ConfigurationManager: NSObject {
-    
+
     enum Environment: String {
         case development = "Debug"
         case beta = "Beta"
         case staging = "Staging"
         case production = "Release"
     }
-    
+
     static let sharedInstance = ConfigurationManager()
-    
+
     var configs: [String: String]!
-    
+
     static let currentConfiguration = Bundle.main.object(forInfoDictionaryKey: "Configuration")!
-    
+
     override init() {
 
         if let url = Bundle.main.url(forResource: "Configuration-\(ConfigurationManager.currentConfiguration)", withExtension: "plist") {
@@ -34,5 +34,5 @@ class ConfigurationManager: NSObject {
             }
         }
     }
-    
+
 }

@@ -20,12 +20,75 @@
 	<string>1</string>
 	<key>Configuration</key>
 	<string>$(CONFIGURATION)</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>0b2e1d159a4429a311c1bea031e461d1ff27b133</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>AmaticSC-Bold.ttf</string>
+		<string>arfmoochikncheez.ttf</string>
+		<string>Arvil_Sans.ttf</string>
+		<string>Blackout Midnight.ttf</string>
+		<string>Bubblegum.ttf</string>
+		<string>Butcherman-Regular.ttf</string>
+		<string>CabinSketch-Bold.ttf</string>
+		<string>CabinSketch-Regular.ttf</string>
+		<string>Chewy.ttf</string>
+		<string>Cooper Black.ttf</string>
+		<string>Corben-Bold.ttf</string>
+		<string>Corben-Regular.ttf</string>
+		<string>Courgette-Regular.ttf</string>
+		<string>Creepster-Regular.ttf</string>
+		<string>DeliusUnicase-Bold.ttf</string>
+		<string>DeliusUnicase-Regular.ttf</string>
+		<string>DoubleFeature20.ttf</string>
+		<string>FingerPaint-Regular.ttf</string>
+		<string>FredokaOne-Regular.ttf</string>
+		<string>Frijole-Regular.ttf</string>
+		<string>GloriaHallelujah.ttf</string>
+		<string>GochiHand-Regular.ttf</string>
+		<string>Gorditas-Regular.ttf</string>
+		<string>Grind Zero.ttf</string>
+		<string>Hollywood99.ttf</string>
+		<string>KaushanScript-Regular.ttf</string>
+		<string>KellySlab-Regular.ttf</string>
+		<string>knewave.ttf</string>
+		<string>LeagueScript.ttf</string>
+		<string>LeckerliOne-Regular.ttf</string>
+		<string>Lemon-Regular.ttf</string>
+		<string>LiveSimply.ttf</string>
+		<string>Megrim.ttf</string>
+		<string>mensch.ttf</string>
+		<string>Minecrafter_3.ttf</string>
+		<string>NinaKetchup.ttf</string>
+		<string>Nosifer-Regular.ttf</string>
+		<string>OVFont-PaperCute.ttf</string>
+		<string>OVFont-Sheepman-Bold.ttf</string>
+		<string>Pacifico.ttf</string>
+		<string>PressStart2P-Regular.ttf</string>
+		<string>ProximaNova-Black.ttf</string>
+		<string>RockSalt.ttf</string>
+		<string>ROCKYAOE.ttf</string>
+		<string>soupofjustice.ttf</string>
+		<string>TheSkinny-bold.otf</string>
+		<string>TradeWinds-Regular.ttf</string>
+		<string>UnifrakturCook-Bold.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -43,5 +106,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

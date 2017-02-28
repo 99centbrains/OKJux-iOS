@@ -1,18 +1,66 @@
 PODS:
   - Alamofire (4.0.1)
+  - Crashlytics (3.8.4):
+    - Fabric (~> 1.6.3)
+  - DateParser (1.1.0)
+  - Fabric (1.6.11)
+  - Font-Awesome-Swift (1.6.1)
+  - Neon (0.4.0)
+  - OHHTTPStubs (5.2.3):
+    - OHHTTPStubs/Default (= 5.2.3)
+  - OHHTTPStubs/Core (5.2.3)
+  - OHHTTPStubs/Default (5.2.3):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (5.2.3):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (5.2.3):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (5.2.3)
+  - OHHTTPStubs/Swift (5.2.3):
+    - OHHTTPStubs/Core
   - R.swift (3.1.0):
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+  - SwiftLint (0.16.1)
+  - SwiftMessages (3.1.5)
+  - TAOverlay (2.0.1)
 
 DEPENDENCIES:
   - Alamofire
+  - Crashlytics
+  - DateParser
+  - Fabric
+  - Font-Awesome-Swift
+  - Neon
+  - OHHTTPStubs
+  - OHHTTPStubs/Swift
   - R.swift
+  - SDWebImage
+  - SwiftLint
+  - SwiftMessages
+  - TAOverlay
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
+  DateParser: f6a3351ebf0f2a8e6ab5e1f11f98e9a772089a08
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
+  Font-Awesome-Swift: 70ab020f6749d7048bb49807c3e78b702d78afca
+  Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
+  OHHTTPStubs: e238cd5b66d8efa51c861db45895de8fe079f4a7
   R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SwiftLint: b8b683208cc09640898f16318a7a452274e91f61
+  SwiftMessages: bb85d7c30e85256f9367214b0907e1f409e1870a
+  TAOverlay: 940e37fdb45fbc9acfc73bf1089668367e3b1be6
 
-PODFILE CHECKSUM: 909ea3f1bb5e9102492c6063cad6385bd43f4bd8
+PODFILE CHECKSUM: 9e5b46aac19f89efed905c2f4db4879ca9426a65
 
 COCOAPODS: 1.1.1

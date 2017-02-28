@@ -10,9 +10,10 @@ import UIKit
 /// This `R` struct is generated and contains references to static resources.
 struct R: Rswift.Validatable {
   fileprivate static let applicationLocale = hostingBundle.preferredLocalizations.first.flatMap(Locale.init) ?? Locale.current
-  fileprivate static let hostingBundle = Bundle(identifier: "com.99centbrains.catwang-debug") ?? Bundle.main
+  fileprivate static let hostingBundle = Bundle(identifier: "com.99centbrains.catwang-staging") ?? Bundle.main
   
   static func validate() throws {
+    try font.validate()
     try intern.validate()
   }
   
@@ -21,22 +22,162 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 5 files.
+  /// This `R.file` struct is generated, and contains static references to 54 files.
   struct file {
-    /// Resource file `Configuration-Beta.plist`.
-    static let configurationBetaPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Configuration-Beta", pathExtension: "plist")
+    /// Resource file `AmaticSC-Bold.ttf`.
+    static let amaticSCBoldTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "AmaticSC-Bold", pathExtension: "ttf")
+    /// Resource file `Arvil_Sans.ttf`.
+    static let arvil_SansTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Arvil_Sans", pathExtension: "ttf")
+    /// Resource file `Blackout Midnight.ttf`.
+    static let blackoutMidnightTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Blackout Midnight", pathExtension: "ttf")
+    /// Resource file `Bubblegum.ttf`.
+    static let bubblegumTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Bubblegum", pathExtension: "ttf")
+    /// Resource file `Butcherman-Regular.ttf`.
+    static let butchermanRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Butcherman-Regular", pathExtension: "ttf")
+    /// Resource file `CabinSketch-Bold.ttf`.
+    static let cabinSketchBoldTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "CabinSketch-Bold", pathExtension: "ttf")
+    /// Resource file `CabinSketch-Regular.ttf`.
+    static let cabinSketchRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "CabinSketch-Regular", pathExtension: "ttf")
+    /// Resource file `Chewy.ttf`.
+    static let chewyTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Chewy", pathExtension: "ttf")
     /// Resource file `Configuration-Debug.plist`.
     static let configurationDebugPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Configuration-Debug", pathExtension: "plist")
     /// Resource file `Configuration-Release.plist`.
     static let configurationReleasePlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Configuration-Release", pathExtension: "plist")
     /// Resource file `Configuration-Staging.plist`.
     static let configurationStagingPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Configuration-Staging", pathExtension: "plist")
+    /// Resource file `Cooper Black.ttf`.
+    static let cooperBlackTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Cooper Black", pathExtension: "ttf")
+    /// Resource file `Corben-Bold.ttf`.
+    static let corbenBoldTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Corben-Bold", pathExtension: "ttf")
+    /// Resource file `Corben-Regular.ttf`.
+    static let corbenRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Corben-Regular", pathExtension: "ttf")
+    /// Resource file `Courgette-Regular.ttf`.
+    static let courgetteRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Courgette-Regular", pathExtension: "ttf")
+    /// Resource file `Creepster-Regular.ttf`.
+    static let creepsterRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Creepster-Regular", pathExtension: "ttf")
+    /// Resource file `DeliusUnicase-Bold.ttf`.
+    static let deliusUnicaseBoldTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "DeliusUnicase-Bold", pathExtension: "ttf")
+    /// Resource file `DeliusUnicase-Regular.ttf`.
+    static let deliusUnicaseRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "DeliusUnicase-Regular", pathExtension: "ttf")
+    /// Resource file `DoubleFeature20.ttf`.
+    static let doubleFeature20Ttf = Rswift.FileResource(bundle: R.hostingBundle, name: "DoubleFeature20", pathExtension: "ttf")
+    /// Resource file `FingerPaint-Regular.ttf`.
+    static let fingerPaintRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "FingerPaint-Regular", pathExtension: "ttf")
+    /// Resource file `FredokaOne-Regular.ttf`.
+    static let fredokaOneRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "FredokaOne-Regular", pathExtension: "ttf")
+    /// Resource file `Frijole-Regular.ttf`.
+    static let frijoleRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Frijole-Regular", pathExtension: "ttf")
+    /// Resource file `GloriaHallelujah.ttf`.
+    static let gloriaHallelujahTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "GloriaHallelujah", pathExtension: "ttf")
+    /// Resource file `GochiHand-Regular.ttf`.
+    static let gochiHandRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "GochiHand-Regular", pathExtension: "ttf")
+    /// Resource file `Gorditas-Regular.ttf`.
+    static let gorditasRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Gorditas-Regular", pathExtension: "ttf")
+    /// Resource file `Grind Zero.ttf`.
+    static let grindZeroTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Grind Zero", pathExtension: "ttf")
+    /// Resource file `Hollywood99.ttf`.
+    static let hollywood99Ttf = Rswift.FileResource(bundle: R.hostingBundle, name: "Hollywood99", pathExtension: "ttf")
+    /// Resource file `KaushanScript-Regular.ttf`.
+    static let kaushanScriptRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "KaushanScript-Regular", pathExtension: "ttf")
+    /// Resource file `KellySlab-Regular.ttf`.
+    static let kellySlabRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "KellySlab-Regular", pathExtension: "ttf")
+    /// Resource file `LeagueScript.ttf`.
+    static let leagueScriptTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "LeagueScript", pathExtension: "ttf")
+    /// Resource file `LeckerliOne-Regular.ttf`.
+    static let leckerliOneRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "LeckerliOne-Regular", pathExtension: "ttf")
+    /// Resource file `Lemon-Regular.ttf`.
+    static let lemonRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Lemon-Regular", pathExtension: "ttf")
+    /// Resource file `LiveSimply.ttf`.
+    static let liveSimplyTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "LiveSimply", pathExtension: "ttf")
+    /// Resource file `Megrim.ttf`.
+    static let megrimTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Megrim", pathExtension: "ttf")
+    /// Resource file `Minecrafter_3.ttf`.
+    static let minecrafter_3Ttf = Rswift.FileResource(bundle: R.hostingBundle, name: "Minecrafter_3", pathExtension: "ttf")
+    /// Resource file `MockFiles`.
+    static let mockFiles = Rswift.FileResource(bundle: R.hostingBundle, name: "MockFiles", pathExtension: "")
+    /// Resource file `NinaKetchup.ttf`.
+    static let ninaKetchupTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "NinaKetchup", pathExtension: "ttf")
+    /// Resource file `Nosifer-Regular.ttf`.
+    static let nosiferRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Nosifer-Regular", pathExtension: "ttf")
+    /// Resource file `OVFont-PaperCute.ttf`.
+    static let oVFontPaperCuteTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "OVFont-PaperCute", pathExtension: "ttf")
+    /// Resource file `OVFont-Sheepman-Bold.ttf`.
+    static let oVFontSheepmanBoldTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "OVFont-Sheepman-Bold", pathExtension: "ttf")
+    /// Resource file `Pacifico.ttf`.
+    static let pacificoTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Pacifico", pathExtension: "ttf")
+    /// Resource file `PressStart2P-Regular.ttf`.
+    static let pressStart2PRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "PressStart2P-Regular", pathExtension: "ttf")
+    /// Resource file `ProximaNova-Black.ttf`.
+    static let proximaNovaBlackTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "ProximaNova-Black", pathExtension: "ttf")
+    /// Resource file `ROCKYAOE.ttf`.
+    static let rOCKYAOETtf = Rswift.FileResource(bundle: R.hostingBundle, name: "ROCKYAOE", pathExtension: "ttf")
+    /// Resource file `RockSalt.ttf`.
+    static let rockSaltTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "RockSalt", pathExtension: "ttf")
     /// Resource file `Settings.bundle`.
     static let settingsBundle = Rswift.FileResource(bundle: R.hostingBundle, name: "Settings", pathExtension: "bundle")
+    /// Resource file `TheSkinny-bold.otf`.
+    static let theSkinnyBoldOtf = Rswift.FileResource(bundle: R.hostingBundle, name: "TheSkinny-bold", pathExtension: "otf")
+    /// Resource file `TradeWinds-Regular.ttf`.
+    static let tradeWindsRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "TradeWinds-Regular", pathExtension: "ttf")
+    /// Resource file `UnifrakturCook-Bold.ttf`.
+    static let unifrakturCookBoldTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "UnifrakturCook-Bold", pathExtension: "ttf")
+    /// Resource file `arfmoochikncheez.ttf`.
+    static let arfmoochikncheezTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "arfmoochikncheez", pathExtension: "ttf")
+    /// Resource file `knewave.ttf`.
+    static let knewaveTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "knewave", pathExtension: "ttf")
+    /// Resource file `mensch.ttf`.
+    static let menschTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "mensch", pathExtension: "ttf")
+    /// Resource file `so-brush.ttf`.
+    static let soBrushTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "so-brush", pathExtension: "ttf")
+    /// Resource file `soupofjustice.ttf`.
+    static let soupofjusticeTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "soupofjustice", pathExtension: "ttf")
     
-    /// `bundle.url(forResource: "Configuration-Beta", withExtension: "plist")`
-    static func configurationBetaPlist(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.configurationBetaPlist
+    /// `bundle.url(forResource: "AmaticSC-Bold", withExtension: "ttf")`
+    static func amaticSCBoldTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.amaticSCBoldTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Arvil_Sans", withExtension: "ttf")`
+    static func arvil_SansTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.arvil_SansTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Blackout Midnight", withExtension: "ttf")`
+    static func blackoutMidnightTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.blackoutMidnightTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Bubblegum", withExtension: "ttf")`
+    static func bubblegumTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.bubblegumTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Butcherman-Regular", withExtension: "ttf")`
+    static func butchermanRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.butchermanRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "CabinSketch-Bold", withExtension: "ttf")`
+    static func cabinSketchBoldTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.cabinSketchBoldTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "CabinSketch-Regular", withExtension: "ttf")`
+    static func cabinSketchRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.cabinSketchRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Chewy", withExtension: "ttf")`
+    static func chewyTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.chewyTtf
       return fileResource.bundle.url(forResource: fileResource)
     }
     
@@ -58,22 +199,692 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.url(forResource: fileResource)
     }
     
+    /// `bundle.url(forResource: "Cooper Black", withExtension: "ttf")`
+    static func cooperBlackTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.cooperBlackTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Corben-Bold", withExtension: "ttf")`
+    static func corbenBoldTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.corbenBoldTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Corben-Regular", withExtension: "ttf")`
+    static func corbenRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.corbenRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Courgette-Regular", withExtension: "ttf")`
+    static func courgetteRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.courgetteRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Creepster-Regular", withExtension: "ttf")`
+    static func creepsterRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.creepsterRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "DeliusUnicase-Bold", withExtension: "ttf")`
+    static func deliusUnicaseBoldTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.deliusUnicaseBoldTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "DeliusUnicase-Regular", withExtension: "ttf")`
+    static func deliusUnicaseRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.deliusUnicaseRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "DoubleFeature20", withExtension: "ttf")`
+    static func doubleFeature20Ttf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.doubleFeature20Ttf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "FingerPaint-Regular", withExtension: "ttf")`
+    static func fingerPaintRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.fingerPaintRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "FredokaOne-Regular", withExtension: "ttf")`
+    static func fredokaOneRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.fredokaOneRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Frijole-Regular", withExtension: "ttf")`
+    static func frijoleRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.frijoleRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "GloriaHallelujah", withExtension: "ttf")`
+    static func gloriaHallelujahTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.gloriaHallelujahTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "GochiHand-Regular", withExtension: "ttf")`
+    static func gochiHandRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.gochiHandRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Gorditas-Regular", withExtension: "ttf")`
+    static func gorditasRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.gorditasRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Grind Zero", withExtension: "ttf")`
+    static func grindZeroTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.grindZeroTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Hollywood99", withExtension: "ttf")`
+    static func hollywood99Ttf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.hollywood99Ttf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "KaushanScript-Regular", withExtension: "ttf")`
+    static func kaushanScriptRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.kaushanScriptRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "KellySlab-Regular", withExtension: "ttf")`
+    static func kellySlabRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.kellySlabRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "LeagueScript", withExtension: "ttf")`
+    static func leagueScriptTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.leagueScriptTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "LeckerliOne-Regular", withExtension: "ttf")`
+    static func leckerliOneRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.leckerliOneRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Lemon-Regular", withExtension: "ttf")`
+    static func lemonRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.lemonRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "LiveSimply", withExtension: "ttf")`
+    static func liveSimplyTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.liveSimplyTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Megrim", withExtension: "ttf")`
+    static func megrimTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.megrimTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Minecrafter_3", withExtension: "ttf")`
+    static func minecrafter_3Ttf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.minecrafter_3Ttf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "MockFiles", withExtension: "")`
+    static func mockFiles(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.mockFiles
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "NinaKetchup", withExtension: "ttf")`
+    static func ninaKetchupTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.ninaKetchupTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Nosifer-Regular", withExtension: "ttf")`
+    static func nosiferRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.nosiferRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "OVFont-PaperCute", withExtension: "ttf")`
+    static func oVFontPaperCuteTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.oVFontPaperCuteTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "OVFont-Sheepman-Bold", withExtension: "ttf")`
+    static func oVFontSheepmanBoldTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.oVFontSheepmanBoldTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Pacifico", withExtension: "ttf")`
+    static func pacificoTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.pacificoTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "PressStart2P-Regular", withExtension: "ttf")`
+    static func pressStart2PRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.pressStart2PRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "ProximaNova-Black", withExtension: "ttf")`
+    static func proximaNovaBlackTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.proximaNovaBlackTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "ROCKYAOE", withExtension: "ttf")`
+    static func rOCKYAOETtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.rOCKYAOETtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "RockSalt", withExtension: "ttf")`
+    static func rockSaltTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.rockSaltTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
     /// `bundle.url(forResource: "Settings", withExtension: "bundle")`
     static func settingsBundle(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.settingsBundle
       return fileResource.bundle.url(forResource: fileResource)
     }
     
+    /// `bundle.url(forResource: "TheSkinny-bold", withExtension: "otf")`
+    static func theSkinnyBoldOtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.theSkinnyBoldOtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "TradeWinds-Regular", withExtension: "ttf")`
+    static func tradeWindsRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.tradeWindsRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "UnifrakturCook-Bold", withExtension: "ttf")`
+    static func unifrakturCookBoldTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.unifrakturCookBoldTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "arfmoochikncheez", withExtension: "ttf")`
+    static func arfmoochikncheezTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.arfmoochikncheezTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "knewave", withExtension: "ttf")`
+    static func knewaveTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.knewaveTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "mensch", withExtension: "ttf")`
+    static func menschTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.menschTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "so-brush", withExtension: "ttf")`
+    static func soBrushTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.soBrushTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "soupofjustice", withExtension: "ttf")`
+    static func soupofjusticeTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.soupofjusticeTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
     fileprivate init() {}
   }
   
-  /// This `R.font` struct is generated, and contains static references to 0 fonts.
-  struct font {
+  /// This `R.font` struct is generated, and contains static references to 49 fonts.
+  struct font: Rswift.Validatable {
+    /// Font `AmaticSC-Bold`.
+    static let amaticSCBold = Rswift.FontResource(fontName: "AmaticSC-Bold")
+    /// Font `Arfmoochikncheez`.
+    static let arfmoochikncheez = Rswift.FontResource(fontName: "Arfmoochikncheez")
+    /// Font `ArvilSans`.
+    static let arvilSans = Rswift.FontResource(fontName: "ArvilSans")
+    /// Font `Blackout-Midnight`.
+    static let blackoutMidnight = Rswift.FontResource(fontName: "Blackout-Midnight")
+    /// Font `BubbleGum`.
+    static let bubbleGum = Rswift.FontResource(fontName: "BubbleGum")
+    /// Font `Butcherman-Regular`.
+    static let butchermanRegular = Rswift.FontResource(fontName: "Butcherman-Regular")
+    /// Font `CabinSketch-Bold`.
+    static let cabinSketchBold = Rswift.FontResource(fontName: "CabinSketch-Bold")
+    /// Font `CabinSketch-Regular`.
+    static let cabinSketchRegular = Rswift.FontResource(fontName: "CabinSketch-Regular")
+    /// Font `Chewy`.
+    static let chewy = Rswift.FontResource(fontName: "Chewy")
+    /// Font `CooperBlack`.
+    static let cooperBlack = Rswift.FontResource(fontName: "CooperBlack")
+    /// Font `Corben-Regular`.
+    static let corbenRegular = Rswift.FontResource(fontName: "Corben-Regular")
+    /// Font `Corben`.
+    static let corben = Rswift.FontResource(fontName: "Corben")
+    /// Font `Courgette-Regular`.
+    static let courgetteRegular = Rswift.FontResource(fontName: "Courgette-Regular")
+    /// Font `Creepster-Regular`.
+    static let creepsterRegular = Rswift.FontResource(fontName: "Creepster-Regular")
+    /// Font `DeliusUnicase-Bold`.
+    static let deliusUnicaseBold = Rswift.FontResource(fontName: "DeliusUnicase-Bold")
+    /// Font `DeliusUnicase-Regular`.
+    static let deliusUnicaseRegular = Rswift.FontResource(fontName: "DeliusUnicase-Regular")
+    /// Font `DoubleFeature`.
+    static let doubleFeature = Rswift.FontResource(fontName: "DoubleFeature")
+    /// Font `FingerPaint-Regular`.
+    static let fingerPaintRegular = Rswift.FontResource(fontName: "FingerPaint-Regular")
+    /// Font `FredokaOne-Regular`.
+    static let fredokaOneRegular = Rswift.FontResource(fontName: "FredokaOne-Regular")
+    /// Font `Frijole`.
+    static let frijole = Rswift.FontResource(fontName: "Frijole")
+    /// Font `GloriaHallelujah`.
+    static let gloriaHallelujah = Rswift.FontResource(fontName: "GloriaHallelujah")
+    /// Font `GochiHand-Regular`.
+    static let gochiHandRegular = Rswift.FontResource(fontName: "GochiHand-Regular")
+    /// Font `Gorditas-Regular`.
+    static let gorditasRegular = Rswift.FontResource(fontName: "Gorditas-Regular")
+    /// Font `GrindZero`.
+    static let grindZero = Rswift.FontResource(fontName: "GrindZero")
+    /// Font `Hollywood99`.
+    static let hollywood99 = Rswift.FontResource(fontName: "Hollywood99")
+    /// Font `KaushanScript-Regular`.
+    static let kaushanScriptRegular = Rswift.FontResource(fontName: "KaushanScript-Regular")
+    /// Font `KellySlab-Regular`.
+    static let kellySlabRegular = Rswift.FontResource(fontName: "KellySlab-Regular")
+    /// Font `Knewave`.
+    static let knewave = Rswift.FontResource(fontName: "Knewave")
+    /// Font `LeagueScript`.
+    static let leagueScript = Rswift.FontResource(fontName: "LeagueScript")
+    /// Font `LeckerliOne-Regular`.
+    static let leckerliOneRegular = Rswift.FontResource(fontName: "LeckerliOne-Regular")
+    /// Font `Lemon-Regular`.
+    static let lemonRegular = Rswift.FontResource(fontName: "Lemon-Regular")
+    /// Font `LiveSimply`.
+    static let liveSimply = Rswift.FontResource(fontName: "LiveSimply")
+    /// Font `Megrim`.
+    static let megrim = Rswift.FontResource(fontName: "Megrim")
+    /// Font `MenschRegular`.
+    static let menschRegular = Rswift.FontResource(fontName: "MenschRegular")
+    /// Font `MineCrafter-3`.
+    static let mineCrafter3 = Rswift.FontResource(fontName: "MineCrafter-3")
+    /// Font `NinaKetchup`.
+    static let ninaKetchup = Rswift.FontResource(fontName: "NinaKetchup")
+    /// Font `Nosifer-Regular`.
+    static let nosiferRegular = Rswift.FontResource(fontName: "Nosifer-Regular")
+    /// Font `Pacifico-Regular`.
+    static let pacificoRegular = Rswift.FontResource(fontName: "Pacifico-Regular")
+    /// Font `PaperCute`.
+    static let paperCute = Rswift.FontResource(fontName: "PaperCute")
+    /// Font `PressStart2P-Regular`.
+    static let pressStart2PRegular = Rswift.FontResource(fontName: "PressStart2P-Regular")
+    /// Font `ProximaNova-Black`.
+    static let proximaNovaBlack = Rswift.FontResource(fontName: "ProximaNova-Black")
+    /// Font `ROCKYAOE`.
+    static let rOCKYAOE = Rswift.FontResource(fontName: "ROCKYAOE")
+    /// Font `RockSalt`.
+    static let rockSalt = Rswift.FontResource(fontName: "RockSalt")
+    /// Font `Sheepman-Bold`.
+    static let sheepmanBold = Rswift.FontResource(fontName: "Sheepman-Bold")
+    /// Font `SoupofJustice`.
+    static let soupofJustice = Rswift.FontResource(fontName: "SoupofJustice")
+    /// Font `TheSkinnybold`.
+    static let theSkinnybold = Rswift.FontResource(fontName: "TheSkinnybold")
+    /// Font `TradeWinds`.
+    static let tradeWinds = Rswift.FontResource(fontName: "TradeWinds")
+    /// Font `UnifrakturCook-Bold`.
+    static let unifrakturCookBold = Rswift.FontResource(fontName: "UnifrakturCook-Bold")
+    /// Font `sobrush`.
+    static let sobrush = Rswift.FontResource(fontName: "sobrush")
+    
+    /// `UIFont(name: "AmaticSC-Bold", size: ...)`
+    static func amaticSCBold(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: amaticSCBold, size: size)
+    }
+    
+    /// `UIFont(name: "Arfmoochikncheez", size: ...)`
+    static func arfmoochikncheez(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: arfmoochikncheez, size: size)
+    }
+    
+    /// `UIFont(name: "ArvilSans", size: ...)`
+    static func arvilSans(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: arvilSans, size: size)
+    }
+    
+    /// `UIFont(name: "Blackout-Midnight", size: ...)`
+    static func blackoutMidnight(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: blackoutMidnight, size: size)
+    }
+    
+    /// `UIFont(name: "BubbleGum", size: ...)`
+    static func bubbleGum(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: bubbleGum, size: size)
+    }
+    
+    /// `UIFont(name: "Butcherman-Regular", size: ...)`
+    static func butchermanRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: butchermanRegular, size: size)
+    }
+    
+    /// `UIFont(name: "CabinSketch-Bold", size: ...)`
+    static func cabinSketchBold(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: cabinSketchBold, size: size)
+    }
+    
+    /// `UIFont(name: "CabinSketch-Regular", size: ...)`
+    static func cabinSketchRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: cabinSketchRegular, size: size)
+    }
+    
+    /// `UIFont(name: "Chewy", size: ...)`
+    static func chewy(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: chewy, size: size)
+    }
+    
+    /// `UIFont(name: "CooperBlack", size: ...)`
+    static func cooperBlack(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: cooperBlack, size: size)
+    }
+    
+    /// `UIFont(name: "Corben", size: ...)`
+    static func corben(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: corben, size: size)
+    }
+    
+    /// `UIFont(name: "Corben-Regular", size: ...)`
+    static func corbenRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: corbenRegular, size: size)
+    }
+    
+    /// `UIFont(name: "Courgette-Regular", size: ...)`
+    static func courgetteRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: courgetteRegular, size: size)
+    }
+    
+    /// `UIFont(name: "Creepster-Regular", size: ...)`
+    static func creepsterRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: creepsterRegular, size: size)
+    }
+    
+    /// `UIFont(name: "DeliusUnicase-Bold", size: ...)`
+    static func deliusUnicaseBold(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: deliusUnicaseBold, size: size)
+    }
+    
+    /// `UIFont(name: "DeliusUnicase-Regular", size: ...)`
+    static func deliusUnicaseRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: deliusUnicaseRegular, size: size)
+    }
+    
+    /// `UIFont(name: "DoubleFeature", size: ...)`
+    static func doubleFeature(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: doubleFeature, size: size)
+    }
+    
+    /// `UIFont(name: "FingerPaint-Regular", size: ...)`
+    static func fingerPaintRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: fingerPaintRegular, size: size)
+    }
+    
+    /// `UIFont(name: "FredokaOne-Regular", size: ...)`
+    static func fredokaOneRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: fredokaOneRegular, size: size)
+    }
+    
+    /// `UIFont(name: "Frijole", size: ...)`
+    static func frijole(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: frijole, size: size)
+    }
+    
+    /// `UIFont(name: "GloriaHallelujah", size: ...)`
+    static func gloriaHallelujah(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: gloriaHallelujah, size: size)
+    }
+    
+    /// `UIFont(name: "GochiHand-Regular", size: ...)`
+    static func gochiHandRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: gochiHandRegular, size: size)
+    }
+    
+    /// `UIFont(name: "Gorditas-Regular", size: ...)`
+    static func gorditasRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: gorditasRegular, size: size)
+    }
+    
+    /// `UIFont(name: "GrindZero", size: ...)`
+    static func grindZero(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: grindZero, size: size)
+    }
+    
+    /// `UIFont(name: "Hollywood99", size: ...)`
+    static func hollywood99(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: hollywood99, size: size)
+    }
+    
+    /// `UIFont(name: "KaushanScript-Regular", size: ...)`
+    static func kaushanScriptRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: kaushanScriptRegular, size: size)
+    }
+    
+    /// `UIFont(name: "KellySlab-Regular", size: ...)`
+    static func kellySlabRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: kellySlabRegular, size: size)
+    }
+    
+    /// `UIFont(name: "Knewave", size: ...)`
+    static func knewave(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: knewave, size: size)
+    }
+    
+    /// `UIFont(name: "LeagueScript", size: ...)`
+    static func leagueScript(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: leagueScript, size: size)
+    }
+    
+    /// `UIFont(name: "LeckerliOne-Regular", size: ...)`
+    static func leckerliOneRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: leckerliOneRegular, size: size)
+    }
+    
+    /// `UIFont(name: "Lemon-Regular", size: ...)`
+    static func lemonRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: lemonRegular, size: size)
+    }
+    
+    /// `UIFont(name: "LiveSimply", size: ...)`
+    static func liveSimply(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: liveSimply, size: size)
+    }
+    
+    /// `UIFont(name: "Megrim", size: ...)`
+    static func megrim(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: megrim, size: size)
+    }
+    
+    /// `UIFont(name: "MenschRegular", size: ...)`
+    static func menschRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: menschRegular, size: size)
+    }
+    
+    /// `UIFont(name: "MineCrafter-3", size: ...)`
+    static func mineCrafter3(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: mineCrafter3, size: size)
+    }
+    
+    /// `UIFont(name: "NinaKetchup", size: ...)`
+    static func ninaKetchup(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: ninaKetchup, size: size)
+    }
+    
+    /// `UIFont(name: "Nosifer-Regular", size: ...)`
+    static func nosiferRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: nosiferRegular, size: size)
+    }
+    
+    /// `UIFont(name: "Pacifico-Regular", size: ...)`
+    static func pacificoRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: pacificoRegular, size: size)
+    }
+    
+    /// `UIFont(name: "PaperCute", size: ...)`
+    static func paperCute(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: paperCute, size: size)
+    }
+    
+    /// `UIFont(name: "PressStart2P-Regular", size: ...)`
+    static func pressStart2PRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: pressStart2PRegular, size: size)
+    }
+    
+    /// `UIFont(name: "ProximaNova-Black", size: ...)`
+    static func proximaNovaBlack(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: proximaNovaBlack, size: size)
+    }
+    
+    /// `UIFont(name: "ROCKYAOE", size: ...)`
+    static func rOCKYAOE(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: rOCKYAOE, size: size)
+    }
+    
+    /// `UIFont(name: "RockSalt", size: ...)`
+    static func rockSalt(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: rockSalt, size: size)
+    }
+    
+    /// `UIFont(name: "Sheepman-Bold", size: ...)`
+    static func sheepmanBold(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: sheepmanBold, size: size)
+    }
+    
+    /// `UIFont(name: "SoupofJustice", size: ...)`
+    static func soupofJustice(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: soupofJustice, size: size)
+    }
+    
+    /// `UIFont(name: "TheSkinnybold", size: ...)`
+    static func theSkinnybold(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: theSkinnybold, size: size)
+    }
+    
+    /// `UIFont(name: "TradeWinds", size: ...)`
+    static func tradeWinds(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: tradeWinds, size: size)
+    }
+    
+    /// `UIFont(name: "UnifrakturCook-Bold", size: ...)`
+    static func unifrakturCookBold(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: unifrakturCookBold, size: size)
+    }
+    
+    /// `UIFont(name: "sobrush", size: ...)`
+    static func sobrush(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: sobrush, size: size)
+    }
+    
+    static func validate() throws {
+      if R.font.kellySlabRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'KellySlab-Regular' could not be loaded, is 'KellySlab-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.arvilSans(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'ArvilSans' could not be loaded, is 'Arvil_Sans.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.arfmoochikncheez(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Arfmoochikncheez' could not be loaded, is 'arfmoochikncheez.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.amaticSCBold(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'AmaticSC-Bold' could not be loaded, is 'AmaticSC-Bold.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.corbenRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Corben-Regular' could not be loaded, is 'Corben-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.rockSalt(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'RockSalt' could not be loaded, is 'RockSalt.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.blackoutMidnight(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Blackout-Midnight' could not be loaded, is 'Blackout Midnight.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.unifrakturCookBold(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'UnifrakturCook-Bold' could not be loaded, is 'UnifrakturCook-Bold.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.liveSimply(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'LiveSimply' could not be loaded, is 'LiveSimply.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.paperCute(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'PaperCute' could not be loaded, is 'OVFont-PaperCute.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.frijole(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Frijole' could not be loaded, is 'Frijole-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.kaushanScriptRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'KaushanScript-Regular' could not be loaded, is 'KaushanScript-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.theSkinnybold(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'TheSkinnybold' could not be loaded, is 'TheSkinny-bold.otf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.soupofJustice(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'SoupofJustice' could not be loaded, is 'soupofjustice.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.nosiferRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Nosifer-Regular' could not be loaded, is 'Nosifer-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.doubleFeature(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'DoubleFeature' could not be loaded, is 'DoubleFeature20.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.sheepmanBold(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Sheepman-Bold' could not be loaded, is 'OVFont-Sheepman-Bold.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.proximaNovaBlack(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'ProximaNova-Black' could not be loaded, is 'ProximaNova-Black.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.cooperBlack(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'CooperBlack' could not be loaded, is 'Cooper Black.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.chewy(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Chewy' could not be loaded, is 'Chewy.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.pacificoRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Pacifico-Regular' could not be loaded, is 'Pacifico.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.sobrush(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'sobrush' could not be loaded, is 'so-brush.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.leagueScript(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'LeagueScript' could not be loaded, is 'LeagueScript.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.gochiHandRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'GochiHand-Regular' could not be loaded, is 'GochiHand-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.cabinSketchRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'CabinSketch-Regular' could not be loaded, is 'CabinSketch-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.creepsterRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Creepster-Regular' could not be loaded, is 'Creepster-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.mineCrafter3(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'MineCrafter-3' could not be loaded, is 'Minecrafter_3.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.knewave(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Knewave' could not be loaded, is 'knewave.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.bubbleGum(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'BubbleGum' could not be loaded, is 'Bubblegum.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.butchermanRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Butcherman-Regular' could not be loaded, is 'Butcherman-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.gorditasRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Gorditas-Regular' could not be loaded, is 'Gorditas-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.leckerliOneRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'LeckerliOne-Regular' could not be loaded, is 'LeckerliOne-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.grindZero(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'GrindZero' could not be loaded, is 'Grind Zero.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.fredokaOneRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'FredokaOne-Regular' could not be loaded, is 'FredokaOne-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.fingerPaintRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'FingerPaint-Regular' could not be loaded, is 'FingerPaint-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.lemonRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Lemon-Regular' could not be loaded, is 'Lemon-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.tradeWinds(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'TradeWinds' could not be loaded, is 'TradeWinds-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.cabinSketchBold(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'CabinSketch-Bold' could not be loaded, is 'CabinSketch-Bold.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.pressStart2PRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'PressStart2P-Regular' could not be loaded, is 'PressStart2P-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.menschRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'MenschRegular' could not be loaded, is 'mensch.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.ninaKetchup(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'NinaKetchup' could not be loaded, is 'NinaKetchup.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.megrim(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Megrim' could not be loaded, is 'Megrim.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.gloriaHallelujah(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'GloriaHallelujah' could not be loaded, is 'GloriaHallelujah.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.deliusUnicaseRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'DeliusUnicase-Regular' could not be loaded, is 'DeliusUnicase-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.rOCKYAOE(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'ROCKYAOE' could not be loaded, is 'ROCKYAOE.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.hollywood99(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Hollywood99' could not be loaded, is 'Hollywood99.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.corben(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Corben' could not be loaded, is 'Corben-Bold.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.courgetteRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Courgette-Regular' could not be loaded, is 'Courgette-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.deliusUnicaseBold(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'DeliusUnicase-Bold' could not be loaded, is 'DeliusUnicase-Bold.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+    }
+    
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 0 images.
+  /// This `R.image` struct is generated, and contains static references to 3 images.
   struct image {
+    /// Image `common_background_transparent`.
+    static let common_background_transparent = Rswift.ImageResource(bundle: R.hostingBundle, name: "common_background_transparent")
+    /// Image `snap_heart_like`.
+    static let snap_heart_like = Rswift.ImageResource(bundle: R.hostingBundle, name: "snap_heart_like")
+    /// Image `snap_report_abuse`.
+    static let snap_report_abuse = Rswift.ImageResource(bundle: R.hostingBundle, name: "snap_report_abuse")
+    
+    /// `UIImage(named: "common_background_transparent", bundle: ..., traitCollection: ...)`
+    static func common_background_transparent(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.common_background_transparent, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "snap_heart_like", bundle: ..., traitCollection: ...)`
+    static func snap_heart_like(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.snap_heart_like, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "snap_report_abuse", bundle: ..., traitCollection: ...)`
+    static func snap_report_abuse(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.snap_report_abuse, compatibleWith: traitCollection)
+    }
+    
     fileprivate init() {}
   }
   
@@ -92,28 +903,90 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.storyboard` struct is generated, and contains static references to 2 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 1 storyboards.
   struct storyboard {
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
-    /// Storyboard `Main`.
-    static let main = _R.storyboard.main()
     
     /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
     static func launchScreen(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.launchScreen)
     }
     
-    /// `UIStoryboard(name: "Main", bundle: ...)`
-    static func main(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.main)
-    }
-    
     fileprivate init() {}
   }
   
-  /// This `R.string` struct is generated, and contains static references to 0 localization tables.
+  /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
+    /// This `R.string.localizable` struct is generated, and contains static references to 9 localization keys.
+    struct localizable {
+      /// Value: Error
+      static let error_generic_title = Rswift.StringResource(key: "Error_generic_title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Explore
+      static let landing_title = Rswift.StringResource(key: "landing_title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Hottest	
+      static let hottest = Rswift.StringResource(key: "Hottest", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Loading
+      static let loading = Rswift.StringResource(key: "Loading", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Loading Snaps
+      static let loadingSnaps = Rswift.StringResource(key: "Loading Snaps", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Make sure your device is connected to the internet.
+      static let error_not_internet_description = Rswift.StringResource(key: "Error_not_internet_description", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Newest
+      static let newest = Rswift.StringResource(key: "Newest", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: No internet connection
+      static let error_not_internet_title = Rswift.StringResource(key: "Error_not_internet_title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Oops, there was an error trying get the snaps. please try again later.
+      static let error_while_getting_the_snaps = Rswift.StringResource(key: "Error_while_getting_the_snaps", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      
+      /// Value: Error
+      static func error_generic_title(_: Void = ()) -> String {
+        return NSLocalizedString("Error_generic_title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// Value: Explore
+      static func landing_title(_: Void = ()) -> String {
+        return NSLocalizedString("landing_title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// Value: Hottest	
+      static func hottest(_: Void = ()) -> String {
+        return NSLocalizedString("Hottest", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// Value: Loading
+      static func loading(_: Void = ()) -> String {
+        return NSLocalizedString("Loading", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// Value: Loading Snaps
+      static func loadingSnaps(_: Void = ()) -> String {
+        return NSLocalizedString("Loading Snaps", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// Value: Make sure your device is connected to the internet.
+      static func error_not_internet_description(_: Void = ()) -> String {
+        return NSLocalizedString("Error_not_internet_description", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// Value: Newest
+      static func newest(_: Void = ()) -> String {
+        return NSLocalizedString("Newest", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// Value: No internet connection
+      static func error_not_internet_title(_: Void = ()) -> String {
+        return NSLocalizedString("Error_not_internet_title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// Value: Oops, there was an error trying get the snaps. please try again later.
+      static func error_while_getting_the_snaps(_: Void = ()) -> String {
+        return NSLocalizedString("Error_while_getting_the_snaps", bundle: R.hostingBundle, comment: "")
+      }
+      
+      fileprivate init() {}
+    }
+    
     fileprivate init() {}
   }
   
@@ -139,15 +1012,6 @@ struct _R {
       
       let bundle = R.hostingBundle
       let name = "LaunchScreen"
-      
-      fileprivate init() {}
-    }
-    
-    struct main: Rswift.StoryboardResourceWithInitialControllerType {
-      typealias InitialController = ViewController
-      
-      let bundle = R.hostingBundle
-      let name = "Main"
       
       fileprivate init() {}
     }

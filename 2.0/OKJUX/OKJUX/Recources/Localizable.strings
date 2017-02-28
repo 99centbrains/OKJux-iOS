@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  OKJUX
+
+  Created by German Pereyra on 20/Feb/17.
+  Copyright © 2017 German Pereyra. All rights reserved.
+*/
+
+//LOADING
+
+"Loading" = "Loading";
+"Loading Snaps" = "Loading Snaps";
+
+//COMMON
+"Error_generic_title" = "Error";
+"Error_not_internet_title" = "No internet connection";
+"Error_not_internet_description" = "Make sure your device is connected to the internet.";
+"Error_while_getting_the_snaps" = "Oops, there was an error trying get the snaps. please try again later.";
+
+//LANDING
+"landing_title" = "Explore";
+"Newest" = "Newest";
+"Hottest" = "Hottest	";
