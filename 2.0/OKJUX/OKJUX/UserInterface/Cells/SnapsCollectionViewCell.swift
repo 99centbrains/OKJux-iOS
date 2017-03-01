@@ -32,7 +32,11 @@ class SnapsCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Data variables
 
-    var indexPath: IndexPath!
+    var indexPath: IndexPath! {
+        didSet {
+            self.accessibilityIdentifier = "cell_\(indexPath.row)"
+        }
+    }
     var hottest: Bool!
     weak var delegate: SnapsCollectionViewCellDelegate?
 

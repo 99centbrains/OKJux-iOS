@@ -26,6 +26,8 @@ class OKJUXUITests: XCTestCase {
         }
     }
 
+
+
     override func setUp() {
         super.setUp()
 
@@ -232,11 +234,12 @@ class OKJUXUITests: XCTestCase {
         let loading = app.toolbars.staticTexts["Loading Snaps"]
         waitFor(element: loading, disappears: true)
 
-        let reportPhotoAlert = app.alerts["Report Photo"]
         let snapsCollection = app.collectionViews["Snaps collection newest"]
         let firstCell = snapsCollection.cells.element(boundBy: 0)
+        let secondCell = snapsCollection.cells["cell_1"]
         let errorAlert = app.alerts["Error"]
-
+        let reportPhotoAlert = app.alerts["Report Photo"]
+        
         firstCell.buttons["Report abuse"].tap()
         XCTAssertTrue(reportPhotoAlert.exists, "The alert is not appearing")
         XCTAssertTrue(reportPhotoAlert.buttons["Report"].exists, "The alert does not contain the report button")
@@ -262,6 +265,22 @@ class OKJUXUITests: XCTestCase {
 
         waitFor(element: errorAlert.staticTexts["Oops! Try again later."])
 
+        //Second cell is mocked as already reported
+        snapsCollection.scrollToElement(element: secondCell)
+        secondCell.buttons["Report abuse"].tap()
+        waitFor(element: errorAlert.staticTexts["You have already reported this snap."])
+        errorAlert.buttons["OK"].tap()
+
+    }
+
+}
+
+extension XCUIElement {
+
+    internal func scrollToElement(element: XCUIElement) {
+        while !element.exists {
+            swipeUp()
+        }
     }
 
 }
