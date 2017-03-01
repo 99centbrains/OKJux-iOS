@@ -191,7 +191,7 @@ extension SnapsViewController: SnapsCollectionViewCellDelegate {
             if index == 1 {
                 SnapsManager.sharedInstance.reportSnap(snap: self.nearbySnaps![indexPath.row], completion: { (error) in
                     if let error = error {
-                        if error.code == OKJuxError.ErrorType.cannotReportSnapTwice.rawValue {
+                        if error.code == OKJuxError.ErrorType.duplicatedAction.rawValue {
                             self.showAlert(title: R.string.localizable.error_generic_title(),
                                            body: R.string.localizable.prompt_already_reported_body(),
                                            cancelButton: R.string.localizable.oK())

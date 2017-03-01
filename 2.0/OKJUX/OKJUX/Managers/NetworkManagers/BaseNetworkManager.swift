@@ -24,7 +24,7 @@ class OKJuxError: NSError {
         case notParsableResponse
         case loginRequired
         case noInternet
-        case cannotReportSnapTwice
+        case duplicatedAction
 
         var description: String {
             switch self {
@@ -32,8 +32,8 @@ class OKJuxError: NSError {
                 return "Something went wrong"
             case .emptyResponseBody, .notParsableResponse, .loginRequired:
                 return "Server didn't response a correct answer"
-            case .cannotReportSnapTwice:
-                return "You cannot report a snap more than once"
+            case .duplicatedAction:
+                return "You cannot make the same action twice"
             default:
                 return "Something went wrong"
             }
@@ -76,6 +76,9 @@ class BaseNetworkManager {
         }
 
         Alamofire.request(url, method: HTTPMethod(rawValue: requestMethodType.rawValue)!, parameters: parameters).responseJSON { (response) in
+            #if DEBUG
+                print(url, response.response?.statusCode ?? "")
+            #endif
             guard response.result.error == nil else {
                 let okJuxError = searchForTheRealErrorMessage(url: url, response: response)
                 completion(okJuxError, nil)
@@ -103,8 +106,8 @@ class BaseNetworkManager {
 
     private class func searchForTheRealErrorMessage(url: URL, response: DataResponse<Any>) -> OKJuxError {
         if let statusCode = response.response?.statusCode {
-            if statusCode == 422, url.absoluteString.contains("flag") {
-                return OKJuxError(errorType: .cannotReportSnapTwice, generatedClass: self)
+            if statusCode == 422 {
+                return OKJuxError(errorType: .duplicatedAction, generatedClass: self)
             } else {
                 return OKJuxError(errorType: .unknown, generatedClass: self)
             }

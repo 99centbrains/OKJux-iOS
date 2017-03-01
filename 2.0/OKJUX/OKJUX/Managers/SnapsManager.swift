@@ -64,4 +64,16 @@ class SnapsManager {
         SnapsNetworkManager.reportSnap(snapID: snap.identifier, parameters: parameters, completion: completion)
     }
 
+    func likeSnap(snap: Snap, like: Bool, completion: @escaping (NSError?) -> Void) {
+
+        guard let loggedUser = UserManager.sharedInstance.loggedUser else {
+            completion(OKJuxError(errorType: OKJuxError.ErrorType.loginRequired, generatedClass: type(of: self)))
+            return
+        }
+
+        var parameters = [String: Any]()
+        parameters["user"] = ["id": loggedUser.identifier, "UUID": loggedUser.uuid ?? ""]
+        SnapsNetworkManager.likeSnap(snapID: snap.identifier, like: like, parameters: parameters, completion: completion)
+    }
+
 }

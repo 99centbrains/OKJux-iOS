@@ -173,7 +173,7 @@ class RequestTests: OKJUXTests {
                 if let snap = snaps?.last {
                     SnapsManager.sharedInstance.reportSnap(snap: snap, completion: { (error) in
                         if let error = error {
-                            if error.code == OKJuxError.ErrorType.cannotReportSnapTwice.rawValue {
+                            if error.code == OKJuxError.ErrorType.duplicatedAction.rawValue {
                                 XCTAssert(true)
                             } else {
                                 XCTAssert(false, "error reporting snap \(error.localizedDescription)")
@@ -197,4 +197,59 @@ class RequestTests: OKJUXTests {
             }
         }
     }
+
+    func test_like_snap() {
+        let exp = expectation(description: "")
+
+        func like(snap: Snap, like: Bool, completion: @escaping (_ duplicatedAction: Bool) -> Void) {
+            SnapsManager.sharedInstance.likeSnap(snap: snap, like: like, completion: { (error) in
+                if let error = error {
+                    if error.code == OKJuxError.ErrorType.duplicatedAction.rawValue {
+                        completion(true)
+                    } else {
+                        XCTAssert(false, "error ranking a snap \(error.localizedDescription)")
+                    }
+                } else {
+                    completion(false)
+                }
+            })
+        }
+
+        self.signInUser {
+            SnapsManager.sharedInstance.getSnaps(completion: { (_, snaps) in
+                if let snap = snaps?.last {
+
+                    like(snap: snap, like: true, completion: { (duplicatedAction) in
+                        if duplicatedAction {
+                            like(snap: snap, like: false, completion: { (duplicatedAction) in
+                                if duplicatedAction {
+                                    XCTAssert(false, "both like/unlike actions returns 422")
+                                }
+                                exp.fulfill()
+                            })
+                        } else {
+                            like(snap: snap, like: false, completion: { (duplicatedAction) in
+                                if duplicatedAction {
+                                    XCTAssert(false, "both like/unlike actions returns 422")
+                                }
+                                exp.fulfill()
+                            })
+                        }
+                    })
+
+                } else {
+                    XCTAssert(false, "error while getting snaps")
+                    exp.fulfill()
+                }
+            })
+
+        }
+
+        waitForExpectations(timeout: 115) { (error) in
+            if let error = error {
+                XCTFail(error.localizedDescription)
+            }
+        }
+    }
+
 }

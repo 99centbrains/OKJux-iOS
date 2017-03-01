@@ -26,8 +26,6 @@ class OKJUXUITests: XCTestCase {
         }
     }
 
-
-
     override func setUp() {
         super.setUp()
 
@@ -239,7 +237,7 @@ class OKJUXUITests: XCTestCase {
         let secondCell = snapsCollection.cells["cell_1"]
         let errorAlert = app.alerts["Error"]
         let reportPhotoAlert = app.alerts["Report Photo"]
-        
+
         firstCell.buttons["Report abuse"].tap()
         XCTAssertTrue(reportPhotoAlert.exists, "The alert is not appearing")
         XCTAssertTrue(reportPhotoAlert.buttons["Report"].exists, "The alert does not contain the report button")

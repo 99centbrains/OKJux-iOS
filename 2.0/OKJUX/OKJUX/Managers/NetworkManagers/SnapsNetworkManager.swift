@@ -41,4 +41,17 @@ class SnapsNetworkManager: BaseNetworkManager {
             completion(nil)
         }
     }
+
+    class func likeSnap(snapID: Int, like: Bool, parameters: [String: Any], completion: @escaping (NSError?) -> Void) {
+        let likeOrDislike = like ? "like" : "dislike"
+
+        sendRequest(method: String(format: "snaps/%i/\(likeOrDislike)", snapID), requestMethodType: .post, parameters: parameters) { (error, _) in
+            guard error == nil else {
+                completion(error!)
+                return
+            }
+            completion(nil)
+        }
+    }
+
 }
