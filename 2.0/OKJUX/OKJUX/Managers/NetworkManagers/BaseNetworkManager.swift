@@ -76,19 +76,20 @@ class BaseNetworkManager {
         }
 
         Alamofire.request(url, method: HTTPMethod(rawValue: requestMethodType.rawValue)!, parameters: parameters).responseJSON { (response) in
-            print(url, response.response?.statusCode)
             guard response.result.error == nil else {
                 let okJuxError = searchForTheRealErrorMessage(url: url, response: response)
                 completion(okJuxError, nil)
                 return
             }
 
+            guard let statusCode = response.response?.statusCode, statusCode >= 200 && statusCode <= 300 else {
+                let okJuxError = searchForTheRealErrorMessage(url: url, response: response)
+                completion(okJuxError, nil)
+                return
+            }
+
             if let json = response.result.value as? [String: Any], response.result.isSuccess {
-                if let statusCode = response.response?.statusCode, statusCode < 200 || statusCode > 300 {
-                    completion(OKJuxError(errorType: .unknown, generatedClass: self), nil)
-                } else {
-                    completion(nil, json)
-                }
+                completion(nil, json)
             } else {
                 if let statusCode = response.response?.statusCode, statusCode == 204 {
                     completion(nil, nil)

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SCLAlertView
+import AlertHelperKit
 
 protocol SnapsViewControllerDelegate: class {
     func snapsViewController(_ snapsViewController: SnapsViewController, isExpandingToPosition position: CGFloat)
@@ -177,25 +177,35 @@ extension SnapsViewController: SnapsCollectionViewCellDelegate {
 
     func snapsCollectionViewCell(cell: SnapsCollectionViewCell, didPressedOnReportAt indexPath: IndexPath) {
 
-        let alert = SCLAlertView()
-        alert.addButton(R.string.localizable.prompt_report_action()) {
-            self.showLoading()
-            SnapsManager.sharedInstance.reportSnap(snap: self.nearbySnaps![indexPath.row], completion: { (error) in
-                self.hideLoading()
-                if let error = error {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2 , execute: {
-                        //self.showSucccess(title: R.string.localizable.success(), body: R.string.localizable.prompt_report_successfully())
-                    })
-                } else {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2 , execute: { 
-                        self.showSucccess(title: R.string.localizable.success(), body: R.string.localizable.prompt_report_successfully())
-                    })
-                }
-            })
+        let snap = self.nearbySnaps![indexPath.row]
+        if snap.reported {
+            self.showAlert(title: R.string.localizable.error_generic_title(),
+                           body: R.string.localizable.prompt_already_reported_body(),
+                           cancelButton: R.string.localizable.oK())
+            return
         }
-
-        let icon = UIImage(icon: .FAQuestion, size: CGSize(width: 50, height: 50), textColor: .white, backgroundColor: .clear)
-        _ = alert.showCustom(R.string.localizable.prompt_report_title(), subTitle: R.string.localizable.prompt_report_body(), color: UIColor.orange, icon: icon, closeButtonTitle: R.string.localizable.prompt_report_cancel())
+        self.showAlertAndWaitForResponse(title: R.string.localizable.prompt_report_title(),
+                                         body: R.string.localizable.prompt_report_body(),
+                                         cancelButton: R.string.localizable.prompt_report_cancel(),
+                                         otherButtons: [R.string.localizable.prompt_report_action()]) { (index) in
+            if index == 1 {
+                SnapsManager.sharedInstance.reportSnap(snap: self.nearbySnaps![indexPath.row], completion: { (error) in
+                    if let error = error {
+                        if error.code == OKJuxError.ErrorType.cannotReportSnapTwice.rawValue {
+                            self.showAlert(title: R.string.localizable.error_generic_title(),
+                                           body: R.string.localizable.prompt_already_reported_body(),
+                                           cancelButton: R.string.localizable.oK())
+                        } else {
+                            self.showAlert(title: R.string.localizable.error_generic_title(),
+                                           body: R.string.localizable.error_generic_body(),
+                                           cancelButton: R.string.localizable.oK())
+                        }
+                    } else {
+                        self.showSuccess()
+                    }
+                })
+            }
+        }
     }
 
 }

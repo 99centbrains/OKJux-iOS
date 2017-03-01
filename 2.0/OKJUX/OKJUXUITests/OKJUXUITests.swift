@@ -181,35 +181,46 @@ class OKJUXUITests: XCTestCase {
 
     func test_report_snap() {
 
-        let mockItem = MockRequestItem(requestPath: "/api/v1/snaps/13666/flag", responseFileName: "")
-        mockItem.removeAfterCalled = true
-        mockItem.responseHTTPCode = 204
+        let mockSuccess = MockRequestItem(requestPath: "/api/v1/snaps/13666/flag", responseFileName: "", responseHTTPCode: 204, removeAfterCalled: true)
+        let mockAlearyReported = MockRequestItem(requestPath: "/api/v1/snaps/13666/flag", responseFileName: "", responseHTTPCode: 422, removeAfterCalled: true)
+        let mockFail = MockRequestItem(requestPath: "/api/v1/snaps/13666/flag", responseFileName: "", responseHTTPCode: 500, removeAfterCalled: true)
 
-        let mockItem2 = MockRequestItem(requestPath: "/api/v1/snaps/13666/flag", responseFileName: "")
-        mockItem2.removeAfterCalled = true
-        mockItem2.responseHTTPCode = 422
-
-        app.launchArguments.append(mockItem2.toJsonString())
-        app.launchArguments.append(mockItem.toJsonString())
+        app.launchArguments.append(mockFail.toJsonString())
+        app.launchArguments.append(mockAlearyReported.toJsonString())
+        app.launchArguments.append(mockSuccess.toJsonString())
         app.launch()
         let loading = app.toolbars.staticTexts["Loading Snaps"]
         waitFor(element: loading, disappears: true)
 
-        let hottest = app.collectionViews["Snaps collection newest"]
-        hottest.cells.element(boundBy: 0).buttons["Report abuse"].tap()
-        XCTAssertTrue(app.staticTexts["Report Photo"].exists, "The alert is not appearing")
-        XCTAssertTrue(app.buttons["Report"].exists, "The alert does not contain the report button")
-        XCTAssertTrue(app.buttons["Never Mind"].exists, "The alert does not contain the Never Mind button")
+        let reportPhotoAlert = app.alerts["Report Photo"]
+        let snapsCollection = app.collectionViews["Snaps collection newest"]
+        let firstCell = snapsCollection.cells.element(boundBy: 0)
+        let errorAlert = app.alerts["Error"]
 
-        app.buttons["Never Mind"].tap()
-        XCTAssertFalse(app.staticTexts["Report Photo"].exists, "The alert should be dismmissed")
+        firstCell.buttons["Report abuse"].tap()
+        XCTAssertTrue(reportPhotoAlert.exists, "The alert is not appearing")
+        XCTAssertTrue(reportPhotoAlert.buttons["Report"].exists, "The alert does not contain the report button")
+        XCTAssertTrue(reportPhotoAlert.buttons["Never Mind"].exists, "The alert does not contain the Never Mind button")
 
-        hottest.cells.element(boundBy: 0).buttons["Report abuse"].tap()
-        app.buttons["Report"].tap()
+        reportPhotoAlert.buttons["Never Mind"].tap()
+        XCTAssertFalse(reportPhotoAlert.exists, "The alert should be dismmissed")
 
-        waitFor(element: app.toolbars.staticTexts["Loading"], disappears: true)
-        waitFor(element: app.staticTexts["Success"])
-        XCTAssertTrue(app.staticTexts["Success"].exists, "The done message it's not appearing")
+        firstCell.buttons["Report abuse"].tap()
+        reportPhotoAlert.buttons["Report"].tap()
+
+        waitFor(element: app.staticTexts["Done"])
+        XCTAssertTrue(app.staticTexts["Done"].exists, "The done message it's not appearing")
+
+        firstCell.buttons["Report abuse"].tap()
+        reportPhotoAlert.buttons["Report"].tap()
+
+        waitFor(element: errorAlert.staticTexts["You have already reported this snap."])
+        errorAlert.buttons["OK"].tap()
+
+        firstCell.buttons["Report abuse"].tap()
+        reportPhotoAlert.buttons["Report"].tap()
+
+        waitFor(element: errorAlert.staticTexts["Oops! Try again later."])
 
     }
 

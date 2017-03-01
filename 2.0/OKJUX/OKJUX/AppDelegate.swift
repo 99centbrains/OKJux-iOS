@@ -23,12 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         updateAppSettingsVersion()
 
-        let _ = MockRequestHelper.mockAppByString("Mock-1,2,6")
-
         #if DEBUG
             for arg in ProcessInfo.processInfo.arguments {
-                let mockRequestItem = MockRequestItem(json: arg)
-                MockRequestHelper.mockRequest(mockRequestItem: mockRequestItem)
+                if let mockRequestItem = MockRequestItem(jsonString: arg) {
+                    MockRequestHelper.mockRequest(mockRequestItem: mockRequestItem)
+                }
 
                 if arg.contains("Mock-") {
                     let _ = MockRequestHelper.mockAppByString(arg)

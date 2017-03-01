@@ -10,6 +10,7 @@ import UIKit
 import TAOverlay
 import Rswift
 import SwiftMessages
+import AlertHelperKit
 
 class OKJuxViewController: UIViewController {
 
@@ -17,19 +18,6 @@ class OKJuxViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         automaticallyAdjustsScrollViewInsets = false
-    }
-
-    func showError(title: String, body: String) {
-
-        let errorIcon = UIImage.init(icon:.FAExclamationCircle, size: CGSize(width: 35, height: 35), textColor: .white, backgroundColor: .clear)
-
-        let view = MessageView.viewFromNib(layout: .CardView)
-        view.button?.isHidden = true
-        view.configureTheme(.warning)
-        view.backgroundView.backgroundColor = UIColor(red: 249.0/255.0, green: 66.0/255.0, blue: 47.0/255.0, alpha: 1.0)
-        view.configureDropShadow()
-        view.configureContent(title: title, body: body, iconImage: errorIcon)
-        SwiftMessages.show(view: view)
     }
 
     func showGenericErrorMessage(error: NSError?) {
@@ -44,7 +32,7 @@ class OKJuxViewController: UIViewController {
             errorTitle = R.string.localizable.error_not_internet_title()
             errorMessage = R.string.localizable.error_not_internet_body()
         }
-        self.showError(title: errorTitle, body: errorMessage)
+        self.showAlert(title: errorTitle, body: errorMessage, cancelButton: R.string.localizable.oK())
     }
 
     func showLoading(localizedMessage: String? = R.string.localizable.loading()) {
@@ -55,18 +43,16 @@ class OKJuxViewController: UIViewController {
         TAOverlay.hide()
     }
 
-    func showSucccess(title: String, body: String) {
-        let view = MessageView.viewFromNib(layout: .CardView)
-        view.button?.isHidden = true
-        view.configureTheme(.success)
-        view.configureDropShadow()
-        view.configureContent(title: title, body: body)
-        SwiftMessages.show(view: view)
+    func showSuccess() {
+        TAOverlay.show(withLabel: R.string.localizable.done(), options: [.autoHide, .overlayTypeSuccess])
     }
 
-    func showGenericErrorMessage() {
-        //TODO: TEST
-        self.showError(title: R.string.localizable.error_generic_title(), body: R.string.localizable.error_generic_body())
+    func showAlertAndWaitForResponse(title: String, body: String, cancelButton: String, otherButtons: [String]? = nil, handler: @escaping (Int) -> Void) {
+        let params = Parameters(title: title, message: body, cancelButton: cancelButton, otherButtons: otherButtons)
+        AlertHelperKit().showAlertWithHandler(self, parameters: params, handler: handler)
     }
 
+    func showAlert(title: String, body: String, cancelButton: String) {
+        AlertHelperKit().showAlert(self, title: title, message: body, button: cancelButton)
+    }
 }

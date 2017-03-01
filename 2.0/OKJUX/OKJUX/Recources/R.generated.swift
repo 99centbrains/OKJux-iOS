@@ -918,7 +918,7 @@ struct R: Rswift.Validatable {
   
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 18 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 19 localization keys.
     struct localizable {
       /// Value: Done
       static let done = Rswift.StringResource(key: "Done", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -940,6 +940,8 @@ struct R: Rswift.Validatable {
       static let newest = Rswift.StringResource(key: "Newest", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: No internet connection
       static let error_not_internet_title = Rswift.StringResource(key: "Error_not_internet_title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: OK
+      static let oK = Rswift.StringResource(key: "OK", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Oops! Try again later.
       static let error_generic_body = Rswift.StringResource(key: "Error_generic_body", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Oops, there was an error trying get the snaps. please try again later.
@@ -1005,6 +1007,11 @@ struct R: Rswift.Validatable {
       /// Value: No internet connection
       static func error_not_internet_title(_: Void = ()) -> String {
         return NSLocalizedString("Error_not_internet_title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// Value: OK
+      static func oK(_: Void = ()) -> String {
+        return NSLocalizedString("OK", bundle: R.hostingBundle, comment: "")
       }
       
       /// Value: Oops! Try again later.

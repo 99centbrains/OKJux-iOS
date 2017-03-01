@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.0.1)
+  - AlertHelperKit (1.5.1)
   - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
   - DateParser (1.1.0)
@@ -37,6 +38,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - AlertHelperKit (from `https://github.com/keygx/AlertHelperKit`)
   - Crashlytics
   - DateParser
   - EVReflection
@@ -52,8 +54,18 @@ DEPENDENCIES:
   - SwiftMessages
   - TAOverlay
 
+EXTERNAL SOURCES:
+  AlertHelperKit:
+    :git: https://github.com/keygx/AlertHelperKit
+
+CHECKOUT OPTIONS:
+  AlertHelperKit:
+    :commit: 74e6cfece69ed32eeddb15687691ce0ef87fe6c9
+    :git: https://github.com/keygx/AlertHelperKit
+
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  AlertHelperKit: b4fa78606b164e21e3d21308c6000a27690fbdbc
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   DateParser: f6a3351ebf0f2a8e6ab5e1f11f98e9a772089a08
   EVReflection: 19aa5cd37051999ac2cab7a33d6619c97104f42a
@@ -69,6 +81,6 @@ SPEC CHECKSUMS:
   SwiftMessages: bb85d7c30e85256f9367214b0907e1f409e1870a
   TAOverlay: 940e37fdb45fbc9acfc73bf1089668367e3b1be6
 
-PODFILE CHECKSUM: 520eedb5e40a66c73cca03ae0dbd29aaf857cfb7
+PODFILE CHECKSUM: 1e56c457c6b4432b1b96d205989977f72835f10a
 
 COCOAPODS: 1.1.1
