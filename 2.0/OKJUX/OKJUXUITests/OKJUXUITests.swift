@@ -44,8 +44,33 @@ class OKJUXUITests: XCTestCase {
         super.tearDown()
     }
 
+    func mockUserLogin() {
+        let mockUserLogin = MockRequestItem(requestPath: "/api/v1/users",
+                                            responseFileName: "post_user_mock",
+                                            responseHTTPCode: 200,
+                                            removeAfterCalled: true)
+        app.launchArguments.append(mockUserLogin.toJsonString())
+    }
+
+    func mockNewestSnaps() {
+        let mockNewestSnaps = MockRequestItem(requestPath: "/api/v1/snaps",
+                                              responseFileName: "get_snaps_mock",
+                                              responseHTTPCode: 200,
+                                              removeAfterCalled: true)
+        app.launchArguments.append(mockNewestSnaps.toJsonString())
+    }
+
+    func mockHottestSnaps() {
+        let mockHotSnaps = MockRequestItem(requestPath: "/api/v1/snaps",
+                                              responseFileName: "get_hottest_snaps_mock",
+                                              responseHTTPCode: 200,
+                                              removeAfterCalled: true)
+        app.launchArguments.append(mockHotSnaps.toJsonString())
+    }
+
     func test_snaps_newest_list() {
-        app.launchArguments.append("Mock-1,2")
+        self.mockUserLogin()
+        self.mockNewestSnaps()
         app.launch()
 
         let loading = app.toolbars.staticTexts["Loading Snaps"]
@@ -76,13 +101,16 @@ class OKJUXUITests: XCTestCase {
         }
         XCTAssertTrue(locationAndTimeLabelValue.contains("Uruguay"), "wasn't able to find the snap location")
         XCTAssertTrue(locationAndTimeLabelValue.contains("ago") ||
+            locationAndTimeLabelValue.contains("week") ||
             locationAndTimeLabelValue.contains("year") ||
             locationAndTimeLabelValue.contains("month"), "wasn't able to find the snap time")
         XCTAssertTrue(firstNewestCollectionCell.images["Snap photo"].exists, "unable to find the email")
     }
 
     func test_snaps_hottest_list() {
-        app.launchArguments.append("Mock-1,5")
+        self.mockUserLogin()
+        self.mockHottestSnaps()
+        self.mockNewestSnaps()
         app.launch()
 
         let loading = app.toolbars.staticTexts["Loading Snaps"]
@@ -112,7 +140,11 @@ class OKJUXUITests: XCTestCase {
     }
 
     func test_snaps_list_error_500() {
-        app.launchArguments.append("Mock-3")
+        let mockSnapsError500 = MockRequestItem(requestPath: "/api/v1/snaps",
+                                            responseFileName: "get_snaps_mock",
+                                            responseHTTPCode: 500,
+                                            removeAfterCalled: true)
+        app.launchArguments.append(mockSnapsError500.toJsonString())
         app.launch()
         waitFor(element: app.staticTexts["Error"])
         waitFor(element: app.staticTexts["Oops, there was an error trying get the snaps. please try again later."])
@@ -126,7 +158,9 @@ class OKJUXUITests: XCTestCase {
     }
 
     func test_landing_expand_map() {
-        app.launchArguments.append("Mock-1,2")
+        self.mockUserLogin()
+        self.mockHottestSnaps()
+        self.mockNewestSnaps()
         app.launch()
         let loading = app.toolbars.staticTexts["Loading Snaps"]
         waitFor(element: loading, disappears: true)
@@ -141,7 +175,9 @@ class OKJUXUITests: XCTestCase {
         //TODO: Need to close the map instead of kill the app
         app.terminate()
 
-        app.launchArguments.append("Mock-1,2")
+        self.mockUserLogin()
+        self.mockHottestSnaps()
+        self.mockNewestSnaps()
         app.launch()
         self.waitFor(element: loading, disappears: true)
         let map2 = app.otherElements["Snaps map"]
@@ -150,7 +186,9 @@ class OKJUXUITests: XCTestCase {
     }
 
     func test_switching_between_newest_and_hottest() {
-        app.launchArguments.append("Mock-1,2")
+        self.mockUserLogin()
+        self.mockHottestSnaps()
+        self.mockNewestSnaps()
         app.launch()
         let loading = app.toolbars.staticTexts["Loading Snaps"]
         waitFor(element: loading, disappears: true)
@@ -159,7 +197,7 @@ class OKJUXUITests: XCTestCase {
         let newest = app.collectionViews["Snaps collection newest"]
 
         XCTAssertFalse(hottest.exists, "Hottest should not be visible")
-        app.buttons["Hottest\t"].tap()
+        app.buttons["Hottest"].tap()
 
         self.waitFor(element: newest, disappears: true)
         XCTAssertTrue(hottest.exists, "Hottest should be visible")
@@ -181,6 +219,8 @@ class OKJUXUITests: XCTestCase {
 
     func test_report_snap() {
 
+        self.mockUserLogin()
+        self.mockNewestSnaps()
         let mockSuccess = MockRequestItem(requestPath: "/api/v1/snaps/13666/flag", responseFileName: "", responseHTTPCode: 204, removeAfterCalled: true)
         let mockAlearyReported = MockRequestItem(requestPath: "/api/v1/snaps/13666/flag", responseFileName: "", responseHTTPCode: 422, removeAfterCalled: true)
         let mockFail = MockRequestItem(requestPath: "/api/v1/snaps/13666/flag", responseFileName: "", responseHTTPCode: 500, removeAfterCalled: true)

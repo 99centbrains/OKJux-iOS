@@ -11,11 +11,9 @@ def shared_pods
     pod 'Font-Awesome-Swift'
     pod 'TAOverlay'
     pod 'SDWebImage'
-    pod 'SwiftMessages'
     pod 'SwiftLint'
     pod 'Fabric'
     pod 'Crashlytics'
-    pod 'EVReflection'
     pod 'AlertHelperKit', :git => 'https://github.com/keygx/AlertHelperKit'
 end
 

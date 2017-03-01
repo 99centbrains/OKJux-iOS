@@ -28,11 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if let mockRequestItem = MockRequestItem(jsonString: arg) {
                     MockRequestHelper.mockRequest(mockRequestItem: mockRequestItem)
                 }
-
-                if arg.contains("Mock-") {
-                    let _ = MockRequestHelper.mockAppByString(arg)
-                    break
-                }
             }
         #endif
 
