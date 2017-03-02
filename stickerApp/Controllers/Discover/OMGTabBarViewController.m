@@ -83,10 +83,10 @@
     switch (self.selectedIndex) {
         case 0://Snap Vote
             NSLog(@"Snap Vote tab item pressed");
-            [MixPanelManager triggerEvent:@"Explore" withData:@{ @"View": @"New" }];
-            _ibo_headSpace.ibo_titleLabel.text = NSLocalizedString(@"TABBAR_NEW_TITLE", nil);
-            _ibo_omgVoteVC = (OMGSnapVoteViewController *)[self.viewControllers objectAtIndex:0];
-            [_ibo_omgVoteVC refreshData];
+//            [MixPanelManager triggerEvent:@"Explore" withData:@{ @"View": @"New" }];
+//            _ibo_headSpace.ibo_titleLabel.text = NSLocalizedString(@"TABBAR_NEW_TITLE", nil);
+//            _ibo_omgVoteVC = (OMGSnapVoteViewController *)[self.viewControllers objectAtIndex:0];
+//            [_ibo_omgVoteVC refreshData];
             break;
         case 1://HOTTEST
             NSLog(@"Hottest tab item pressed");

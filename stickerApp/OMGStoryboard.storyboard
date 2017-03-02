@@ -1019,11 +1019,11 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
+                        <segue destination="xkP-F9-VMg" kind="relationship" relationship="viewControllers" id="sgA-CJ-1gf"/>
                         <segue destination="w4J-ss-XHZ" kind="relationship" relationship="viewControllers" id="bLQ-qq-nKv"/>
                         <segue destination="4gt-L2-ugM" kind="relationship" relationship="viewControllers" id="Lus-lw-ZjG"/>
                         <segue destination="nx1-l2-mvt" kind="relationship" relationship="viewControllers" id="Rz1-Ul-WWl"/>
                         <segue destination="yr0-Wf-9ON" kind="relationship" relationship="viewControllers" id="qKe-bE-fZc"/>
-                        <segue destination="xkP-F9-VMg" kind="relationship" relationship="viewControllers" id="sgA-CJ-1gf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eE1-c9-gvF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2208,8 +2208,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGQ-bn-NfR" customClass="OMGSnapHeaderView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="aNO-Pb-Zc1"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WIl-CQ-UjM">
-                                <rect key="frame" x="0.0" y="147" width="375" height="471"/>
+                                <rect key="frame" x="0.0" y="95" width="375" height="523"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="H12-Ea-NPh">
                                     <size key="itemSize" width="400" height="686"/>
@@ -2762,17 +2769,17 @@
                                 </connections>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hXu-hh-vrO">
-                                <rect key="frame" x="0.0" y="147" width="375" height="471"/>
+                                <rect key="frame" x="0.0" y="95" width="375" height="523"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="z3E-WD-UaY">
                                     <size key="itemSize" width="200" height="280"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="snapCell" id="A5x-dY-p9w" customClass="OMGSnapCollectionViewCell">
-                                        <rect key="frame" x="88" y="0.0" width="200" height="280"/>
+                                        <rect key="frame" x="88" y="50" width="200" height="280"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="280"/>
@@ -3099,6 +3106,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="AGI-uW-hIr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="xkP-F9-VMg" id="IJy-JJ-pOU"/>
                                     <outlet property="delegate" destination="xkP-F9-VMg" id="E8D-SQ-0Ee"/>
@@ -3115,7 +3126,7 @@
                                         </constraints>
                                         <segments>
                                             <segment title="New"/>
-                                            <segment title="Nearby"/>
+                                            <segment title="Hot"/>
                                         </segments>
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <variation key="default">
@@ -3176,14 +3187,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bGQ-bn-NfR" firstAttribute="leading" secondItem="XAI-iK-qbt" secondAttribute="leading" id="38r-zT-HjH"/>
                             <constraint firstAttribute="bottom" secondItem="WIl-CQ-UjM" secondAttribute="bottom" id="3dC-7J-fW7"/>
-                            <constraint firstItem="WIl-CQ-UjM" firstAttribute="top" secondItem="D7w-E5-Y8p" secondAttribute="bottom" constant="147" id="7bB-e5-XI9"/>
                             <constraint firstAttribute="trailing" secondItem="WIl-CQ-UjM" secondAttribute="trailing" id="Bjk-4U-7ay"/>
                             <constraint firstItem="hXu-hh-vrO" firstAttribute="top" secondItem="WIl-CQ-UjM" secondAttribute="top" id="Eg7-3P-XSJ"/>
+                            <constraint firstItem="WIl-CQ-UjM" firstAttribute="top" secondItem="D7w-E5-Y8p" secondAttribute="bottom" constant="95" id="HKF-qP-Saa"/>
+                            <constraint firstItem="bGQ-bn-NfR" firstAttribute="top" secondItem="D7w-E5-Y8p" secondAttribute="bottom" id="Lwg-7Z-qAD"/>
                             <constraint firstAttribute="trailing" secondItem="hXu-hh-vrO" secondAttribute="trailing" id="Xu0-2m-gjz"/>
                             <constraint firstItem="hXu-hh-vrO" firstAttribute="leading" secondItem="XAI-iK-qbt" secondAttribute="leading" id="eyB-Jx-4fx"/>
                             <constraint firstItem="7FF-ra-c7Z" firstAttribute="top" secondItem="hXu-hh-vrO" secondAttribute="bottom" id="hjl-Hc-qHJ"/>
-                            <constraint firstItem="ouO-jz-sVC" firstAttribute="top" secondItem="D7w-E5-Y8p" secondAttribute="bottom" constant="45" id="rGk-ar-B2l"/>
+                            <constraint firstAttribute="trailing" secondItem="bGQ-bn-NfR" secondAttribute="trailing" id="qHc-ph-I81"/>
+                            <constraint firstItem="ouO-jz-sVC" firstAttribute="top" secondItem="D7w-E5-Y8p" secondAttribute="bottom" constant="45" id="qR2-EZ-fxm"/>
                             <constraint firstItem="ouO-jz-sVC" firstAttribute="leading" secondItem="XAI-iK-qbt" secondAttribute="leading" id="tkv-Le-zMP"/>
                             <constraint firstItem="WIl-CQ-UjM" firstAttribute="leading" secondItem="XAI-iK-qbt" secondAttribute="leading" id="w72-nM-ep0"/>
                             <constraint firstAttribute="trailing" secondItem="ouO-jz-sVC" secondAttribute="trailing" id="xda-aL-Viw"/>
@@ -3192,8 +3206,11 @@
                     <tabBarItem key="tabBarItem" title="Item" id="irm-1D-vdc"/>
                     <connections>
                         <outlet property="hottestCollectionView" destination="hXu-hh-vrO" id="Gwr-d5-Y9D"/>
+                        <outlet property="mapHeightConstraint" destination="aNO-Pb-Zc1" id="CWq-qa-YYS"/>
+                        <outlet property="newestCollectionTopSpaceConstraint" destination="HKF-qP-Saa" id="M4F-pT-MRY"/>
                         <outlet property="newestCollectionView" destination="WIl-CQ-UjM" id="csl-qL-QTw"/>
                         <outlet property="segmentControl" destination="MAq-ai-jbm" id="5Xx-QV-vA3"/>
+                        <outlet property="segmentTopSpaceConstraint" destination="qR2-EZ-fxm" id="S7s-mB-W6u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQR-gt-IKg" userLabel="First Responder" sceneMemberID="firstResponder"/>

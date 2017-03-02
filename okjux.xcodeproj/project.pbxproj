@@ -49,6 +49,7 @@
 		37EDE5481675228700F89D90 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37EDE5471675228700F89D90 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		444A339B1E68632C00A6EA58 /* OMGSnapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 444A339A1E68632C00A6EA58 /* OMGSnapsViewController.m */; };
 		444A339E1E689B9F00A6EA58 /* SnapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 444A339D1E689B9F00A6EA58 /* SnapHelper.m */; };
+		444A33A11E68A13400A6EA58 /* OMGSnapHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 444A33A01E68A13400A6EA58 /* OMGSnapHeaderView.m */; };
 		44D469691E43A8C00010F202 /* OkJuxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D469681E43A8C00010F202 /* OkJuxViewController.m */; };
 		74098BB21AAA1DCF009D63B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74098BB41AAA1DCF009D63B5 /* Localizable.strings */; };
 		74312C031A9578220053900D /* ChannelSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74312C021A9578220053900D /* ChannelSelectViewController.m */; };
@@ -254,6 +255,8 @@
 		444A339A1E68632C00A6EA58 /* OMGSnapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMGSnapsViewController.m; sourceTree = "<group>"; };
 		444A339C1E689B9F00A6EA58 /* SnapHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapHelper.h; sourceTree = "<group>"; };
 		444A339D1E689B9F00A6EA58 /* SnapHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapHelper.m; sourceTree = "<group>"; };
+		444A339F1E68A13400A6EA58 /* OMGSnapHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMGSnapHeaderView.h; sourceTree = "<group>"; };
+		444A33A01E68A13400A6EA58 /* OMGSnapHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMGSnapHeaderView.m; sourceTree = "<group>"; };
 		44D469671E43A8C00010F202 /* OkJuxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OkJuxViewController.h; sourceTree = "<group>"; };
 		44D469681E43A8C00010F202 /* OkJuxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OkJuxViewController.m; sourceTree = "<group>"; };
 		6E15DA48834C64B6C387E3AB /* Pods_Catwang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catwang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -881,6 +884,8 @@
 				9B9A2B481DD0FABE0064616D /* Stickers */,
 				748FA4541A957ACB0063D0BC /* ChannelSelectViewCell.h */,
 				748FA4551A957ACB0063D0BC /* ChannelSelectViewCell.m */,
+				444A339F1E68A13400A6EA58 /* OMGSnapHeaderView.h */,
+				444A33A01E68A13400A6EA58 /* OMGSnapHeaderView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1314,6 +1319,7 @@
 				7487D9E01A89246D00AEB429 /* NewUserViewCell.m in Sources */,
 				748761651A4E04B00014FF61 /* CBImagePickerViewController.m in Sources */,
 				745D08061A6714370073B7BA /* StickerHeaderCollectionCell.m in Sources */,
+				444A33A11E68A13400A6EA58 /* OMGSnapHeaderView.m in Sources */,
 				80D5287B1AC4736700D5702B /* SwitchHeaderCollectionReusableView.m in Sources */,
 				74ACBC941A9423A40097D607 /* OMGSnapVoteViewController.m in Sources */,
 				748FA4591A9695810063D0BC /* OMGTabBarViewController.m in Sources */,
