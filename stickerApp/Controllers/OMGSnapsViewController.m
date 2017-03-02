@@ -22,11 +22,14 @@
 @property (nonatomic, weak) IBOutlet UICollectionView *hottestCollectionView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *segmentControl;
 @property (weak, nonatomic) IBOutlet OMGSnapHeaderView *mapHeaderView;
+@property (weak, nonatomic) IBOutlet UIView *bodyContainerView;
+@property (weak, nonatomic) IBOutlet UIView *draggableView;
 
 //UI Constraints
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *segmentTopSpaceConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *newestCollectionTopSpaceConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bodyContainerTopSpaceConstraint;
 
 //Data
 @property (nonatomic, strong) NSMutableArray *newestSnapsArray;
@@ -35,8 +38,8 @@
 @property (nonatomic, assign) int currentNewestPage;
 @end
 
-#define kSegmentTopInitialPosition (CGFloat)200
-#define kSegmentTopMinPosition (CGFloat)45
+#define kSegmentTopInitialPosition (CGFloat)170
+#define kSegmentTopMinPosition (CGFloat)0
 #define kMapInitialHeight (CGFloat)200
 #define kExpandMapScrollOffsetPoint (CGFloat)100
 
@@ -50,12 +53,12 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
     [self fetchNewestSnaps];
     [self transitionBetweenCollections:NO];
-    [self prepareConstraints];
+    [self setUpUI];
 }
 
-- (void)prepareConstraints {
+- (void)setUpUI {
     self.segmentTopSpaceConstraint.constant = kSegmentTopInitialPosition;
-    self.newestCollectionTopSpaceConstraint.constant = self.segmentControl.frame.size.height + kSegmentTopMinPosition;
+    self.draggableView.hidden = YES;
 }
 
 - (void)transitionBetweenCollections:(BOOL)animated {
@@ -203,14 +206,14 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (-scrollView.contentOffset.y >= kExpandMapScrollOffsetPoint) {
         scrollView.userInteractionEnabled = NO;
-//        [self.view bringSubviewToFront:self.mapHeaderView];
         self.mapHeightConstraint.constant = self.view.bounds.size.height - 50;
+        self.bodyContainerTopSpaceConstraint.constant = self.view.bounds.size.height - kSegmentTopInitialPosition - self.segmentControl.frame.size.height - 40;
+        self.draggableView.alpha = 0;
+        self.draggableView.hidden = NO;
         [UIView animateWithDuration:0.3 animations:^{
             [self.view layoutIfNeeded];
+            self.draggableView.alpha = 1;
         } completion:^(BOOL finished) {
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-//                scrollView.userInteractionEnabled = YES;
-//            });
 
         }];
     }
