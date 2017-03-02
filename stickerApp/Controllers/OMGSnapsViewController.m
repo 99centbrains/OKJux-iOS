@@ -15,17 +15,26 @@
 #import "NSDate+DateTools.h"
 #import "GeneralHelper.h"
 
-@interface OMGSnapsViewController () <UICollectionViewDataSource, UICollectionViewDelegate, OMGSnapCollectionViewCellDelegate>
+@interface OMGSnapsViewController () <UICollectionViewDataSource, UICollectionViewDelegate, OMGSnapCollectionViewCellDelegate, UICollectionViewDelegateFlowLayout>
+//UI elements
 @property (nonatomic, weak) IBOutlet UICollectionView *newestCollectionView;
 @property (nonatomic, weak) IBOutlet UICollectionView *hottestCollectionView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *segmentControl;
+//UI Constraints
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *segmentTopSpaceConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *newestCollectionTopSpaceConstraint;
 
+//Data
 @property (nonatomic, strong) NSMutableArray *newestSnapsArray;
 @property (nonatomic, strong) NSMutableArray *hottestSnapsArray;
 @property (nonatomic, assign) int currentHottestPage;
 @property (nonatomic, assign) int currentNewestPage;
 @end
 
+#define kSegmentTopInitialPosition (CGFloat)200
+#define kSegmentTopMinPosition (CGFloat)45
+#define kMapInitialHeight (CGFloat)200
 
 @implementation OMGSnapsViewController
 
@@ -37,6 +46,12 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
     [self fetchNewestSnaps];
     [self transitionBetweenCollections:NO];
+    [self prepareConstraints];
+}
+
+- (void)prepareConstraints {
+    self.segmentTopSpaceConstraint.constant = kSegmentTopInitialPosition;
+    self.newestCollectionTopSpaceConstraint.constant = self.segmentControl.frame.size.height + kSegmentTopMinPosition;
 }
 
 - (void)transitionBetweenCollections:(BOOL)animated {
@@ -154,6 +169,8 @@
         [GeneralHelper reverseGeoLocation:[snap.location[0] doubleValue] lng:[snap.location[1] doubleValue] completionHandler:^(NSString *locationString) {
             cell.ibo_uploadDate.text = [timeString stringByAppendingString:locationString];
         }];
+    } else {
+        cell.ibo_shareBtn.hidden = YES;
     }
 
     return cell;
@@ -161,6 +178,33 @@
 
 #pragma mark -
 #pragma mark CollectionViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+
+    //MOVE SEGMENT
+    CGFloat newSegmentPosition = kSegmentTopInitialPosition + -scrollView.contentOffset.y;
+    if (newSegmentPosition >= kSegmentTopMinPosition) {
+        self.segmentTopSpaceConstraint.constant = newSegmentPosition;
+    } else {
+        self.segmentTopSpaceConstraint.constant = kSegmentTopMinPosition;
+    }
+
+    //RESIZE MAP
+    if (scrollView.contentOffset.y < 0) {
+        self.mapHeightConstraint.constant =  kMapInitialHeight + -scrollView.contentOffset.y;
+    }
+
+    if (-scrollView.contentOffset.y > 100) {
+        
+    }
+}
+
+#pragma mark -
+#pragma mark UICollectionViewDelegateFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    return CGSizeMake(self.newestCollectionView.frame.size.width, 160);
+}
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
@@ -180,6 +224,7 @@
     }
     return sizer;
 }
+
 
 #pragma mark -
 #pragma mark OMGSnapCollectionViewCellDelegate
