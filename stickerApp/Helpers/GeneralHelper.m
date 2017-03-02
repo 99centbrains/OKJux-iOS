@@ -7,6 +7,8 @@
 //
 
 #import "GeneralHelper.h"
+#import "NSDate+DateTools.h"
+#import <CoreLocation/CoreLocation.h>
 
 @implementation GeneralHelper
 
@@ -32,6 +34,35 @@
 + (BOOL)havePhotoLibraryAuthorization {
     PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
     return status == PHAuthorizationStatusAuthorized;
+}
+
++ (NSString*)getTimeAgoFromString:(NSString*)createdAt {
+    NSDate *createdDate = [GeneralHelper convertToLocalTimeZone:createdAt];
+    NSDate *nowDate = [NSDate date];
+    NSTimeInterval timerPeriod = [nowDate timeIntervalSinceDate:createdDate];
+    NSDate *timeAgoDate = [NSDate dateWithTimeIntervalSinceNow:timerPeriod];
+
+    NSString *timeString = [@"🕑 " stringByAppendingString:timeAgoDate.timeAgoSinceNow];
+    return timeString;
+}
+
++ (void)reverseGeoLocation:(double)lat lng:(double)lng completionHandler:(void (^)(NSString*))completion {
+    CLGeocoder *reverseGeocoder = [[CLGeocoder alloc] init];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
+
+    [reverseGeocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error) {
+            NSLog(@"ERROR");
+            return;
+        }
+        CLPlacemark *myPlacemark = [placemarks objectAtIndex:0];
+        NSString *country = myPlacemark.country;
+        NSString *city = myPlacemark.locality;
+        if (city != nil && country != nil) {
+            NSString *locationString = [NSString stringWithFormat:@" 📍 %@ - %@", country, city];
+            completion(locationString);
+        }
+    }];
 }
 
 @end

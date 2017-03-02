@@ -47,6 +47,8 @@
 		37D6CA521603EFFE00B7D674 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D6C9C31602613700B7D674 /* libz.dylib */; };
 		37E2AC50166EA92A00941C4F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E2AC4F166EA92A00941C4F /* AssetsLibrary.framework */; };
 		37EDE5481675228700F89D90 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37EDE5471675228700F89D90 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		444A339B1E68632C00A6EA58 /* OMGSnapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 444A339A1E68632C00A6EA58 /* OMGSnapsViewController.m */; };
+		444A339E1E689B9F00A6EA58 /* SnapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 444A339D1E689B9F00A6EA58 /* SnapHelper.m */; };
 		44D469691E43A8C00010F202 /* OkJuxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D469681E43A8C00010F202 /* OkJuxViewController.m */; };
 		74098BB21AAA1DCF009D63B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74098BB41AAA1DCF009D63B5 /* Localizable.strings */; };
 		74312C031A9578220053900D /* ChannelSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74312C021A9578220053900D /* ChannelSelectViewController.m */; };
@@ -248,6 +250,10 @@
 		37E2AC4F166EA92A00941C4F /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		37EDE5471675228700F89D90 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		37F6B9D91725CA9100B87F4F /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		444A33991E68632C00A6EA58 /* OMGSnapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMGSnapsViewController.h; sourceTree = "<group>"; };
+		444A339A1E68632C00A6EA58 /* OMGSnapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMGSnapsViewController.m; sourceTree = "<group>"; };
+		444A339C1E689B9F00A6EA58 /* SnapHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapHelper.h; sourceTree = "<group>"; };
+		444A339D1E689B9F00A6EA58 /* SnapHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapHelper.m; sourceTree = "<group>"; };
 		44D469671E43A8C00010F202 /* OkJuxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OkJuxViewController.h; sourceTree = "<group>"; };
 		44D469681E43A8C00010F202 /* OkJuxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OkJuxViewController.m; sourceTree = "<group>"; };
 		6E15DA48834C64B6C387E3AB /* Pods_Catwang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catwang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -667,6 +673,8 @@
 				3753C75015C3132900B8AEDE /* ViewController.m */,
 				44D469671E43A8C00010F202 /* OkJuxViewController.h */,
 				44D469681E43A8C00010F202 /* OkJuxViewController.m */,
+				444A33991E68632C00A6EA58 /* OMGSnapsViewController.h */,
+				444A339A1E68632C00A6EA58 /* OMGSnapsViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -890,6 +898,8 @@
 				9B7F17531DF1B69600F9532F /* GeneralHelper.m */,
 				9B68F6FE1DF09E0000085C8F /* MixPanelManager.h */,
 				9B68F6FF1DF09E0000085C8F /* MixPanelManager.m */,
+				444A339C1E689B9F00A6EA58 /* SnapHelper.h */,
+				444A339D1E689B9F00A6EA58 /* SnapHelper.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1282,6 +1292,7 @@
 				3753C74A15C3132900B8AEDE /* main.m in Sources */,
 				74B6E09E1A19970E001D6F80 /* KSLabel.m in Sources */,
 				D54EC1A5184E84F900538194 /* PaintView.m in Sources */,
+				444A339E1E689B9F00A6EA58 /* SnapHelper.m in Sources */,
 				D54EC115184D5D3E00538194 /* PlayBorderSelectViewController.m in Sources */,
 				748761B81A5111E80014FF61 /* StickerCellCollectionViewCell.m in Sources */,
 				74C420ED1A3D097500C6745C /* CBFontCollectionViewCell.m in Sources */,
@@ -1309,6 +1320,7 @@
 				FA8DCF3D1DCD303F00BA22CC /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				74B6E0741A1996C8001D6F80 /* CBCropViewController.m in Sources */,
 				74AA305D1A6A063F006B208E /* StickerCategoryViewCell.m in Sources */,
+				444A339B1E68632C00A6EA58 /* OMGSnapsViewController.m in Sources */,
 				74312C031A9578220053900D /* ChannelSelectViewController.m in Sources */,
 				3753C77815C3136400B8AEDE /* PlayViewController.m in Sources */,
 				746A73A61A813D180052E7ED /* AppManager.m in Sources */,

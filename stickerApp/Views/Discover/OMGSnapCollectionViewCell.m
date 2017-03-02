@@ -74,4 +74,11 @@
     [self.delegate omgsnapCellDelete:_intCurrentSnap];
 }
 
+- (void)loadSnap:(Snap*)snap {
+    self.ibo_btn_likeUP.hidden = YES;
+    self.ibo_btn_likeDown.hidden = YES;
+    [self setupImageView:[NSURL URLWithString:snap.imageUrl] andThumbnail:[NSURL URLWithString:snap.thumbnailUrl]];
+    self.ibo_photoKarma.text = [NSString stringWithFormat:@"%ld", (long)snap.netlikes];
+}
+
 @end
