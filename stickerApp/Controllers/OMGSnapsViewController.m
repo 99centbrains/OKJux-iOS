@@ -14,12 +14,15 @@
 #import "SnapHelper.h"
 #import "NSDate+DateTools.h"
 #import "GeneralHelper.h"
+#import "OMGSnapHeaderView.h"
 
 @interface OMGSnapsViewController () <UICollectionViewDataSource, UICollectionViewDelegate, OMGSnapCollectionViewCellDelegate, UICollectionViewDelegateFlowLayout>
 //UI elements
 @property (nonatomic, weak) IBOutlet UICollectionView *newestCollectionView;
 @property (nonatomic, weak) IBOutlet UICollectionView *hottestCollectionView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *segmentControl;
+@property (weak, nonatomic) IBOutlet OMGSnapHeaderView *mapHeaderView;
+
 //UI Constraints
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *segmentTopSpaceConstraint;
@@ -35,6 +38,7 @@
 #define kSegmentTopInitialPosition (CGFloat)200
 #define kSegmentTopMinPosition (CGFloat)45
 #define kMapInitialHeight (CGFloat)200
+#define kExpandMapScrollOffsetPoint (CGFloat)100
 
 @implementation OMGSnapsViewController
 
@@ -190,12 +194,25 @@
     }
 
     //RESIZE MAP
-    if (scrollView.contentOffset.y < 0) {
-        self.mapHeightConstraint.constant =  kMapInitialHeight + -scrollView.contentOffset.y;
-    }
+    if (scrollView.contentOffset.y < 0 && scrollView.userInteractionEnabled) {
+//        self.mapHeightConstraint.constant =  kMapInitialHeight + -scrollView.contentOffset.y;
 
-    if (-scrollView.contentOffset.y > 100) {
-        
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (-scrollView.contentOffset.y >= kExpandMapScrollOffsetPoint) {
+        scrollView.userInteractionEnabled = NO;
+//        [self.view bringSubviewToFront:self.mapHeaderView];
+        self.mapHeightConstraint.constant = self.view.bounds.size.height - 50;
+        [UIView animateWithDuration:0.3 animations:^{
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+//                scrollView.userInteractionEnabled = YES;
+//            });
+
+        }];
     }
 }
 

@@ -3206,6 +3206,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="irm-1D-vdc"/>
                     <connections>
                         <outlet property="hottestCollectionView" destination="hXu-hh-vrO" id="Gwr-d5-Y9D"/>
+                        <outlet property="mapHeaderView" destination="bGQ-bn-NfR" id="vmd-uQ-j2f"/>
                         <outlet property="mapHeightConstraint" destination="aNO-Pb-Zc1" id="CWq-qa-YYS"/>
                         <outlet property="newestCollectionTopSpaceConstraint" destination="HKF-qP-Saa" id="M4F-pT-MRY"/>
                         <outlet property="newestCollectionView" destination="WIl-CQ-UjM" id="csl-qL-QTw"/>
