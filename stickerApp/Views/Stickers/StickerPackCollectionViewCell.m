@@ -12,6 +12,7 @@
 #import "CWInAppHelper.h"
 #import "TAOverlay.h"
 #import "TMCache.h"
+#import "CommunicationManager.h"
 
 @interface StickerPackCollectionViewCell ()<UICollectionViewDataSource, UICollectionViewDelegate, StickerHeaderCollectionCellDelegate, NSURLConnectionDelegate>{
     
@@ -202,9 +203,12 @@
         }
         
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-        
-        NSString *pathURL = [_stickerPack objectForKey:@"pack_path"];
-        NSURL *myURL = [NSURL URLWithString:[pathURL stringByAppendingString:@"index.php"]];
+
+        NSString *packName = [_stickerPack objectForKey:@"pack_path"];
+        NSString *endpoint = [[[[CommunicationManager serverURL] absoluteString] stringByAppendingString:@"sticker_packages"] stringByAppendingString: packName];
+
+        //NSString *pathURL = ;
+        NSURL *myURL = [NSURL URLWithString:endpoint];
         NSLog(@"My URL %@", myURL);
         
         NSURLRequest *request = [NSURLRequest requestWithURL:myURL
@@ -230,7 +234,9 @@
                                        if (jsonObject != nil && error == nil){
                                            
                                            dispatch_async(dispatch_get_main_queue(), ^{
-                                               NSArray *stickers = [self formatFilePathsWithURL:pathURL stickerList:(NSArray *)jsonObject];
+
+
+                                               NSArray *stickers = [self formatFilePathsWithURL:[[[CommunicationManager serverURL] absoluteString] stringByReplacingOccurrencesOfString:@"/api/v1/" withString:@""] stickerList:(NSArray *)jsonObject];
                                                
                                                [self addStickersInSection:stickers];
                                                [[TMCache sharedCache] setObject:stickers forKey:_stickerPackID block:nil];
@@ -263,7 +269,7 @@
         return nil;
     }
     for (NSString *item in list){
-        [temp addObject:[NSURL URLWithString:[pathURL stringByAppendingString:[item stringByReplacingOccurrencesOfString:@" " withString:@"_"]]]];
+        [temp addObject:[NSURL URLWithString:[pathURL stringByAppendingString:[[item stringByReplacingOccurrencesOfString:@"/app/public" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@"_"]]]];
     }
     
     return [temp copy];

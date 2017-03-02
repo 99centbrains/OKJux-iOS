@@ -23,11 +23,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>8</string>
+	<string>8.02</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>8</string>
+	<string>17</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -42,6 +42,8 @@
 			</dict>
 		</array>
 	</dict>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>Mixpanel_token</key>
@@ -51,10 +53,14 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>We use Bluetooth to enhance your location while in background</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>We would like to access your calendar</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Take new pics to share on okjux</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This allows us to use your location to provide you certain features like tracking movement more accurately, plus some other cool stuff.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Anonymously Post and View rad jux snaps around you. Your location will never be shared!</string>
 	<key>NSMicrophoneUsageDescription</key>
@@ -152,9 +158,5 @@
 			<string>com.99centbrains.media</string>
 		</dict>
 	</array>
-    <key>NSBluetoothPeripheralUsageDescription</key>
-    <string>We use Bluetooth to enhance your location while in background</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>This allows us to use your location to provide you certain features like tracking movement more accurately, plus some other cool stuff.</string>
 </dict>
 </plist>
