@@ -52,7 +52,7 @@
 
     [reverseGeocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
         if (error) {
-            NSLog(@"reverseGeocoder ERROR %f, %f", lat, lng);
+            NSLog(@"ERROR");
             return;
         }
         CLPlacemark *myPlacemark = [placemarks objectAtIndex:0];
