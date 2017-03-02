@@ -3188,7 +3188,7 @@
                                         </variation>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="We2-ZH-xi1">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="573"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="collapse" translatesAutoresizingMaskIntoConstraints="NO" id="85h-Ij-hHf">
                                                 <rect key="frame" x="171" y="10" width="33" height="17"/>
@@ -3199,11 +3199,14 @@
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="Q2W-kW-59r"/>
                                             <constraint firstItem="85h-Ij-hHf" firstAttribute="top" secondItem="We2-ZH-xi1" secondAttribute="top" constant="10" id="Rv4-QL-iOp"/>
                                             <constraint firstItem="85h-Ij-hHf" firstAttribute="centerX" secondItem="We2-ZH-xi1" secondAttribute="centerX" id="syr-l2-DYV"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="FzS-Yx-5oZ" appends="YES" id="lqk-JW-zUj"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -3215,12 +3218,13 @@
                                     <constraint firstItem="WIl-CQ-UjM" firstAttribute="leading" secondItem="52a-HZ-Vs4" secondAttribute="leading" id="GlG-hh-PoG"/>
                                     <constraint firstAttribute="trailing" secondItem="We2-ZH-xi1" secondAttribute="trailing" id="PS5-07-ZVl"/>
                                     <constraint firstItem="We2-ZH-xi1" firstAttribute="leading" secondItem="52a-HZ-Vs4" secondAttribute="leading" id="SBj-ZB-Xw5"/>
+                                    <constraint firstItem="We2-ZH-xi1" firstAttribute="top" secondItem="52a-HZ-Vs4" secondAttribute="top" id="XTh-6h-HSb"/>
                                     <constraint firstAttribute="trailing" secondItem="hXu-hh-vrO" secondAttribute="trailing" id="eQJ-kE-nEF"/>
                                     <constraint firstItem="hXu-hh-vrO" firstAttribute="top" secondItem="WIl-CQ-UjM" secondAttribute="top" id="eRI-MH-nRC"/>
                                     <constraint firstAttribute="bottom" secondItem="hXu-hh-vrO" secondAttribute="bottom" id="gjV-JM-Tzr"/>
-                                    <constraint firstItem="We2-ZH-xi1" firstAttribute="top" secondItem="ouO-jz-sVC" secondAttribute="top" id="mnI-ch-MMv"/>
                                     <constraint firstItem="ouO-jz-sVC" firstAttribute="top" secondItem="52a-HZ-Vs4" secondAttribute="top" id="qu0-wM-0BD"/>
                                     <constraint firstAttribute="trailing" secondItem="ouO-jz-sVC" secondAttribute="trailing" id="s2g-Cl-S85"/>
+                                    <constraint firstAttribute="bottom" secondItem="We2-ZH-xi1" secondAttribute="bottom" id="seb-mg-5rO"/>
                                     <constraint firstItem="WIl-CQ-UjM" firstAttribute="top" secondItem="52a-HZ-Vs4" secondAttribute="top" constant="50" id="tA4-cW-3b6"/>
                                 </constraints>
                             </view>
@@ -3251,6 +3255,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQR-gt-IKg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="FzS-Yx-5oZ">
+                    <connections>
+                        <action selector="draggableViewPanGesture:" destination="xkP-F9-VMg" id="cpN-xG-g1c"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-2700" y="1227.4362818590705"/>
         </scene>

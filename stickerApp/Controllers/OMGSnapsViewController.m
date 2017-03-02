@@ -59,6 +59,14 @@
 - (void)setUpUI {
     self.segmentTopSpaceConstraint.constant = kSegmentTopInitialPosition;
     self.draggableView.hidden = YES;
+
+    CAGradientLayer *gradientMask = [CAGradientLayer layer];
+    gradientMask.frame = self.draggableView.bounds;
+    gradientMask.colors = @[(id)[UIColor whiteColor].CGColor,
+                            (id)[UIColor whiteColor].CGColor,
+                            (id)[UIColor clearColor].CGColor];
+    gradientMask.locations = @[@0.0, @0.10, @0.30];
+    self.draggableView.layer.mask = gradientMask;
 }
 
 - (void)transitionBetweenCollections:(BOOL)animated {
@@ -207,14 +215,14 @@
     if (-scrollView.contentOffset.y >= kExpandMapScrollOffsetPoint) {
         scrollView.userInteractionEnabled = NO;
         self.mapHeightConstraint.constant = self.view.bounds.size.height - 50;
-        self.bodyContainerTopSpaceConstraint.constant = self.view.bounds.size.height - kSegmentTopInitialPosition - self.segmentControl.frame.size.height - 40;
+        self.bodyContainerTopSpaceConstraint.constant = self.view.frame.size.height - CGRectGetMaxY(self.segmentControl.frame);
         self.draggableView.alpha = 0;
         self.draggableView.hidden = NO;
         [UIView animateWithDuration:0.3 animations:^{
             [self.view layoutIfNeeded];
             self.draggableView.alpha = 1;
         } completion:^(BOOL finished) {
-
+            [self.newestCollectionView setContentOffset:CGPointMake(0, kSegmentTopInitialPosition) animated:NO];
         }];
     }
 }
@@ -256,5 +264,40 @@
 - (void)omgSnapShareImage:(UIImage *)image {
     [SnapHelper shareItem:image fromViewController:self];
 }
+
+#pragma mark -
+#pragma mark Gestures
+
+- (IBAction)draggableViewPanGesture:(UIPanGestureRecognizer *)sender {
+    CGPoint translation = [sender translationInView:self.view];
+
+    CGFloat initialValue = self.view.frame.size.height - CGRectGetMaxY(self.segmentControl.frame);
+    NSLog(@"%f, %f %f", translation.x, translation.y, initialValue + translation.y);
+    self.bodyContainerTopSpaceConstraint.constant = initialValue + translation.y;
+//    sender.view.center = CGPointMake(sender.view.center.x + translation.x,
+//                                         sender.view.center.y + translation.y);
+//
+//    if (recognizer.state == UIGestureRecognizerStateEnded) {
+//
+//        // Check here for the position of the view when the user stops touching the screen
+//
+//        // Set "CGFloat finalX" and "CGFloat finalY", depending on the last position of the touch
+//
+//        // Use this to animate the position of your view to where you want
+//        [UIView animateWithDuration: aDuration
+//                              delay: 0
+//                            options: UIViewAnimationOptionCurveEaseOut
+//                         animations:^{
+//                             CGPoint finalPoint = CGPointMake(finalX, finalY);
+//                             recognizer.view.center = finalPoint; }
+//                         completion:nil];
+//    }
+//
+//    
+//    [recognizer setTranslation:CGPointMake(0, 0) inView:_myScroll];
+
+}
+
+
 
 @end
