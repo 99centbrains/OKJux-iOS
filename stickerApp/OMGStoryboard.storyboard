@@ -3227,6 +3227,9 @@
                                     <constraint firstAttribute="trailing" secondItem="ouO-jz-sVC" secondAttribute="trailing" id="s2g-Cl-S85"/>
                                     <constraint firstAttribute="bottom" secondItem="We2-ZH-xi1" secondAttribute="bottom" id="seb-mg-5rO"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="t7r-0e-inf" appends="YES" id="Nj6-wB-lJk"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3244,6 +3247,7 @@
                     <connections>
                         <outlet property="bodyContainerTopSpaceConstraint" destination="dve-JR-dN5" id="vv3-8w-4kh"/>
                         <outlet property="bodyContainerView" destination="52a-HZ-Vs4" id="XSE-vc-GVd"/>
+                        <outlet property="dragToCloseGesture" destination="FzS-Yx-5oZ" id="nlg-KL-UH9"/>
                         <outlet property="draggableView" destination="We2-ZH-xi1" id="oAk-PQ-YLr"/>
                         <outlet property="hottestCollectionView" destination="hXu-hh-vrO" id="Gwr-d5-Y9D"/>
                         <outlet property="mapHeaderView" destination="bGQ-bn-NfR" id="vmd-uQ-j2f"/>
@@ -3251,10 +3255,16 @@
                         <outlet property="newestCollectionView" destination="WIl-CQ-UjM" id="csl-qL-QTw"/>
                         <outlet property="segmentControl" destination="MAq-ai-jbm" id="5Xx-QV-vA3"/>
                         <outlet property="segmentTopSpaceConstraint" destination="qu0-wM-0BD" id="Lfh-Qs-efv"/>
+                        <outlet property="tapToCloseGesture" destination="t7r-0e-inf" id="rOm-HE-kcn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQR-gt-IKg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="FzS-Yx-5oZ">
+                <tapGestureRecognizer enabled="NO" id="t7r-0e-inf">
+                    <connections>
+                        <action selector="tapToCollapse:" destination="xkP-F9-VMg" id="2sq-7y-ppG"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <panGestureRecognizer enabled="NO" minimumNumberOfTouches="1" id="FzS-Yx-5oZ">
                     <connections>
                         <action selector="draggableViewPanGesture:" destination="xkP-F9-VMg" id="cpN-xG-g1c"/>
                     </connections>

@@ -27,6 +27,10 @@
 @property (weak, nonatomic) IBOutlet UIView *draggableView;
 @property (nonatomic, strong) OMGHeadSpaceViewController *navigation;
 
+//Gestures
+@property (strong, nonatomic) IBOutlet UIPanGestureRecognizer *dragToCloseGesture;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapToCloseGesture;
+
 //UI Constraints
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *segmentTopSpaceConstraint;
@@ -43,7 +47,7 @@
 @end
 
 //#define kStartVisibleScreenPosition (CGFloat)65
-//#define kSegmentTopInitialPosition (CGFloat)170
+#define kMapExtraHeightSize (CGFloat)50
 #define kMapAndCollectionsHeaderHeight (CGFloat) 170
 #define kSegmentTopMinPosition (CGFloat)0
 #define kExpandMapScrollTriggerPoint (CGFloat)100
@@ -66,7 +70,7 @@
     [self setUpNavigation];
 
     self.segmentTopSpaceConstraint.constant = kMapAndCollectionsHeaderHeight;
-    self.mapHeightConstraint.constant = kMapAndCollectionsHeaderHeight + 50;
+    self.mapHeightConstraint.constant = kMapAndCollectionsHeaderHeight + kMapExtraHeightSize;
     self.bodyContainerTopSpaceConstraint.constant = self.navigation.view.frame.size.height - kStatusBarHeight;
     self.draggableView.hidden = YES;
 
@@ -163,7 +167,6 @@
     return self.segmentControl.selectedSegmentIndex == 0;
 }
 
-
 - (void)expandMap {
     self.mapHeightConstraint.constant = self.view.bounds.size.height - 50;
     self.bodyContainerTopSpaceConstraint.constant = self.view.frame.size.height - self.segmentControl.frame.size.height - 30;
@@ -177,13 +180,15 @@
         [self.hottestCollectionView setContentOffset:CGPointMake(0, self.collectionHeaderHeight) animated:NO];
         self.newestCollectionView.scrollEnabled = NO;
         self.hottestCollectionView.scrollEnabled = NO;
+        self.tapToCloseGesture.enabled = YES;
+        self.dragToCloseGesture.enabled = YES;
     }];
 }
 
 - (void)collapseMap {
 
     self.isMapExpanded = NO;
-    self.mapHeightConstraint.constant = kMapAndCollectionsHeaderHeight + 50;
+    self.mapHeightConstraint.constant = kMapAndCollectionsHeaderHeight + kMapExtraHeightSize;
     self.bodyContainerTopSpaceConstraint.constant = self.navigation.view.frame.size.height - kStatusBarHeight;
     self.segmentControl.superview.alpha = 0;
     [UIView animateWithDuration:0.3 animations:^{
@@ -199,6 +204,8 @@
             self.draggableView.hidden = YES;
             self.newestCollectionView.scrollEnabled = YES;
             self.hottestCollectionView.scrollEnabled = YES;
+            self.tapToCloseGesture.enabled = NO;
+            self.dragToCloseGesture.enabled = NO;
         }];
     }];
 }
@@ -274,8 +281,7 @@
 
     //RESIZE MAP
     if (scrollView.contentOffset.y < 0) {
-        self.mapHeightConstraint.constant = kMapAndCollectionsHeaderHeight + -scrollView.contentOffset.y;
-
+        self.mapHeightConstraint.constant = kMapAndCollectionsHeaderHeight + kMapExtraHeightSize + -scrollView.contentOffset.y;
     }
 }
 
@@ -338,6 +344,9 @@
     {
         [self collapseMap];
     }
+}
+- (IBAction)tapToCollapse:(UIPanGestureRecognizer *)sender {
+    [self collapseMap];
 }
 
 @end
