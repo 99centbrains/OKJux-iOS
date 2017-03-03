@@ -17,7 +17,36 @@
 #import "OMGSnapHeaderView.h"
 #import "OMGHeadSpaceViewController.h"
 
-@interface OMGSnapsViewController () <UICollectionViewDataSource, UICollectionViewDelegate, OMGSnapCollectionViewCellDelegate, UICollectionViewDelegateFlowLayout>
+@protocol OMGSnapsCollectionSectionHeaderViewDelegate <NSObject>
+- (void)collectionHeaderHasBeenTapped;
+@end
+
+@interface OMGSnapsCollectionSectionHeaderView : UICollectionReusableView
++ (NSString *)reuseIdentifier;
+@property (nonatomic, weak) id<OMGSnapsCollectionSectionHeaderViewDelegate> delegate;
+@end
+
+@implementation OMGSnapsCollectionSectionHeaderView
++ (NSString *)reuseIdentifier {
+    return  @"OMGSnapsCollectionSectionHeaderViewReuseIdentifier";
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.backgroundColor = [UIColor clearColor];
+        [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureHandler)]];
+    }
+    return self;
+}
+
+- (void)tapGestureHandler {
+    [self.delegate collectionHeaderHasBeenTapped];
+}
+
+@end
+
+@interface OMGSnapsViewController () <UICollectionViewDataSource, UICollectionViewDelegate, OMGSnapCollectionViewCellDelegate, UICollectionViewDelegateFlowLayout, OMGSnapsCollectionSectionHeaderViewDelegate>
 //UI elements
 @property (nonatomic, weak) IBOutlet UICollectionView *newestCollectionView;
 @property (nonatomic, weak) IBOutlet UICollectionView *hottestCollectionView;
@@ -44,6 +73,7 @@
 @property (nonatomic, assign) int currentNewestPage;
 @property (nonatomic, assign) CGFloat collectionHeaderHeight;
 @property (nonatomic, assign) BOOL isMapExpanded;
+@property (nonatomic, assign) BOOL isFetchingData;
 @end
 
 //#define kStartVisibleScreenPosition (CGFloat)65
@@ -60,7 +90,6 @@
 
     self.currentNewestPage = self.currentHottestPage = 1;
     self.hottestCollectionView.hidden = YES;
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
     [self fetchNewestSnaps];
     [self transitionBetweenCollections:NO];
     [self setUpUI];
@@ -69,6 +98,7 @@
 - (void)setUpUI {
     [self setUpNavigation];
 
+    self.collectionHeaderHeight = kMapAndCollectionsHeaderHeight + self.segmentControl.frame.size.height + kStatusBarHeight;
     self.segmentTopSpaceConstraint.constant = kMapAndCollectionsHeaderHeight;
     self.mapHeightConstraint.constant = kMapAndCollectionsHeaderHeight + kMapExtraHeightSize;
     self.bodyContainerTopSpaceConstraint.constant = self.navigation.view.frame.size.height - kStatusBarHeight;
@@ -81,6 +111,11 @@
                             (id)[UIColor clearColor].CGColor];
     gradientMask.locations = @[@0.0, @0.10, @0.30];
     self.draggableView.layer.mask = gradientMask;
+
+    self.newestCollectionView.delegate = self;
+    self.newestCollectionView.dataSource = self;
+    self.hottestCollectionView.delegate = self;
+    self.hottestCollectionView.dataSource = self;
 }
 
 - (void)setUpNavigation {
@@ -102,8 +137,9 @@
     if (self.currentNewestPage != 1 && (self.newestSnapsArray.count % SNAP_PER_PAGE) != 0) {
         return;
     }
-    
     [TAOverlay showOverlayWithLabel:@"Loading Snaps" Options:TAOverlayOptionOverlaySizeBar | TAOverlayOptionOverlayTypeActivityDefault];
+
+    self.isFetchingData = YES;
 
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"user_id"] = [DataManager userID];
@@ -116,10 +152,10 @@
         }else {
             [self.newestSnapsArray addObjectsFromArray:responseObject];
         }
-        self.currentNewestPage++;
 
         [TAOverlay hideOverlay];
         [self.newestCollectionView reloadData];
+        self.isFetchingData = NO;
 
     } OnFailure:^(NSError *error) {
         [TAOverlay hideOverlay];
@@ -130,6 +166,7 @@
     if (self.currentHottestPage != 1 && (self.hottestSnapsArray.count % SNAP_PER_PAGE) != 0) {
         return;
     }
+    self.isFetchingData = YES;
 
     [TAOverlay showOverlayWithLabel:@"Loading Snaps" Options:TAOverlayOptionOverlaySizeBar | TAOverlayOptionOverlayTypeActivityDefault];
 
@@ -144,10 +181,9 @@
         }else {
             [self.hottestSnapsArray addObjectsFromArray:responseObject];
         }
-        self.currentHottestPage++;
-
         [TAOverlay hideOverlay];
         [self.hottestCollectionView reloadData];
+        self.isFetchingData = NO;
 
     } OnFailure:^(NSError *error) {
         [TAOverlay hideOverlay];
@@ -182,7 +218,7 @@
         self.hottestCollectionView.scrollEnabled = NO;
         self.tapToCloseGesture.enabled = YES;
         self.dragToCloseGesture.enabled = YES;
-self.draggableView.alpha = 1;
+        self.draggableView.alpha = 1;
     }];
 }
 
@@ -257,12 +293,29 @@ self.draggableView.alpha = 1;
     } else {
         cell.ibo_shareBtn.hidden = YES;
     }
-
+    cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
     return cell;
 }
 
 #pragma mark -
 #pragma mark CollectionViewDelegate
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+
+
+        OMGSnapsCollectionSectionHeaderView *reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[OMGSnapsCollectionSectionHeaderView reuseIdentifier] forIndexPath:indexPath];
+
+        if (reusableview == nil) {
+            reusableview = [[OMGSnapsCollectionSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.newestCollectionView.frame.size.width, self.collectionHeaderHeight)];
+        }
+        reusableview.delegate = self;
+
+        return reusableview;
+    }
+    return nil;
+}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 
@@ -273,13 +326,40 @@ self.draggableView.alpha = 1;
     CGFloat newSegmentPosition = kMapAndCollectionsHeaderHeight + -scrollView.contentOffset.y;
     if (newSegmentPosition >= 0) {
         self.segmentTopSpaceConstraint.constant = newSegmentPosition;
+
+        //MOVE BOTH COLLECTIONS AT THE SAME TIME
+        if (scrollView == self.hottestCollectionView) {
+            self.newestCollectionView.contentOffset = scrollView.contentOffset;
+        } else {
+            self.hottestCollectionView.contentOffset = scrollView.contentOffset;
+        }
     } else {
         self.segmentTopSpaceConstraint.constant = 0;
+
+        if (scrollView == self.hottestCollectionView) {
+            self.newestCollectionView.contentOffset = CGPointMake(0, kMapAndCollectionsHeaderHeight);
+        } else {
+            self.hottestCollectionView.contentOffset = CGPointMake(0, kMapAndCollectionsHeaderHeight);
+        }
     }
 
     //RESIZE MAP
     if (scrollView.contentOffset.y < 0) {
         self.mapHeightConstraint.constant = kMapAndCollectionsHeaderHeight + kMapExtraHeightSize + -scrollView.contentOffset.y;
+    }
+
+    if (CGRectIntersectsRect(scrollView.bounds, CGRectMake(0, scrollView.contentSize.height, CGRectGetWidth(self.view.frame), 200)) &&
+        scrollView.contentSize.height > 0) {
+        if (!self.isFetchingData) {
+            if ([self isShowingNewest]) {
+                self.currentNewestPage++;
+                [self fetchNewestSnaps];
+            }
+            else {
+                self.currentHottestPage++;
+                [self fetchHottestSnaps];
+            }
+        }
     }
 }
 
@@ -294,7 +374,6 @@ self.draggableView.alpha = 1;
 #pragma mark UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    self.collectionHeaderHeight = kMapAndCollectionsHeaderHeight + self.segmentControl.frame.size.height + kStatusBarHeight;
     return CGSizeMake(self.newestCollectionView.frame.size.width, self.collectionHeaderHeight);
 }
 
@@ -345,6 +424,13 @@ self.draggableView.alpha = 1;
 }
 - (IBAction)tapToCollapse:(UIPanGestureRecognizer *)sender {
     [self collapseMap];
+}
+
+#pragma mark - 
+#pragma mark OMGSnapsCollectionSectionHeaderViewDelegate
+
+- (void)collectionHeaderHasBeenTapped {
+    [self expandMap];
 }
 
 @end
