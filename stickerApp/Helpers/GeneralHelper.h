@@ -22,4 +22,8 @@
 
 + (BOOL)havePhotoLibraryAuthorization;
 
++ (void)reverseGeoLocation:(double)lat lng:(double)lng completionHandler:(void (^)(NSString*))completion;
+
++ (NSString*)getTimeAgoFromString:(NSString*)createdAt;
+
 @end

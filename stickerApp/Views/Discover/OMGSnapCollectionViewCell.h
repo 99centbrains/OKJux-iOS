@@ -30,6 +30,7 @@
 
 - (void)setupImageView:(NSURL *)file andThumbnail:(NSURL *)thumb;
 - (void)setThumbnailImage:(NSURL *)file;
+- (void)loadSnap:(Snap*)snap;
 
 @property (nonatomic, weak) IBOutlet UIImageView *ibo_userSnapImage;
 @property (nonatomic, strong) NSURL *imageURL;

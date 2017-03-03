@@ -23,6 +23,7 @@
 #import "OMGTabBarViewController.h"
 #import "MixPanelManager.h"
 #import "TMCache.h"
+#import "OMGSnapsViewController.h"
 
 
 @interface ViewController ()<StickerCategoryViewControllerDelegate, MFMessageComposeViewControllerDelegate, CBImagePickerViewControllerDelegate> {
@@ -430,7 +431,8 @@
 
 - (IBAction)iba_displayOMGSnap:(id)sender{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"OMGStoryboard" bundle:nil];
-    OMGTabBarViewController *playVC = (OMGTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"seg_OMGTabBarViewController"];
+//    OMGTabBarViewController *playVC = (OMGTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"seg_OMGTabBarViewController"];
+    OMGSnapsViewController *playVC = (OMGSnapsViewController *)[storyboard instantiateViewControllerWithIdentifier:@"OMGSnapsViewController"];
     [self presentViewController:playVC animated:YES completion:^(void){
     }];
 }

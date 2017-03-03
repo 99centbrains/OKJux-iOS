@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "44D61C141E4B8B6D005A1936"
+               BuildableName = "OKJUXTests.xctest"
+               BlueprintName = "OKJUXTests"
+               ReferencedContainer = "container:OKJUX.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "44D61C1F1E4B8B6D005A1936"
+               BuildableName = "OKJUXUITests.xctest"
+               BlueprintName = "OKJUXUITests"
+               ReferencedContainer = "container:OKJUX.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
