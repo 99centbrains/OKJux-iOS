@@ -174,7 +174,7 @@
     self.draggableView.hidden = NO;
     [UIView animateWithDuration:0.3 animations:^{
         [self.view layoutIfNeeded];
-        self.draggableView.alpha = 1;
+        self.draggableView.alpha = 0.5;
     } completion:^(BOOL finished) {
         [self.newestCollectionView setContentOffset:CGPointMake(0, self.collectionHeaderHeight) animated:NO];
         [self.hottestCollectionView setContentOffset:CGPointMake(0, self.collectionHeaderHeight) animated:NO];
@@ -182,11 +182,11 @@
         self.hottestCollectionView.scrollEnabled = NO;
         self.tapToCloseGesture.enabled = YES;
         self.dragToCloseGesture.enabled = YES;
+self.draggableView.alpha = 1;
     }];
 }
 
 - (void)collapseMap {
-
     self.isMapExpanded = NO;
     self.mapHeightConstraint.constant = kMapAndCollectionsHeaderHeight + kMapExtraHeightSize;
     self.bodyContainerTopSpaceConstraint.constant = self.navigation.view.frame.size.height - kStatusBarHeight;
@@ -196,17 +196,15 @@
         [self.newestCollectionView setContentOffset:CGPointZero animated:NO];
         [self.hottestCollectionView setContentOffset:CGPointZero animated:NO];
         self.draggableView.alpha = 0;
+        self.segmentControl.superview.alpha = 0.5;
     } completion:^(BOOL finished) {
+        self.segmentControl.superview.alpha = 1;
+        self.draggableView.hidden = YES;
+        self.newestCollectionView.scrollEnabled = YES;
+        self.hottestCollectionView.scrollEnabled = YES;
+        self.tapToCloseGesture.enabled = NO;
+        self.dragToCloseGesture.enabled = NO;
 
-        [UIView animateWithDuration:0.3 animations:^{
-            self.segmentControl.superview.alpha = 1;
-        } completion:^(BOOL finished) {
-            self.draggableView.hidden = YES;
-            self.newestCollectionView.scrollEnabled = YES;
-            self.hottestCollectionView.scrollEnabled = YES;
-            self.tapToCloseGesture.enabled = NO;
-            self.dragToCloseGesture.enabled = NO;
-        }];
     }];
 }
 
