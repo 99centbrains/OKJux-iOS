@@ -10,10 +10,12 @@
 #import "DataManager.h"
 #import "SnapServiceManager.h"
 #import "OMGMapAnnotation.h"
+#import "OMGSnapLocationPicker.h"
 
-@interface OMGSnapHeaderView () <MKMapViewDelegate>
+@interface OMGSnapHeaderView () <MKMapViewDelegate, OMGSnapLocationPickerDelegate>
 //UI
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) OMGSnapLocationPicker *locationPicker;
 
 
 @property (nonatomic, assign) BOOL isFirstLoad;
@@ -52,21 +54,27 @@
     self.activityIndicator.hidesWhenStopped = YES;
     self.activityIndicator.center = self.center;
     [self addSubview:self.activityIndicator];
+
+    self.locationPicker = [[OMGSnapLocationPicker alloc] initWithFrame:CGRectMake(0, -100, self.bounds.size.width, 100)];
+    self.locationPicker.hidden = YES;
+    self.locationPicker.delegate = self;
+    [self addSubview:self.locationPicker];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.activityIndicator.center = self.center;
     self.mapView.frame = self.bounds;
+    self.locationPicker.frame = CGRectMake(0, self.locationPicker.frame.origin.y, self.frame.size.width, self.locationPicker.frame.size.height);
 }
 
 #pragma mark - 
 #pragma mark Fetch Data
 
-- (void)fetchNearbySnaps {
+- (void)fetchSnapsByCoordinates:(CLLocationCoordinate2D)coodinates {
 
-    NSString *currentLat = [NSString stringWithFormat:@"%f", [[DataManager currentLatitud] doubleValue]];
-    NSString *currentLong = [NSString stringWithFormat:@"%f", [[DataManager currentLongitud] doubleValue]];
+    NSString *currentLat = [NSString stringWithFormat:@"%f", coodinates.latitude];
+    NSString *currentLong = [NSString stringWithFormat:@"%f", coodinates.longitude];
 
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"user_id"] = [DataManager userID];
@@ -121,24 +129,24 @@
 
 -(void)zoomToFitMapAnnotations
 {
-    self.didFinishPlacingTheAnnotations = YES;
-    if([self.mapView.annotations count] == 0)
-        return;
-
-    MKMapRect zoomRect = MKMapRectNull;
-    for (id <MKAnnotation> annotation in _mapView.annotations)
-    {
-        MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
-        MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.1, 0.1);
-        zoomRect = MKMapRectUnion(zoomRect, pointRect);
-    }
-    [_mapView setVisibleMapRect:zoomRect animated:YES];
+//    self.didFinishPlacingTheAnnotations = YES;
+//    if([self.mapView.annotations count] == 0)
+//        return;
+//
+//    MKMapRect zoomRect = MKMapRectNull;
+//    for (id <MKAnnotation> annotation in _mapView.annotations)
+//    {
+//        MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
+//        MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.1, 0.1);
+//        zoomRect = MKMapRectUnion(zoomRect, pointRect);
+//    }
+//    [_mapView setVisibleMapRect:zoomRect animated:YES];
 }
 
 - (void)centerMap {
-    if (!self.didFinishPlacingTheAnnotations)
-        return;
-    
+//    if (/*!self.didFinishPlacingTheAnnotations && */)
+//        return;
+//    
     CLLocationCoordinate2D zoomLocation;
     zoomLocation.latitude = [[DataManager currentLatitud] doubleValue];
     zoomLocation.longitude= [[DataManager currentLongitud] doubleValue];
@@ -146,9 +154,27 @@
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, METERS_PER_MILE, METERS_PER_MILE);
     [self.mapView setRegion:[self.mapView regionThatFits:viewRegion] animated:YES];
 
-    if (self.isFirstLoad)
-        [self fetchNearbySnaps];
+    if (self.isFirstLoad) {
+        CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([[DataManager currentLatitud] doubleValue], [[DataManager currentLongitud] doubleValue]);
+        [self fetchSnapsByCoordinates: coordinates];
+    }
 }
+
+- (void)showLocationPicker {
+    self.locationPicker.hidden = NO;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.locationPicker.frame = CGRectMake(0, 0, self.frame.size.width, self.locationPicker.frame.size.height);
+    }];
+
+}
+- (void)hideLocationPicker {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.locationPicker.frame = CGRectMake(0, -self.locationPicker.frame.size.height, self.frame.size.width, self.locationPicker.frame.size.height);
+    } completion:^(BOOL finished) {
+        self.locationPicker.hidden = YES;
+    }];
+}
+
 
 #pragma mark -
 #pragma mark MapViewDelegate
@@ -171,6 +197,25 @@
     }
 
     return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    if ([view.annotation isKindOfClass:[OMGMapAnnotation class]]) {
+        OMGMapAnnotation *anno = view.annotation;
+        [self.parent showFullScreenSnap:anno.snap preload:anno.thumbnail shouldShowVoter:NO];
+    }
+}
+
+#pragma mark -
+#pragma mark OMGSnapLocationPickerDelegate
+
+- (void)OMGSnapLocationPicker:(OMGSnapLocationPicker*)snapLocationPicker didSelectLocationCoordinates:(CGPoint)coordinates {
+    CLLocationCoordinate2D zoomLocation = CLLocationCoordinate2DMake(coordinates.x,
+                                                      coordinates.y);
+    [self fetchSnapsByCoordinates:zoomLocation];
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, METERS_PER_MILE, METERS_PER_MILE);
+    [self.mapView setRegion:viewRegion animated:YES];
+
 }
 
 @end
