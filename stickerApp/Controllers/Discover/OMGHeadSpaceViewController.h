@@ -14,7 +14,7 @@
 
 @protocol OMGHeadSpaceViewControllerDelegate <NSObject>
 
-- (void) omgEmojiTime;
+- (void) centerMap;
 
 @end
 

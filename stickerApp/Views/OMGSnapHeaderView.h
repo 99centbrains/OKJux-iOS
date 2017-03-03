@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "OMGHeadSpaceViewController.h"
 
-@interface OMGSnapHeaderView : UIView
+@interface OMGSnapHeaderView <OMGHeadSpaceViewControllerDelegate> : UIView
 @property (nonatomic, strong) MKMapView *mapView;
 @end

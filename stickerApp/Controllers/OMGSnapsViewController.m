@@ -124,7 +124,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"OMGStoryboard" bundle:nil];
     self.navigation = (OMGHeadSpaceViewController *)[storyboard instantiateViewControllerWithIdentifier:@"seg_OMGHeadSpaceViewController"];
     self.navigation.view.frame = CGRectMake(0, 0, self.view.frame.size.width, 65);
-    self.navigation.delegate = self;
+    self.navigation.delegate = self.mapHeaderView;
     self.navigation.ibo_titleLabel.text = NSLocalizedString(@"TABBAR_MAP_TITLE", nil);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self.navigation updateKarma];

@@ -2146,7 +2146,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="18"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" image="ui_btn_cam_mini">
+                                <state key="normal" image="location">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -4489,8 +4489,8 @@
         <image name="i_ftue_01" width="700" height="700"/>
         <image name="i_ftue_03.png" width="700" height="700"/>
         <image name="i_ftue_05.png" width="700" height="700"/>
+        <image name="location" width="30" height="30"/>
         <image name="ui_bg_gradient_01.png" width="1" height="1131"/>
-        <image name="ui_btn_cam_mini" width="120" height="80"/>
         <image name="ui_btn_mms_mini.png" width="120" height="80"/>
         <image name="ui_discover_hate_down.png" width="200" height="200"/>
         <image name="ui_discover_hate_up" width="200" height="200"/>
