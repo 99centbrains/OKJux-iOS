@@ -2218,6 +2218,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="52a-HZ-Vs4" userLabel="Body Container View">
                                 <rect key="frame" x="0.0" y="45" width="375" height="573"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EIK-ah-pql" userLabel="BackgroundView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="573"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WIl-CQ-UjM">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="573"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3209,12 +3213,16 @@
                                 <constraints>
                                     <constraint firstItem="ouO-jz-sVC" firstAttribute="leading" secondItem="52a-HZ-Vs4" secondAttribute="leading" id="5YK-dG-7zf"/>
                                     <constraint firstItem="hXu-hh-vrO" firstAttribute="leading" secondItem="52a-HZ-Vs4" secondAttribute="leading" id="79Y-9j-1xR"/>
+                                    <constraint firstAttribute="bottom" secondItem="EIK-ah-pql" secondAttribute="bottom" id="Cje-5C-jMp"/>
                                     <constraint firstAttribute="bottom" secondItem="WIl-CQ-UjM" secondAttribute="bottom" id="EOS-KR-Sbs"/>
+                                    <constraint firstItem="EIK-ah-pql" firstAttribute="leading" secondItem="52a-HZ-Vs4" secondAttribute="leading" id="El3-zH-hYV"/>
                                     <constraint firstAttribute="trailing" secondItem="WIl-CQ-UjM" secondAttribute="trailing" id="Fnd-GO-sMT"/>
                                     <constraint firstItem="WIl-CQ-UjM" firstAttribute="leading" secondItem="52a-HZ-Vs4" secondAttribute="leading" id="GlG-hh-PoG"/>
                                     <constraint firstItem="WIl-CQ-UjM" firstAttribute="top" secondItem="52a-HZ-Vs4" secondAttribute="top" id="M54-5d-ljj"/>
                                     <constraint firstAttribute="trailing" secondItem="We2-ZH-xi1" secondAttribute="trailing" id="PS5-07-ZVl"/>
                                     <constraint firstItem="We2-ZH-xi1" firstAttribute="leading" secondItem="52a-HZ-Vs4" secondAttribute="leading" id="SBj-ZB-Xw5"/>
+                                    <constraint firstItem="EIK-ah-pql" firstAttribute="top" secondItem="ouO-jz-sVC" secondAttribute="top" id="SuG-PC-B69"/>
+                                    <constraint firstAttribute="trailing" secondItem="EIK-ah-pql" secondAttribute="trailing" id="VPr-fn-nq1"/>
                                     <constraint firstItem="We2-ZH-xi1" firstAttribute="top" secondItem="52a-HZ-Vs4" secondAttribute="top" id="XTh-6h-HSb"/>
                                     <constraint firstAttribute="trailing" secondItem="hXu-hh-vrO" secondAttribute="trailing" id="eQJ-kE-nEF"/>
                                     <constraint firstItem="hXu-hh-vrO" firstAttribute="top" secondItem="WIl-CQ-UjM" secondAttribute="top" id="eRI-MH-nRC"/>
@@ -3241,6 +3249,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="irm-1D-vdc"/>
                     <connections>
+                        <outlet property="backgroundCropView" destination="EIK-ah-pql" id="JPS-7K-MUh"/>
                         <outlet property="bodyContainerTopSpaceConstraint" destination="dve-JR-dN5" id="vv3-8w-4kh"/>
                         <outlet property="bodyContainerView" destination="52a-HZ-Vs4" id="XSE-vc-GVd"/>
                         <outlet property="dragToCloseGesture" destination="FzS-Yx-5oZ" id="nlg-KL-UH9"/>
