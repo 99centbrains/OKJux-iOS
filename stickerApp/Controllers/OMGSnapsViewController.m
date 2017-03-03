@@ -55,6 +55,7 @@
 @property (weak, nonatomic) IBOutlet UIView *bodyContainerView;
 @property (weak, nonatomic) IBOutlet UIView *draggableView;
 @property (nonatomic, strong) OMGHeadSpaceViewController *navigation;
+@property (weak, nonatomic) IBOutlet UIView *backgroundCropView;
 
 //Gestures
 @property (strong, nonatomic) IBOutlet UIPanGestureRecognizer *dragToCloseGesture;
@@ -104,6 +105,7 @@
     self.bodyContainerTopSpaceConstraint.constant = self.navigation.view.frame.size.height - kStatusBarHeight;
     self.draggableView.hidden = YES;
 
+    self.backgroundCropView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
     CAGradientLayer *gradientMask = [CAGradientLayer layer];
     gradientMask.frame = self.draggableView.bounds;
     gradientMask.colors = @[(id)[UIColor whiteColor].CGColor,
@@ -305,7 +307,6 @@
     } else {
         cell.ibo_shareBtn.hidden = YES;
     }
-//    cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
     return cell;
 }
 
