@@ -2199,7 +2199,7 @@
         <!--Item-->
         <scene sceneID="4L7-wD-57D">
             <objects>
-                <viewController storyboardIdentifier="OMGSnapViewController" id="xkP-F9-VMg" customClass="OMGSnapsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OMGSnapsViewController" id="xkP-F9-VMg" customClass="OMGSnapsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="D7w-E5-Y8p"/>
                         <viewControllerLayoutGuide type="bottom" id="7FF-ra-c7Z"/>
@@ -2209,7 +2209,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGQ-bn-NfR" customClass="OMGSnapHeaderView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="45" width="375" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="aNO-Pb-Zc1"/>
@@ -2219,7 +2219,7 @@
                                 <rect key="frame" x="0.0" y="45" width="375" height="573"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WIl-CQ-UjM">
-                                        <rect key="frame" x="0.0" y="50" width="375" height="523"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="573"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="H12-Ea-NPh">
                                             <size key="itemSize" width="400" height="686"/>
@@ -2772,7 +2772,7 @@
                                         </connections>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hXu-hh-vrO">
-                                        <rect key="frame" x="0.0" y="50" width="375" height="523"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="573"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="z3E-WD-UaY">
                                             <size key="itemSize" width="200" height="280"/>
@@ -3216,6 +3216,7 @@
                                     <constraint firstAttribute="bottom" secondItem="WIl-CQ-UjM" secondAttribute="bottom" id="EOS-KR-Sbs"/>
                                     <constraint firstAttribute="trailing" secondItem="WIl-CQ-UjM" secondAttribute="trailing" id="Fnd-GO-sMT"/>
                                     <constraint firstItem="WIl-CQ-UjM" firstAttribute="leading" secondItem="52a-HZ-Vs4" secondAttribute="leading" id="GlG-hh-PoG"/>
+                                    <constraint firstItem="WIl-CQ-UjM" firstAttribute="top" secondItem="52a-HZ-Vs4" secondAttribute="top" id="M54-5d-ljj"/>
                                     <constraint firstAttribute="trailing" secondItem="We2-ZH-xi1" secondAttribute="trailing" id="PS5-07-ZVl"/>
                                     <constraint firstItem="We2-ZH-xi1" firstAttribute="leading" secondItem="52a-HZ-Vs4" secondAttribute="leading" id="SBj-ZB-Xw5"/>
                                     <constraint firstItem="We2-ZH-xi1" firstAttribute="top" secondItem="52a-HZ-Vs4" secondAttribute="top" id="XTh-6h-HSb"/>
@@ -3225,7 +3226,6 @@
                                     <constraint firstItem="ouO-jz-sVC" firstAttribute="top" secondItem="52a-HZ-Vs4" secondAttribute="top" id="qu0-wM-0BD"/>
                                     <constraint firstAttribute="trailing" secondItem="ouO-jz-sVC" secondAttribute="trailing" id="s2g-Cl-S85"/>
                                     <constraint firstAttribute="bottom" secondItem="We2-ZH-xi1" secondAttribute="bottom" id="seb-mg-5rO"/>
-                                    <constraint firstItem="WIl-CQ-UjM" firstAttribute="top" secondItem="52a-HZ-Vs4" secondAttribute="top" constant="50" id="tA4-cW-3b6"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -3233,7 +3233,7 @@
                         <constraints>
                             <constraint firstItem="bGQ-bn-NfR" firstAttribute="leading" secondItem="XAI-iK-qbt" secondAttribute="leading" id="38r-zT-HjH"/>
                             <constraint firstAttribute="trailing" secondItem="52a-HZ-Vs4" secondAttribute="trailing" id="Jel-Hg-cFb"/>
-                            <constraint firstItem="bGQ-bn-NfR" firstAttribute="top" secondItem="D7w-E5-Y8p" secondAttribute="bottom" id="Lwg-7Z-qAD"/>
+                            <constraint firstItem="bGQ-bn-NfR" firstAttribute="top" secondItem="D7w-E5-Y8p" secondAttribute="bottom" constant="45" id="Lwg-7Z-qAD"/>
                             <constraint firstItem="7FF-ra-c7Z" firstAttribute="top" secondItem="52a-HZ-Vs4" secondAttribute="bottom" id="Prc-mv-jP6"/>
                             <constraint firstItem="52a-HZ-Vs4" firstAttribute="leading" secondItem="XAI-iK-qbt" secondAttribute="leading" id="TXQ-43-mq7"/>
                             <constraint firstItem="52a-HZ-Vs4" firstAttribute="top" secondItem="D7w-E5-Y8p" secondAttribute="bottom" constant="45" id="dve-JR-dN5"/>
@@ -3248,7 +3248,6 @@
                         <outlet property="hottestCollectionView" destination="hXu-hh-vrO" id="Gwr-d5-Y9D"/>
                         <outlet property="mapHeaderView" destination="bGQ-bn-NfR" id="vmd-uQ-j2f"/>
                         <outlet property="mapHeightConstraint" destination="aNO-Pb-Zc1" id="CWq-qa-YYS"/>
-                        <outlet property="newestCollectionTopSpaceConstraint" destination="tA4-cW-3b6" id="AHH-hj-FlX"/>
                         <outlet property="newestCollectionView" destination="WIl-CQ-UjM" id="csl-qL-QTw"/>
                         <outlet property="segmentControl" destination="MAq-ai-jbm" id="5Xx-QV-vA3"/>
                         <outlet property="segmentTopSpaceConstraint" destination="qu0-wM-0BD" id="Lfh-Qs-efv"/>

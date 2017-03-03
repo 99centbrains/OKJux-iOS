@@ -15,6 +15,7 @@
 #import "NSDate+DateTools.h"
 #import "GeneralHelper.h"
 #import "OMGSnapHeaderView.h"
+#import "OMGHeadSpaceViewController.h"
 
 @interface OMGSnapsViewController () <UICollectionViewDataSource, UICollectionViewDelegate, OMGSnapCollectionViewCellDelegate, UICollectionViewDelegateFlowLayout>
 //UI elements
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet OMGSnapHeaderView *mapHeaderView;
 @property (weak, nonatomic) IBOutlet UIView *bodyContainerView;
 @property (weak, nonatomic) IBOutlet UIView *draggableView;
+@property (nonatomic, strong) OMGHeadSpaceViewController *navigation;
 
 //UI Constraints
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapHeightConstraint;
@@ -36,12 +38,16 @@
 @property (nonatomic, strong) NSMutableArray *hottestSnapsArray;
 @property (nonatomic, assign) int currentHottestPage;
 @property (nonatomic, assign) int currentNewestPage;
+@property (nonatomic, assign) CGFloat collectionHeaderHeight;
+@property (nonatomic, assign) BOOL isMapExpanded;
 @end
 
-#define kSegmentTopInitialPosition (CGFloat)170
+//#define kStartVisibleScreenPosition (CGFloat)65
+//#define kSegmentTopInitialPosition (CGFloat)170
+#define kMapAndCollectionsHeaderHeight (CGFloat) 170
 #define kSegmentTopMinPosition (CGFloat)0
-#define kMapInitialHeight (CGFloat)200
-#define kExpandMapScrollOffsetPoint (CGFloat)100
+#define kExpandMapScrollTriggerPoint (CGFloat)100
+#define kStatusBarHeight (CGFloat)20
 
 @implementation OMGSnapsViewController
 
@@ -57,7 +63,11 @@
 }
 
 - (void)setUpUI {
-    self.segmentTopSpaceConstraint.constant = kSegmentTopInitialPosition;
+    [self setUpNavigation];
+
+    self.segmentTopSpaceConstraint.constant = kMapAndCollectionsHeaderHeight;
+    self.mapHeightConstraint.constant = kMapAndCollectionsHeaderHeight + 50;
+    self.bodyContainerTopSpaceConstraint.constant = self.navigation.view.frame.size.height - kStatusBarHeight;
     self.draggableView.hidden = YES;
 
     CAGradientLayer *gradientMask = [CAGradientLayer layer];
@@ -69,18 +79,20 @@
     self.draggableView.layer.mask = gradientMask;
 }
 
-- (void)transitionBetweenCollections:(BOOL)animated {
-    //TODO: animate transition
-    self.hottestCollectionView.hidden = [self isShowingNewest];
-    self.newestCollectionView.hidden = ![self isShowingNewest];
-}
-
-- (BOOL)isShowingNewest {
-    return self.segmentControl.selectedSegmentIndex == 0;
+- (void)setUpNavigation {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"OMGStoryboard" bundle:nil];
+    self.navigation = (OMGHeadSpaceViewController *)[storyboard instantiateViewControllerWithIdentifier:@"seg_OMGHeadSpaceViewController"];
+    self.navigation.view.frame = CGRectMake(0, 0, self.view.frame.size.width, 65);
+    self.navigation.delegate = self;
+    self.navigation.ibo_titleLabel.text = NSLocalizedString(@"TABBAR_MAP_TITLE", nil);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self.navigation updateKarma];
+    });
+    [self.view addSubview:self.navigation.view];
 }
 
 #pragma mark -
-#pragma mark Load methods
+#pragma mark Fetch data and refresh
 
 - (void)fetchNewestSnaps {
     if (self.currentNewestPage != 1 && (self.newestSnapsArray.count % SNAP_PER_PAGE) != 0) {
@@ -135,6 +147,59 @@
 
     } OnFailure:^(NSError *error) {
         [TAOverlay hideOverlay];
+    }];
+}
+
+#pragma mark -
+#pragma mark Utils
+
+- (void)transitionBetweenCollections:(BOOL)animated {
+    //TODO: animate transition
+    self.hottestCollectionView.hidden = [self isShowingNewest];
+    self.newestCollectionView.hidden = ![self isShowingNewest];
+}
+
+- (BOOL)isShowingNewest {
+    return self.segmentControl.selectedSegmentIndex == 0;
+}
+
+
+- (void)expandMap {
+    self.mapHeightConstraint.constant = self.view.bounds.size.height - 50;
+    self.bodyContainerTopSpaceConstraint.constant = self.view.frame.size.height - self.segmentControl.frame.size.height - 30;
+    self.draggableView.alpha = 0;
+    self.draggableView.hidden = NO;
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.view layoutIfNeeded];
+        self.draggableView.alpha = 1;
+    } completion:^(BOOL finished) {
+        [self.newestCollectionView setContentOffset:CGPointMake(0, self.collectionHeaderHeight) animated:NO];
+        [self.hottestCollectionView setContentOffset:CGPointMake(0, self.collectionHeaderHeight) animated:NO];
+        self.newestCollectionView.scrollEnabled = NO;
+        self.hottestCollectionView.scrollEnabled = NO;
+    }];
+}
+
+- (void)collapseMap {
+
+    self.isMapExpanded = NO;
+    self.mapHeightConstraint.constant = kMapAndCollectionsHeaderHeight + 50;
+    self.bodyContainerTopSpaceConstraint.constant = self.navigation.view.frame.size.height - kStatusBarHeight;
+    self.segmentControl.superview.alpha = 0;
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.view layoutIfNeeded];
+        [self.newestCollectionView setContentOffset:CGPointZero animated:NO];
+        [self.hottestCollectionView setContentOffset:CGPointZero animated:NO];
+        self.draggableView.alpha = 0;
+    } completion:^(BOOL finished) {
+
+        [UIView animateWithDuration:0.3 animations:^{
+            self.segmentControl.superview.alpha = 1;
+        } completion:^(BOOL finished) {
+            self.draggableView.hidden = YES;
+            self.newestCollectionView.scrollEnabled = YES;
+            self.hottestCollectionView.scrollEnabled = YES;
+        }];
     }];
 }
 
@@ -196,34 +261,28 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 
+    if (self.isMapExpanded)
+        return;
+
     //MOVE SEGMENT
-    CGFloat newSegmentPosition = kSegmentTopInitialPosition + -scrollView.contentOffset.y;
-    if (newSegmentPosition >= kSegmentTopMinPosition) {
+    CGFloat newSegmentPosition = kMapAndCollectionsHeaderHeight + -scrollView.contentOffset.y;
+    if (newSegmentPosition >= 0) {
         self.segmentTopSpaceConstraint.constant = newSegmentPosition;
     } else {
-        self.segmentTopSpaceConstraint.constant = kSegmentTopMinPosition;
+        self.segmentTopSpaceConstraint.constant = 0;
     }
 
     //RESIZE MAP
-    if (scrollView.contentOffset.y < 0 && scrollView.userInteractionEnabled) {
-//        self.mapHeightConstraint.constant =  kMapInitialHeight + -scrollView.contentOffset.y;
+    if (scrollView.contentOffset.y < 0) {
+        self.mapHeightConstraint.constant = kMapAndCollectionsHeaderHeight + -scrollView.contentOffset.y;
 
     }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if (-scrollView.contentOffset.y >= kExpandMapScrollOffsetPoint) {
-        scrollView.userInteractionEnabled = NO;
-        self.mapHeightConstraint.constant = self.view.bounds.size.height - 50;
-        self.bodyContainerTopSpaceConstraint.constant = self.view.frame.size.height - CGRectGetMaxY(self.segmentControl.frame);
-        self.draggableView.alpha = 0;
-        self.draggableView.hidden = NO;
-        [UIView animateWithDuration:0.3 animations:^{
-            [self.view layoutIfNeeded];
-            self.draggableView.alpha = 1;
-        } completion:^(BOOL finished) {
-            [self.newestCollectionView setContentOffset:CGPointMake(0, kSegmentTopInitialPosition) animated:NO];
-        }];
+    if (-scrollView.contentOffset.y >= kExpandMapScrollTriggerPoint) {
+        self.isMapExpanded = YES;
+        [self expandMap];
     }
 }
 
@@ -231,7 +290,8 @@
 #pragma mark UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    return CGSizeMake(self.newestCollectionView.frame.size.width, 160);
+    self.collectionHeaderHeight = kMapAndCollectionsHeaderHeight + self.segmentControl.frame.size.height + kStatusBarHeight;
+    return CGSizeMake(self.newestCollectionView.frame.size.width, self.collectionHeaderHeight);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
@@ -271,33 +331,13 @@
 - (IBAction)draggableViewPanGesture:(UIPanGestureRecognizer *)sender {
     CGPoint translation = [sender translationInView:self.view];
 
-    CGFloat initialValue = self.view.frame.size.height - CGRectGetMaxY(self.segmentControl.frame);
+    CGFloat initialValue = self.view.frame.size.height - CGRectGetMaxY(self.segmentControl.frame) - kStatusBarHeight;
     NSLog(@"%f, %f %f", translation.x, translation.y, initialValue + translation.y);
     self.bodyContainerTopSpaceConstraint.constant = initialValue + translation.y;
-//    sender.view.center = CGPointMake(sender.view.center.x + translation.x,
-//                                         sender.view.center.y + translation.y);
-//
-//    if (recognizer.state == UIGestureRecognizerStateEnded) {
-//
-//        // Check here for the position of the view when the user stops touching the screen
-//
-//        // Set "CGFloat finalX" and "CGFloat finalY", depending on the last position of the touch
-//
-//        // Use this to animate the position of your view to where you want
-//        [UIView animateWithDuration: aDuration
-//                              delay: 0
-//                            options: UIViewAnimationOptionCurveEaseOut
-//                         animations:^{
-//                             CGPoint finalPoint = CGPointMake(finalX, finalY);
-//                             recognizer.view.center = finalPoint; }
-//                         completion:nil];
-//    }
-//
-//    
-//    [recognizer setTranslation:CGPointMake(0, 0) inView:_myScroll];
-
+    if (sender.state == UIGestureRecognizerStateEnded)
+    {
+        [self collapseMap];
+    }
 }
-
-
 
 @end
