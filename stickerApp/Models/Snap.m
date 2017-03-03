@@ -59,4 +59,15 @@
     aSnap.location = locationArray;
 }
 
+- (NSString*)description {
+    return [[NSString alloc] initWithFormat:@"%li", (long)self.ID];
+}
+
+- (BOOL)isEqual:(Snap*)object {
+    if (object.ID == self.ID) {
+        return YES;
+    }
+    return NO;
+}
+
 @end

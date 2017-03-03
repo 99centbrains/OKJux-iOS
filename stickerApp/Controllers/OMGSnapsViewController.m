@@ -150,7 +150,11 @@
         if (self.currentNewestPage == 1) {
             self.newestSnapsArray = [NSMutableArray arrayWithArray:responseObject];
         }else {
-            [self.newestSnapsArray addObjectsFromArray:responseObject];
+            for (Snap *snap in responseObject) {
+                if (![self.newestSnapsArray containsObject:snap]){
+                    [self.newestSnapsArray addObject:snap];
+                }
+            }
         }
 
         [TAOverlay hideOverlay];
@@ -179,7 +183,11 @@
         if (self.currentHottestPage == 1) {
             self.hottestSnapsArray = [NSMutableArray arrayWithArray:responseObject];
         }else {
-            [self.hottestSnapsArray addObjectsFromArray:responseObject];
+            for (Snap *snap in responseObject) {
+                if (![self.hottestSnapsArray containsObject:snap]){
+                    [self.hottestSnapsArray addObject:snap];
+                }
+            }
         }
         [TAOverlay hideOverlay];
         [self.hottestCollectionView reloadData];
@@ -201,6 +209,10 @@
 
 - (BOOL)isShowingNewest {
     return self.segmentControl.selectedSegmentIndex == 0;
+}
+
+- (BOOL)isShowingHottest {
+    return self.segmentControl.selectedSegmentIndex == 1;
 }
 
 - (void)expandMap {
@@ -293,7 +305,7 @@
     } else {
         cell.ibo_shareBtn.hidden = YES;
     }
-    cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
+//    cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
     return cell;
 }
 
@@ -348,14 +360,20 @@
         self.mapHeightConstraint.constant = kMapAndCollectionsHeaderHeight + kMapExtraHeightSize + -scrollView.contentOffset.y;
     }
 
-    if (CGRectIntersectsRect(scrollView.bounds, CGRectMake(0, scrollView.contentSize.height, CGRectGetWidth(self.view.frame), 200)) &&
-        scrollView.contentSize.height > 0) {
-        if (!self.isFetchingData) {
-            if ([self isShowingNewest]) {
+
+    //GET MORE SNAPS WHEN USER REACH THE END
+    if ([self isShowingNewest]) {
+        if (CGRectIntersectsRect(self.newestCollectionView.bounds, CGRectMake(0, self.newestCollectionView.contentSize.height, CGRectGetWidth(self.view.frame), 200)) && self.newestCollectionView.contentSize.height > 0) {
+            if (!self.isFetchingData) {
                 self.currentNewestPage++;
                 [self fetchNewestSnaps];
             }
-            else {
+        }
+    }
+
+    if ([self isShowingHottest]) {
+        if (CGRectIntersectsRect(self.hottestCollectionView.bounds, CGRectMake(0, self.hottestCollectionView.contentSize.height, CGRectGetWidth(self.view.frame), 200)) && self.hottestCollectionView.contentSize.height > 0) {
+            if (!self.isFetchingData) {
                 self.currentHottestPage++;
                 [self fetchHottestSnaps];
             }
