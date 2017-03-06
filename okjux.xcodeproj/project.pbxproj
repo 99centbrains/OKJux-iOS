@@ -50,6 +50,8 @@
 		444A339B1E68632C00A6EA58 /* OMGSnapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 444A339A1E68632C00A6EA58 /* OMGSnapsViewController.m */; };
 		444A339E1E689B9F00A6EA58 /* SnapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 444A339D1E689B9F00A6EA58 /* SnapHelper.m */; };
 		444A33A11E68A13400A6EA58 /* OMGSnapHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 444A33A01E68A13400A6EA58 /* OMGSnapHeaderView.m */; };
+		444A33A41E6D919C00A6EA58 /* OMGSnapLocationPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 444A33A31E6D919C00A6EA58 /* OMGSnapLocationPicker.m */; };
+		444A33A61E6DA09200A6EA58 /* LocationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 444A33A51E6DA09200A6EA58 /* LocationCollectionViewCell.xib */; };
 		44D469691E43A8C00010F202 /* OkJuxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D469681E43A8C00010F202 /* OkJuxViewController.m */; };
 		74098BB21AAA1DCF009D63B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74098BB41AAA1DCF009D63B5 /* Localizable.strings */; };
 		74312C031A9578220053900D /* ChannelSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74312C021A9578220053900D /* ChannelSelectViewController.m */; };
@@ -257,6 +259,9 @@
 		444A339D1E689B9F00A6EA58 /* SnapHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapHelper.m; sourceTree = "<group>"; };
 		444A339F1E68A13400A6EA58 /* OMGSnapHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMGSnapHeaderView.h; sourceTree = "<group>"; };
 		444A33A01E68A13400A6EA58 /* OMGSnapHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMGSnapHeaderView.m; sourceTree = "<group>"; };
+		444A33A21E6D919C00A6EA58 /* OMGSnapLocationPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMGSnapLocationPicker.h; sourceTree = "<group>"; };
+		444A33A31E6D919C00A6EA58 /* OMGSnapLocationPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMGSnapLocationPicker.m; sourceTree = "<group>"; };
+		444A33A51E6DA09200A6EA58 /* LocationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationCollectionViewCell.xib; sourceTree = "<group>"; };
 		44D469671E43A8C00010F202 /* OkJuxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OkJuxViewController.h; sourceTree = "<group>"; };
 		44D469681E43A8C00010F202 /* OkJuxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OkJuxViewController.m; sourceTree = "<group>"; };
 		6E15DA48834C64B6C387E3AB /* Pods_Catwang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catwang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -927,6 +932,9 @@
 				74760E0B1A82AD5800AD3FE5 /* OMGTopSnapCollectionViewCell.m */,
 				80D528791AC4736700D5702B /* SwitchHeaderCollectionReusableView.h */,
 				80D5287A1AC4736700D5702B /* SwitchHeaderCollectionReusableView.m */,
+				444A33A21E6D919C00A6EA58 /* OMGSnapLocationPicker.h */,
+				444A33A31E6D919C00A6EA58 /* OMGSnapLocationPicker.m */,
+				444A33A51E6DA09200A6EA58 /* LocationCollectionViewCell.xib */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -1152,6 +1160,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				444A33A61E6DA09200A6EA58 /* LocationCollectionViewCell.xib in Resources */,
 				0F8AD13019326B8D00D331D3 /* Main.storyboard in Resources */,
 				748761B11A510EE30014FF61 /* ProximaNova-Black.ttf in Resources */,
 				FA67DB581DCBC2AB006D6950 /* Assets.xcassets in Resources */,
@@ -1307,6 +1316,7 @@
 				74B6E08B1A1996C9001D6F80 /* Reachability.m in Sources */,
 				74B6E0981A1996C9001D6F80 /* SVWebViewControllerActivitySafari.m in Sources */,
 				748FA45C1A970F260063D0BC /* OMGHeadSpaceViewController.m in Sources */,
+				444A33A41E6D919C00A6EA58 /* OMGSnapLocationPicker.m in Sources */,
 				745D08021A6712FC0073B7BA /* StickerCategoryViewController.m in Sources */,
 				74B6E0911A1996C9001D6F80 /* SVWebViewController.m in Sources */,
 				D54EC1AF184E8E5100538194 /* CBColorPickerViewController.m in Sources */,

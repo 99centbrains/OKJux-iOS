@@ -16,6 +16,8 @@
 #import "GeneralHelper.h"
 #import "OMGSnapHeaderView.h"
 #import "OMGHeadSpaceViewController.h"
+#import "OMGLightBoxViewController.h"
+#import "OMGSnapLocationPicker.h"
 
 @protocol OMGSnapsCollectionSectionHeaderViewDelegate <NSObject>
 - (void)collectionHeaderHasBeenTapped;
@@ -55,6 +57,7 @@
 @property (weak, nonatomic) IBOutlet UIView *bodyContainerView;
 @property (weak, nonatomic) IBOutlet UIView *draggableView;
 @property (nonatomic, strong) OMGHeadSpaceViewController *navigation;
+@property (nonatomic, strong) OMGLightBoxViewController *lightboxView;
 @property (weak, nonatomic) IBOutlet UIView *backgroundCropView;
 
 //Gestures
@@ -85,6 +88,7 @@
 #define kStatusBarHeight (CGFloat)20
 
 @implementation OMGSnapsViewController
+@synthesize lightboxView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -118,13 +122,14 @@
     self.newestCollectionView.dataSource = self;
     self.hottestCollectionView.delegate = self;
     self.hottestCollectionView.dataSource = self;
+    self.mapHeaderView.parent = self;
 }
 
 - (void)setUpNavigation {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"OMGStoryboard" bundle:nil];
     self.navigation = (OMGHeadSpaceViewController *)[storyboard instantiateViewControllerWithIdentifier:@"seg_OMGHeadSpaceViewController"];
     self.navigation.view.frame = CGRectMake(0, 0, self.view.frame.size.width, 65);
-    self.navigation.delegate = self;
+    self.navigation.delegate = self.mapHeaderView;
     self.navigation.ibo_titleLabel.text = NSLocalizedString(@"TABBAR_MAP_TITLE", nil);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self.navigation updateKarma];
@@ -233,6 +238,8 @@
         self.tapToCloseGesture.enabled = YES;
         self.dragToCloseGesture.enabled = YES;
         self.draggableView.alpha = 1;
+
+        [self.mapHeaderView showLocationPicker];
     }];
 }
 
@@ -241,6 +248,7 @@
     self.mapHeightConstraint.constant = kMapAndCollectionsHeaderHeight + kMapExtraHeightSize;
     self.bodyContainerTopSpaceConstraint.constant = self.navigation.view.frame.size.height - kStatusBarHeight;
     self.segmentControl.superview.alpha = 0;
+    [self.mapHeaderView hideLocationPicker];
     [UIView animateWithDuration:0.3 animations:^{
         [self.view layoutIfNeeded];
         [self.newestCollectionView setContentOffset:CGPointZero animated:NO];
@@ -254,7 +262,6 @@
         self.hottestCollectionView.scrollEnabled = YES;
         self.tapToCloseGesture.enabled = NO;
         self.dragToCloseGesture.enabled = NO;
-
     }];
 }
 
@@ -312,6 +319,20 @@
 
 #pragma mark -
 #pragma mark CollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    OMGSnapCollectionViewCell *featuredCell = (OMGSnapCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    UIImage *cellImage = featuredCell.ibo_userSnapImage.image;
+
+    Snap *selectedSnap;
+    if ([self isShowingNewest])
+        selectedSnap = [self.newestSnapsArray objectAtIndex:indexPath.item];
+    else
+        selectedSnap = [self.hottestSnapsArray objectAtIndex:indexPath.item];
+    [self showFullScreenSnap:selectedSnap preload:cellImage shouldShowVoter:NO];
+
+}
+
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
@@ -451,5 +472,49 @@
 - (void)collectionHeaderHasBeenTapped {
     [self expandMap];
 }
+
+#pragma mark -
+#pragma mark LightboxViewer
+
+- (void)showFullScreenSnap:(Snap *)snap preload:(UIImage*)thumbnail shouldShowVoter:(BOOL)voter {
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    UIStoryboard *mainSB = [UIStoryboard storyboardWithName:@"OMGStoryboard" bundle:[NSBundle mainBundle]];
+    lightboxView = (OMGLightBoxViewController*)[mainSB instantiateViewControllerWithIdentifier: @"seg_OMGLightBoxViewController"];
+    lightboxView.view.frame = self.view.frame;
+    lightboxView.delegate = self;
+    lightboxView.preloadImage = thumbnail;
+    lightboxView.ibo_fade_voter.hidden = voter;
+    [lightboxView setSnap:snap];
+
+    [self.view addSubview:lightboxView.view];
+}
+
+- (void) omgSnapDismissLightBox:(Snap *)snap {
+    [self.navigation updateKarma];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [lightboxView.view removeFromSuperview];
+    lightboxView.delegate = nil;
+    lightboxView = nil;
+
+//    //Update snap cell on parent view
+//    switch (self.selectedIndex) {
+//        case 0:
+//            _ibo_omgVoteVC = (OMGSnapVoteViewController *)[self.viewControllers objectAtIndex:0];
+//            [_ibo_omgVoteVC updateObjectInCollection:snap];
+//            break;
+//        case 1:
+//            _ibo_omgsnapVC = (OMGSnapViewController *)[self.viewControllers objectAtIndex:1];
+//            [_ibo_omgsnapVC updateObjectInCollection:snap];
+//            break;
+//        case 3:
+//            _ibo_mysnapsVC = (OMGMySnapsViewController *)[self.viewControllers objectAtIndex:3];
+//            [_ibo_mysnapsVC updateKarma];
+//            [_ibo_mysnapsVC updateObjectInCollection:snap];
+//            break;
+//        default:
+//            break;
+//    }
+}
+
 
 @end

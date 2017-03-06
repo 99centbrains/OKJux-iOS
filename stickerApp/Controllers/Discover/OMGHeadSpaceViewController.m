@@ -31,7 +31,7 @@
 }
 
 - (IBAction)iba_emojiTime:(id)sender {
-    [self.delegate omgEmojiTime];
+    [self.delegate centerMap];
 }
 
 

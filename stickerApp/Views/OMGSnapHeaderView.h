@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "OMGHeadSpaceViewController.h"
+#import "OMGSnapsViewController.h"
 
-@interface OMGSnapHeaderView : UIView
+@interface OMGSnapHeaderView <OMGHeadSpaceViewControllerDelegate> : UIView
 @property (nonatomic, strong) MKMapView *mapView;
+@property (nonatomic, weak) OMGSnapsViewController *parent;
+
+- (void)showLocationPicker;
+- (void)hideLocationPicker;
+
 @end
