@@ -17,7 +17,7 @@ class Snap {
     var createdAt: Date!
     var flagsCount: Int!
     var likescount: Int!
-    var reported: Bool!
+    var reported: Bool = false
     var user: User!
     var snapImage: SnapImage!
 
@@ -41,7 +41,7 @@ class Snap {
         self.createdAt = createdAt
         self.flagsCount = flagsCount
         self.likescount = likescount
-        self.reported = reported
+        self.reported = reported ?? false
         self.user = user
         self.snapImage = snapImage
     }

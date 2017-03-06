@@ -12,15 +12,35 @@ import CoreLocation
 import Neon
 import SDWebImage
 
+protocol SnapsCollectionViewCellDelegate: class {
+    func snapsCollectionViewCell(cell: SnapsCollectionViewCell, didPressedOnReportAt indexPath: IndexPath)
+}
+
 class SnapsCollectionViewCell: UICollectionViewCell {
 
+    // MARK: - Constants 
+
     static let reuseIdentifier: String = "SnapsCollectionViewCell"
+
+    // MARK: - UI variables
 
     var image: UIImageView!
     var loveIt: UIButton!
     var likesCount: UILabel!
     var reportAbuse: UIButton!
     var locationAndTimeAgo: UILabel!
+
+    // MARK: - Data variables
+
+    var indexPath: IndexPath! {
+        didSet {
+            self.accessibilityIdentifier = "cell_\(indexPath.row)"
+        }
+    }
+    var hottest: Bool!
+    weak var delegate: SnapsCollectionViewCellDelegate?
+
+    // MARK: - Constructor
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,6 +65,7 @@ class SnapsCollectionViewCell: UICollectionViewCell {
         reportAbuse.accessibilityLabel = "Report abuse"
         reportAbuse.setImage(R.image.snap_report_abuse(), for: .normal)
         reportAbuse.anchorInCorner(.topRight, xPad: 10, yPad: 10, width: 44, height: 44)
+        reportAbuse.addTarget(self, action: #selector(reportAbusePressed), for: .touchUpInside)
 
         locationAndTimeAgo = UILabel()
         contentView.addSubview(locationAndTimeAgo)
@@ -65,14 +86,15 @@ class SnapsCollectionViewCell: UICollectionViewCell {
         image.clipsToBounds = true
 
         //TODO: likes doesnt have an action yet
-        //TODO: reportAbuse doesn't have an action yet
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func loadData(snap: Snap, hottest: Bool) {
+    // MARK: - Load methods
+
+    func loadData(snap: Snap) {
         likesCount.text = String(snap.likescount)
         likesCount.accessibilityValue = String(snap.likescount)
         locationAndTimeAgo.text = ""
@@ -118,5 +140,11 @@ class SnapsCollectionViewCell: UICollectionViewCell {
             self?.locationAndTimeAgo.accessibilityValue = self?.locationAndTimeAgo.text
             self?.locationAndTimeAgo.accessibilityLabel = "Snap location and time ago"
         })
+    }
+
+    // MARK: - Actions
+
+    func reportAbusePressed() {
+        self.delegate?.snapsCollectionViewCell(cell: self, didPressedOnReportAt: indexPath)
     }
 }

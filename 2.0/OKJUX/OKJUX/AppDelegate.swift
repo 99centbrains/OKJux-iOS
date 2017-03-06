@@ -25,9 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         #if DEBUG
             for arg in ProcessInfo.processInfo.arguments {
-                if arg.contains("Mock-") {
-                    let _ = MockRequestHelper.mockAppByString(arg)
-                    break
+                if let mockRequestItem = MockRequestItem(jsonString: arg) {
+                    MockRequestHelper.mockRequest(mockRequestItem: mockRequestItem)
                 }
             }
         #endif

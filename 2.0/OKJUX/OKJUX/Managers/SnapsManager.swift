@@ -52,4 +52,16 @@ class SnapsManager {
         }
     }
 
+    func reportSnap(snap: Snap, completion: @escaping (NSError?) -> Void) {
+
+        guard let loggedUser = UserManager.sharedInstance.loggedUser else {
+            completion(OKJuxError(errorType: OKJuxError.ErrorType.loginRequired, generatedClass: type(of: self)))
+            return
+        }
+
+        var parameters = [String: Any]()
+        parameters["user"] = ["id": loggedUser.identifier, "UUID": loggedUser.uuid ?? ""]
+        SnapsNetworkManager.reportSnap(snapID: snap.identifier, parameters: parameters, completion: completion)
+    }
+
 }

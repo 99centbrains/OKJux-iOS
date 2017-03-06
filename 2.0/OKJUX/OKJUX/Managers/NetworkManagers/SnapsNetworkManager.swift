@@ -29,6 +29,16 @@ class SnapsNetworkManager: BaseNetworkManager {
                 completion(OKJuxError(errorType: OKJuxError.ErrorType.notParsableResponse, generatedClass: type(of: self)), nil)
             }
         }
+    }
 
+    class func reportSnap(snapID: Int, parameters: [String: Any], completion: @escaping (NSError?) -> Void) {
+
+        sendRequest(method: String(format: "snaps/%i/flag", snapID), requestMethodType: .post, parameters: parameters) { (error, _) in
+            guard error == nil else {
+                completion(error!)
+                return
+            }
+            completion(nil)
+        }
     }
 }

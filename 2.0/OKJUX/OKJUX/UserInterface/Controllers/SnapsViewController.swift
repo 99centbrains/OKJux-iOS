@@ -7,6 +7,13 @@
 //
 
 import UIKit
+import AlertHelperKit
+
+protocol SnapsViewControllerDelegate: class {
+    func snapsViewController(_ snapsViewController: SnapsViewController, isExpandingToPosition position: CGFloat)
+    func snapsViewController(_ snapsViewController: SnapsViewController, didFinishExpandingToPosition position: CGFloat)
+    func snapsViewControllerExpandMap(_ snapsViewController: SnapsViewController, didPressOnHeader header: UIView?)
+}
 
 class SnapsCollectionReusableView: UICollectionReusableView {
     static let reuseIdentifier = "SnapsCollectionHeaderReuseIdentifier"
@@ -102,13 +109,7 @@ class SnapsViewController: OKJuxViewController {
     }
 }
 
-// MARK: - UICollectionViewDataSource
-
-protocol SnapsViewControllerDelegate: class {
-    func snapsViewController(_ snapsViewController: SnapsViewController, isExpandingToPosition position: CGFloat)
-    func snapsViewController(_ snapsViewController: SnapsViewController, didFinishExpandingToPosition position: CGFloat)
-    func snapsViewControllerExpandMap(_ snapsViewController: SnapsViewController, didPressOnHeader header: UIView?)
-}
+// MARK: - UICollectionViewDataSource & UICollectionViewDelegate
 
 extension SnapsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -121,8 +122,10 @@ extension SnapsViewController: UICollectionViewDataSource, UICollectionViewDeleg
                                                         for: indexPath) as? SnapsCollectionViewCell else {
             fatalError("unable to cast to SnapsCollectionViewCell")
         }
-
-        cell.loadData(snap: nearbySnaps![indexPath.row], hottest: hottest)
+        cell.indexPath = indexPath
+        cell.hottest = hottest
+        cell.delegate = self
+        cell.loadData(snap: nearbySnaps![indexPath.row])
 
         return cell
     }
@@ -159,6 +162,7 @@ extension SnapsViewController: UICollectionViewDataSource, UICollectionViewDeleg
 }
 
 extension SnapsViewController: SnapsPageViewControllerTransitionDelegate {
+
     func currentScrollPosition() -> CGFloat {
         return collection.contentOffset.y
     }
@@ -166,4 +170,42 @@ extension SnapsViewController: SnapsPageViewControllerTransitionDelegate {
     func setScrollPosition(_ position: CGFloat) {
         collection.setContentOffset(CGPoint(x: 0, y: position), animated: false)
     }
+
+}
+
+extension SnapsViewController: SnapsCollectionViewCellDelegate {
+
+    func snapsCollectionViewCell(cell: SnapsCollectionViewCell, didPressedOnReportAt indexPath: IndexPath) {
+
+        let snap = self.nearbySnaps![indexPath.row]
+        if snap.reported {
+            self.showAlert(title: R.string.localizable.error_generic_title(),
+                           body: R.string.localizable.prompt_already_reported_body(),
+                           cancelButton: R.string.localizable.oK())
+            return
+        }
+        self.showAlertAndWaitForResponse(title: R.string.localizable.prompt_report_title(),
+                                         body: R.string.localizable.prompt_report_body(),
+                                         cancelButton: R.string.localizable.prompt_report_cancel(),
+                                         otherButtons: [R.string.localizable.prompt_report_action()]) { (index) in
+            if index == 1 {
+                SnapsManager.sharedInstance.reportSnap(snap: self.nearbySnaps![indexPath.row], completion: { (error) in
+                    if let error = error {
+                        if error.code == OKJuxError.ErrorType.cannotReportSnapTwice.rawValue {
+                            self.showAlert(title: R.string.localizable.error_generic_title(),
+                                           body: R.string.localizable.prompt_already_reported_body(),
+                                           cancelButton: R.string.localizable.oK())
+                        } else {
+                            self.showAlert(title: R.string.localizable.error_generic_title(),
+                                           body: R.string.localizable.error_generic_body(),
+                                           cancelButton: R.string.localizable.oK())
+                        }
+                    } else {
+                        self.showSuccess()
+                    }
+                })
+            }
+        }
+    }
+
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		123C584F6A27F3DEDB7DF084 /* Pods_OKJUXTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D85B11F1555ACDFF094A7E0 /* Pods_OKJUXTests.framework */; };
+		440C3ED51E65E5D800732379 /* UIColor+OKJux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440C3ED41E65E5D800732379 /* UIColor+OKJux.swift */; };
+		440C3EE01E6619EF00732379 /* MockRequestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440C3EDF1E6619EF00732379 /* MockRequestItem.swift */; };
 		442507661E4D05AF00F24500 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442507651E4D05AF00F24500 /* R.generated.swift */; };
 		442AC7BE1E5F7B00004F69A4 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442AC7BD1E5F7B00004F69A4 /* LandingViewController.swift */; };
 		4440495C1E5CBE1300D0D983 /* MockRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4440495B1E5CBE1300D0D983 /* MockRequestHelper.swift */; };
@@ -76,6 +78,7 @@
 		444049E71E5DFC2500D0D983 /* SnapsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444049E61E5DFC2500D0D983 /* SnapsPageViewController.swift */; };
 		4471E6081E5B880200C41F87 /* UIView+CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471E6071E5B880200C41F87 /* UIView+CGRect.swift */; };
 		4471E60A1E5B8CEF00C41F87 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4471E6091E5B8CEF00C41F87 /* Localizable.strings */; };
+		448D07651E661A2000D3706E /* MockRequestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440C3EDF1E6619EF00732379 /* MockRequestItem.swift */; };
 		44B65DE31E609E3B00E02D38 /* MapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B65DE21E609E3B00E02D38 /* MapHelper.swift */; };
 		44D61C051E4B8B6D005A1936 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D61C041E4B8B6D005A1936 /* AppDelegate.swift */; };
 		44D61C0C1E4B8B6D005A1936 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44D61C0B1E4B8B6D005A1936 /* Assets.xcassets */; };
@@ -124,6 +127,8 @@
 		269FE97266952F8AAE9735FE /* Pods-OKJUXUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKJUXUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OKJUXUITests/Pods-OKJUXUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2B11F0221D0B40C241E151DC /* Pods_OKJUXUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKJUXUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33CD401A90ACB0342495C6DB /* Pods_OKJUX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKJUX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		440C3ED41E65E5D800732379 /* UIColor+OKJux.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+OKJux.swift"; sourceTree = "<group>"; };
+		440C3EDF1E6619EF00732379 /* MockRequestItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockRequestItem.swift; sourceTree = "<group>"; };
 		442507651E4D05AF00F24500 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		442AC7BD1E5F7B00004F69A4 /* LandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		4440495B1E5CBE1300D0D983 /* MockRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockRequestHelper.swift; sourceTree = "<group>"; };
@@ -373,6 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				4471E6071E5B880200C41F87 /* UIView+CGRect.swift */,
+				440C3ED41E65E5D800732379 /* UIColor+OKJux.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -500,6 +506,7 @@
 				44D61C671E4BBD78005A1936 /* UserHelper.swift */,
 				4440495B1E5CBE1300D0D983 /* MockRequestHelper.swift */,
 				44B65DE21E609E3B00E02D38 /* MapHelper.swift */,
+				440C3EDF1E6619EF00732379 /* MockRequestItem.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -944,10 +951,12 @@
 				44D61C681E4BBD78005A1936 /* UserHelper.swift in Sources */,
 				4471E6081E5B880200C41F87 /* UIView+CGRect.swift in Sources */,
 				44D61C601E4B95AC005A1936 /* BaseNetworkManager.swift in Sources */,
+				440C3ED51E65E5D800732379 /* UIColor+OKJux.swift in Sources */,
 				44D61C631E4BB737005A1936 /* User.swift in Sources */,
 				44D61C521E4B8E26005A1936 /* ConfigurationManager+Properties.swift in Sources */,
 				444049E41E5DE73900D0D983 /* SnapsCollectionViewCell.swift in Sources */,
 				44D61C051E4B8B6D005A1936 /* AppDelegate.swift in Sources */,
+				440C3EE01E6619EF00732379 /* MockRequestItem.swift in Sources */,
 				44D61C6C1E4E04B5005A1936 /* Snap.swift in Sources */,
 				442507661E4D05AF00F24500 /* R.generated.swift in Sources */,
 				444049E21E5DE71400D0D983 /* OKJuxViewController.swift in Sources */,
@@ -974,6 +983,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				448D07651E661A2000D3706E /* MockRequestItem.swift in Sources */,
 				44D61C251E4B8B6D005A1936 /* OKJUXUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1108,6 +1118,7 @@
 				INFOPLIST_FILE = OKJUX/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.99centbrains.catwang-debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
