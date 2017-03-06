@@ -22,4 +22,8 @@ extension ConfigurationManager {
         return sharedInstance.configs["Server_Protocol"]!
     }
 
+    static var instabugToken: String {
+        return sharedInstance.configs["Instabug_Token"]!
+    }
+
 }

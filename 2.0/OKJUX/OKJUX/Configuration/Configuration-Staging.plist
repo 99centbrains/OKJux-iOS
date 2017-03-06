@@ -6,5 +6,7 @@
 	<string>okjux-api-staging.herokuapp.com</string>
 	<key>Server_Protocol</key>
 	<string>https</string>
+	<key>Instabug_Token</key>
+	<string>bd4a020fa5dfaf7fa958c9f0bb72818c</string>
 </dict>
 </plist>
