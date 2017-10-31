@@ -67,14 +67,15 @@
     _ibo_userImage.alpha = 0;
     [[TMCache sharedCache] objectForKey:@"image"
                                   block:^(TMCache *cache, NSString *key, id object) {
-                                      UIImage *image = (UIImage *)object;
-                                      _ibo_userImage.image = image;
-                                      
-                                      [UIView animateWithDuration:.5 animations:^{
-                                          _ibo_userImage.alpha = 1;
-                                      }];
+                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                          UIImage *image = (UIImage *)object;
+                                          _ibo_userImage.image = image;
+
+                                          [UIView animateWithDuration:.5 animations:^{
+                                              _ibo_userImage.alpha = 1;
+                                          }];
+                                      });
                                   }];
-    
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:kNewUserKey]){
       [self pushTutorial];
