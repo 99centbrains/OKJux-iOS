@@ -34,6 +34,7 @@
 @property (nonatomic, weak) IBOutlet UIImageView *ibo_userSnapImage;
 @property (nonatomic, strong) NSURL *imageURL;
 
+@property (weak, nonatomic) IBOutlet UIButton *flagbutton;
 @property (nonatomic, weak) IBOutlet UIImageView *ibo_heartView;
 @property (nonatomic, weak) IBOutlet UILabel *ibo_photoKarma;
 @property (nonatomic, weak) IBOutlet UILabel *ibo_uploadDate;

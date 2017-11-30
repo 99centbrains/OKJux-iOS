@@ -22,6 +22,7 @@
 
 @interface OMGLightBoxViewController : OkJuxViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *sharebutton;
 @property (nonatomic, strong ) Snap *snap;
 @property (nonatomic, strong ) UIImage *preloadImage;
 

@@ -17,6 +17,7 @@
 @synthesize delegate;
 
 - (void)setThumbnailImage:(NSURL *)file {
+    _flagbutton.hidden = true;
     [_ibo_userSnapImage setImageWithURLRequest:[NSURLRequest requestWithURL:file] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         _ibo_userSnapImage.image = image;
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {}];
@@ -24,6 +25,7 @@
 
 - (void)setupFullImage:(NSURL *)file {
     [_ibo_userSnapImage setImageWithURLRequest:[NSURLRequest requestWithURL:file] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        _flagbutton.hidden = false;
         _ibo_userSnapImage.image = image;
 
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {}];
@@ -33,7 +35,7 @@
     if (_ibo_userSnapImage.image){
         return;
     }
-    
+    _flagbutton.hidden = true;
     [_ibo_userSnapImage setImageWithURLRequest:[NSURLRequest requestWithURL:thumb] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         _ibo_userSnapImage.image = image;
         [self setupFullImage:file];

@@ -54,6 +54,7 @@ typedef NSInteger OMGVoteSpecifier;
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
     _ibo_spinnerView.hidden = NO;
+    _sharebutton.hidden = YES;
 
     fadeout = NO;
     [super viewDidLoad];
@@ -79,6 +80,7 @@ typedef NSInteger OMGVoteSpecifier;
     NSLog(@"SET IAMGE URL %@", imageURL);
     [_ibo_userSnapImage setImageWithURLRequest:[NSURLRequest requestWithURL:imageURL] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
         _ibo_userSnapImage.image = image;
+        _sharebutton.hidden = NO;
         _ibo_spinnerView.hidden = YES;
         [self setupFadeout];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
@@ -105,7 +107,7 @@ typedef NSInteger OMGVoteSpecifier;
 }
 
 - (void) setupFadeout {
-    [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:.5 delay:1.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         _ibo_fade_voter.alpha = 0;
         _ibo_fade_heart.alpha = 0;
         _ibo_fade_share.alpha = 0;
