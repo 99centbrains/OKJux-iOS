@@ -382,9 +382,8 @@
 - (IBAction)iba_Facebook:(id)sender{
     NSURL *fanPageURL = [NSURL URLWithString:@"fb://profile/193823404061225"];
   
-    if (![[UIApplication sharedApplication] openURL: fanPageURL]){
-        [[UIApplication sharedApplication]
-         openURL:[NSURL URLWithString:@"http://m.facebook.com/193823404061225"]];
+    if (![[UIApplication sharedApplication] canOpenURL: fanPageURL]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://m.facebook.com/193823404061225"]];
     } else {
         [[UIApplication sharedApplication] openURL:fanPageURL];
     }
@@ -394,7 +393,7 @@
 - (IBAction)iba_Twitter:(id)sender{
     NSURL *fanPageURL = [NSURL URLWithString:@"twitter:///user?screen_name=99centbrains"];
     
-    if (![[UIApplication sharedApplication] openURL: fanPageURL]){
+    if (![[UIApplication sharedApplication] canOpenURL: fanPageURL]){
         [[UIApplication sharedApplication] openURL:[NSURL
            URLWithString:@"http://twitter.com/99centbrains"]];
            NSLog(@"Open Twitter"); 
