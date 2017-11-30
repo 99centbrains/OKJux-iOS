@@ -228,8 +228,8 @@
 
 - (IBAction)iba_shareFacebook:(id)sender{
     [MixPanelManager triggerEvent:@"Share" withData:@{ @"Type": @"Facebook" }];
-    
-    if ([[[UIDevice currentDevice] systemVersion] compare:@"6.0" options:NSNumericSearch] != NSOrderedAscending){
+
+    if ([[[UIDevice currentDevice] systemVersion] compare:@"6.0" options:NSNumericSearch] != NSOrderedAscending && ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])){
         SLComposeViewController *fbController = [SLComposeViewController
                                                  composeViewControllerForServiceType:SLServiceTypeFacebook];
         
@@ -252,7 +252,17 @@
         [fbController setInitialText:kShareDescription];
         [fbController addURL:[NSURL URLWithString:kShareURL]];
         [fbController setCompletionHandler:completionHandler];
-        [self presentViewController:fbController animated:YES completion:nil];
+        if (fbController != nil) {
+            [self presentViewController:fbController animated:YES completion:nil];
+        } else {
+            UIAlertView *alertView = [[UIAlertView alloc]
+                                      initWithTitle:@"Failed!"
+                                      message:@"Please connect Facebook via the Settings on your Device."
+                                      delegate:nil
+                                      cancelButtonTitle:@"OK"
+                                      otherButtonTitles:nil];
+            [alertView show];
+        }
     } else {
         UIAlertView *alertView = [[UIAlertView alloc]
                                   initWithTitle:@"Failed!"

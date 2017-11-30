@@ -185,42 +185,46 @@
 //SELECT STICKER DELEGATES
 -(void) stickerCategory:(StickerCategoryViewController *)controller didFinishPickingStickerImage:(UIImage *)image withPackID:(NSString *)packID{
     if (stickersCount < 20) {
-      stickersCount += 1;
-      
-      if (packID){
-        [MixPanelManager triggerEvent:@"Sticker" withData:@{ @"PackID": packID }];
-      }
-      
-      if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
-        [_popController dismissPopoverAnimated:YES];
-      } else {
-        [controller dismissViewControllerAnimated:YES completion:nil];
-      }
-      
-      image = [image imageByTrimmingTransparentPixels];
-      currentSticker = [[StickyImageView alloc] initWithImage:[self imageWithImage:image
-                                                                      scaledToSize:CGSizeMake(640,(image.size.height/image.size.width)* 640 )]];
-      
-      currentSticker.frame = CGRectMake(0,
-                                        0,
-                                        250,
-                                        (image.size.height/image.size.width) * 250);
-      
-      currentSticker.contentMode = UIViewContentModeScaleAspectFit;
-      currentSticker.center = CGPointMake(_ibo_renderView.frame.size.width/2, _ibo_renderView.frame.size.height/2);
-      currentSticker.transform = CGAffineTransformMakeRotation(rotation);
-      rotation += 0.1;
-      currentSticker.userInteractionEnabled = YES;
-      
-      [_ibo_viewStickerStage addSubview:currentSticker];
-      
-      [self showEditMode];
-      [self hideToolBar];
-      
-      [self setBorderOnCurrentSticker];
+        stickersCount += 1;
+
+        if (packID){
+            [MixPanelManager triggerEvent:@"Sticker" withData:@{ @"PackID": packID }];
+        }
+
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+            [_popController dismissPopoverAnimated:YES];
+        } else {
+            [controller dismissViewControllerAnimated:YES completion:nil];
+        }
+
+        image = [image imageByTrimmingTransparentPixels];
+        if (image == nil) {
+            return;
+        }
+        currentSticker = [[StickyImageView alloc] initWithImage:[self imageWithImage:image
+                                                                        scaledToSize:CGSizeMake(640,(image.size.height/image.size.width)* 640 )]];
+
+
+        currentSticker.frame = CGRectMake(0,
+                                          0,
+                                          250,
+                                          (image.size.height/image.size.width) * 250);
+
+        currentSticker.contentMode = UIViewContentModeScaleAspectFit;
+        currentSticker.center = CGPointMake(_ibo_renderView.frame.size.width/2, _ibo_renderView.frame.size.height/2);
+        currentSticker.transform = CGAffineTransformMakeRotation(rotation);
+        rotation += 0.1;
+        currentSticker.userInteractionEnabled = YES;
+
+        [_ibo_viewStickerStage addSubview:currentSticker];
+
+        [self showEditMode];
+        [self hideToolBar];
+
+        [self setBorderOnCurrentSticker];
     }else {
-      UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"STICKER_LIMIT_TITLE", nil) message: NSLocalizedString(@"STICKER_LIMIT", nil) delegate:nil cancelButtonTitle:nil otherButtonTitles: NSLocalizedString(@"OK_BUTTON", nil), nil];
-      [alert show];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"STICKER_LIMIT_TITLE", nil) message: NSLocalizedString(@"STICKER_LIMIT", nil) delegate:nil cancelButtonTitle:nil otherButtonTitles: NSLocalizedString(@"OK_BUTTON", nil), nil];
+        [alert show];
     }
 }
 

@@ -20,23 +20,21 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - BeaconsInSpace (1.5.5)
-  - Crashlytics (3.8.3):
-    - Fabric (~> 1.6.3)
+  - BeaconsInSpace (2.0.0)
+  - Crashlytics (3.9.3):
+    - Fabric (~> 1.7.2)
   - DateTools (1.7.0)
-  - Fabric (1.6.10)
+  - Fabric (1.7.2)
   - FCFileManager (1.0.18)
   - Flurry-iOS-SDK/FlurryAds (7.8.0):
     - Flurry-iOS-SDK/FlurrySDK
   - Flurry-iOS-SDK/FlurrySDK (7.8.0)
   - Haneke (1.0.2)
   - Instabug (6.0.2)
-  - iRate (1.11.7)
+  - iRate (1.12.1)
   - iVersion (1.11.4)
   - JPSThumbnailAnnotation (1.0.0)
-  - Mixpanel (3.0.4):
-    - Mixpanel/Mixpanel (= 3.0.4)
-  - Mixpanel/Mixpanel (3.0.4)
+  - Mixpanel (3.2.3)
   - TAOverlay (2.0.1)
   - TMCache (2.1.0)
   - TWRDownloadManager (1.1.1)
@@ -51,13 +49,13 @@ DEPENDENCIES:
   - Crashlytics
   - DateTools (~> 1.7.0)
   - Fabric
-  - FCFileManager (~> 1.0.18)
-  - Flurry-iOS-SDK/FlurryAds (~> 7.8)
-  - Flurry-iOS-SDK/FlurrySDK (~> 7.8)
+  - FCFileManager (= 1.0.18)
+  - Flurry-iOS-SDK/FlurryAds (= 7.8.0)
+  - Flurry-iOS-SDK/FlurrySDK (= 7.8.0)
   - Haneke (~> 1.0)
-  - Instabug
+  - Instabug (= 6.0.2)
   - iRate (from `https://github.com/nicklockwood/iRate.git`)
-  - iVersion (~> 1.11.4)
+  - iVersion (= 1.11.4)
   - JPSThumbnailAnnotation (~> 1.0.0)
   - Mixpanel
   - TAOverlay (~> 2.0.1)
@@ -65,7 +63,7 @@ DEPENDENCIES:
   - TWRDownloadManager (~> 1.1.1)
   - UIImageEffects (~> 0.0.1)
   - UIImageTrim (~> 1.02)
-  - XModeAPI
+  - XModeAPI (= 0.2.2)
 
 EXTERNAL SOURCES:
   iRate:
@@ -73,30 +71,30 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   iRate:
-    :commit: 2ae7f50a83bdf27e276bf442e04b787d6714e400
+    :commit: 0bb2f9cd9ae9f1e91de210cf19601cd97bb9cf63
     :git: https://github.com/nicklockwood/iRate.git
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
-  BeaconsInSpace: af71781fab13da64d2b1d66cfa1e0a4e2d662fac
-  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
+  BeaconsInSpace: 78d56fde6dee24b2258ef7780610c8b4a101a6ba
+  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
-  Fabric: c73f371ee543e3f0b80608f2674750e4910d1669
+  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   FCFileManager: 3d13576da1f709d37460bd7669cdf07b9d6d8bc3
   Flurry-iOS-SDK: 388df247b9d92659527b608c891c7e474cd9d00e
   Haneke: 01454a67322faa0dd9d81fc0f447885044e71521
   Instabug: c6a8970311a2ebb092c0bec8d425eb4d4d4b6ad3
-  iRate: adae3f183d83c925ac42d7a2e86e89e838963f57
+  iRate: 59c63a290d4988f365d4338e58eca192ae92b552
   iVersion: 2b6ffe708672cb494ba3cab150a94800c2892e81
   JPSThumbnailAnnotation: 4b35e87788d903db3fec294e7ef44136b9f741fb
-  Mixpanel: 4a2330c26556109d2f42b01e36a05eb9e2caf25e
+  Mixpanel: 7bd8e176f088936bf6e283ade0d1f512f8e723bc
   TAOverlay: 940e37fdb45fbc9acfc73bf1089668367e3b1be6
   TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
   TWRDownloadManager: 34193d7d1ab6e6b4243d74fa4f686cc2ed5ef40f
   UIImageEffects: 37b99fa461e4965f332ca82e92f2c22a1075ee84
   UIImageTrim: 6291b9cfb05bbc9ca0bb3e510aae4421de4ca5e4
-  XModeAPI: 879763cf08dfbb50adae7c1560fdd42b0edef6fc
+  XModeAPI: 9c3b84588855caea089f83968811c1c2051b2936
 
-PODFILE CHECKSUM: 17129d1e0d3c2ec504596bd2fd37d845069c45d4
+PODFILE CHECKSUM: 46c4088c879608710c771f639fdd28b027c106d0
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.3.1
