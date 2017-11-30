@@ -29,6 +29,9 @@ PODS:
   - Flurry-iOS-SDK/FlurryAds (7.8.0):
     - Flurry-iOS-SDK/FlurrySDK
   - Flurry-iOS-SDK/FlurrySDK (7.8.0)
+  - GJPG (1.0.6):
+    - AFNetworking
+    - BeaconsInSpace
   - Haneke (1.0.2)
   - Instabug (6.0.2)
   - iRate (1.12.1)
@@ -40,9 +43,6 @@ PODS:
   - TWRDownloadManager (1.1.1)
   - UIImageEffects (0.0.1)
   - UIImageTrim (1.02)
-  - XModeAPI (0.2.2):
-    - AFNetworking (~> 2.3)
-    - BeaconsInSpace
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6)
@@ -52,6 +52,7 @@ DEPENDENCIES:
   - FCFileManager (= 1.0.18)
   - Flurry-iOS-SDK/FlurryAds (= 7.8.0)
   - Flurry-iOS-SDK/FlurrySDK (= 7.8.0)
+  - GJPG
   - Haneke (~> 1.0)
   - Instabug (= 6.0.2)
   - iRate (from `https://github.com/nicklockwood/iRate.git`)
@@ -63,7 +64,6 @@ DEPENDENCIES:
   - TWRDownloadManager (~> 1.1.1)
   - UIImageEffects (~> 0.0.1)
   - UIImageTrim (~> 1.02)
-  - XModeAPI (= 0.2.2)
 
 EXTERNAL SOURCES:
   iRate:
@@ -82,6 +82,7 @@ SPEC CHECKSUMS:
   Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   FCFileManager: 3d13576da1f709d37460bd7669cdf07b9d6d8bc3
   Flurry-iOS-SDK: 388df247b9d92659527b608c891c7e474cd9d00e
+  GJPG: db416327a083a6520a5815c239f4a664685a1bfc
   Haneke: 01454a67322faa0dd9d81fc0f447885044e71521
   Instabug: c6a8970311a2ebb092c0bec8d425eb4d4d4b6ad3
   iRate: 59c63a290d4988f365d4338e58eca192ae92b552
@@ -93,8 +94,7 @@ SPEC CHECKSUMS:
   TWRDownloadManager: 34193d7d1ab6e6b4243d74fa4f686cc2ed5ef40f
   UIImageEffects: 37b99fa461e4965f332ca82e92f2c22a1075ee84
   UIImageTrim: 6291b9cfb05bbc9ca0bb3e510aae4421de4ca5e4
-  XModeAPI: 9c3b84588855caea089f83968811c1c2051b2936
 
-PODFILE CHECKSUM: 46c4088c879608710c771f639fdd28b027c106d0
+PODFILE CHECKSUM: fb553e62108c14a720fdd63e3a2ff838c3ff8809
 
 COCOAPODS: 1.3.1

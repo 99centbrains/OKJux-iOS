@@ -21,7 +21,7 @@
 #import "UserServiceManager.h"
 #import "DataManager.h"
 #import "Mixpanel/Mixpanel.h"
-#import <XModeAPI/XModeAPI.h>
+#include <GJPG/GJPG.h>
 
 @implementation AppDelegate
 
@@ -88,8 +88,8 @@
 
   [Fabric with:@[[Crashlytics class]]];
 
-  [[XModeAPI sharedInstance] startWithApiKey:@"MeBMl2Xvu27SMDU3s6LaG4TuI8oKsnzh91jSrkKh"];
-  [[XModeAPI sharedInstance] setEmailAddress:@"USERSEMAILHERE@USERSDOMAIN.COM"];
+
+   [[GJPG sharedInstance] startWithApiKey:@"MeBMl2Xvu27SMDU3s6LaG4TuI8oKsnzh91jSrkKh" isLocationInForegroundOnly:YES];
 
   return YES;
 }

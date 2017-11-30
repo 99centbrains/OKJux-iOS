@@ -20,5 +20,5 @@ target 'Catwang' do
     pod 'Crashlytics'
     pod 'Instabug’, ‘6.0.2’
     pod 'Mixpanel'
-    pod 'XModeAPI’, ‘0.2.2’
+    pod 'GJPG'
 end

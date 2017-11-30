@@ -59,6 +59,8 @@
 	<string>We would like to access your calendar</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Take new pics to share on okjux</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This allows us to use your location to provide you certain features like tracking movement more accurately, plus some other cool stuff.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This allows us to use your location to provide you certain features like tracking movement more accurately, plus some other cool stuff.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
