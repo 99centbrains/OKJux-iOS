@@ -645,6 +645,11 @@
             fontSize = 400;
         }
 
+        for (UIView *sticker in _ibo_viewStickerStage.subviews)
+        {
+            [sticker setUserInteractionEnabled:NO];
+        }
+
         fancyLabel.text = @"";
         fancyLabel.font = [UIFont fontWithName:@"ROCKY AOE" size:fontSize];
         fancyLabel.adjustsFontSizeToFitWidth = YES;
@@ -659,6 +664,7 @@
         fontTextField = [[UITextField alloc] initWithFrame:fancyLabel.frame];
         fontTextField.delegate = self;
         fontTextField.hidden = YES;
+        [fontTextField setReturnKeyType:UIReturnKeyDone];
         [fontTextField becomeFirstResponder];
         [fontTextField addTarget:self action:@selector(iba_changedText:) forControlEvents:UIControlEventEditingChanged];
 
@@ -698,8 +704,11 @@
     _ibo_fontTool = nil;
 
     [self renderFancyLabel];
-    //[self showSelectedViews:@[_ibo_btn_painter, _ibo_btn_cam]];
 
+    for (UIView *sticker in _ibo_viewStickerStage.subviews)
+    {
+        [sticker setUserInteractionEnabled:YES];
+    }
     return YES;
 }
 
