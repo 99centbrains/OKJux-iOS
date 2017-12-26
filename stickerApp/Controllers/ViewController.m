@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "CrossPromoViewController.h"
 #import "PlayViewController.h"
 #import "TAOverlay.h"
 #import <Accounts/Accounts.h>
@@ -42,6 +43,8 @@
 
 @property (nonatomic, weak) IBOutlet UIImageView *ibo_userImage;
 @property (nonatomic, strong) UIPopoverController *popController;
+@property (weak, nonatomic) IBOutlet UIView *crossPromoView;
+@property (nonatomic) BOOL crossPromoDismissed;
 
 @end
 
@@ -49,10 +52,19 @@
 @implementation ViewController
 
 @synthesize ibo_getphoto = _ibo_getphoto;
+@synthesize crossPromoView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ui_cropview_checkers.png"]];
+
+    crossPromoView.layer.masksToBounds = NO;
+    crossPromoView.layer.cornerRadius = 8;
+    crossPromoView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    crossPromoView.layer.shadowOffset = CGSizeMake(0, 1);
+    crossPromoView.layer.shadowRadius = 15;
+    crossPromoView.layer.shadowOpacity = 0.7;
+    _crossPromoDismissed = [self crossPromotionOpened];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -80,6 +92,8 @@
     if (![[NSUserDefaults standardUserDefaults] boolForKey:kNewUserKey]){
       [self pushTutorial];
     }
+
+    [self showCrossPromoView];
 }
 
 - (void)pushTutorial {
@@ -128,7 +142,6 @@
       [self presentViewController:activityVC animated:YES completion:nil];
     }
 }
-
 
 //Prompts for UIActionSheet
 - (IBAction)iba_photoStart:(id)sender{
@@ -488,6 +501,59 @@
     [scanner setScanLocation:1]; // bypass '#' character
     [scanner scanHexInt:&rgbValue];
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+}
+
+#pragma mark - Cross promo
+
+- (void)crossPromotionOpened:(BOOL)newValue {
+    [[NSUserDefaults standardUserDefaults] setBool:newValue forKey:@"CrossPromoOpened"];
+}
+
+- (BOOL)crossPromotionOpened {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"CrossPromoOpened"];
+}
+
+- (void)showCrossPromoView {
+    if (_crossPromoDismissed)
+        return;
+
+    CGAffineTransform transform;
+    transform = CGAffineTransformMakeScale(0.8, 0.8);
+    transform = CGAffineTransformTranslate(transform, 1, -crossPromoView.frame.origin.y - crossPromoView.frame.size.height - 200);
+    crossPromoView.transform = transform;
+
+    [UIView animateWithDuration:0.5 delay:1.3 usingSpringWithDamping:0.4 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        crossPromoView.transform = CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+
+    }];
+}
+
+- (void)hideCrossPromoView{
+    CGAffineTransform transform;
+    transform = CGAffineTransformMakeScale(0.8, 0.8);
+    transform = CGAffineTransformTranslate(transform, 1, -crossPromoView.frame.origin.y - crossPromoView.frame.size.height - 200);
+
+    [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        crossPromoView.transform = transform;
+    } completion:^(BOOL finished) {
+
+    }];
+}
+
+- (IBAction)crossPromoDismiss:(UIButton *)sender {
+    _crossPromoDismissed = YES;
+    [self hideCrossPromoView];
+}
+
+- (IBAction)crossPromoShow:(UIButton *)sender {
+    _crossPromoDismissed = YES;
+    [self hideCrossPromoView];
+
+    UIViewController *vc = [[CrossPromoViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    nav.navigationBar.translucent = NO;
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 @end

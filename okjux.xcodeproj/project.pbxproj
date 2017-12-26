@@ -48,6 +48,7 @@
 		37E2AC50166EA92A00941C4F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E2AC4F166EA92A00941C4F /* AssetsLibrary.framework */; };
 		37EDE5481675228700F89D90 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37EDE5471675228700F89D90 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		44D469691E43A8C00010F202 /* OkJuxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D469681E43A8C00010F202 /* OkJuxViewController.m */; };
+		44F23C851FD1A72E00167634 /* CrossPromoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F23C841FD1A72E00167634 /* CrossPromoViewController.m */; };
 		74098BB21AAA1DCF009D63B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74098BB41AAA1DCF009D63B5 /* Localizable.strings */; };
 		74312C031A9578220053900D /* ChannelSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74312C021A9578220053900D /* ChannelSelectViewController.m */; };
 		7434410F1A7EB18F007171AB /* StickerPackCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7434410E1A7EB18F007171AB /* StickerPackCollectionViewCell.m */; };
@@ -250,6 +251,8 @@
 		37F6B9D91725CA9100B87F4F /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		44D469671E43A8C00010F202 /* OkJuxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OkJuxViewController.h; sourceTree = "<group>"; };
 		44D469681E43A8C00010F202 /* OkJuxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OkJuxViewController.m; sourceTree = "<group>"; };
+		44F23C831FD1A72E00167634 /* CrossPromoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CrossPromoViewController.h; sourceTree = "<group>"; };
+		44F23C841FD1A72E00167634 /* CrossPromoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrossPromoViewController.m; sourceTree = "<group>"; };
 		6E15DA48834C64B6C387E3AB /* Pods_Catwang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catwang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74098BB31AAA1DCF009D63B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		74098BB51AAA1DDC009D63B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -667,6 +670,8 @@
 				3753C75015C3132900B8AEDE /* ViewController.m */,
 				44D469671E43A8C00010F202 /* OkJuxViewController.h */,
 				44D469681E43A8C00010F202 /* OkJuxViewController.m */,
+				44F23C831FD1A72E00167634 /* CrossPromoViewController.h */,
+				44F23C841FD1A72E00167634 /* CrossPromoViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1379,6 +1384,7 @@
 				74B6E07E1A1996C9001D6F80 /* iNotify.m in Sources */,
 				74A2C9AA1A92A29400303AEE /* OMGMapViewController.m in Sources */,
 				74B6E0851A1996C9001D6F80 /* UIActivityInstagram.m in Sources */,
+				44F23C851FD1A72E00167634 /* CrossPromoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
